@@ -29,6 +29,13 @@ function checkp () {
     lsof -i :"$1"
 }
 
+# move a file from one location to another
+# and create a symbolic link in it's place in the first location
+function mvln () {
+    mv -- "$1" "$2";
+    ln -s -- "$2" "$1";
+}
+
 # kill process running on given port
 function killp() {
     local tmp
