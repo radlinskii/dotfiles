@@ -1,56 +1,55 @@
-setup_macos() {
-    title "Configuring macOS"
-    if [[ "$(uname)" == "Darwin" ]]; then
 
-        echo "Finder: show all filename extensions"
-        defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+echo "Configuring macOS"
+if [[ "$(uname)" == "Darwin" ]]; then
 
-        echo "show hidden files by default"
-        defaults write com.apple.Finder AppleShowAllFiles -bool true
+    echo "Finder: show all filename extensions"
+    defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-        echo "only use UTF-8 in Terminal.app"
-        defaults write com.apple.terminal StringEncodings -array 4
+    echo "show hidden files by default"
+    defaults write com.apple.Finder AppleShowAllFiles -bool true
 
-        echo "expand save dialog by default"
-        defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+    echo "only use UTF-8 in Terminal.app"
+    defaults write com.apple.terminal StringEncodings -array 4
 
-        echo "show the ~/Library folder in Finder"
-        chflags nohidden ~/Library
+    echo "expand save dialog by default"
+    defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-        echo "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
-        defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+    echo "show the ~/Library folder in Finder"
+    chflags nohidden ~/Library
 
-        echo "Enable subpixel font rendering on non-Apple LCDs"
-        defaults write NSGlobalDomain AppleFontSmoothing -int 2
+    echo "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
+    defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-        echo "Use current directory as default search scope in Finder"
-        defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+    echo "Enable subpixel font rendering on non-Apple LCDs"
+    defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
-        echo "Show Path bar in Finder"
-        defaults write com.apple.finder ShowPathbar -bool false
+    echo "Use current directory as default search scope in Finder"
+    defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-        echo "Show Status bar in Finder"
-        defaults write com.apple.finder ShowStatusBar -bool true
+    echo "Show Path bar in Finder"
+    defaults write com.apple.finder ShowPathbar -bool false
 
-        echo "Disable press-and-hold for keys in favor of key repeat"
-        defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+    echo "Show Status bar in Finder"
+    defaults write com.apple.finder ShowStatusBar -bool true
 
-        echo "Set a blazingly fast keyboard repeat rate"
-        defaults write NSGlobalDomain KeyRepeat -int 2
+    echo "Disable press-and-hold for keys in favor of key repeat"
+    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-        echo "Set a shorter Delay until key repeat"
-        defaults write NSGlobalDomain InitialKeyRepeat -int 25
+    echo "Set a blazingly fast keyboard repeat rate"
+    defaults write NSGlobalDomain KeyRepeat -int 2
 
-        echo "Enable tap to click (Trackpad)"
-        defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+    echo "Set a shorter Delay until key repeat"
+    defaults write NSGlobalDomain InitialKeyRepeat -int 25
 
-        echo "Enable Safari’s debug menu"
-        defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+    echo "Enable tap to click (Trackpad)"
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
-        echo "Kill affected applications"
+    echo "Enable Safari’s debug menu"
+    defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
-        for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
-    else
-        warning "macOS not detected. Skipping."
-    fi
-}
+    echo "Kill affected applications"
+
+    for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
+else
+    warning "macOS not detected. Skipping."
+fi
