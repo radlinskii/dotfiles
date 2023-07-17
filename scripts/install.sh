@@ -23,7 +23,7 @@ create_symlink "wezterm/wezterm.lua" "$HOME/.config/wezterm";
 create_symlink "zsh/.custom_aliases" "$HOME";
 create_symlink "zsh/.zshrc" "$HOME";
 
-create_symlink "git/.gitignore_global" "$HOME";
+create_symlink "git/.global_gitignore" "$HOME";
 
 # setup macos defaults
 ./scripts/macos.sh;
