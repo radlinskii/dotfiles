@@ -32,7 +32,7 @@ gh repo clone git@github.com:radlinskii/dotfiles.git
 4. manually add git username and email to global config
 
 ```sh
-git config --global core.excludesfile ~/.global_gitignore
+git config --global core.excludesfile ~/.gitignore_global
 git config --global init.defaultBranch main
 git config --global user.name "Your Name"
 git config --global user.email "Your Email"
