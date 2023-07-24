@@ -124,6 +124,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.custom_aliases
+source ~/.custom_bindings
 source ~/.local_zshrc
 
 
