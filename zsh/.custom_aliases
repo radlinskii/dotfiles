@@ -1,9 +1,8 @@
-# first custom alias
-alias welcome='echo "Welcome $USER!!!"'
-
 alias x="exit"
 
 alias sz="source ~/.zshrc"
+
+alias dirs="dirs -v" # show directory stack with index
 
 alias checka="alias | grep"
 
@@ -136,3 +135,26 @@ alias gitback="git reset HEAD^"
 #         command git "$@"
 #     fi
 # }
+
+# Define the fcd function
+fcd () {
+  # Accept 1 argument that's a string key, and perform a different
+  # "cd" operation for each key.
+  case "$1" in
+    projects)
+      cd $HOME/Projects
+      ;;
+    config)
+      cd $HOME/.config
+      ;;
+    *)
+      # The supplied argument was not one of the supported keys
+      echo "fcd: unknown key '$1'"
+      return 1
+      ;;
+  esac
+  # Helpfully print the current directory name to indicate where you are
+  pwd
+}
+# Set up tab completion
+complete -W "projects config" fcd

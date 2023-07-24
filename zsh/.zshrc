@@ -133,6 +133,7 @@ HISTFILESIZE=100000
 HISTTIMEFORMAT="%d/%m/%y %T "
 HISTFILE=~/.zsh_history
 
+CDPATH=CDPATH:$HOME:$HOME/Projects:$HOME/.config:..
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
