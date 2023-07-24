@@ -127,6 +127,12 @@ source ~/.custom_aliases
 source ~/.custom_bindings
 source ~/.local_zshrc
 
+HISTCONTROL=ignoredups
+HISTSIZE=100000
+HISTFILESIZE=100000
+HISTTIMEFORMAT="%d/%m/%y %T "
+HISTFILE=~/.zsh_history
+
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
