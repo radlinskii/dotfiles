@@ -22,7 +22,7 @@ create_symlink "wezterm/wezterm.lua" "$HOME/.config/wezterm";
 
 create_symlink "less/.lesskey" "$HOME";
 
-create_symlink "nvim/init.lua" "$HOME/.config/nvim";
+create_symlink "neovim/init.lua" "$HOME/.config/nvim";
 
 create_symlink "zsh/.custom_aliases" "$HOME";
 create_symlink "zsh/.custom_bindings" "$HOME";
