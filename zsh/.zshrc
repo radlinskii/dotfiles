@@ -135,6 +135,11 @@ HISTFILE=~/.zsh_history
 
 LESSKEY=~/.lesskey
 
+# Use Neovim as "preferred editor"
+VISUAL=nvim
+EDITOR="nvim"
+VIMCONFIG=~/.config/nvim
+
 CDPATH=CDPATH:$HOME:$HOME/Projects:$HOME/.config:..
 
 # Fig post block. Keep at the bottom of this file.
