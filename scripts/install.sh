@@ -20,6 +20,8 @@ echo "Creating symlinks";
 
 create_symlink "wezterm/wezterm.lua" "$HOME/.config/wezterm";
 
+create_symlink "less/.lesskey" "$HOME";
+
 create_symlink "zsh/.custom_aliases" "$HOME";
 create_symlink "zsh/.custom_bindings" "$HOME";
 create_symlink "zsh/.zshrc" "$HOME";
