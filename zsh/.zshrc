@@ -140,7 +140,7 @@ VISUAL=nvim
 EDITOR="nvim"
 VIMCONFIG=~/.config/nvim
 
-CDPATH=CDPATH:$HOME:$HOME/Projects:$HOME/.config:..
+CDPATH=CDPATH:$HOME:$HOME/Projects:..
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
