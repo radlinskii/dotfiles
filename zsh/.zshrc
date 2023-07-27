@@ -3,12 +3,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-username=$(whoami)
-
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/$username/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-DEFAULT_USER="$username"
+DEFAULT_USER="$(whoami)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -127,18 +125,18 @@ source ~/.custom_aliases
 source ~/.custom_bindings
 source ~/.local_zshrc
 
-HISTCONTROL=ignoredups
-HISTSIZE=100000
-HISTFILESIZE=100000
-HISTTIMEFORMAT="%d/%m/%y %T "
-HISTFILE=~/.zsh_history
+export HISTCONTROL=ignoredups
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+export HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTFILE=~/.zsh_history
 
-LESSKEY=~/.lesskey
+export LESSKEY=~/.lesskey
 
 # Use Neovim as "preferred editor"
-VISUAL=nvim
-EDITOR="nvim"
-VIMCONFIG=~/.config/nvim
+export VISUAL=nvim
+export EDITOR="nvim"
+export VIMCONFIG=~/.config/nvim
 
 CDPATH=CDPATH:$HOME:$HOME/Projects:..
 
