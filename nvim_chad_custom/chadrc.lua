@@ -16,7 +16,7 @@ M.ui = {
     changed_themes = {
         everforest_light = {
             base_30 = {
-                statusline_bg = "#555544",
+                statusline_bg = "#333311",
                 one_bg3 = "#222200",
             },
         },

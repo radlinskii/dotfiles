@@ -2,19 +2,13 @@
 local M = {}
 
 M.general = {
-    i = {
-        -- navigate within insert mode
-        ["<C-n>"] = { "<Left>", "Move left" },
-        ["<C-u>"] = { "<Up>", "Move up" },
-        ["<C-e>"] = { "<Down>", "Move down" },
-        ["<C-i>"] = { "<Right>", "Move right" },
-    },
+    i = {},
     n = {
         -- switch between windows
+        ["<C-u>"] = { "<C-w>k", "Window up" },
+        ["<C-e>"] = { "<C-w>j", "Window down" },
         ["<C-n>"] = { "<C-w>h", "Window left" },
         ["<C-i>"] = { "<C-w>l", "Window right" },
-        ["<C-e>"] = { "<C-w>j", "Window down" },
-        ["<C-u>"] = { "<C-w>k", "Window up" },
 
         [";"] = { ":", "enter command mode", opts = { nowait = true } },
 
@@ -40,7 +34,6 @@ M.general = {
         },
         ["n"] = { "h", "Move left", opts = { noremap = true, silent = true } },
         ["i"] = { "l", "Move right", opts = { noremap = true, silent = true } },
-
         ["N"] = { "H", "move to beginning of the visible screen", opts = { noremap = true, silent = true } },
         ["I"] = { "L", "move to beginning of the visible screen", opts = { noremap = true, silent = true } },
         ["h"] = { "i", "insert mode in place", opts = { noremap = true, silent = true } },
@@ -51,13 +44,48 @@ M.general = {
         },
         ["k"] = { "u", "undo last change", opts = { noremap = true, silent = true } },
         ["K"] = { "U", "undo all changes", opts = { noremap = true, silent = true } },
-        ["j"] = { "n", "find next appearance", opts = { noremap = true, silent = true } },
-        ["J"] = { "N", "find previous appearance", opts = { noremap = true, silent = true } },
+        ["j"] = { "nzzzv", "find next appearance", opts = { noremap = true, silent = true } },
+        ["J"] = { "Nzzzv", "find previous appearance", opts = { noremap = true, silent = true } },
         ["l"] = { "e", "go to end of the next word", opts = { noremap = true, silent = true } },
         ["L"] = { "E", "go to the end of the next non-blank spaced word", opts = { noremap = true, silent = true } },
         ["gl"] = { "ge", "go to end of the previous word", opts = { noremap = true, silent = true } },
         ["gL"] = { "gE", "go to end of the previous non-blank spaced word", opts = { noremap = true, silent = true } },
         ["E"] = { "J", "remove line break", opts = { noremap = true, silent = true } },
+
+        ["<C-l>"] = {
+            "<C-d>zz",
+            "scroll half a window down and move cursor to the middle",
+            opts = { noremap = true, silent = true },
+        },
+        ["<C-y>"] = {
+            "<C-u>zz",
+            "scroll half a window up and move cursor to the middle",
+            opts = { noremap = true, silent = true },
+        },
+        ["<leader>rs"] = {
+            [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+            "replace current word",
+            opts = { noremap = true, silent = true },
+        },
+
+        ["<C-d>"] = {
+            function()
+                vim.diagnostic.goto_next({ float = { border = "rounded" } })
+            end,
+            "Go to next error",
+            opts = { noremap = true, silent = true },
+        },
+        ["<C-S-d>"] = {
+            function()
+                vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+            end,
+            "Go to prev error",
+            opts = { noremap = true, silent = true },
+        },
+        ["<leader>fp"] = {
+            "<cmd>Telescope diagnostics<CR>",
+            "open telescope diagnostics",
+        },
     },
     v = {
         [">"] = { ">gv", "indent" },
@@ -71,6 +99,16 @@ M.general = {
             'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
             "Move down",
             opts = { expr = true, noremap = true },
+        },
+        ["E"] = {
+            ":m '>+1<CR>gv=gv",
+            "move line up",
+            opts = { noremap = true },
+        },
+        ["U"] = {
+            ":m '<-2<CR>gv=gv",
+            "move line down",
+            opts = { noremap = true },
         },
     },
     x = {
@@ -169,7 +207,5 @@ M.lspconfig = {
         },
     },
 }
-
--- more keybinds!
 
 return M
