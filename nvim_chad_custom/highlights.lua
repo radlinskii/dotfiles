@@ -5,15 +5,22 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  Comment = {
-    italic = true,
-  },
+    Comment = {
+        italic = true,
+    },
+    TelescopeBorder = {
+        fg = "white",
+        bg = "darker_black",
+    },
+    TelescopePromptBorder = {
+        fg = "white",
+        bg = "darker_black",
+    },
 }
 
 ---@type HLTable
 M.add = {
-  NvimTreeOpenedFolderName = { fg = "green", bold = true },
-  TelescopeNormal = { bg = "pink" }
+    NvimTreeOpenedFolderName = { fg = "green", bold = true },
 }
 
 return M

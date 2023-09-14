@@ -5,7 +5,7 @@ local M = {}
 local highlights = require("custom.highlights")
 
 M.ui = {
-    theme = "everforest_light",
+    theme = "tomorrow_night",
     theme_toggle = { "tomorrow_night", "everforest_light" },
 
     hl_override = highlights.override,
@@ -16,8 +16,14 @@ M.ui = {
     changed_themes = {
         everforest_light = {
             base_30 = {
-                statusline_bg = "#333311",
-                one_bg3 = "#222200",
+                statusline_bg = "#ffffff",
+                one_bg3 = "#f9f9ff",
+            },
+        },
+        tomorrow_night = {
+            base_30 = {
+                statusline_bg = "#222211",
+                one_bg3 = "#111100",
             },
         },
     },
