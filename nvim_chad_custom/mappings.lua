@@ -208,4 +208,15 @@ M.lspconfig = {
     },
 }
 
+M.crates = {
+    n = {
+        ["<leader>rcu"] = {
+            function()
+                require("crates").upgrade_all_crates()
+            end,
+            "update all crates",
+        },
+    },
+}
+
 return M
