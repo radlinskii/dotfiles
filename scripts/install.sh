@@ -1,55 +1,54 @@
-create_symlink() {
-    local file="$1"
-    local destination_directory="$2"
-
-    if [[ -f "$file" ]]; then
-        local source="$(pwd)/$file"
-        local destination="$destination_directory/$(basename "$file")"
-
-        echo "Creating symlink for $source to $destination"
-        ln -sf "$source" "$destination"
-    fi
-}
-
 create_symlinks() {
-    local source_directory="$1"
+    local source="$1"
     local destination_directory="$2"
 
-    if [[ ! -d "$source_directory" ]]; then
-        echo "Source directory does not exist: $source_directory"
+    if [[ ! -d "$source" && ! -f "$source" ]]; then
+        echo "Source does not exist: $source"
         return
     fi
 
-    for file in "$source_directory"/*; do
-        if [[ -f "$file" ]]; then
-            local file_name="$(basename "$file")"
-            local source="$(pwd)/$file"
-            local destination="$destination_directory/$file_name"
 
-            echo "Creating symlink for $source to $destination"
-            ln -sf "$source" "$destination"
-        fi
-    done
+    if [[ ! -d "$destination_directory" ]]; then
+        echo "Destination directory does not exist: $destination_directory"
+        echo "Creating destination directory $destination_directory"
+        mkdir -p $destination_directory
+    fi
+
+
+    if [[ -f "$source" ]]; then
+        local file_name="$(basename "$file")"
+        local source="$(pwd)/$file"
+        local destination="$destination_directory/$file_name"
+
+        echo "Creating symlink for file $source to $destination"
+        ln -sf "$source" "$destination"
+
+    fi
+
+    if [[ -d "$source" ]]; then
+        for file in "$source"/{.[!.]*,*}; do
+            if [[ -f "$file" ]]; then
+                create_symlinks "$file" "$destination_directory"
+            fi
+
+            if [[ -d "$file" ]]; then
+                create_symlinks "$file" "$destination_directory/$(basename "$file")"
+            fi
+        done
+    fi
 }
 
 echo "Creating symlinks";
 
-create_symlink "wezterm/wezterm.lua" "$HOME/.config/wezterm";
+create_symlinks "wezterm" "$HOME/.config/wezterm";
 
-create_symlink "less/.lesskey" "$HOME";
+create_symlinks "less" "$HOME";
 
-create_symlink "neovim/init.lua" "$HOME/.config/nvim";
+create_symlinks "zsh" "$HOME";
 
-create_symlink "zsh/.custom_aliases" "$HOME";
-create_symlink "zsh/.custom_bindings" "$HOME";
-create_symlink "zsh/.zshrc" "$HOME";
+create_symlinks "git" "$HOME";
 
-create_symlink "git/.gitignore_global" "$HOME";
-
-mkdir -p "$HOME/.config/nvim/lua/custom"
 create_symlinks "nvim_chad_custom" "$HOME/.config/nvim/lua/custom"
-mkdir -p "$HOME/.config/nvim/lua/custom/configs"
-create_symlinks "nvim_chad_custom/configs" "$HOME/.config/nvim/lua/custom/configs"
 
 # setup macos defaults
 ./scripts/macos.sh;
