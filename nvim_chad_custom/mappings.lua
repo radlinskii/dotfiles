@@ -197,6 +197,13 @@ M.general = {
     },
 }
 
+M.nvimtree = {
+    n = {
+        -- toggle
+        ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    },
+}
+
 M.lspconfig = {
     n = {
         ["gh"] = {

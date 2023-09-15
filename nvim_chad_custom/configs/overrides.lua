@@ -54,6 +54,9 @@ M.nvimtree = {
             },
         },
     },
+    view = {
+        side = "right",
+    },
 }
 
 M.cmp = {
