@@ -5,8 +5,8 @@ local M = {}
 local highlights = require("custom.highlights")
 
 M.ui = {
-    theme = "tomorrow_night",
-    theme_toggle = { "tomorrow_night", "everforest_light" },
+    theme = "penumbra_light",
+    theme_toggle = { "tomorrow_night", "penumbra_light" },
 
     hl_override = highlights.override,
     hl_add = highlights.add,
@@ -14,16 +14,30 @@ M.ui = {
         theme = "vscode_colored",
     },
     changed_themes = {
-        everforest_light = {
+        penumbra_light = {
             base_30 = {
-                statusline_bg = "#ffffff",
-                one_bg3 = "#f9f9ff",
+                statusline_bg = "#eeeecc",
+            },
+            base_16 = {
+                base09 = "#be9e00",
+            },
+            polish_hl = {
+                ["@field"] = {
+                    fg = "#dd7777",
+                },
+                ["@constant"] = {
+                    fg = "#992222",
+                },
             },
         },
         tomorrow_night = {
             base_30 = {
-                statusline_bg = "#222211",
-                one_bg3 = "#111100",
+                statusline_bg = "#2d2d22",
+            },
+            polish_hl = {
+                ["@field"] = {
+                    fg = "#dd8877",
+                },
             },
         },
     },

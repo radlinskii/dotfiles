@@ -16,6 +16,39 @@ M.override = {
         fg = "white",
         bg = "darker_black",
     },
+    StText = {
+        fg = "light_grey",
+    },
+    St_VisualMode = {
+        bg = "statusline_bg",
+    },
+    St_NormalMode = {
+        bg = "statusline_bg",
+    },
+    St_InsertMode = {
+        bg = "statusline_bg",
+    },
+    St_TerminalMode = {
+        bg = "statusline_bg",
+    },
+    St_NTerminalMode = {
+        bg = "statusline_bg",
+    },
+    St_ReplaceMode = {
+        bg = "statusline_bg",
+    },
+    St_ConfirmMode = {
+        bg = "statusline_bg",
+    },
+    St_CommandMode = {
+        bg = "statusline_bg",
+    },
+    St_SelectMode = {
+        bg = "statusline_bg",
+    },
+    St_cwd = {
+        bg = "statusline_bg",
+    },
 }
 
 ---@type HLTable
