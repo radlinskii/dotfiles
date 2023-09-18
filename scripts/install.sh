@@ -32,7 +32,7 @@ create_symlinks() {
             fi
 
             if [[ -d "$file" ]]; then
-                create_symlinks "$file" "$destination_directory/$(basename "$file")"
+                       create_symlinks "$file" "$destination_directory/$(basename "$file")"
             fi
         done
     fi
@@ -52,3 +52,6 @@ create_symlinks "nvim_chad_custom" "$HOME/.config/nvim/lua/custom"
 
 # setup macos defaults
 ./scripts/macos.sh;
+
+# setup Homebrew
+./scripts/brew.sh;

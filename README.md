@@ -8,7 +8,6 @@ WIP...
 
 todo:
 
--   [ ] homebrew setup
 -   [ ] oh-my-zsh setup
 
 1. be sure you have git installed
