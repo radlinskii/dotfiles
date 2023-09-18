@@ -7,13 +7,11 @@ create_symlinks() {
         return
     fi
 
-
     if [[ ! -d "$destination_directory" ]]; then
         echo "Destination directory does not exist: $destination_directory"
         echo "Creating destination directory $destination_directory"
         mkdir -p $destination_directory
     fi
-
 
     if [[ -f "$source" ]]; then
         local file_name="$(basename "$file")"
@@ -32,26 +30,35 @@ create_symlinks() {
             fi
 
             if [[ -d "$file" ]]; then
-                       create_symlinks "$file" "$destination_directory/$(basename "$file")"
+                create_symlinks "$file" "$destination_directory/$(basename "$file")"
             fi
         done
     fi
 }
 
-echo "Creating symlinks";
+echo "Creating symlinks"
 
-create_symlinks "wezterm" "$HOME/.config/wezterm";
+create_symlinks "wezterm" "$HOME/.config/wezterm"
 
-create_symlinks "less" "$HOME";
+create_symlinks "less" "$HOME"
 
-create_symlinks "zsh" "$HOME";
+create_symlinks "zsh" "$HOME"
 
-create_symlinks "git" "$HOME";
+create_symlinks "git" "$HOME"
 
 create_symlinks "nvim_chad_custom" "$HOME/.config/nvim/lua/custom"
 
 # setup macos defaults
-./scripts/macos.sh;
+./scripts/macos.sh
 
 # setup Homebrew
-./scripts/brew.sh;
+./scripts/brew.sh
+
+# install om-my-zsh
+if [[ ! -d "$ZSH" ]]; then
+    echo "Installing oh-my-zsh"
+    sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+else
+    echo "Omitting oh-my-zsh installation"
+    echo "$ZSH directory already exists"
+fi

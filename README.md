@@ -4,12 +4,6 @@ This repo holds configuration files for tooling I use.
 
 ## Usage
 
-WIP...
-
-todo:
-
--   [ ] oh-my-zsh setup
-
 1. be sure you have git installed
 
 ```sh
