@@ -86,6 +86,11 @@ M.general = {
             "<cmd>Telescope diagnostics<CR>",
             "open telescope diagnostics",
         },
+        ["<leader>ff"] = {
+            "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
+            "find files, including hidden files, but those in .git folder ",
+            opts = { noremap = true, silent = true },
+        },
     },
     v = {
         [">"] = { ">gv", "indent" },
