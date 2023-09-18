@@ -14,6 +14,9 @@ local sources = {
 
     -- cpp
     b.formatting.clang_format,
+
+    b.diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
+    b.formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
 }
 
 null_ls.setup({
