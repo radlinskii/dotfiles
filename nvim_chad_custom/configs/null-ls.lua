@@ -17,6 +17,7 @@ local sources = {
 
     b.diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
     b.formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
+    b.code_actions.shellcheck.with({ filetypes = { "sh", "zsh" } }),
 }
 
 null_ls.setup({
