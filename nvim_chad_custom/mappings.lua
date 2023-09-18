@@ -62,6 +62,17 @@ M.general = {
             "scroll half a window up and move cursor to the middle",
             opts = { noremap = true, silent = true },
         },
+        ["<PageUp>"] = {
+            "<PageUp>zz",
+            "scroll a whole window up and move cursor to the middle",
+            opts = { noremap = true, silent = true },
+        },
+        ["<PageDown>"] = {
+            "<PageDown>zz",
+            "scroll a whole window down and move cursor to the middle",
+            opts = { noremap = true, silent = true },
+        },
+
         ["<leader>rs"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
             "replace current word",
@@ -85,7 +96,9 @@ M.general = {
         ["<leader>fp"] = {
             "<cmd>Telescope diagnostics<CR>",
             "open telescope diagnostics",
+            opts = { noremap = true, silent = true },
         },
+
         ["<leader>ff"] = {
             "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
             "find files, including hidden files, but those in .git folder ",
@@ -114,6 +127,27 @@ M.general = {
             ":m '<-2<CR>gv=gv",
             "move line down",
             opts = { noremap = true },
+        },
+
+        ["<C-l>"] = {
+            "<C-d>zz",
+            "scroll half a window down and move cursor to the middle",
+            opts = { noremap = true, silent = true },
+        },
+        ["<C-y>"] = {
+            "<C-u>zz",
+            "scroll half a window up and move cursor to the middle",
+            opts = { noremap = true, silent = true },
+        },
+        ["<PageUp>"] = {
+            "<PageUp>zz",
+            "scroll a whole window up and move cursor to the middle",
+            opts = { noremap = true, silent = true },
+        },
+        ["<PageDown>"] = {
+            "<PageDown>zz",
+            "scroll a whole window down and move cursor to the middle",
+            opts = { noremap = true, silent = true },
         },
     },
     x = {
