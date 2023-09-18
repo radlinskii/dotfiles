@@ -29,7 +29,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -80,7 +80,7 @@ plugins=(
     npm
     nvm
     docker # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins#docker
-    macos # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins#osx
+    macos  # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins#osx
     # thefuck # https://github.com/nvbn/thefuck
     colored-man-pages
     zsh-autosuggestions
@@ -89,7 +89,6 @@ plugins=(
     extract
     web-search # google smthn
 )
-
 
 zstyle ':omz:plugins:nvm' autoload yes
 
@@ -121,9 +120,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/.custom_aliases
-source ~/.custom_bindings
-source ~/.local_zshrc
+source ~/.custom_aliases.sh
+source ~/.custom_bindings.sh
+source ~/.local_zshrc.sh
 
 export HISTCONTROL=ignoredups
 export HISTSIZE=100000

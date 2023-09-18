@@ -17,22 +17,22 @@ alias npmd="npm run dev"
 alias checkh="history | grep"
 function h() {
     if [ "$1" = "-c" ]; then
-      echo "don't even fucking try to remove my history"
+        echo "don't even fucking try to remove my history"
     else
-      history
+        history
     fi
 }
 
 # check port
-function checkp () {
+function checkp() {
     lsof -i :"$1"
 }
 
 # move a file from one location to another
 # and create a symbolic link in it's place in the first location
-function mvln () {
-    mv -- "$1" "$2";
-    ln -s -- "$2" "$1";
+function mvln() {
+    mv -- "$1" "$2"
+    ln -s -- "$2" "$1"
 }
 
 # kill process running on given port
@@ -62,11 +62,9 @@ function killp() {
     return $exit_status
 }
 
-
 # GIT
 alias gback="git reset HEAD^"
 alias gitback="git reset HEAD^"
-
 
 # function set_git_config_variable() {
 #     local defaultvalue="$(git config user.$1)"
@@ -137,24 +135,24 @@ alias gitback="git reset HEAD^"
 # }
 
 # Define the fcd function
-fcd () {
-  # Accept 1 argument that's a string key, and perform a different
-  # "cd" operation for each key.
-  case "$1" in
+fcd() {
+    # Accept 1 argument that's a string key, and perform a different
+    # "cd" operation for each key.
+    case "$1" in
     projects)
-      cd $HOME/Projects
-      ;;
+        cd $HOME/Projects
+        ;;
     config)
-      cd $HOME/.config
-      ;;
+        cd $HOME/.config
+        ;;
     *)
-      # The supplied argument was not one of the supported keys
-      echo "fcd: unknown key '$1'"
-      return 1
-      ;;
-  esac
-  # Helpfully print the current directory name to indicate where you are
-  pwd
+        # The supplied argument was not one of the supported keys
+        echo "fcd: unknown key '$1'"
+        return 1
+        ;;
+    esac
+    # Helpfully print the current directory name to indicate where you are
+    pwd
 }
 # Set up tab completion
 complete -W "projects config" fcd
