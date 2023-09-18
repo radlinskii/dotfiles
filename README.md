@@ -29,7 +29,7 @@ gh repo clone git@github.com:radlinskii/dotfiles.git
 ./scripts/install.sh
 ```
 
-4. manually add git username and email to global config
+4. manually adjust the git config
 
 ```sh
 git config --global core.excludesfile ~/.gitignore_global
