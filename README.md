@@ -1,6 +1,6 @@
 # dotfiles
 
-This repo holds configuration files for tooling I use.
+This repo holds configuration files for tooling I use regularly while working on MacOS.
 
 ## Usage
 
@@ -13,10 +13,10 @@ xcode-select --install
 2. clone the repo
 
 ```sh
-gh repo clone git@github.com:radlinskii/dotfiles.git
+git clone git@github.com:radlinskii/dotfiles.git
 ```
 
-3. run the install script
+3. once inside the repo's folder run the install script
 
 ```sh
 ./scripts/install.sh
@@ -31,6 +31,16 @@ git config --global user.name "Your Name"
 git config --global user.email "Your Email"
 ```
 
+5. put local-machine-specific shell configuration and secret env vars in `~/.local_zshrc.sh`
+
+```sh
+nvim ~/.local_zshrc.sh
+```
+
 ## Acknowledgements
 
 -   Nick Nisi's [dotfiles](https://github.com/nicknisi/dotfiles)
+
+## License
+
+MIT - see [LICENSE](LICENSE) file
