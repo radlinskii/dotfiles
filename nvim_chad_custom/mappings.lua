@@ -114,4 +114,76 @@ M.crates = {
     },
 }
 
+M.harpoon = {
+    n = {
+        --Harpoon
+        ["<leader>hm"] = {
+            function()
+                require("harpoon.mark").add_file()
+            end,
+            "Mark using harpoon",
+        },
+        ["<leader>ho"] = {
+            function()
+                require("harpoon.ui").toggle_quick_menu()
+            end,
+            "Open Harpoon quick menu",
+        },
+        ["<leader>hi"] = {
+            function()
+                require("harpoon.ui").nav_next()
+            end,
+            "Navigate to next mark in harpoon",
+        },
+        ["<leader>hn"] = {
+            function()
+                require("harpoon.ui").nav_prev()
+            end,
+            "Navigate to prev mark in harpoon",
+        },
+        ["<leader>ht"] = {
+            function()
+                require("harpoon.ui").nav_file(1)
+            end,
+            "Navigate to 1st mark in harpoon",
+        },
+        ["<leader>hs"] = {
+            function()
+                require("harpoon.ui").nav_file(2)
+            end,
+            "Navigate to 2nd mark in harpoon",
+        },
+        ["<leader>hr"] = {
+            function()
+                require("harpoon.ui").nav_file(3)
+            end,
+            "Navigate to 3rd mark in harpoon",
+        },
+        ["<leader>hp"] = {
+            function()
+                require("harpoon.ui").nav_file(4)
+            end,
+            "Navigate to 4th mark in harpoon",
+        },
+        ["<leader>hf"] = {
+            function()
+                require("harpoon.ui").nav_file(5)
+            end,
+            "Navigate to 5th mark in harpoon",
+        },
+        ["<leader>hw"] = {
+            function()
+                require("harpoon.ui").nav_file(6)
+            end,
+            "Navigate to 6th mark in harpoon",
+        },
+    },
+}
+
+M.disabled = {
+    n = {
+        ["<leader>h"] = "",
+    },
+}
+
 return M

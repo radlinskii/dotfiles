@@ -47,6 +47,14 @@ local plugins = {
         end,
     },
 
+    {
+        "ThePrimeagen/harpoon",
+        event = "BufReadPre",
+        config = function()
+            require("harpoon").setup()
+        end,
+    },
+
     -- To make a plugin not be loaded
     -- {
     --   "NvChad/nvim-colorizer.lua",
