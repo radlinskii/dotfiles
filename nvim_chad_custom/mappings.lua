@@ -1,8 +1,10 @@
+local utils = require("custom.utils")
+
 ---@type MappingsTable
 local M = {}
 
-local noremapOpts = { noremap = true }
-local noremapExprOpts = { noremap = true, expr = true }
+local noremapOpts = { noremap = true, silent = true }
+local noremapExprOpts = { noremap = true, expr = true, silent = true }
 local noremapNowaitOpts = { noremap = true, nowait = true }
 
 local colemakMappings = {
@@ -24,8 +26,6 @@ local colemakMappings = {
     ["J"] = { "Nzzzv", "find previous appearance", opts = noremapOpts },
     ["l"] = { "e", "go to end of the next word", opts = noremapOpts },
     ["L"] = { "E", "go to the end of the next non-blank spaced word", opts = noremapOpts },
-    ["gl"] = { "ge", "go to end of the previous word", opts = noremapOpts },
-    ["gL"] = { "gE", "go to end of the previous non-blank spaced word", opts = noremapOpts },
     ["E"] = { "J", "remove line break", opts = noremapOpts },
 
     ["<C-l>"] = { "<C-d>zz", "scroll half a window down and move cursor to the middle", opts = noremapOpts },
@@ -40,8 +40,8 @@ local colemakMappings = {
 
 M.general = {
     i = {},
-    n = vim.tbl_deep_extend("force", colemakMappings, {
-        [";"] = { ":", "enter command mode", opts = noremapNowaitOpts },
+    n = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
+        [";"] = { ":", "enter command mode", noremapNowaitOpts },
 
         ["<C-u>"] = { "<C-w>k", "Window up" },
         ["<C-e>"] = { "<C-w>j", "Window down" },
@@ -82,8 +82,8 @@ M.general = {
         ["E"] = { ":m '>+1<CR>gv=gv", "move selected lines up", opts = noremapOpts },
         ["U"] = { ":m '<-2<CR>gv=gv", "move selected lines down", opts = noremapOpts },
     },
-    x = vim.tbl_deep_extend("force", colemakMappings, {}),
-    o = vim.tbl_deep_extend("force", colemakMappings, {}),
+    x = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
+    o = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
 }
 
 M.nvimtree = {
