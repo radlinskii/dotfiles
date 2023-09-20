@@ -57,11 +57,15 @@ M.general = {
     }),
     v = {
         [">"] = { ">gv", "Increase indent", opts = noremapOpts },
+        ["<"] = { "<gv", "Increase indent", opts = noremapOpts },
 
         ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
         ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
     },
-    x = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
+    x = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
+        ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
+        ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
+    }),
     o = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
 }
 
@@ -225,7 +229,7 @@ M.telescope = {
         ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks", opts = noremapOpts },
         ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits", opts = noremapOpts },
         ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status", opts = noremapOpts },
-        ["<leaderfgb>"] = { "<cmd> Telescope git_branches <CR>", "Git branches", opts = noremapOpts },
+        ["<leader>fgb"] = { "<cmd> Telescope git_branches <CR>", "Git branches", opts = noremapOpts },
         ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term", opts = noremapOpts },
         ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = noremapOpts },
     },
