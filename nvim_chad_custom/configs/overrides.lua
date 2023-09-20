@@ -63,6 +63,12 @@ M.cmp = {
     sources = {
         { name = "crates" },
     },
+    mapping = {
+        ["<C-S-Space>"] = require("cmp").mapping.complete(),
+    },
+    experimental = {
+        ghost_text = true,
+    },
 }
 
 M.gitsigns = {
