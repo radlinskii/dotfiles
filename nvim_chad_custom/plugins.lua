@@ -56,6 +56,11 @@ local plugins = {
         end,
     },
 
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = overrides.gitsigns,
+    },
+
     -- To make a plugin not be loaded
     -- {
     --   "NvChad/nvim-colorizer.lua",

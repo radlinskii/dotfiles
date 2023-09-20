@@ -180,6 +180,94 @@ M.harpoon = {
     },
 }
 
+M.gitsigns = {
+    n = {
+        ["]c"] = {
+            function()
+                if vim.wo.diff then
+                    return "]c"
+                end
+                vim.schedule(function()
+                    require("gitsigns").next_hunk()
+                end)
+                return "<Ignore>"
+            end,
+            "Jump to next hunk",
+            opts = { expr = true },
+        },
+
+        ["[c"] = {
+            function()
+                if vim.wo.diff then
+                    return "[c"
+                end
+                vim.schedule(function()
+                    require("gitsigns").prev_hunk()
+                end)
+                return "<Ignore>"
+            end,
+            "Jump to prev hunk",
+            opts = { expr = true },
+        },
+
+        ["<leader>cp"] = {
+            function()
+                require("gitsigns").preview_hunk()
+            end,
+            "Preview hunk",
+        },
+
+        ["<leader>cb"] = {
+            function()
+                require("gitsigns").blame_line()
+            end,
+            "Blame line",
+        },
+
+        ["<leader>cs"] = {
+            function()
+                require("gitsigns").stage_hunk()
+            end,
+            "Stage hunk",
+        },
+
+        ["<leader>cu"] = {
+            function()
+                require("gitsigns").undo_stage_hunk()
+            end,
+            "Undo stage hunk",
+        },
+
+        ["<leader>ca"] = {
+            function()
+                require("gitsigns").stage_buffer()
+            end,
+            "Toggle deleted",
+        },
+
+        ["<leader>cr"] = {
+            function()
+                require("gitsigns").reset_hunk()
+            end,
+            "Reset hunk",
+        },
+
+        ["<leader>cR"] = {
+            function()
+                require("gitsigns").reset_buffer()
+            end,
+            "Reset buffer",
+        },
+
+        ["<leader>cd"] = {
+            function()
+                require("gitsigns").toggle_deleted()
+            end,
+            "Toggle deleted",
+        },
+    },
+}
+
 M.disabled = {
     n = {
         ["<leader>h"] = "",
