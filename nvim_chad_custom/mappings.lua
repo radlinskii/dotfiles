@@ -230,6 +230,7 @@ M.telescope = {
         ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits", opts = noremapOpts },
         ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status", opts = noremapOpts },
         ["<leader>fgb"] = { "<cmd> Telescope git_branches <CR>", "Git branches", opts = noremapOpts },
+        ["<leader>fgt"] = { "<cmd> Telescope git_stash <CR>", "Git stashes", opts = noremapOpts },
         ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term", opts = noremapOpts },
         ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = noremapOpts },
     },
