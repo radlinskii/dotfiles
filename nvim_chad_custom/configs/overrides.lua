@@ -20,6 +20,31 @@ M.treesitter = {
         -- },
     },
 }
+local actions = require("telescope.actions")
+M.telescope = {
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-l>"] = actions.cycle_history_next,
+                ["<C-y>"] = actions.cycle_history_prev,
+                ["<C-n>"] = actions.move_selection_next,
+                ["<C-p>"] = actions.move_selection_previous,
+                ["<C-h>"] = actions.select_horizontal,
+                ["<C-g>"] = actions.complete_tag,
+            },
+            n = {
+                ["<C-l>"] = actions.cycle_history_next,
+                ["<C-y>"] = actions.cycle_history_prev,
+                ["<C-h>"] = actions.select_horizontal,
+                ["e"] = actions.move_selection_next,
+                ["u"] = actions.move_selection_previous,
+                ["N"] = actions.move_to_top,
+                ["M"] = actions.move_to_middle,
+                ["I"] = actions.move_to_bottom,
+            },
+        },
+    },
+}
 
 M.mason = {
     ensure_installed = {

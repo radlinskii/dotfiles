@@ -199,14 +199,16 @@ M.lspconfig = {
 M.telescope = {
     n = {
         ["<leader>ff"] = {
-            "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '-g', '!.git' }})<cr>",
+            "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '-g', '!.git' }})<CR>",
             "Find files, including hidden files, but those in .git folder ",
             opts = noremapOpts,
         },
-        ["<leader>fp"] = { "<cmd>Telescope diagnostics<CR>", "Open telescope diagnostics", opts = noremapOpts },
+        ["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "Find LSP references" },
+        ["<leader>fp"] = { "<cmd> Telescope diagnostics <CR>", "Open telescope diagnostics", opts = noremapOpts },
         ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks" },
         ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
         ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+        ["<leaderfgb>"] = { "<cmd> Telescope git_branches <CR>", "Git branches" },
         ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
         ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
     },
