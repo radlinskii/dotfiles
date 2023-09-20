@@ -44,6 +44,12 @@ local plugins = {
         opts = overrides.telescope,
     },
 
+    {
+        "tpope/vim-fugitive",
+        event = "VeryLazy",
+        opts = overrides.fugitive,
+    },
+
     -- Install a plugin
     {
         "max397574/better-escape.nvim",
