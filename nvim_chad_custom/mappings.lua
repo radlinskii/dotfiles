@@ -16,24 +16,24 @@ local colemakMappings = {
     ["n"] = { "h", "Move left", opts = noremapOpts },
     ["i"] = { "l", "Move right", opts = noremapOpts },
 
-    ["N"] = { "H", "move to beginning of the visible screen", opts = noremapOpts },
-    ["I"] = { "L", "move to beginning of the visible screen", opts = noremapOpts },
-    ["h"] = { "i", "insert mode in place", opts = noremapOpts },
-    ["H"] = { "I", "start insert mode at the non-blank spaced beginning of current line", opts = noremapOpts },
-    ["k"] = { "u", "undo last change", opts = noremapOpts },
-    ["K"] = { "U", "undo all changes", opts = noremapOpts },
-    ["j"] = { "nzzzv", "find next appearance", opts = noremapOpts },
-    ["J"] = { "Nzzzv", "find previous appearance", opts = noremapOpts },
-    ["l"] = { "e", "go to end of the next word", opts = noremapOpts },
-    ["L"] = { "E", "go to the end of the next non-blank spaced word", opts = noremapOpts },
-    ["E"] = { "J", "remove line break", opts = noremapOpts },
+    ["N"] = { "H", "Jump to beginning of the visible screen", opts = noremapOpts },
+    ["I"] = { "L", "Jump to end of the visible screen", opts = noremapOpts },
+    ["h"] = { "i", "Insert mode in place", opts = noremapOpts },
+    ["H"] = { "I", "Start insert mode at the non-blank spaced beginning of current line", opts = noremapOpts },
+    ["k"] = { "u", "Undo last change", opts = noremapOpts },
+    ["K"] = { "U", "Undo all changes", opts = noremapOpts },
+    ["j"] = { "nzzzv", "Find next appearance", opts = noremapOpts },
+    ["J"] = { "Nzzzv", "Find previous appearance", opts = noremapOpts },
+    ["l"] = { "e", "Go to end of the next word", opts = noremapOpts },
+    ["L"] = { "E", "Go to the end of the next non-blank spaced word", opts = noremapOpts },
+    ["E"] = { "J", "Remove line break", opts = noremapOpts },
 
-    ["<C-l>"] = { "<C-d>zz", "scroll half a window down and move cursor to the middle", opts = noremapOpts },
-    ["<C-y>"] = { "<C-u>zz", "scroll half a window up and move cursor to the middle", opts = noremapOpts },
-    ["<PageUp>"] = { "<PageUp>zz", "scroll a whole window up and move cursor to the middle", opts = noremapOpts },
+    ["<C-d>"] = { "<C-d>zz", "Scroll half a window down and move cursor to the middle", opts = noremapOpts },
+    ["<C-u>"] = { "<C-u>zz", "Scroll half a window up and move cursor to the middle", opts = noremapOpts },
+    ["<PageUp>"] = { "<PageUp>zz", "Scroll a whole window up and move cursor to the middle", opts = noremapOpts },
     ["<PageDown>"] = {
         "<PageDown>zz",
-        "scroll a whole window down and move cursor to the middle",
+        "Scroll a whole window down and move cursor to the middle",
         opts = noremapOpts,
     },
 }
@@ -41,39 +41,25 @@ local colemakMappings = {
 M.general = {
     i = {},
     n = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
-        [";"] = { ":", "enter command mode", noremapNowaitOpts },
+        [";"] = { ":", "Enter command mode", noremapNowaitOpts },
 
-        ["<C-u>"] = { "<C-w>k", "Window up" },
-        ["<C-e>"] = { "<C-w>j", "Window down" },
-        ["<C-n>"] = { "<C-w>h", "Window left" },
-        ["<C-i>"] = { "<C-w>l", "Window right" },
+        ["<C-w>u"] = { "<C-w>k", "Window up" },
+        ["<C-w>e"] = { "<C-w>j", "Window down" },
+        ["<C-w>n"] = { "<C-w>h", "Window left" },
+        ["<C-w>i"] = { "<C-w>l", "Window right" },
 
         ["<leader>rs"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-            "replace the whole current word",
+            "Substitute current word",
             opts = noremapOpts,
         },
-
-        ["<C-d>"] = {
-            function()
-                vim.diagnostic.goto_next({ float = { border = "rounded" } })
-            end,
-            "Go to next error",
-            opts = noremapOpts,
-        },
-        ["<C-S-d>"] = {
-            function()
-                vim.diagnostic.goto_prev({ float = { border = "rounded" } })
-            end,
-            "Go to prev error",
-            opts = noremapOpts,
-        },
+        ["<leader>km"] = { "<cmd> NvCheatsheet <CR>", "Key mapping cheatsheet" },
     }),
     v = {
-        [">"] = { ">gv", "indent" },
+        [">"] = { ">gv", "Increase indent" },
 
-        ["E"] = { ":m '>+1<CR>gv=gv", "move selected lines up", opts = noremapOpts },
-        ["U"] = { ":m '<-2<CR>gv=gv", "move selected lines down", opts = noremapOpts },
+        ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
+        ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
     },
     x = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
     o = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
@@ -133,7 +119,7 @@ M.lspconfig = {
             function()
                 require("nvchad.renamer").open()
             end,
-            "LSP rename",
+            "LSP based rename",
         },
 
         ["<leader>la"] = {
@@ -161,17 +147,17 @@ M.lspconfig = {
             function()
                 vim.diagnostic.goto_prev({ float = { border = "rounded" } })
             end,
-            "Goto prev",
+            "Go to prev diagnostic",
         },
 
         ["]d"] = {
             function()
                 vim.diagnostic.goto_next({ float = { border = "rounded" } })
             end,
-            "Goto next",
+            "Go to next diagnostic",
         },
 
-        ["<leader>q"] = {
+        ["<leader>lq"] = {
             function()
                 vim.diagnostic.setloclist()
             end,
@@ -182,21 +168,21 @@ M.lspconfig = {
             function()
                 vim.lsp.buf.add_workspace_folder()
             end,
-            "Add workspace folder",
+            "LSP Add workspace folder",
         },
 
         ["<leader>lwr"] = {
             function()
                 vim.lsp.buf.remove_workspace_folder()
             end,
-            "Remove workspace folder",
+            "LSP Remove workspace folder",
         },
 
         ["<leader>lwl"] = {
             function()
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end,
-            "List workspace folders",
+            "LSP List workspace folders",
         },
     },
 
@@ -214,11 +200,11 @@ M.telescope = {
     n = {
         ["<leader>ff"] = {
             "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '-g', '!.git' }})<cr>",
-            "find files, including hidden files, but those in .git folder ",
+            "Find files, including hidden files, but those in .git folder ",
             opts = noremapOpts,
         },
-        ["<leader>fp"] = { "<cmd>Telescope diagnostics<CR>", "open telescope diagnostics", opts = noremapOpts },
-        ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
+        ["<leader>fp"] = { "<cmd>Telescope diagnostics<CR>", "Open telescope diagnostics", opts = noremapOpts },
+        ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks" },
         ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
         ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
         ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
@@ -354,7 +340,7 @@ M.gitsigns = {
             function()
                 require("gitsigns").stage_buffer()
             end,
-            "Toggle deleted",
+            "Stage buffer",
         },
 
         ["<leader>cr"] = {
@@ -382,6 +368,12 @@ M.gitsigns = {
 
 M.disabled = {
     n = {
+        -- nvchad cheatsheet
+        ["<leader>ch"] = "",
+
+        -- nvimtree nvchad
+        ["<C-n>"] = "",
+
         -- terminal nvchad defaults
         ["<leader>h"] = "",
         ["<leader>v"] = "",
