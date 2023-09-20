@@ -68,13 +68,6 @@ M.general = {
             "Go to prev error",
             opts = noremapOpts,
         },
-        ["<leader>fp"] = { "<cmd>Telescope diagnostics<CR>", "open telescope diagnostics", opts = noremapOpts },
-
-        ["<leader>ff"] = {
-            "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
-            "find files, including hidden files, but those in .git folder ",
-            opts = noremapOpts,
-        },
     }),
     v = {
         [">"] = { ">gv", "indent" },
@@ -103,14 +96,19 @@ M.lspconfig = {
     },
 }
 
-M.crates = {
+M.telescope = {
     n = {
-        ["<leader>rcu"] = {
-            function()
-                require("crates").upgrade_all_crates()
-            end,
-            "update all crates",
+        ["<leader>ff"] = {
+            "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '-g', '!.git' }})<cr>",
+            "find files, including hidden files, but those in .git folder ",
+            opts = noremapOpts,
         },
+        ["<leader>fp"] = { "<cmd>Telescope diagnostics<CR>", "open telescope diagnostics", opts = noremapOpts },
+        ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
+        ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
+        ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+        ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
+        ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
     },
 }
 
@@ -270,7 +268,22 @@ M.gitsigns = {
 
 M.disabled = {
     n = {
+        -- terminal nvchad defaults
         ["<leader>h"] = "",
+        ["<leader>v"] = "",
+
+        -- gitsigns nvchad defaults
+        ["<leader>rh"] = "",
+        ["<leader>ph"] = "",
+        ["<leader>gb"] = "",
+        ["<leader>td"] = "",
+
+        -- telescope
+        ["<leader>ma"] = "",
+        ["<leader>cm"] = "",
+        ["<leader>gt"] = "",
+        ["<leader>pt"] = "",
+        ["<leader>th"] = "",
     },
 }
 
