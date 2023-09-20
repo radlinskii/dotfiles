@@ -43,20 +43,20 @@ M.general = {
     n = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
         [";"] = { ":", "Enter command mode", noremapNowaitOpts },
 
-        ["<C-w>u"] = { "<C-w>k", "Window up" },
-        ["<C-w>e"] = { "<C-w>j", "Window down" },
-        ["<C-w>n"] = { "<C-w>h", "Window left" },
-        ["<C-w>i"] = { "<C-w>l", "Window right" },
+        ["<C-w>u"] = { "<C-w>k", "Window up", opts = noremapOpts },
+        ["<C-w>e"] = { "<C-w>j", "Window down", opts = noremapOpts },
+        ["<C-w>n"] = { "<C-w>h", "Window left", opts = noremapOpts },
+        ["<C-w>i"] = { "<C-w>l", "Window right", opts = noremapOpts },
 
         ["<leader>rs"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
             "Substitute current word",
             opts = noremapOpts,
         },
-        ["<leader>km"] = { "<cmd> NvCheatsheet <CR>", "Key mapping cheatsheet" },
+        ["<leader>km"] = { "<cmd> NvCheatsheet <CR>", "Key mapping cheatsheet", opts = noremapOpts },
     }),
     v = {
-        [">"] = { ">gv", "Increase indent" },
+        [">"] = { ">gv", "Increase indent", opts = noremapOpts },
 
         ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
         ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
@@ -67,7 +67,7 @@ M.general = {
 
 M.nvimtree = {
     n = {
-        ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+        ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = noremapOpts },
     },
 }
 
@@ -78,6 +78,7 @@ M.lspconfig = {
                 vim.lsp.buf.declaration()
             end,
             "LSP declaration",
+            opts = noremapOpts,
         },
 
         ["<leader>ld"] = {
@@ -85,6 +86,7 @@ M.lspconfig = {
                 vim.lsp.buf.definition()
             end,
             "LSP definition",
+            opts = noremapOpts,
         },
 
         ["<leader>lh"] = {
@@ -92,6 +94,7 @@ M.lspconfig = {
                 vim.lsp.buf.hover()
             end,
             "LSP hover",
+            opts = noremapOpts,
         },
 
         ["<leader>li"] = {
@@ -99,6 +102,7 @@ M.lspconfig = {
                 vim.lsp.buf.implementation()
             end,
             "LSP implementation",
+            opts = noremapOpts,
         },
 
         ["<leader>ls"] = {
@@ -106,6 +110,7 @@ M.lspconfig = {
                 vim.lsp.buf.signature_help()
             end,
             "LSP signature help",
+            opts = noremapOpts,
         },
 
         ["<leader>lt"] = {
@@ -113,6 +118,7 @@ M.lspconfig = {
                 vim.lsp.buf.type_definition()
             end,
             "LSP definition type",
+            opts = noremapOpts,
         },
 
         ["<leader>lm"] = {
@@ -120,6 +126,7 @@ M.lspconfig = {
                 require("nvchad.renamer").open()
             end,
             "LSP based rename",
+            opts = noremapOpts,
         },
 
         ["<leader>la"] = {
@@ -127,6 +134,7 @@ M.lspconfig = {
                 vim.lsp.buf.code_action()
             end,
             "LSP code action",
+            opts = noremapOpts,
         },
 
         ["<leader>lr"] = {
@@ -134,6 +142,7 @@ M.lspconfig = {
                 vim.lsp.buf.references()
             end,
             "LSP references",
+            opts = noremapOpts,
         },
 
         ["<leader>lf"] = {
@@ -141,6 +150,7 @@ M.lspconfig = {
                 vim.diagnostic.open_float({ border = "rounded" })
             end,
             "Floating diagnostic",
+            opts = noremapOpts,
         },
 
         ["[d"] = {
@@ -148,6 +158,7 @@ M.lspconfig = {
                 vim.diagnostic.goto_prev({ float = { border = "rounded" } })
             end,
             "Go to prev diagnostic",
+            opts = noremapOpts,
         },
 
         ["]d"] = {
@@ -155,6 +166,7 @@ M.lspconfig = {
                 vim.diagnostic.goto_next({ float = { border = "rounded" } })
             end,
             "Go to next diagnostic",
+            opts = noremapOpts,
         },
 
         ["<leader>lq"] = {
@@ -162,6 +174,7 @@ M.lspconfig = {
                 vim.diagnostic.setloclist()
             end,
             "Diagnostic setloclist",
+            opts = noremapOpts,
         },
 
         ["<leader>lwa"] = {
@@ -169,6 +182,7 @@ M.lspconfig = {
                 vim.lsp.buf.add_workspace_folder()
             end,
             "LSP Add workspace folder",
+            opts = noremapOpts,
         },
 
         ["<leader>lwr"] = {
@@ -176,6 +190,7 @@ M.lspconfig = {
                 vim.lsp.buf.remove_workspace_folder()
             end,
             "LSP Remove workspace folder",
+            opts = noremapOpts,
         },
 
         ["<leader>lwl"] = {
@@ -183,6 +198,7 @@ M.lspconfig = {
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end,
             "LSP List workspace folders",
+            opts = noremapOpts,
         },
     },
 
@@ -192,6 +208,7 @@ M.lspconfig = {
                 vim.lsp.buf.code_action()
             end,
             "LSP code action",
+            opts = noremapOpts,
         },
     },
 }
@@ -203,14 +220,14 @@ M.telescope = {
             "Find files, including hidden files, but those in .git folder ",
             opts = noremapOpts,
         },
-        ["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "Find LSP references" },
+        ["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "Find LSP references", opts = noremapOpts },
         ["<leader>fp"] = { "<cmd> Telescope diagnostics <CR>", "Open telescope diagnostics", opts = noremapOpts },
-        ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks" },
-        ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-        ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
-        ["<leaderfgb>"] = { "<cmd> Telescope git_branches <CR>", "Git branches" },
-        ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
-        ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
+        ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks", opts = noremapOpts },
+        ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits", opts = noremapOpts },
+        ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status", opts = noremapOpts },
+        ["<leaderfgb>"] = { "<cmd> Telescope git_branches <CR>", "Git branches", opts = noremapOpts },
+        ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term", opts = noremapOpts },
+        ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = noremapOpts },
     },
 }
 
@@ -222,60 +239,70 @@ M.harpoon = {
                 require("harpoon.mark").add_file()
             end,
             "Mark using harpoon",
+            opts = noremapOpts,
         },
         ["<leader>ho"] = {
             function()
                 require("harpoon.ui").toggle_quick_menu()
             end,
             "Open Harpoon quick menu",
+            opts = noremapOpts,
         },
         ["<leader>hi"] = {
             function()
                 require("harpoon.ui").nav_next()
             end,
             "Navigate to next mark in harpoon",
+            opts = noremapOpts,
         },
         ["<leader>hn"] = {
             function()
                 require("harpoon.ui").nav_prev()
             end,
             "Navigate to prev mark in harpoon",
+            opts = noremapOpts,
         },
         ["<leader>ht"] = {
             function()
                 require("harpoon.ui").nav_file(1)
             end,
             "Navigate to 1st mark in harpoon",
+            opts = noremapOpts,
         },
         ["<leader>hs"] = {
             function()
                 require("harpoon.ui").nav_file(2)
             end,
             "Navigate to 2nd mark in harpoon",
+            opts = noremapOpts,
         },
         ["<leader>hr"] = {
             function()
                 require("harpoon.ui").nav_file(3)
             end,
             "Navigate to 3rd mark in harpoon",
+            opts = noremapOpts,
         },
         ["<leader>hp"] = {
             function()
                 require("harpoon.ui").nav_file(4)
             end,
             "Navigate to 4th mark in harpoon",
+            opts = noremapOpts,
         },
         ["<leader>hf"] = {
             function()
                 require("harpoon.ui").nav_file(5)
             end,
             "Navigate to 5th mark in harpoon",
+            opts = noremapOpts,
         },
         ["<leader>hw"] = {
             function()
                 require("harpoon.ui").nav_file(6)
             end,
             "Navigate to 6th mark in harpoon",
+            opts = noremapOpts,
         },
     },
 }
@@ -293,7 +320,7 @@ M.gitsigns = {
                 return "<Ignore>"
             end,
             "Jump to next hunk",
-            opts = { expr = true },
+            opts = noremapExprOpts,
         },
 
         ["[c"] = {
@@ -307,7 +334,7 @@ M.gitsigns = {
                 return "<Ignore>"
             end,
             "Jump to prev hunk",
-            opts = { expr = true },
+            opts = noremapExprOpts,
         },
 
         ["<leader>cp"] = {
@@ -315,6 +342,7 @@ M.gitsigns = {
                 require("gitsigns").preview_hunk()
             end,
             "Preview hunk",
+            opts = noremapOpts,
         },
 
         ["<leader>cb"] = {
@@ -322,6 +350,7 @@ M.gitsigns = {
                 require("gitsigns").blame_line()
             end,
             "Blame line",
+            opts = noremapOpts,
         },
 
         ["<leader>cs"] = {
@@ -329,6 +358,7 @@ M.gitsigns = {
                 require("gitsigns").stage_hunk()
             end,
             "Stage hunk",
+            opts = noremapOpts,
         },
 
         ["<leader>cu"] = {
@@ -336,6 +366,7 @@ M.gitsigns = {
                 require("gitsigns").undo_stage_hunk()
             end,
             "Undo stage hunk",
+            opts = noremapOpts,
         },
 
         ["<leader>ca"] = {
@@ -343,6 +374,7 @@ M.gitsigns = {
                 require("gitsigns").stage_buffer()
             end,
             "Stage buffer",
+            opts = noremapOpts,
         },
 
         ["<leader>cr"] = {
@@ -350,6 +382,7 @@ M.gitsigns = {
                 require("gitsigns").reset_hunk()
             end,
             "Reset hunk",
+            opts = noremapOpts,
         },
 
         ["<leader>cR"] = {
@@ -357,6 +390,7 @@ M.gitsigns = {
                 require("gitsigns").reset_buffer()
             end,
             "Reset buffer",
+            opts = noremapOpts,
         },
 
         ["<leader>cd"] = {
@@ -364,6 +398,7 @@ M.gitsigns = {
                 require("gitsigns").toggle_deleted()
             end,
             "Toggle deleted",
+            opts = noremapOpts,
         },
     },
 }
