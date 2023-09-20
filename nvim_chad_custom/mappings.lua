@@ -87,11 +87,125 @@ M.nvimtree = {
 
 M.lspconfig = {
     n = {
-        ["gh"] = {
+        ["<leader>lD"] = {
+            function()
+                vim.lsp.buf.declaration()
+            end,
+            "LSP declaration",
+        },
+
+        ["<leader>ld"] = {
+            function()
+                vim.lsp.buf.definition()
+            end,
+            "LSP definition",
+        },
+
+        ["<leader>lh"] = {
             function()
                 vim.lsp.buf.hover()
             end,
             "LSP hover",
+        },
+
+        ["<leader>li"] = {
+            function()
+                vim.lsp.buf.implementation()
+            end,
+            "LSP implementation",
+        },
+
+        ["<leader>ls"] = {
+            function()
+                vim.lsp.buf.signature_help()
+            end,
+            "LSP signature help",
+        },
+
+        ["<leader>lt"] = {
+            function()
+                vim.lsp.buf.type_definition()
+            end,
+            "LSP definition type",
+        },
+
+        ["<leader>lm"] = {
+            function()
+                require("nvchad.renamer").open()
+            end,
+            "LSP rename",
+        },
+
+        ["<leader>la"] = {
+            function()
+                vim.lsp.buf.code_action()
+            end,
+            "LSP code action",
+        },
+
+        ["<leader>lr"] = {
+            function()
+                vim.lsp.buf.references()
+            end,
+            "LSP references",
+        },
+
+        ["<leader>lf"] = {
+            function()
+                vim.diagnostic.open_float({ border = "rounded" })
+            end,
+            "Floating diagnostic",
+        },
+
+        ["[d"] = {
+            function()
+                vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+            end,
+            "Goto prev",
+        },
+
+        ["]d"] = {
+            function()
+                vim.diagnostic.goto_next({ float = { border = "rounded" } })
+            end,
+            "Goto next",
+        },
+
+        ["<leader>q"] = {
+            function()
+                vim.diagnostic.setloclist()
+            end,
+            "Diagnostic setloclist",
+        },
+
+        ["<leader>lwa"] = {
+            function()
+                vim.lsp.buf.add_workspace_folder()
+            end,
+            "Add workspace folder",
+        },
+
+        ["<leader>lwr"] = {
+            function()
+                vim.lsp.buf.remove_workspace_folder()
+            end,
+            "Remove workspace folder",
+        },
+
+        ["<leader>lwl"] = {
+            function()
+                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            end,
+            "List workspace folders",
+        },
+    },
+
+    v = {
+        ["<leader>la"] = {
+            function()
+                vim.lsp.buf.code_action()
+            end,
+            "LSP code action",
         },
     },
 }
@@ -278,12 +392,28 @@ M.disabled = {
         ["<leader>gb"] = "",
         ["<leader>td"] = "",
 
-        -- telescope
+        -- telescope nvchad defaults
         ["<leader>ma"] = "",
         ["<leader>cm"] = "",
         ["<leader>gt"] = "",
         ["<leader>pt"] = "",
         ["<leader>th"] = "",
+
+        -- lsp nvchad defaults
+        ["gD"] = "",
+        ["gd"] = "",
+        ["K"] = "",
+        ["gi"] = "",
+        ["<leader>D"] = "",
+        ["<leader>ra"] = "",
+        ["<leader>ca"] = "",
+        ["gr"] = "",
+        ["<leader>f"] = "",
+        ["<leader>q"] = "",
+        ["<leader>wa"] = "",
+        ["<leader>wr"] = "",
+        ["<leader>wl"] = "",
+        ["gh"] = "",
     },
 }
 
