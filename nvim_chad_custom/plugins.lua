@@ -1,6 +1,7 @@
 local overrides = require("custom.configs.overrides")
 
 ---@type NvPluginSpec[]
+--
 local plugins = {
 
     {
@@ -58,6 +59,8 @@ local plugins = {
             require("harpoon").setup()
         end,
     },
+
+    { "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 
     -- To make a plugin not be loaded
     -- {
