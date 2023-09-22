@@ -6,7 +6,7 @@ local highlights = require("custom.highlights")
 local NVIM_VERSION = vim.fn.system("nvim --version | head -n 1 | awk '{print $2}'"):gsub("\n", "")
 
 M.ui = {
-    theme = "penumbra_light",
+    theme = "tomorrow_night",
     theme_toggle = { "tomorrow_night", "penumbra_light" },
 
     hl_override = highlights.override,
@@ -54,9 +54,9 @@ M.ui = {
             [[    /\__\         /\  \         /\  \         /\__\          ___        /\__\     ]],
             [[   /::|  |       /::\  \       /::\  \       /:/  /         /\  \      /::|  |    ]],
             [[  /:|:|  |      /:/\:\  \     /:/\:\  \     /:/  /          \:\  \    /:|:|  |    ]],
-            [[ /:/|:|  |__   /::\~\:\  \   /:/  \:\  \   /:/__/  ___      /::\__\  /:/|:|__|__  ]],
+            [[ /:/|:|  |__   /::\‾\:\  \   /:/  \:\  \   /:/__/  ___      /::\__\  /:/|:|__|__  ]],
             [[/:/ |:| /\__\ /:/\:\ \:\__\ /:/__/ \:\__\  |:|  | /\__\  __/:/\/__/ /:/ |::::\__\ ]],
-            [[\/__|:|/:/  / \:\~\:\ \/__/ \:\  \ /:/  /  |:|  |/:/  / /\/:/  /    \/__/~~/:/  / ]],
+            [[\/__|:|/:/  / \:\‾\:\ \/__/ \:\  \ /:/  /  |:|  |/:/  / /\/:/  /    \/__/‾‾/:/  / ]],
             [[    |:/:/  /   \:\ \:\__\    \:\  /:/  /   |:|__/:/  /  \::/__/           /:/  /  ]],
             [[    |::/  /     \:\ \/__/     \:\/:/  /     \::::/__/    \:\__\          /:/  /   ]],
             [[    /:/  /       \:\__\        \::/  /        ‾‾‾         \/__/         /:/  /    ]],
@@ -66,14 +66,14 @@ M.ui = {
         },
 
         buttons = {
-            { "󰈚  Recent Files", "<Space> f o", "Telescope oldfiles" },
-            { "  Find File", "<Space> f f", "Telescope find_files" },
-            { "󰈭  Find Word", "<Space> f w", "Telescope live_grep" },
+            { "󰈚  Recent Files", "<Space> f o  ", "Telescope oldfiles" },
+            { "  Find File", "<Space> f f  ", "Telescope find_files" },
+            { "󰈭  Find Word", "<Space> f w  ", "Telescope live_grep" },
             { "  Git Status", "<Space> f g s", "Telescope git_status" },
-            { "  Bookmarks", "<Space> f a", "Telescope marks" },
-            { "  Themes", "<Space> , f", "Telescope themes" },
-            { "  Mappings", "<Space> , m", "NvCheatsheet" },
-            { "󰮥  Help", "<Space> f h", "Telescope help_tags" },
+            { "  Bookmarks", "<Space> f a  ", "Telescope marks" },
+            { "  Themes", "<Space> , f  ", "Telescope themes" },
+            { "  Mappings", "<Space> , m  ", "NvCheatsheet" },
+            { "󰮥  Help", "<Space> f h  ", "Telescope help_tags" },
         },
     },
 }
