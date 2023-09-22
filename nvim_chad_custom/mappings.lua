@@ -55,7 +55,23 @@ M.general = {
             "Substitute current word",
             opts = noremapOpts,
         },
-        ["<leader>km"] = { "<cmd> NvCheatsheet <CR>", "Key mapping cheatsheet", opts = noremapOpts },
+
+        ["<leader>,m"] = { "<cmd> NvCheatsheet <CR>", "Key mapping cheatsheet", opts = noremapOpts },
+        ["<leader>,t"] = {
+            function()
+                require("base46").toggle_theme()
+            end,
+            "Toggle theme",
+            opts = noremapOpts,
+        },
+        ["<leader>,f"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = noremapOpts },
+        ["<leader>X"] = {
+            function()
+                require("nvchad.tabufline").closeAllBufs()
+            end,
+            "Close all buffers",
+            opts = noremapOpts,
+        },
     }),
     v = {
         [">"] = { ">gv", "Increase indent", opts = noremapOpts },
