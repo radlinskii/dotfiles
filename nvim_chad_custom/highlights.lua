@@ -49,6 +49,10 @@ M.override = {
     St_cwd = {
         bg = "statusline_bg",
     },
+    NvDashAscii = {
+        fg = "darker_black",
+        bg = "white",
+    },
 }
 
 ---@type HLTable
