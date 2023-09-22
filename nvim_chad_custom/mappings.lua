@@ -151,6 +151,13 @@ M.lspconfig = {
             opts = noremapOpts,
         },
 
+        ["<leader>lg"] = {
+            function()
+                vim.lsp.buf.format({ async = true })
+            end,
+            "LSP formatting",
+        },
+
         ["<leader>la"] = {
             function()
                 vim.lsp.buf.code_action()
