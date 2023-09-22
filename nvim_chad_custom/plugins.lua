@@ -48,7 +48,7 @@ local plugins = {
 
     {
         "tpope/vim-fugitive",
-        event = "VeryLazy",
+        cmd = { "G", "Git" },
         opts = overrides.fugitive,
     },
 
