@@ -1,9 +1,7 @@
 local overrides = require("custom.configs.overrides")
 
 ---@type NvPluginSpec[]
---
 local plugins = {
-
     {
         "neovim/nvim-lspconfig",
         dependencies = {
@@ -61,6 +59,11 @@ local plugins = {
     },
 
     { "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
+
+    {
+        "mbbill/undotree",
+        event = "BufReadPre",
+    },
 
     -- To make a plugin not be loaded
     -- {

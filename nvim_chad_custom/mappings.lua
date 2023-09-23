@@ -93,6 +93,15 @@ M.nvimtree = {
     },
 }
 
+M.undotree = {
+    n = {
+        ["<leader>u"] = { "<cmd> UndotreeToggle <CR>", "Toggle undotree", opts = noremapOpts },
+    },
+}
+
+    },
+}
+
 M.lspconfig = {
     n = {
         ["<leader>lD"] = {

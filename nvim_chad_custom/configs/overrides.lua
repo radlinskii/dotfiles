@@ -13,13 +13,8 @@ M.treesitter = {
         "markdown",
         "markdown_inline",
     },
-    indent = {
-        enable = true,
-        -- disable = {
-        --   "python"
-        -- },
-    },
 }
+
 local actions = require("telescope.actions")
 M.telescope = {
     defaults = {
@@ -90,9 +85,6 @@ M.cmp = {
     },
     mapping = {
         ["<C-S-Space>"] = require("cmp").mapping.complete(),
-    },
-    experimental = {
-        ghost_text = true,
     },
 }
 
