@@ -5,7 +5,6 @@ local M = {}
 
 local noremapOpts = { noremap = true, silent = true }
 local noremapExprOpts = { noremap = true, expr = true, silent = true }
-local noremapNowaitOpts = { noremap = true, nowait = true }
 
 local colemakMappings = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = noremapExprOpts },
@@ -38,24 +37,38 @@ local colemakMappings = {
         "Scroll a whole window down and move cursor to the middle",
         opts = noremapOpts,
     },
+
+    ["<C-w>u"] = { "<C-w>k", "Window up", opts = noremapOpts },
+    ["<C-w>e"] = { "<C-w>j", "Window down", opts = noremapOpts },
+    ["<C-w>n"] = { "<C-w>h", "Window left", opts = noremapOpts },
+    ["<C-w>i"] = { "<C-w>l", "Window right", opts = noremapOpts },
 }
 
 M.general = {
     i = {},
     n = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
-        [";"] = { ":", "Enter command mode", noremapNowaitOpts },
-
-        ["<C-w>u"] = { "<C-w>k", "Window up", opts = noremapOpts },
-        ["<C-w>e"] = { "<C-w>j", "Window down", opts = noremapOpts },
-        ["<C-w>n"] = { "<C-w>h", "Window left", opts = noremapOpts },
-        ["<C-w>i"] = { "<C-w>l", "Window right", opts = noremapOpts },
-
         ["<leader>rs"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
             "Substitute current word",
             opts = noremapOpts,
         },
+    }),
+    v = {
+        [">"] = { ">gv", "Increase indent", opts = noremapOpts },
+        ["<"] = { "<gv", "Increase indent", opts = noremapOpts },
 
+        ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
+        ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
+    },
+    x = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
+        ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
+        ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
+    }),
+    o = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
+}
+
+M.nvchad = {
+    n = {
         ["<leader>,m"] = { "<cmd> NvCheatsheet <CR>", "Key mapping cheatsheet", opts = noremapOpts },
         ["<leader>,t"] = {
             function()
@@ -72,19 +85,7 @@ M.general = {
             "Close all buffers",
             opts = noremapOpts,
         },
-    }),
-    v = {
-        [">"] = { ">gv", "Increase indent", opts = noremapOpts },
-        ["<"] = { "<gv", "Increase indent", opts = noremapOpts },
-
-        ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
-        ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
     },
-    x = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
-        ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
-        ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
-    }),
-    o = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
 }
 
 M.nvimtree = {
