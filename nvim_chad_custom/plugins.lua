@@ -45,6 +45,11 @@ local plugins = {
     },
 
     {
+        "folke/which-key.nvim",
+        keys = { "<leader>", "<c-r>", '"', "'", "`", "d", "c", "v", "g", "z", "<c-w>", "[", "]" },
+    },
+
+    {
         "tpope/vim-fugitive",
         cmd = { "G", "Git" },
         opts = overrides.fugitive,
