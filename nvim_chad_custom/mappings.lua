@@ -3,81 +3,81 @@ local utils = require("custom.utils")
 ---@type MappingsTable
 local M = {}
 
-local noremapOpts = { noremap = true, silent = true }
-local noremapExprOpts = { noremap = true, expr = true, silent = true }
+local defaultOpts = { noremap = true, silent = true }
+local exprOpts = { noremap = true, expr = true, silent = true }
 
 local colemakMappings = {
-    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = noremapExprOpts },
-    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = noremapExprOpts },
+    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = exprOpts },
+    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = exprOpts },
 
-    ["u"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = noremapExprOpts },
-    ["e"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = noremapExprOpts },
-    ["n"] = { "h", "Move left", opts = noremapOpts },
-    ["i"] = { "l", "Move right", opts = noremapOpts },
+    ["u"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = exprOpts },
+    ["e"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = exprOpts },
+    ["n"] = { "h", "Move left", opts = defaultOpts },
+    ["i"] = { "l", "Move right", opts = defaultOpts },
 
-    ["N"] = { "H", "Jump to beginning of the visible screen", opts = noremapOpts },
-    ["I"] = { "L", "Jump to end of the visible screen", opts = noremapOpts },
-    ["h"] = { "i", "Insert mode in place", opts = noremapOpts },
-    ["H"] = { "I", "Start insert mode at the non-blank-spaced beginning of current line", opts = noremapOpts },
-    ["k"] = { "u", "Undo last change", opts = noremapOpts },
-    ["K"] = { "U", "Undo all changes", opts = noremapOpts },
-    ["j"] = { "nzzzv", "Find next appearance", opts = noremapOpts },
-    ["J"] = { "Nzzzv", "Find previous appearance", opts = noremapOpts },
-    ["l"] = { "e", "Go to end of the next word", opts = noremapOpts },
-    ["L"] = { "E", "Go to the end of the next non-blank-spaced word", opts = noremapOpts },
-    ["E"] = { "J", "Remove line break", opts = noremapOpts },
+    ["N"] = { "H", "Jump to beginning of the visible screen", opts = defaultOpts },
+    ["I"] = { "L", "Jump to end of the visible screen", opts = defaultOpts },
+    ["h"] = { "i", "Insert mode in place", opts = defaultOpts },
+    ["H"] = { "I", "Start insert mode at the non-blank-spaced beginning of current line", opts = defaultOpts },
+    ["k"] = { "u", "Undo last change", opts = defaultOpts },
+    ["K"] = { "U", "Undo all changes", opts = defaultOpts },
+    ["j"] = { "nzzzv", "Find next appearance", opts = defaultOpts },
+    ["J"] = { "Nzzzv", "Find previous appearance", opts = defaultOpts },
+    ["l"] = { "e", "Go to end of the next word", opts = defaultOpts },
+    ["L"] = { "E", "Go to the end of the next non-blank-spaced word", opts = defaultOpts },
+    ["E"] = { "J", "Remove line break", opts = defaultOpts },
 
-    ["gE"] = { "gJ", "Remove line break without trimming whitespace", opts = noremapOpts },
-    ["gl"] = { "ge", "Go to the end of the previous word", opts = noremapOpts },
-    ["gL"] = { "gE", "Go to the end of the previous non-blank-spaced word", opts = noremapOpts },
-    ["gH"] = { "gI", "Start insert mode at the 1st column", opts = noremapOpts },
-    ["gh"] = { "gI", "Start insert mode at the last position in insert mode", opts = noremapOpts },
-    ["gi"] = { "gh", "Start Select mode", opts = noremapOpts },
-    ["gI"] = { "gH", "Start Select-Line mode", opts = noremapOpts },
-    ["gj"] = { "gn", "find the next match and visually select it", opts = noremapOpts },
-    ["gJ"] = { "gN", "find the previous match and visually select it", opts = noremapOpts },
+    ["gE"] = { "gJ", "Remove line break without trimming whitespace", opts = defaultOpts },
+    ["gl"] = { "ge", "Go to the end of the previous word", opts = defaultOpts },
+    ["gL"] = { "gE", "Go to the end of the previous non-blank-spaced word", opts = defaultOpts },
+    ["gH"] = { "gI", "Start insert mode at the 1st column", opts = defaultOpts },
+    ["gh"] = { "gI", "Start insert mode at the last position in insert mode", opts = defaultOpts },
+    ["gi"] = { "gh", "Start Select mode", opts = defaultOpts },
+    ["gI"] = { "gH", "Start Select-Line mode", opts = defaultOpts },
+    ["gj"] = { "gn", "find the next match and visually select it", opts = defaultOpts },
+    ["gJ"] = { "gN", "find the previous match and visually select it", opts = defaultOpts },
 
-    ["zN"] = { "zH", "Scroll left half a screenwidth", opts = noremapOpts },
-    ["zn"] = { "zh", "Scroll N columns left", opts = noremapOpts },
-    ["zI"] = { "zL", "Scroll right half a screenwidth", opts = noremapOpts },
-    ["zi"] = { "zl", "Scroll N columns right", opts = noremapOpts },
-    ["zh"] = { "zi", "Toggle foldenable", opts = noremapOpts },
-    ["zl"] = { "zn", 'Reset "foldenable"', opts = noremapOpts },
-    ["zL"] = { "zN", 'Set "foldenable"', opts = noremapOpts },
-    ["[f"] = { "zk", "Move to the end of the previous fold", opts = noremapOpts },
-    ["]f"] = { "zj", "Move to the start of the next fold", opts = noremapOpts },
+    ["zN"] = { "zH", "Scroll left half a screenwidth", opts = defaultOpts },
+    ["zn"] = { "zh", "Scroll N columns left", opts = defaultOpts },
+    ["zI"] = { "zL", "Scroll right half a screenwidth", opts = defaultOpts },
+    ["zi"] = { "zl", "Scroll N columns right", opts = defaultOpts },
+    ["zh"] = { "zi", "Toggle foldenable", opts = defaultOpts },
+    ["zl"] = { "zn", 'Reset "foldenable"', opts = defaultOpts },
+    ["zL"] = { "zN", 'Set "foldenable"', opts = defaultOpts },
+    ["[f"] = { "zk", "Move to the end of the previous fold", opts = defaultOpts },
+    ["]f"] = { "zj", "Move to the start of the next fold", opts = defaultOpts },
 
-    ["<C-w>u"] = { "<C-w>k", "Focus window up", opts = noremapOpts },
-    ["<C-w>e"] = { "<C-w>j", "Focus window down", opts = noremapOpts },
-    ["<C-w>n"] = { "<C-w>h", "Focus window left", opts = noremapOpts },
-    ["<C-w>i"] = { "<C-w>l", "Focus window right", opts = noremapOpts },
+    ["<C-w>u"] = { "<C-w>k", "Focus window up", opts = defaultOpts },
+    ["<C-w>e"] = { "<C-w>j", "Focus window down", opts = defaultOpts },
+    ["<C-w>n"] = { "<C-w>h", "Focus window left", opts = defaultOpts },
+    ["<C-w>i"] = { "<C-w>l", "Focus window right", opts = defaultOpts },
 
-    ["<C-w>U"] = { "<C-w>K", "Move current window to the very top", opts = noremapOpts },
-    ["<C-w>E"] = { "<C-w>J", "Move current window to the very bottom", opts = noremapOpts },
-    ["<C-w>N"] = { "<C-w>H", "Move current window to the far left", opts = noremapOpts },
-    ["<C-w>I"] = { "<C-w>L", "Move current window to the far right", opts = noremapOpts },
+    ["<C-w>U"] = { "<C-w>K", "Move current window to the very top", opts = defaultOpts },
+    ["<C-w>E"] = { "<C-w>J", "Move current window to the very bottom", opts = defaultOpts },
+    ["<C-w>N"] = { "<C-w>H", "Move current window to the far left", opts = defaultOpts },
+    ["<C-w>I"] = { "<C-w>L", "Move current window to the far right", opts = defaultOpts },
 
-    ["<C-w>h"] = { "<C-w>i", "Split window and go to the declaration of item under the cursor", opts = noremapOpts },
-    ["<C-w>l"] = { "<C-w>n", "Open new window", opts = noremapOpts },
+    ["<C-w>h"] = { "<C-w>i", "Split window and go to the declaration of item under the cursor", opts = defaultOpts },
+    ["<C-w>l"] = { "<C-w>n", "Open new window", opts = defaultOpts },
 }
 
 local scrollMappings = {
-    ["<C-d>"] = { "<C-d>zz", "Scroll half a window down and move cursor to the middle", opts = noremapOpts },
-    ["<C-u>"] = { "<C-u>zz", "Scroll half a window up and move cursor to the middle", opts = noremapOpts },
-    ["<PageUp>"] = { "<PageUp>zz", "Scroll a whole window up and move cursor to the middle", opts = noremapOpts },
+    ["<C-d>"] = { "<C-d>zz", "Scroll half a window down and move cursor to the middle", opts = defaultOpts },
+    ["<C-u>"] = { "<C-u>zz", "Scroll half a window up and move cursor to the middle", opts = defaultOpts },
+    ["<PageUp>"] = { "<PageUp>zz", "Scroll a whole window up and move cursor to the middle", opts = defaultOpts },
     ["<PageDown>"] = {
         "<PageDown>zz",
         "Scroll a whole window down and move cursor to the middle",
-        opts = noremapOpts,
+        opts = defaultOpts,
     },
 }
 
 local moveLinesMappings = {
-    [">"] = { ">gv", "Increase indent", opts = noremapOpts },
-    ["<"] = { "<gv", "Increase indent", opts = noremapOpts },
+    [">"] = { ">gv", "Increase indent", opts = defaultOpts },
+    ["<"] = { "<gv", "Increase indent", opts = defaultOpts },
 
-    ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
-    ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
+    ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = defaultOpts },
+    ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = defaultOpts },
 }
 
 M.general = {
@@ -86,7 +86,7 @@ M.general = {
         ["<leader>rs"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
             "Substitute current word",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
     }),
     v = {},
@@ -102,34 +102,34 @@ M.general = {
 
 M.nvchad = {
     n = {
-        ["<leader>,m"] = { "<cmd> NvCheatsheet <CR>", "Key mapping cheatsheet", opts = noremapOpts },
+        ["<leader>,m"] = { "<cmd> NvCheatsheet <CR>", "Key mapping cheatsheet", opts = defaultOpts },
         ["<leader>,t"] = {
             function()
                 require("base46").toggle_theme()
             end,
             "Toggle theme",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
-        ["<leader>,f"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = noremapOpts },
+        ["<leader>,f"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = defaultOpts },
         ["<leader>X"] = {
             function()
                 require("nvchad.tabufline").closeAllBufs()
             end,
             "Close all buffers",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
     },
 }
 
 M.nvimtree = {
     n = {
-        ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = noremapOpts },
+        ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = defaultOpts },
     },
 }
 
 M.undotree = {
     n = {
-        ["<leader>u"] = { "<cmd> UndotreeToggle <CR>", "Toggle undotree", opts = noremapOpts },
+        ["<leader>u"] = { "<cmd> UndotreeToggle <CR>", "Toggle undotree", opts = defaultOpts },
     },
 }
 
@@ -146,7 +146,7 @@ M.fugitive = {
                 end
             end,
             "Toggle fugitive",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
     },
 }
@@ -158,7 +158,7 @@ M.lspconfig = {
                 vim.lsp.buf.declaration()
             end,
             "LSP declaration",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>ld"] = {
@@ -166,7 +166,7 @@ M.lspconfig = {
                 vim.lsp.buf.definition()
             end,
             "LSP definition",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lh"] = {
@@ -174,7 +174,7 @@ M.lspconfig = {
                 vim.lsp.buf.hover()
             end,
             "LSP hover",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>li"] = {
@@ -182,7 +182,7 @@ M.lspconfig = {
                 vim.lsp.buf.implementation()
             end,
             "LSP implementation",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>ls"] = {
@@ -190,7 +190,7 @@ M.lspconfig = {
                 vim.lsp.buf.signature_help()
             end,
             "LSP signature help",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lt"] = {
@@ -198,7 +198,7 @@ M.lspconfig = {
                 vim.lsp.buf.type_definition()
             end,
             "LSP definition type",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lm"] = {
@@ -206,7 +206,7 @@ M.lspconfig = {
                 require("nvchad.renamer").open()
             end,
             "LSP based rename",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lg"] = {
@@ -221,7 +221,7 @@ M.lspconfig = {
                 vim.lsp.buf.code_action()
             end,
             "LSP code action",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lr"] = {
@@ -229,7 +229,7 @@ M.lspconfig = {
                 vim.lsp.buf.references()
             end,
             "LSP references",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lf"] = {
@@ -237,7 +237,7 @@ M.lspconfig = {
                 vim.diagnostic.open_float({ border = "rounded" })
             end,
             "Floating diagnostic",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["[d"] = {
@@ -245,7 +245,7 @@ M.lspconfig = {
                 vim.diagnostic.goto_prev({ float = { border = "rounded" } })
             end,
             "Go to prev diagnostic",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["]d"] = {
@@ -253,7 +253,7 @@ M.lspconfig = {
                 vim.diagnostic.goto_next({ float = { border = "rounded" } })
             end,
             "Go to next diagnostic",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lq"] = {
@@ -261,7 +261,7 @@ M.lspconfig = {
                 vim.diagnostic.setloclist()
             end,
             "Diagnostic setloclist",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lwa"] = {
@@ -269,7 +269,7 @@ M.lspconfig = {
                 vim.lsp.buf.add_workspace_folder()
             end,
             "LSP Add workspace folder",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lwr"] = {
@@ -277,7 +277,7 @@ M.lspconfig = {
                 vim.lsp.buf.remove_workspace_folder()
             end,
             "LSP Remove workspace folder",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>lwl"] = {
@@ -285,7 +285,7 @@ M.lspconfig = {
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end,
             "LSP List workspace folders",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
     },
 
@@ -295,7 +295,7 @@ M.lspconfig = {
                 vim.lsp.buf.code_action()
             end,
             "LSP code action",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
     },
 }
@@ -305,17 +305,17 @@ M.telescope = {
         ["<leader>ff"] = {
             "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '-g', '!.git' }})<CR>",
             "Find files, including hidden files, but those in .git folder ",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
-        ["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "Find LSP references", opts = noremapOpts },
-        ["<leader>fp"] = { "<cmd> Telescope diagnostics <CR>", "Open telescope diagnostics", opts = noremapOpts },
-        ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks", opts = noremapOpts },
-        ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits", opts = noremapOpts },
-        ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status", opts = noremapOpts },
-        ["<leader>fgb"] = { "<cmd> Telescope git_branches <CR>", "Git branches", opts = noremapOpts },
-        ["<leader>fgz"] = { "<cmd> Telescope git_stash <CR>", "Git stashes", opts = noremapOpts },
-        ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term", opts = noremapOpts },
-        ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = noremapOpts },
+        ["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "Find LSP references", opts = defaultOpts },
+        ["<leader>fp"] = { "<cmd> Telescope diagnostics <CR>", "Open telescope diagnostics", opts = defaultOpts },
+        ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks", opts = defaultOpts },
+        ["<leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits", opts = defaultOpts },
+        ["<leader>fgs"] = { "<cmd> Telescope git_status <CR>", "Git status", opts = defaultOpts },
+        ["<leader>fgb"] = { "<cmd> Telescope git_branches <CR>", "Git branches", opts = defaultOpts },
+        ["<leader>fgz"] = { "<cmd> Telescope git_stash <CR>", "Git stashes", opts = defaultOpts },
+        ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term", opts = defaultOpts },
+        ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = defaultOpts },
     },
 }
 
@@ -327,70 +327,70 @@ M.harpoon = {
                 require("harpoon.mark").add_file()
             end,
             "Mark using harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>ho"] = {
             function()
                 require("harpoon.ui").toggle_quick_menu()
             end,
             "Open Harpoon quick menu",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>hi"] = {
             function()
                 require("harpoon.ui").nav_next()
             end,
             "Navigate to next mark in harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>hn"] = {
             function()
                 require("harpoon.ui").nav_prev()
             end,
             "Navigate to prev mark in harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>ht"] = {
             function()
                 require("harpoon.ui").nav_file(1)
             end,
             "Navigate to 1st mark in harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>hs"] = {
             function()
                 require("harpoon.ui").nav_file(2)
             end,
             "Navigate to 2nd mark in harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>hr"] = {
             function()
                 require("harpoon.ui").nav_file(3)
             end,
             "Navigate to 3rd mark in harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>hp"] = {
             function()
                 require("harpoon.ui").nav_file(4)
             end,
             "Navigate to 4th mark in harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>hf"] = {
             function()
                 require("harpoon.ui").nav_file(5)
             end,
             "Navigate to 5th mark in harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
         ["<leader>hw"] = {
             function()
                 require("harpoon.ui").nav_file(6)
             end,
             "Navigate to 6th mark in harpoon",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
     },
 }
@@ -408,7 +408,7 @@ M.gitsigns = {
                 return "<Ignore>"
             end,
             "Jump to next hunk",
-            opts = noremapExprOpts,
+            opts = exprOpts,
         },
 
         ["[c"] = {
@@ -422,7 +422,7 @@ M.gitsigns = {
                 return "<Ignore>"
             end,
             "Jump to prev hunk",
-            opts = noremapExprOpts,
+            opts = exprOpts,
         },
 
         ["<leader>cp"] = {
@@ -430,7 +430,7 @@ M.gitsigns = {
                 require("gitsigns").preview_hunk()
             end,
             "Preview hunk",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>cb"] = {
@@ -438,7 +438,7 @@ M.gitsigns = {
                 require("gitsigns").blame_line()
             end,
             "Blame line",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>cs"] = {
@@ -446,7 +446,7 @@ M.gitsigns = {
                 require("gitsigns").stage_hunk()
             end,
             "Stage hunk",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>cu"] = {
@@ -454,7 +454,7 @@ M.gitsigns = {
                 require("gitsigns").undo_stage_hunk()
             end,
             "Undo stage hunk",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>ca"] = {
@@ -462,7 +462,7 @@ M.gitsigns = {
                 require("gitsigns").stage_buffer()
             end,
             "Stage buffer",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>cr"] = {
@@ -470,7 +470,7 @@ M.gitsigns = {
                 require("gitsigns").reset_hunk()
             end,
             "Reset hunk",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>cR"] = {
@@ -478,7 +478,7 @@ M.gitsigns = {
                 require("gitsigns").reset_buffer()
             end,
             "Reset buffer",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
 
         ["<leader>cd"] = {
@@ -486,7 +486,7 @@ M.gitsigns = {
                 require("gitsigns").toggle_deleted()
             end,
             "Toggle deleted",
-            opts = noremapOpts,
+            opts = defaultOpts,
         },
     },
 }
