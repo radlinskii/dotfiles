@@ -74,6 +74,17 @@ local plugins = {
     },
 
     {
+        "dyng/ctrlsf.vim",
+        event = "BufRead",
+        config = function()
+            require("custom.configs.ctrlsf")
+        end,
+    },
+
+    -- lang specific
+
+    -- rust
+    {
         "simrat39/rust-tools.nvim",
         ft = "rust",
         dependencies = "neovim/nvim-lspconfig",

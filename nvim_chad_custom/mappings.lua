@@ -95,7 +95,13 @@ M.general = {
         utils.copyTable(colemakMappings),
         utils.copyTable(scrollMappings),
         utils.copyTable(moveLinesMappings),
-        {}
+        {
+            ["<leader>rs"] = {
+                [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+                "Substitute current word",
+                opts = defaultOpts,
+            },
+        }
     ),
     o = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
 }
@@ -487,6 +493,36 @@ M.gitsigns = {
             end,
             "Toggle deleted",
             opts = defaultOpts,
+        },
+    },
+}
+
+M.ctrlsf = {
+    n = {
+        ["<leader>sf"] = { "<Plug>CtrlSFPrompt", "Provide a phrase to search for", opts = { noremap = true } },
+        ["<leader>ss"] = {
+            "<Plug>CtrlSFCwordPath",
+            "Provide a phrase to search for word under the cursor",
+            opts = { noremap = true },
+        },
+        ["<leader>sw"] = {
+            "<Plug>CtrlSFCCwordPath",
+            "Provide a phrase to search for word under the cursor with boundaries",
+            opts = { noremap = true },
+        },
+        ["<leader>sp"] = {
+            "<Plug>CtrlSFPwordPath",
+            "Provide a phrase to search for the last searched word in vim",
+            opts = { noremap = true },
+        },
+        ["<leader>so"] = { ":CtrlSFOpen<cr>", "Open/Toggle CtrlSF window", opts = defaultOpts },
+        ["<leader>st"] = { ":CtrlSFToggle<cr>", "Toggle CtrlSF window", opts = defaultOpts },
+    },
+    v = {
+        ["<leader>sf"] = {
+            "<Plug>CtrlSFVwordPath",
+            "Provide currently visually selected word to search for",
+            opts = { noremap = true },
         },
     },
 }
