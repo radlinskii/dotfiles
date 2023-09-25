@@ -26,9 +26,42 @@ local colemakMappings = {
     ["l"] = { "e", "Go to end of the next word", opts = noremapOpts },
     ["L"] = { "E", "Go to the end of the next non-blank-spaced word", opts = noremapOpts },
     ["E"] = { "J", "Remove line break", opts = noremapOpts },
+
+    ["gE"] = { "gJ", "Remove line break without trimming whitespace", opts = noremapOpts },
     ["gl"] = { "ge", "Go to the end of the previous word", opts = noremapOpts },
     ["gL"] = { "gE", "Go to the end of the previous non-blank-spaced word", opts = noremapOpts },
+    ["gH"] = { "gI", "Start insert mode at the 1st column", opts = noremapOpts },
+    ["gh"] = { "gI", "Start insert mode at the last position in insert mode", opts = noremapOpts },
+    ["gi"] = { "gh", "Start Select mode", opts = noremapOpts },
+    ["gI"] = { "gH", "Start Select-Line mode", opts = noremapOpts },
+    ["gj"] = { "gn", "find the next match and visually select it", opts = noremapOpts },
+    ["gJ"] = { "gN", "find the previous match and visually select it", opts = noremapOpts },
 
+    ["zN"] = { "zH", "Scroll left half a screenwidth", opts = noremapOpts },
+    ["zn"] = { "zh", "Scroll N columns left", opts = noremapOpts },
+    ["zI"] = { "zL", "Scroll right half a screenwidth", opts = noremapOpts },
+    ["zi"] = { "zl", "Scroll N columns right", opts = noremapOpts },
+    ["zh"] = { "zi", "Toggle foldenable", opts = noremapOpts },
+    ["zl"] = { "zn", 'Reset "foldenable"', opts = noremapOpts },
+    ["zL"] = { "zN", 'Set "foldenable"', opts = noremapOpts },
+    ["[f"] = { "zk", "Move to the end of the previous fold", opts = noremapOpts },
+    ["]f"] = { "zj", "Move to the start of the next fold", opts = noremapOpts },
+
+    ["<C-w>u"] = { "<C-w>k", "Focus window up", opts = noremapOpts },
+    ["<C-w>e"] = { "<C-w>j", "Focus window down", opts = noremapOpts },
+    ["<C-w>n"] = { "<C-w>h", "Focus window left", opts = noremapOpts },
+    ["<C-w>i"] = { "<C-w>l", "Focus window right", opts = noremapOpts },
+
+    ["<C-w>U"] = { "<C-w>K", "Move current window to the very top", opts = noremapOpts },
+    ["<C-w>E"] = { "<C-w>J", "Move current window to the very bottom", opts = noremapOpts },
+    ["<C-w>N"] = { "<C-w>H", "Move current window to the far left", opts = noremapOpts },
+    ["<C-w>I"] = { "<C-w>L", "Move current window to the far right", opts = noremapOpts },
+
+    ["<C-w>h"] = { "<C-w>i", "Split window and go to the declaration of item under the cursor", opts = noremapOpts },
+    ["<C-w>l"] = { "<C-w>n", "Open new window", opts = noremapOpts },
+}
+
+local scrollMappings = {
     ["<C-d>"] = { "<C-d>zz", "Scroll half a window down and move cursor to the middle", opts = noremapOpts },
     ["<C-u>"] = { "<C-u>zz", "Scroll half a window up and move cursor to the middle", opts = noremapOpts },
     ["<PageUp>"] = { "<PageUp>zz", "Scroll a whole window up and move cursor to the middle", opts = noremapOpts },
@@ -37,33 +70,33 @@ local colemakMappings = {
         "Scroll a whole window down and move cursor to the middle",
         opts = noremapOpts,
     },
+}
 
-    ["<C-w>u"] = { "<C-w>k", "Window up", opts = noremapOpts },
-    ["<C-w>e"] = { "<C-w>j", "Window down", opts = noremapOpts },
-    ["<C-w>n"] = { "<C-w>h", "Window left", opts = noremapOpts },
-    ["<C-w>i"] = { "<C-w>l", "Window right", opts = noremapOpts },
+local moveLinesMappings = {
+    [">"] = { ">gv", "Increase indent", opts = noremapOpts },
+    ["<"] = { "<gv", "Increase indent", opts = noremapOpts },
+
+    ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
+    ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
 }
 
 M.general = {
     i = {},
-    n = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
+    n = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), utils.copyTable(scrollMappings), {
         ["<leader>rs"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
             "Substitute current word",
             opts = noremapOpts,
         },
     }),
-    v = {
-        [">"] = { ">gv", "Increase indent", opts = noremapOpts },
-        ["<"] = { "<gv", "Increase indent", opts = noremapOpts },
-
-        ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
-        ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
-    },
-    x = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {
-        ["E"] = { ":m '>+1<CR>gv=gv", "Move selected lines up", opts = noremapOpts },
-        ["U"] = { ":m '<-2<CR>gv=gv", "Move selected lines down", opts = noremapOpts },
-    }),
+    v = {},
+    x = vim.tbl_deep_extend(
+        "force",
+        utils.copyTable(colemakMappings),
+        utils.copyTable(scrollMappings),
+        utils.copyTable(moveLinesMappings),
+        {}
+    ),
     o = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), {}),
 }
 
