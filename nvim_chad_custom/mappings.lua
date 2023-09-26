@@ -529,29 +529,26 @@ M.ctrlsf = {
 
 M.disabled = {
     n = {
+        -- nvchad linenumbers
+        ["<leader>n"] = "",
         -- nvchad cheatsheet
         ["<leader>ch"] = "",
-
         -- nvimtree nvchad
         ["<C-n>"] = "",
-
         -- terminal nvchad defaults
         ["<leader>h"] = "",
         ["<leader>v"] = "",
-
         -- gitsigns nvchad defaults
         ["<leader>rh"] = "",
         ["<leader>ph"] = "",
         ["<leader>gb"] = "",
         ["<leader>td"] = "",
-
         -- telescope nvchad defaults
         ["<leader>ma"] = "",
         ["<leader>cm"] = "",
         ["<leader>gt"] = "",
         ["<leader>pt"] = "",
         ["<leader>th"] = "",
-
         -- lsp nvchad defaults
         ["gD"] = "",
         ["gd"] = "",
