@@ -1,3 +1,7 @@
+#!/bin/zsh
+
+emulate -LR bash
+
 echo "Configuring macOS"
 
 if [[ "$(uname)" == "Darwin" ]]; then

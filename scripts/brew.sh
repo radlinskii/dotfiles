@@ -1,3 +1,7 @@
+#!/bin/zsh
+
+emulate -LR bash
+
 echo "Setting up Homebrew"
 
 if test ! "$(command -v brew)"; then

@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 alias x="exit"
 
 alias sz="source ~/.zshrc"

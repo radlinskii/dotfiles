@@ -1,3 +1,7 @@
+#!/bin/zsh
+
+emulate -LR bash
+
 create_symlinks() {
     local source="$1"
     local destination_directory="$2"

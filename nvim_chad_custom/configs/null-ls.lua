@@ -15,9 +15,15 @@ local sources = {
     -- cpp
     b.formatting.clang_format,
 
-    b.diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
-    b.formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
-    b.code_actions.shellcheck.with({ filetypes = { "sh", "zsh" } }),
+    b.formatting.shfmt.with({ filetypes = { "bash", "sh", "zsh" } }),
+    b.diagnostics.shellcheck.with({
+        filetypes = { "bash", "sh", "zsh" },
+        args = { "--format", "json1", "--source-path=$DIRNAME", "--shell=bash", "--external-sources", "-" },
+    }),
+    b.code_actions.shellcheck.with({
+        filetypes = { "bash", "sh", "zsh" },
+        args = { "--format", "json1", "--source-path=$DIRNAME", "--shell=bash", "--external-sources", "-" },
+    }),
 }
 
 null_ls.setup({
