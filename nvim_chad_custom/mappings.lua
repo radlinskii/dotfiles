@@ -311,6 +311,16 @@ M.telescope = {
             "Find files, including hidden files, but those in .git folder ",
             opts = defaultOpts,
         },
+        ["<leader>fo"] = {
+            "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = true}) <CR>",
+            "Find oldfiles from CWD",
+            opts = defaultOpts,
+        },
+        ["<leader>fO"] = {
+            "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = false}) <CR>",
+            "Find global vim oldfiles",
+            opts = defaultOpts,
+        },
         ["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "Find LSP references", opts = defaultOpts },
         ["<leader>fp"] = { "<cmd> Telescope diagnostics <CR>", "Open telescope diagnostics", opts = defaultOpts },
         ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks", opts = defaultOpts },
