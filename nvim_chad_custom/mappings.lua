@@ -41,9 +41,7 @@ local colemakMappings = {
     ["zn"] = { "zh", "Scroll N columns left", opts = defaultOpts },
     ["zI"] = { "zL", "Scroll right half a screenwidth", opts = defaultOpts },
     ["zi"] = { "zl", "Scroll N columns right", opts = defaultOpts },
-    ["zh"] = { "zi", "Toggle foldenable", opts = defaultOpts },
-    ["zl"] = { "zn", 'Reset "foldenable"', opts = defaultOpts },
-    ["zL"] = { "zN", 'Set "foldenable"', opts = defaultOpts },
+    ["zl"] = { "zi", "Toggle foldenable", opts = defaultOpts },
     ["[f"] = { "zk", "Move to the end of the previous fold", opts = defaultOpts },
     ["]f"] = { "zj", "Move to the start of the next fold", opts = defaultOpts },
 
@@ -527,6 +525,35 @@ M.ctrlsf = {
     },
 }
 
+M.ufo = {
+    n = {
+        ["zR"] = {
+            function()
+                require("ufo").openAllFolds()
+            end,
+            "Open all folds",
+            opts = defaultOpts,
+        },
+        ["zM"] = {
+            function()
+                require("ufo").closeAllFolds()
+            end,
+            "Open all folds",
+            opts = defaultOpts,
+        },
+        ["zh"] = {
+            function()
+                local winid = require("ufo").peekFoldedLinesUnderCursor()
+                if not winid then
+                    vim.lsp.buf.hover()
+                end
+            end,
+            "Peek folded lines under current cursor",
+            opts = defaultOpts,
+        },
+    },
+}
+
 M.disabled = {
     n = {
         -- nvchad linenumbers
@@ -564,6 +591,10 @@ M.disabled = {
         ["<leader>wr"] = "",
         ["<leader>wl"] = "",
         ["gh"] = "",
+
+        -- defalult mappings
+        ["zh"] = "",
+        ["zH"] = "",
     },
 }
 

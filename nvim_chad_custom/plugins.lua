@@ -86,6 +86,23 @@ local plugins = {
         event = "BufReadPre",
     },
 
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = {
+            "kevinhwang91/promise-async",
+            {
+                "luukvbaal/statuscol.nvim",
+                config = function()
+                    require("custom.configs.statuscol")
+                end,
+            },
+        },
+        event = "BufRead",
+        config = function()
+            require("custom.configs.ufo")
+        end,
+    },
+
     -- lang specific
 
     -- rust
