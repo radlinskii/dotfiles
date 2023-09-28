@@ -13,6 +13,8 @@ M.treesitter = {
         "markdown",
         "markdown_inline",
     },
+
+    matchup = { enable = true },
 }
 
 local actions = require("telescope.actions")

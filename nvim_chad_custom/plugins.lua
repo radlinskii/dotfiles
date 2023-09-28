@@ -81,6 +81,11 @@ local plugins = {
         end,
     },
 
+    {
+        "andymass/vim-matchup",
+        event = "BufReadPre",
+    },
+
     -- lang specific
 
     -- rust
