@@ -53,6 +53,9 @@ M.override = {
         fg = "darker_black",
         bg = "white",
     },
+    ColorColumn = {
+        bg = "black2",
+    },
 }
 
 ---@type HLTable
