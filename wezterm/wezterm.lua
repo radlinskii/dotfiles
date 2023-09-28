@@ -10,6 +10,8 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+config.hide_tab_bar_if_only_one_tab = true
+
 -- wezterm.gui is not available to the mux server, so take care to
 -- do something reasonable when this config is evaluated by the mux
 local function get_appearance()
