@@ -1,5 +1,3 @@
-echo "Setting up Homebrew"
-
 if test ! "$(command -v brew)"; then
     echo "Homebrew not installed. Installing."
     # Run as a login shell (non-interactive) so that the script doesn't pause for user input

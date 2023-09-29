@@ -1,15 +1,32 @@
+Black='\033[0;30m'
+Red='\033[0;31m'
+Green='\033[0;32m'
+Orange='\033[0;33m'
+Blue='\033[0;34m'
+Purple='\033[0;35m'
+Cyan='\033[0;36m'
+LightGray='\033[0;37m'
+DarkGray='\033[1;30m'
+LightRed='\033[1;31m'
+LightGreen='\033[1;32m'
+Yellow='\033[1;33m'
+LightBlue='\033[1;34m'
+LightPurple='\033[1;35m'
+LightCyan='\033[1;36m'
+White='\033[1;37m'
+NoColor='\033[0m'
+
 create_symlinks() {
     local source="$1"
     local destination_directory="$2"
-
     if [[ ! -d "$source" && ! -f "$source" ]]; then
-        echo "Source does not exist: $source"
+        echo "${Red}Source does not exist: $source${NoColor}"
         return
     fi
 
     if [[ ! -d "$destination_directory" ]]; then
-        echo "Destination directory does not exist: $destination_directory"
-        echo "Creating destination directory $destination_directory"
+        echo "${Red}Destination directory does not exist: $destination_directory${NoColor}"
+        echo "${Blue}Creating destination directory $destination_directory${NoColor}"
         mkdir -p $destination_directory
     fi
 
@@ -36,7 +53,7 @@ create_symlinks() {
     fi
 }
 
-echo "Creating symlinks"
+echo "${Blue}Creating symlinks${NoColor}"
 
 create_symlinks "wezterm" "$HOME/.config/wezterm"
 
@@ -48,17 +65,21 @@ create_symlinks "git" "$HOME"
 
 create_symlinks "nvim_chad_custom" "$HOME/.config/nvim/lua/custom"
 
+echo "${Blue}Configuring macOS${NoColor}"
+
 # setup macos defaults
 ./scripts/macos.sh
+
+echo "${Blue}Setting up Homebrew${NoColor}"
 
 # setup Homebrew
 ./scripts/brew.sh
 
 # install om-my-zsh
 if [[ ! -d "$ZSH" ]]; then
-    echo "Installing oh-my-zsh"
+    echo "${Blue}Installing oh-my-zsh${NoColor}"
     sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 else
-    echo "Omitting oh-my-zsh installation"
+    echo "${Blue}Omitting oh-my-zsh installation${NoColor}"
     echo "$ZSH directory already exists"
 fi

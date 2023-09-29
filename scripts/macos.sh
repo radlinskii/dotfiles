@@ -1,5 +1,3 @@
-echo "Configuring macOS"
-
 if [[ "$(uname)" == "Darwin" ]]; then
 
     echo "Finder: show all filename extensions"
