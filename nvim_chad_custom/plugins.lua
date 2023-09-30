@@ -45,6 +45,15 @@ local plugins = {
     },
 
     {
+        "numToStr/Comment.nvim",
+        dependencies = { "nvim-treesitter", "JoosepAlviste/nvim-ts-context-commentstring" },
+        after = { "JoosepAlviste/nvim-ts-context-commentstring" },
+        config = function()
+            require("custom.configs.comment")
+        end,
+    },
+
+    {
         "folke/which-key.nvim",
         keys = { "<leader>", "<c-r>", '"', "'", "`", "d", "c", "v", "g", "z", "<c-w>", "[", "]" },
     },

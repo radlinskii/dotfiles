@@ -15,6 +15,10 @@ M.treesitter = {
     },
 
     matchup = { enable = true },
+    context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+    },
 }
 
 local actions = require("telescope.actions")
