@@ -42,7 +42,7 @@ local colemakMappings = {
     ["zI"] = { "zL", "Scroll right half a screenwidth", opts = defaultOpts },
     ["zi"] = { "zl", "Scroll N columns right", opts = defaultOpts },
     ["zl"] = { "zi", "Toggle foldenable", opts = defaultOpts },
-    ["[f"] = { "zk", "Move to the end of the previous fold", opts = defaultOpts },
+    ["[F"] = { "zk", "Move to the end of the previous fold", opts = defaultOpts },
     ["]f"] = { "zj", "Move to the start of the next fold", opts = defaultOpts },
 
     ["<C-w>u"] = { "<C-w>k", "Focus window up", opts = defaultOpts },
@@ -549,6 +549,27 @@ M.ufo = {
                 require("ufo").closeAllFolds()
             end,
             "Open all folds",
+            opts = defaultOpts,
+        },
+        ["[f"] = {
+            function()
+                require("ufo").goPreviousStartFold()
+            end,
+            "Move to start of previous fold",
+            opts = defaultOpts,
+        },
+        ["[w"] = {
+            function()
+                require("ufo").goPreviousClosedFold()
+            end,
+            "Move to previous closed fold",
+            opts = defaultOpts,
+        },
+        ["]w"] = {
+            function()
+                require("ufo").goNextClosedFold()
+            end,
+            "Move to next closed fold",
             opts = defaultOpts,
         },
         ["zh"] = {
