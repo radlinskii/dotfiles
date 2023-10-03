@@ -162,3 +162,11 @@ complete -W "projects config" fcd
 # Use Neovim instead of Vim or Vi
 alias vim=nvim
 alias vi=nvim
+
+alias gdt='git difftool'
+alias gdtca='git difftool --cached'
+alias gdtcw='git difftool --cached --word-diff'
+alias gdts='git difftool --staged'
+alias gdtr='git diff-tree --no-commit-id --name-only -r'
+alias gdtup='git difftool @{upstream}'
+alias gdtw='git difftool --word-diff'

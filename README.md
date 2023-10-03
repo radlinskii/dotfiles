@@ -31,6 +31,25 @@ git config --global user.name "Your Name"
 git config --global user.email "Your Email"
 ```
 
+To add nvim as `difftool` and `mergetool` add:
+
+```
+[diff]
+    tool = nvimdiff
+[difftool]
+    prompt = false
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[merge]
+    tool = nvimdiff
+[mergetool]
+    prompt = true
+[mergetool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
+```
+
+to the `.gitconfig` file
+
 5. put local-machine-specific shell configuration and secret env vars in `~/.local_zshrc.sh`
 
 ```sh
