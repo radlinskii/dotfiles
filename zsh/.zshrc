@@ -12,7 +12,9 @@ DEFAULT_USER="$(whoami)"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+
+# git clone https://github.com/JKerboeuf/chill.zsh-theme.git ${ZSH_CUSTOM}/themes/Chill
+ZSH_THEME="Chill/chill"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
