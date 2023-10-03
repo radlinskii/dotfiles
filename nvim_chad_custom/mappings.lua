@@ -589,7 +589,7 @@ M.diffview = {
     n = {
         ["<leader>dc"] = { "<cmd>DiffviewClose<CR>", "Close Diffview", opts = defaultOpts },
         ["<leader>do"] = { "<cmd>DiffviewOpen<CR>", "Open Diffview", opts = defaultOpts },
-        ["<leader>dh"] = { "<cmd>DiffviewFileHistory<CR>", "Open file history Diffview", opts = defaultOpts },
+        ["<leader>dh"] = { "<cmd>DiffviewFileHistory %<CR>", "Open file history Diffview", opts = defaultOpts },
     },
 }
 
