@@ -28,6 +28,9 @@ M.ui = {
                 DiffDelete = { fg = "NONE", bg = "#ffdfdf", underline = false },
                 DiffChange = { fg = "NONE", bg = "#dfefff", underline = false },
                 DiffText = { fg = "NONE", bg = "#dfefff" },
+                NvDashAscii = {
+                    fg = "#1182dc",
+                    bg = "#4b4033",
                 },
             },
         },
@@ -44,6 +47,9 @@ M.ui = {
                 DiffDelete = { fg = "NONE", bg = "#332222", underline = false },
                 DiffChange = { fg = "NONE", bg = "#122233", underline = false },
                 DiffText = { fg = "NONE", bg = "#122233" },
+                NvDashAscii = {
+                    fg = "#32e548",
+                    bg = "#1b1000",
                 },
             },
         },
