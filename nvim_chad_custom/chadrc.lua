@@ -26,8 +26,9 @@ M.ui = {
                 ["@constant"] = { fg = "#992222" },
                 DiffAdd = { fg = "NONE", bg = "#dcffdc", underline = false },
                 DiffDelete = { fg = "NONE", bg = "#ffdfdf", underline = false },
-                DiffChange = { fg = "NONE", bg = "#dfefff", underline = false },
-                DiffText = { fg = "NONE", bg = "#dfefff" },
+                DiffChange = { fg = "NONE", bg = "#e3f3ff", underline = false },
+                DiffChangeDelete = { fg = "NONE", bg = "#efcfff", underline = false },
+                DiffText = { fg = "NONE", bg = "#cadfff" },
                 NvDashAscii = {
                     fg = "#1182dc",
                     bg = "#4b4033",
@@ -43,10 +44,11 @@ M.ui = {
             },
             polish_hl = {
                 ["@field"] = { fg = "#dd8877" },
-                DiffAdd = { fg = "NONE", bg = "#223322", underline = false },
-                DiffDelete = { fg = "NONE", bg = "#332222", underline = false },
-                DiffChange = { fg = "NONE", bg = "#122233", underline = false },
-                DiffText = { fg = "NONE", bg = "#122233" },
+                DiffAdd = { fg = "NONE", bg = "#334433", underline = false },
+                DiffDelete = { fg = "NONE", bg = "#442222", underline = false },
+                DiffChange = { fg = "NONE", bg = "#223344", underline = false },
+                DiffChangeDelete = { fg = "NONE", bg = "#221133", underline = false },
+                DiffText = { fg = "NONE", bg = "#445577" },
                 NvDashAscii = {
                     fg = "#32e548",
                     bg = "#1b1000",
