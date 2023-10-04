@@ -699,10 +699,14 @@ M.disabled = {
         ["<leader>wr"] = "",
         ["<leader>wl"] = "",
         ["gh"] = "",
+        ["<leader>/"] = "",
 
         -- defalult mappings
         ["zh"] = "",
         ["zH"] = "",
+    },
+    v = {
+        ["<leader>/"] = "",
     },
 }
 
