@@ -22,11 +22,12 @@ M.ui = {
                 base09 = "#be9e00",
             },
             polish_hl = {
-                ["@field"] = {
-                    fg = "#dd7777",
-                },
-                ["@constant"] = {
-                    fg = "#992222",
+                ["@field"] = { fg = "#dd7777" },
+                ["@constant"] = { fg = "#992222" },
+                DiffAdd = { fg = "NONE", bg = "#dcffdc", underline = false },
+                DiffDelete = { fg = "NONE", bg = "#ffdfdf", underline = false },
+                DiffChange = { fg = "NONE", bg = "#dfefff", underline = false },
+                DiffText = { fg = "NONE", bg = "#dfefff" },
                 },
             },
         },
@@ -38,8 +39,11 @@ M.ui = {
                 base00 = "#1b1b00",
             },
             polish_hl = {
-                ["@field"] = {
-                    fg = "#dd8877",
+                ["@field"] = { fg = "#dd8877" },
+                DiffAdd = { fg = "NONE", bg = "#223322", underline = false },
+                DiffDelete = { fg = "NONE", bg = "#332222", underline = false },
+                DiffChange = { fg = "NONE", bg = "#122233", underline = false },
+                DiffText = { fg = "NONE", bg = "#122233" },
                 },
             },
         },

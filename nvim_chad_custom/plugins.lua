@@ -60,8 +60,13 @@ local plugins = {
 
     {
         "tpope/vim-fugitive",
-        cmd = { "G", "Git" },
+        lazy = false,
         opts = overrides.fugitive,
+    },
+
+    {
+        "sindrets/diffview.nvim",
+        lazy = false,
     },
 
     {

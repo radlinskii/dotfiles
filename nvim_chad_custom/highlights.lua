@@ -62,11 +62,17 @@ M.override = {
 M.add = {
     NvimTreeOpenedFolderName = { fg = "green", bold = true },
 
+    GitSignsAdd = {
+        fg = "green",
+    },
     GitSignsChange = {
         fg = "blue",
     },
     GitSignsDeleteChange = {
         fg = "purple",
+    },
+    GitSignsDelete = {
+        fg = "red",
     },
 }
 
