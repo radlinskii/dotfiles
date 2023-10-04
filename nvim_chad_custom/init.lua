@@ -11,7 +11,7 @@ vim.opt.softtabstop = 4
 vim.shiftwidth = 4
 
 vim.opt.wrap = false
-
+vim.opt.fillchars:append({ diff = "⣿" })
 -- Auto resize panes when resizing nvim window
 autocmd("VimResized", {
     pattern = "*",
