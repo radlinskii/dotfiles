@@ -56,6 +56,7 @@ local plugins = {
     {
         "folke/which-key.nvim",
         keys = { "<leader>", "<c-r>", '"', "'", "`", "d", "c", "v", "g", "z", "<c-w>", "[", "]" },
+        event = "VeryLazy",
     },
 
     {
@@ -66,7 +67,7 @@ local plugins = {
 
     {
         "sindrets/diffview.nvim",
-        lazy = false,
+        cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggle", "DiffviewFileHistory" },
     },
 
     {
@@ -89,7 +90,7 @@ local plugins = {
 
     {
         "dyng/ctrlsf.vim",
-        event = "BufRead",
+        event = { "VeryLazy", "BufRead" },
         config = function()
             require("custom.configs.ctrlsf")
         end,
