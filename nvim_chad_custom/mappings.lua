@@ -125,6 +125,26 @@ M.nvchad = {
     },
 }
 
+M.blankline = {
+    n = {
+        ["<leader>,c"] = {
+            function()
+                local ok, start = require("indent_blankline.utils").get_current_context(
+                    vim.g.indent_blankline_context_patterns,
+                    vim.g.indent_blankline_use_treesitter_scope
+                )
+
+                if ok then
+                    vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+                    vim.cmd([[normal! _]])
+                end
+            end,
+
+            "Jump to current context",
+        },
+    },
+}
+
 M.nvimtree = {
     n = {
         ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = defaultOpts },
@@ -435,71 +455,120 @@ M.gitsigns = {
                 end)
                 return "<Ignore>"
             end,
-            "Jump to prev hunk",
+            "Jump to previous hunk",
             opts = exprOpts,
         },
 
         ["<leader>cp"] = {
-            function()
-                require("gitsigns").preview_hunk()
-            end,
+            "<cmd>Gitsigns preview_hunk<CR>",
             "Preview hunk",
             opts = defaultOpts,
         },
 
         ["<leader>cb"] = {
-            function()
-                require("gitsigns").blame_line()
-            end,
+            "<cmd>Gitsigns blame_line<CR>",
             "Blame line",
             opts = defaultOpts,
         },
 
         ["<leader>cs"] = {
-            function()
-                require("gitsigns").stage_hunk()
-            end,
+            "<cmd>Gitsigns stage_hunk<CR>",
             "Stage hunk",
             opts = defaultOpts,
         },
 
         ["<leader>cu"] = {
-            function()
-                require("gitsigns").undo_stage_hunk()
-            end,
+            "<cmd>Gitsigns undo_stage_hunk<CR>",
             "Undo stage hunk",
             opts = defaultOpts,
         },
 
         ["<leader>ca"] = {
-            function()
-                require("gitsigns").stage_buffer()
-            end,
+            "<cmd>Gitsigns stage_buffer<CR>",
             "Stage buffer",
             opts = defaultOpts,
         },
 
         ["<leader>cr"] = {
-            function()
-                require("gitsigns").reset_hunk()
-            end,
+            "<cmd>Gitsigns reset_hunk<CR>",
             "Reset hunk",
             opts = defaultOpts,
         },
 
         ["<leader>cR"] = {
-            function()
-                require("gitsigns").reset_buffer()
-            end,
+            "<cmd>Gitsigns reset_buffer<CR>",
             "Reset buffer",
             opts = defaultOpts,
         },
 
         ["<leader>cd"] = {
-            function()
-                require("gitsigns").toggle_deleted()
-            end,
+            "<cmd>Gitsigns toggle_deleted<CR>",
             "Toggle deleted",
+            opts = defaultOpts,
+        },
+
+        ["<leader>cc"] = {
+            "<cmd>Gitsigns<CR>",
+            "Call GitSigns command",
+            opts = defaultOpts,
+        },
+    },
+    x = {
+        ["]c"] = {
+            function()
+                if vim.wo.diff then
+                    return "]c"
+                end
+                vim.schedule(function()
+                    require("gitsigns").next_hunk()
+                end)
+                return "<Ignore>"
+            end,
+            "Jump to next hunk",
+            opts = exprOpts,
+        },
+
+        ["[c"] = {
+            function()
+                if vim.wo.diff then
+                    return "[c"
+                end
+                vim.schedule(function()
+                    require("gitsigns").prev_hunk()
+                end)
+                return "<Ignore>"
+            end,
+            "Jump to previous hunk",
+            opts = exprOpts,
+        },
+
+        ["<leader>cp"] = {
+            "<cmd>'<,'>Gitsigns preview_hunk<CR>",
+            "Preview hunk",
+            opts = defaultOpts,
+        },
+
+        ["<leader>cs"] = {
+            "<cmd>'<,'>Gitsigns stage_hunk<CR>",
+            "Stage hunk",
+            opts = defaultOpts,
+        },
+
+        ["<leader>cu"] = {
+            "<cmd>'<,'>Gitsigns undo_stage_hunk<CR>",
+            "Undo stage hunk",
+            opts = defaultOpts,
+        },
+
+        ["<leader>cr"] = {
+            "<cmd>'<,'>Gitsigns reset_hunk<CR>",
+            "Reset hunk",
+            opts = defaultOpts,
+        },
+
+        ["<leader>cc"] = {
+            "<cmd>'<,'>Gitsigns<CR>",
+            "Call GitSigns command on selection",
             opts = defaultOpts,
         },
     },
