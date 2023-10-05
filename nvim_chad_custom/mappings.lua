@@ -147,7 +147,8 @@ M.blankline = {
 
 M.nvimtree = {
     n = {
-        ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = defaultOpts },
+        ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree", opts = defaultOpts },
+        ["<leader>E"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree", opts = defaultOpts },
     },
 }
 

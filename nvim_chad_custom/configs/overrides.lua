@@ -66,12 +66,29 @@ M.mason = {
     },
 }
 
--- git support in nvimtree
+local function nvim_tree_on_attach(bufnr)
+    local api = require("nvim-tree.api")
+
+    local function opts(desc)
+        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    -- default mappings
+    api.config.mappings.default_on_attach(bufnr)
+
+    vim.keymap.set("n", "J", api.tree.expand_all, opts("Expand All"))
+    vim.keymap.set("n", "j", api.fs.rename_basename, opts("Rename: Basename"))
+    vim.keymap.set("n", "K", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
+    vim.keymap.set("n", "E", api.node.navigate.sibling.last, opts("Last Sibling"))
+    vim.keymap.set("n", "U", api.node.navigate.sibling.first, opts("First Sibling"))
+    vim.keymap.set("n", "u", "k", opts("Prev item"))
+    vim.keymap.set("n", "e", "j", opts("Next item"))
+end
+
 M.nvimtree = {
     git = {
         enable = true,
     },
-
     renderer = {
         highlight_git = true,
         icons = {
@@ -83,6 +100,7 @@ M.nvimtree = {
     view = {
         side = "right",
     },
+    on_attach = nvim_tree_on_attach,
 }
 
 M.cmp = {
