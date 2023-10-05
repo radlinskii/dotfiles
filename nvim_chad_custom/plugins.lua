@@ -144,7 +144,14 @@ local plugins = {
         "m4xshen/hardtime.nvim",
         dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
         event = { "BufReadPre" },
-        config = true,
+        opts = {
+            disabled_keys = {
+                ["<Up>"] = { "" },
+                ["<Down>"] = { "" },
+                ["<Left>"] = { "" },
+                ["<Right>"] = { "" },
+            },
+        },
     },
 
     -- lang specific

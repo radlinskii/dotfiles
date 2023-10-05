@@ -31,7 +31,7 @@ local colemakMappings = {
     ["gl"] = { "ge", "Go to the end of the previous word", opts = defaultOpts },
     ["gL"] = { "gE", "Go to the end of the previous non-blank-spaced word", opts = defaultOpts },
     ["gH"] = { "gI", "Start insert mode at the 1st column", opts = defaultOpts },
-    ["gh"] = { "gI", "Start insert mode at the last position in insert mode", opts = defaultOpts },
+    ["gh"] = { "gi", "Start insert mode at the last position in insert mode", opts = defaultOpts },
     ["gi"] = { "gh", "Start Select mode", opts = defaultOpts },
     ["gI"] = { "gH", "Start Select-Line mode", opts = defaultOpts },
     ["gj"] = { "gn", "find the next match and visually select it", opts = defaultOpts },
@@ -60,14 +60,10 @@ local colemakMappings = {
 }
 
 local scrollMappings = {
-    ["<C-d>"] = { "<C-d>zz", "Scroll half a window down and move cursor to the middle", opts = defaultOpts },
-    ["<C-u>"] = { "<C-u>zz", "Scroll half a window up and move cursor to the middle", opts = defaultOpts },
-    ["<PageUp>"] = { "<PageUp>zz", "Scroll a whole window up and move cursor to the middle", opts = defaultOpts },
-    ["<PageDown>"] = {
-        "<PageDown>zz",
-        "Scroll a whole window down and move cursor to the middle",
-        opts = defaultOpts,
-    },
+    ["<C-d>"] = { "<C-d>zz", "Scroll half a window down and move cursor to the center", opts = defaultOpts },
+    ["<C-u>"] = { "<C-u>zz", "Scroll half a window up and move cursor to the center", opts = defaultOpts },
+    ["<PageUp>"] = { "<PageUp>zz", "Scroll a whole window up and move cursor to the center", opts = defaultOpts },
+    ["<PageDown>"] = { "<PageDown>zz", "Scroll a whole window down and move cursor to the center", opts = defaultOpts },
 }
 
 local moveLinesMappings = {
@@ -79,7 +75,11 @@ local moveLinesMappings = {
 }
 
 M.general = {
-    i = {},
+    i = {
+        ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
+        ["<C-f>"] = { "<End>", "End of line" },
+        ["<C-l>"] = { "<C-f>", "Reindent line" },
+    },
     n = vim.tbl_deep_extend("force", utils.copyTable(colemakMappings), utils.copyTable(scrollMappings), {
         ["<leader>rs"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
@@ -708,6 +708,14 @@ M.disabled = {
     },
     v = {
         ["<leader>/"] = "",
+    },
+    i = {
+        ["<C-h>"] = "",
+        ["<C-j>"] = "",
+        ["<C-l>"] = "",
+        ["<C-k>"] = "",
+        ["<C-b>"] = "",
+        ["<C-e>"] = "",
     },
 }
 
