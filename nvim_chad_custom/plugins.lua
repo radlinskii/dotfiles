@@ -67,6 +67,17 @@ local plugins = {
     {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggle", "DiffviewFileHistory" },
+        opts = {
+            hooks = {
+                diff_view_opened = function()
+                    vim.cmd("ColorizerDetachFromBuffer")
+                end,
+                diff_view_closed = function()
+                    vim.cmd("ColorizerAttachToBuffer")
+                    vim.cmd("ColorizerReloadAllBuffers")
+                end,
+            },
+        },
     },
 
     {
