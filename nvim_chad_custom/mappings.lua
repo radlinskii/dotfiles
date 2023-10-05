@@ -4,6 +4,7 @@ local utils = require("custom.utils")
 local M = {}
 
 local defaultOpts = { noremap = true, silent = true }
+local nonSilentOpts = { noremap = true }
 local exprOpts = { noremap = true, expr = true, silent = true }
 
 local colemakMappings = {
@@ -84,7 +85,7 @@ M.general = {
         ["<leader>rs"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
             "Substitute current word",
-            opts = defaultOpts,
+            opts = nonSilentOpts,
         },
     }),
     v = {},
@@ -97,7 +98,7 @@ M.general = {
             ["<leader>rs"] = {
                 [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
                 "Substitute current word",
-                opts = defaultOpts,
+                opts = nonSilentOpts,
             },
         }
     ),
@@ -577,21 +578,21 @@ M.gitsigns = {
 
 M.ctrlsf = {
     n = {
-        ["<leader>sf"] = { "<Plug>CtrlSFPrompt", "Provide a phrase to search for", opts = { noremap = true } },
+        ["<leader>sf"] = { "<Plug>CtrlSFPrompt", "Provide a phrase to search for", opts = nonSilentOpts },
         ["<leader>ss"] = {
             "<Plug>CtrlSFCwordPath",
             "Provide a phrase to search for word under the cursor",
-            opts = { noremap = true },
+            opts = nonSilentOpts,
         },
         ["<leader>sw"] = {
             "<Plug>CtrlSFCCwordPath",
             "Provide a phrase to search for word under the cursor with boundaries",
-            opts = { noremap = true },
+            opts = nonSilentOpts,
         },
         ["<leader>sp"] = {
             "<Plug>CtrlSFPwordPath",
             "Provide a phrase to search for the last searched word in vim",
-            opts = { noremap = true },
+            opts = nonSilentOpts,
         },
         ["<leader>so"] = { ":CtrlSFOpen<cr>", "Open/Toggle CtrlSF window", opts = defaultOpts },
         ["<leader>st"] = { ":CtrlSFToggle<cr>", "Toggle CtrlSF window", opts = defaultOpts },
@@ -600,7 +601,7 @@ M.ctrlsf = {
         ["<leader>sf"] = {
             "<Plug>CtrlSFVwordPath",
             "Provide currently visually selected word to search for",
-            opts = { noremap = true },
+            opts = nonSilentOpts,
         },
     },
 }
