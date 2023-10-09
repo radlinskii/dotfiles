@@ -38,9 +38,9 @@ local colemakMappings = {
     ["gj"] = { "gn", "find the next match and visually select it", opts = defaultOpts },
     ["gJ"] = { "gN", "find the previous match and visually select it", opts = defaultOpts },
 
-    ["zN"] = { "zH", "Scroll left half a screenwidth", opts = defaultOpts },
+    ["zN"] = { "zH", "Scroll left half a screen width", opts = defaultOpts },
     ["zn"] = { "zh", "Scroll N columns left", opts = defaultOpts },
-    ["zI"] = { "zL", "Scroll right half a screenwidth", opts = defaultOpts },
+    ["zI"] = { "zL", "Scroll right half a screen width", opts = defaultOpts },
     ["zi"] = { "zl", "Scroll N columns right", opts = defaultOpts },
     ["zl"] = { "zi", "Toggle foldenable", opts = defaultOpts },
     ["[F"] = { "zk", "Move to the end of the previous fold", opts = defaultOpts },
@@ -703,7 +703,7 @@ M.disabled = {
         ["gh"] = "",
         ["<leader>/"] = "",
 
-        -- defalult mappings
+        -- default mappings
         ["zh"] = "",
         ["zH"] = "",
     },

@@ -7,6 +7,9 @@ local plugins = {
         dependencies = {
             {
                 "nvimtools/none-ls.nvim",
+                dependencies = {
+                    "davidmh/cspell.nvim",
+                },
                 config = function()
                     require("custom.configs.null-ls")
                 end,
