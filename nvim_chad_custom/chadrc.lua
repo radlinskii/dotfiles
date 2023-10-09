@@ -13,6 +13,7 @@ M.ui = {
     statusline = {
         theme = "vscode_colored",
     },
+    ---@diagnostic disable missing-fields
     changed_themes = {
         penumbra_light = {
             base_30 = {
@@ -33,6 +34,9 @@ M.ui = {
                     fg = "#1182dc",
                     bg = "#4b4033",
                 },
+                IndentBlanklineContextChar = {
+                    fg = "#22839b",
+                },
             },
         },
         tomorrow_night = {
@@ -52,6 +56,9 @@ M.ui = {
                 NvDashAscii = {
                     fg = "#32e548",
                     bg = "#1b1000",
+                },
+                IndentBlanklineContextChar = {
+                    fg = "#22839b",
                 },
             },
         },
