@@ -62,6 +62,15 @@ local plugins = {
     },
 
     {
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-cmdline",
+        },
+        config = function(_, opts)
+            require("custom.configs.cmp").setup(opts)
+        end,
+    },
+    {
         "tpope/vim-fugitive",
         lazy = false,
         opts = overrides.fugitive,
