@@ -28,8 +28,10 @@ M.telescope = {
             i = {
                 ["<C-l>"] = actions.cycle_history_next,
                 ["<C-y>"] = actions.cycle_history_prev,
-                ["<C-n>"] = actions.move_selection_next,
-                ["<C-p>"] = actions.move_selection_previous,
+                ["<Tab>"] = actions.move_selection_next,
+                ["<S-Tab>"] = actions.move_selection_previous,
+                ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
+                ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
                 ["<C-h>"] = actions.select_horizontal,
                 ["<C-g>"] = actions.complete_tag,
             },
@@ -42,7 +44,16 @@ M.telescope = {
                 ["N"] = actions.move_to_top,
                 ["M"] = actions.move_to_middle,
                 ["I"] = actions.move_to_bottom,
+                ["<Tab>"] = actions.move_selection_next,
+                ["<S-Tab>"] = actions.move_selection_previous,
+                ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
+                ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
             },
+        },
+    },
+    pickers = {
+        buffers = {
+            sort_lastused = true,
         },
     },
 }

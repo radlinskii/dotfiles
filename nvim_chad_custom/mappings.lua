@@ -353,6 +353,8 @@ M.telescope = {
         ["<leader>fgz"] = { "<cmd> Telescope git_stash <CR>", "Git stashes", opts = defaultOpts },
         ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Pick hidden term", opts = defaultOpts },
         ["<leader>fth"] = { "<cmd> Telescope themes <CR>", "Nvchad themes", opts = defaultOpts },
+        ["<Tab>"] = { "<cmd> Telescope buffers <CR>", "Telescope buffers", opts = defaultOpts },
+        ["<S-Tab>"] = { "<cmd> Telescope buffers <CR>", "Telescope buffers", opts = defaultOpts },
     },
 }
 

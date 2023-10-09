@@ -7,11 +7,13 @@ local highlights = require("custom.highlights")
 M.ui = {
     theme = "tomorrow_night",
     theme_toggle = { "tomorrow_night", "penumbra_light" },
-
     hl_override = highlights.override,
     hl_add = highlights.add,
     statusline = {
         theme = "vscode_colored",
+    },
+    tabufline = {
+        enabled = false,
     },
     ---@diagnostic disable missing-fields
     changed_themes = {
@@ -66,10 +68,8 @@ M.ui = {
     telescope = {
         style = "bordered",
     },
-
     nvdash = {
-        load_on_startup = true,
-
+        load_on_startup = false,
         header = {
             [[       ___           ___           ___                                    ___       ]],
             [[      /__/\         /  /\         /  /\          ___        ___          /__/\      ]],
@@ -84,7 +84,6 @@ M.ui = {
             [[      \__\/         \__\/         \__\/           ‾‾‾                    \__\/      ]],
             [[                                                                                    ]],
         },
-
         buttons = {
             { " 󰈚  Recent Files", "<Space> f o  ", "Telescope oldfiles" },
             { "   Find File", "<Space> f f  ", "Telescope find_files" },
