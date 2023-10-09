@@ -87,6 +87,7 @@ M.general = {
             "Substitute current word",
             opts = nonSilentOpts,
         },
+        ["<leader>z"] = { "<cmd>noh<CR>", "Clear search highlights", opts = defaultOpts },
     }),
     v = {},
     x = vim.tbl_deep_extend(
@@ -664,6 +665,87 @@ M.diffview = {
     },
 }
 
+M.flash = {
+    n = {
+        ["s"] = {
+            function()
+                require("flash").jump()
+            end,
+            "Flash",
+            opts = defaultOpts,
+        },
+        ["S"] = {
+            function()
+                require("flash").treesitter()
+            end,
+            "Flash Treesitter",
+            opts = defaultOpts,
+        },
+    },
+    x = {
+        ["s"] = {
+            function()
+                require("flash").jump()
+            end,
+            "flash",
+            opts = defaultOpts,
+        },
+        ["S"] = {
+            function()
+                require("flash").treesitter()
+            end,
+            "flash treesitter",
+            opts = defaultOpts,
+        },
+        ["r"] = {
+            function()
+                require("flash").treesitter_search()
+            end,
+            "treesitter search",
+            opts = defaultOpts,
+        },
+    },
+    o = {
+        ["s"] = {
+            function()
+                require("flash").jump()
+            end,
+            "Flash",
+            opts = defaultOpts,
+        },
+        ["S"] = {
+            function()
+                require("flash").treesitter()
+            end,
+            "Flash Treesitter",
+            opts = defaultOpts,
+        },
+        ["r"] = {
+            function()
+                require("flash").remote()
+            end,
+            "Remote Flash",
+            opts = defaultOpts,
+        },
+        ["R"] = {
+            function()
+                require("flash").treesitter_search()
+            end,
+            "Treesitter Search",
+            opts = defaultOpts,
+        },
+    },
+    c = {
+        ["<C-s>"] = {
+            function()
+                require("flash").toggle()
+            end,
+            "Toggle Flash Search",
+            opts = defaultOpts,
+        },
+    },
+}
+
 M.disabled = {
     n = {
         -- nvchad linenumbers
@@ -702,6 +784,8 @@ M.disabled = {
         ["<leader>wl"] = "",
         ["gh"] = "",
         ["<leader>/"] = "",
+        -- to make flash.nvim hide highlights
+        ["<Esc>"] = "",
 
         -- default mappings
         ["zh"] = "",

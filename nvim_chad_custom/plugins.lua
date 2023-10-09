@@ -93,6 +93,11 @@ local plugins = {
     },
 
     {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+    },
+
+    {
         "ThePrimeagen/harpoon",
         event = "BufReadPre",
         config = function()
