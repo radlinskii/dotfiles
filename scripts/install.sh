@@ -63,7 +63,7 @@ create_symlinks "zsh" "$HOME"
 
 create_symlinks "git" "$HOME"
 
-create_symlinks "nvim_chad_custom" "$HOME/.config/nvim/lua/custom"
+create_symlinks "nvim" "$HOME/.config/nvim"
 
 echo "${Blue}Configuring macOS${NoColor}"
 
