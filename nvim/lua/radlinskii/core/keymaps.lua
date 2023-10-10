@@ -168,9 +168,13 @@ keymap.set(
     { silent = true, noremap = true, desc = "Scroll a whole window down and move cursor to the center" }
 )
 
-
--- termainal
-keymap.set({ "t" }, "<C-x>",   vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), { desc ="Escape terminal mode" , silent = true, noremap = true })
+-- terminal
+keymap.set(
+    { "t" },
+    "<C-x>",
+    vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
+    { desc = "Escape terminal mode", silent = true, noremap = true }
+)
 
 -- visual/select
 keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increase indent" })
@@ -201,10 +205,15 @@ keymap.set(
 keymap.set({ "n" }, "<C-s>", "<cmd> w <CR>", { desc = "Save file", silent = true, noremap = true })
 keymap.set({ "n" }, "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file", silent = true, noremap = true })
 keymap.set({ "n" }, "<leader>b", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
-keymap.set({ "n" }, "<leader>lf", function() vim.lsp.buf.format { async = true } end, { desc = "LSP formatting", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader>lf", function()
+    vim.lsp.buf.format({ async = true })
+end, { desc = "LSP formatting", silent = true, noremap = true })
 
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-keymap.set({ "n" }, "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Don't copy replaced text", silent = true, noremap = true })
-
-
+keymap.set(
+    { "n" },
+    "p",
+    'p:let @+=@0<CR>:let @"=@0<CR>',
+    { desc = "Don't copy replaced text", silent = true, noremap = true }
+)
