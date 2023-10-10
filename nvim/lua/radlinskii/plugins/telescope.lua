@@ -200,12 +200,6 @@ return {
         )
         keymap.set(
             { "n" },
-            "<leader>fth",
-            "<cmd> Telescope themes <CR>",
-            { desc = "Nvchad themes", silent = true, noremap = true }
-        )
-        keymap.set(
-            { "n" },
             "<Tab>",
             "<cmd> Telescope buffers <CR>",
             { desc = "Telescope buffers", silent = true, noremap = true }
