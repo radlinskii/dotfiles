@@ -1,3 +1,23 @@
+local function nvim_tree_on_attach(bufnr)
+    local api = require("nvim-tree.api")
+
+    local function opts(desc)
+        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+
+    -- default mappings
+    api.config.mappings.default_on_attach(bufnr)
+
+    vim.keymap.set("n", "J", api.tree.expand_all, opts("Expand All"))
+    vim.keymap.set("n", "j", api.fs.rename_basename, opts("Rename: Basename"))
+    vim.keymap.set("n", "K", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
+    vim.keymap.set("n", "E", api.node.navigate.sibling.last, opts("Last Sibling"))
+    vim.keymap.set("n", "U", api.node.navigate.sibling.first, opts("First Sibling"))
+    vim.keymap.set("n", "u", "k", opts("Prev item"))
+    vim.keymap.set("n", "e", "j", opts("Next item"))
+end
+
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -14,47 +34,91 @@ return {
 
         -- configure nvim-tree
         nvimtree.setup({
-            view = {
-                width = 35,
-                relativenumber = true,
-            },
-            -- change folder arrow icons
-            renderer = {
-                indent_markers = {
-                    enable = true,
-                },
-                icons = {
-                    glyphs = {
-                        folder = {
-                            arrow_closed = "", -- arrow when folder is closed
-                            arrow_open = "", -- arrow when folder is open
-                        },
-                    },
-                },
-            },
-            -- disable window_picker for
-            -- explorer to work well with
-            -- window splits
-            actions = {
-                open_file = {
-                    window_picker = {
-                        enable = false,
-                    },
-                },
-            },
-            filters = {
-                custom = { ".DS_Store" },
-            },
-            git = {
-                ignore = false,
-            },
+  filters = {
+    dotfiles = false,
+    custom = { ".DS_Store" },
+    exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
+  },
+  disable_netrw = true,
+  hijack_netrw = true,
+  hijack_cursor = true,
+  hijack_unnamed_buffer_when_opening = false,
+  sync_root_with_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = false,
+  },
+  view = {
+    adaptive_size = false,
+    side = "right",
+    width = 30,
+    relativenumber =true,
+    preserve_window_proportions = true,
+  },
+  git = {
+    enable = false,
+    ignore = true,
+  },
+  filesystem_watchers = {
+    enable = true,
+  },
+  actions = {
+    open_file = {
+      resize_window = true,
+      window_picker = {
+          enable = false, -- test
+      }
+    },
+  },
+  renderer = {
+    root_folder_label = false,
+    highlight_git = true,
+    highlight_opened_files = "none",
+
+    indent_markers = {
+      enable = true,
+    },
+
+    icons = {
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+
+      glyphs = {
+        default = "󰈚",
+        symlink = "",
+        folder = {
+          default = "",
+          empty = "",
+          empty_open = "",
+          open = "",
+          symlink = "",
+          symlink_open = "",
+          arrow_open = "",
+          arrow_closed = "",
+        },
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
+    },
+  },
+            on_attach = nvim_tree_on_attach,
         })
 
         -- set keymaps
         local keymap = vim.keymap -- for conciseness
 
         keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-
         keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file explorer" })
         keymap.set(
             "n",
