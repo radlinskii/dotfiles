@@ -46,3 +46,4 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 -- opt.whichwrap:append("<>[]hj")
 opt.wrap = false
+
