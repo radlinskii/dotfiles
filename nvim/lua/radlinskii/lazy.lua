@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "radlinskii.plugins" } }, {
     install = {
-        colorscheme = { "tokyonight" },
+        colorscheme = { "kanagawa" },
     },
     checker = {
         enabled = true,
