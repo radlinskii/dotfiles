@@ -1,6 +1,6 @@
 return {
     "ThePrimeagen/harpoon",
-    event = "BufReadPre",
+    event = "VeryLazy",
     config = function()
         -- Harpoon mappings for Normal mode
         vim.keymap.set("n", "<leader>hm", function()

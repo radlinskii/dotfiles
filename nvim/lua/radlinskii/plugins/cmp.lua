@@ -1,6 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = { "CmdLineEnter", "InsertEnter" },
     dependencies = {
         "hrsh7th/cmp-buffer", -- source for text in buffer
         "hrsh7th/cmp-path", -- source for file system paths
@@ -8,6 +8,7 @@ return {
         "saadparwaiz1/cmp_luasnip", -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
         "onsails/lspkind.nvim", -- vs-code like pictograms
+        "hrsh7th/cmp-cmdline",
     },
     config = function()
         local cmp = require("cmp")
@@ -41,6 +42,7 @@ return {
         cmp.setup({
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
+                -- completeopt = "menu,menuone",
             },
             snippet = { -- configure how nvim-cmp interacts with snippet engine
                 expand = function(args)
