@@ -40,11 +40,12 @@ return {
 
                     return {
                         IblIndent = { fg = theme.ui.bg_gutter },
+                        Substitute = { fg = theme.ui.bg, bg = theme.ui.fg },
                     }
                 end,
                 theme = "wave", -- Load "wave" theme when 'background' option is not set
                 background = { -- map the value of 'background' option to a theme
-                    dark = "wave", -- try "dragon" !
+                    dark = "wave",
                     light = "lotus",
                 },
             })
