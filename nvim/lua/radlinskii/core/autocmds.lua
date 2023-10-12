@@ -19,3 +19,10 @@ autocmd("FileType", {
     pattern = "help",
     command = ":wincmd L | :vert resize 84",
 })
+
+autocmd({ "BufLeave", "FocusLost" }, {
+    pattern = { "*" },
+    callback = function()
+        vim.cmd("silent! wall")
+    end,
+})

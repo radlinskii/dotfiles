@@ -6,6 +6,7 @@ return {
             label = { exclude = "neuhjkliardc" },
         },
     },
+
     keys = {
         {
             "s",
