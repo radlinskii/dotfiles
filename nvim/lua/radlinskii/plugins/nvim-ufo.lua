@@ -68,5 +68,32 @@ return {
             close_fold_kinds = { "imports" },
             fold_virt_text_handler = handler,
         })
+
+        vim.keymap.set("n", "zR", function()
+            require("ufo").openAllFolds()
+        end, { desc = "Open all folds", noremap = true, silent = true })
+
+        vim.keymap.set("n", "zM", function()
+            require("ufo").closeAllFolds()
+        end, { desc = "Open all folds", noremap = true, silent = true })
+
+        vim.keymap.set("n", "[z", function()
+            require("ufo").goPreviousStartFold()
+        end, { desc = "Move to start of previous fold", noremap = true, silent = true })
+
+        vim.keymap.set("n", "[w", function()
+            require("ufo").goPreviousClosedFold()
+        end, { desc = "Move to previous closed fold", noremap = true, silent = true })
+
+        vim.keymap.set("n", "]w", function()
+            require("ufo").goNextClosedFold()
+        end, { desc = "Move to next closed fold", noremap = true, silent = true })
+
+        vim.keymap.set("n", "zh", function()
+            local winid = require("ufo").peekFoldedLinesUnderCursor()
+            if not winid then
+                vim.lsp.buf.hover()
+            end
+        end, { desc = "Peek folded lines under current cursor", noremap = true, silent = true })
     end,
 }

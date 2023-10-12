@@ -112,13 +112,13 @@ keymap.set({ "n", "x", "o" }, "zi", "zl", { silent = true, noremap = true, desc 
 keymap.set({ "n", "x", "o" }, "zl", "zi", { silent = true, noremap = true, desc = "Toggle foldenable" })
 keymap.set(
     { "n", "x", "o" },
-    "[F",
+    "[Z",
     "zk",
     { silent = true, noremap = true, desc = "Move to the end of the previous fold" }
 )
 keymap.set(
     { "n", "x", "o" },
-    "]f",
+    "]z",
     "zj",
     { silent = true, noremap = true, desc = "Move to the start of the next fold" }
 )
