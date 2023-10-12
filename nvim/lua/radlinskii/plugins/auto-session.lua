@@ -19,6 +19,10 @@ return {
                 theme_conf = { border = true },
                 previewer = false,
             },
+            pre_save_cmds = {
+                "lua require('radlinskii.utils').close_all_floating_wins()",
+                "lua require('radlinskii.utils').close_all_nvim_tree_buffers()",
+            },
         })
 
         local keymap = vim.keymap
