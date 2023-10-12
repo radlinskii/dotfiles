@@ -64,6 +64,7 @@ return {
                         ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
                         ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
                         ["<C-h>"] = actions.select_horizontal,
+                        ["<C-x>"] = require("telescope.actions").delete_buffer,
                         ["<C-g>"] = actions.complete_tag,
                     },
                     n = {
@@ -71,6 +72,7 @@ return {
                         ["<C-l>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
                         ["<C-h>"] = actions.select_horizontal,
+                        ["<C-x>"] = require("telescope.actions").delete_buffer,
                         ["e"] = actions.move_selection_next,
                         ["u"] = actions.move_selection_previous,
                         ["N"] = actions.move_to_top,
