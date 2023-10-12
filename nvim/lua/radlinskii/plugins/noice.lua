@@ -20,11 +20,25 @@ return {
         },
     },
     dependencies = {
-        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
-        -- OPTIONAL:
-        --   `nvim-notify` is only needed, if you want to use the notification view.
-        --   If not available, we use `mini` as the fallback
         "rcarriga/nvim-notify",
     },
+    config = function(_, opts)
+        require("noice").setup(opts)
+
+        vim.keymap.set("n", "<leader>nn", function()
+            require("noice").cmd("dismiss")
+        end, {
+            desc = "Dismiss all notifications",
+            noremap = true,
+            silent = true,
+        })
+        vim.keymap.set("n", "<leader>fn", function()
+            require("noice").cmd("telescope")
+        end, {
+            desc = "Find notification in history using Telescope",
+            noremap = true,
+            silent = true,
+        })
+    end,
 }
