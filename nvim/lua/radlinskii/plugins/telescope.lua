@@ -98,6 +98,7 @@ return {
             pickers = {
                 buffers = {
                     sort_lastused = true,
+                    sort_mru = true,
                 },
             },
         })
