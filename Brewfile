@@ -59,4 +59,4 @@ brew "z" # switch between most used directories
 brew "zsh" # zsh (latest)
 brew "shfmt"
 brew "shellcheck"
-
+brew "luarocks"

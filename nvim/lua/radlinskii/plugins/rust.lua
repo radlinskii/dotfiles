@@ -4,8 +4,8 @@ return {
         ft = "rust",
         dependencies = "neovim/nvim-lspconfig",
         opts = function()
-            local on_attach = require("plugins.configs.lspconfig").on_attach
-            local capabilities = require("plugins.configs.lspconfig").capabilities
+            local on_attach = require("radlinskii.utils.lsp").on_attach
+            local capabilities = require("radlinskii.utils.lsp").capabilities
 
             return {
                 server = {

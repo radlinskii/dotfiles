@@ -11,7 +11,8 @@ return {
             ensure_installed = {
                 "prettier", -- prettier formatter
                 "stylua", -- lua formatter
-                "eslint_d", -- js linter
+                "eslint", -- js linter
+                "markdownlint",
             },
         })
 
@@ -24,13 +25,26 @@ return {
 
         local sources = {
             -- webdev stuff
-            b.formatting.eslint,
-            b.formatting.prettier,
+            b.formatting.eslint.with({
+                filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact", "jsx", "tsx" },
+            }),
+            b.formatting.prettier.with({
+                filetypes = {
+                    "css",
+                    "scss",
+                    "less",
+                    "html",
+                    "json",
+                    "jsonc",
+                    "yaml",
+                    "markdown",
+                    "markdown.mdx",
+                    "graphql",
+                    "handlebars",
+                },
+            }),
 
-            -- Lua
             b.formatting.stylua,
-
-            -- cpp
             b.formatting.clang_format,
 
             b.formatting.shfmt.with({ filetypes = { "bash", "sh", "zsh" } }),
@@ -45,13 +59,15 @@ return {
 
             cspell.diagnostics,
             cspell.code_actions,
+
+            b.diagnostics.markdownlint,
         }
 
         null_ls.setup({
             debug = true,
             sources = sources,
             -- add package.json as identifier for root (for typescript monorepos)
-            -- root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
+            root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then
                     vim.api.nvim_clear_autocmds({

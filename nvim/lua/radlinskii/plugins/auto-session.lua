@@ -20,8 +20,8 @@ return {
                 previewer = false,
             },
             pre_save_cmds = {
-                "lua require('radlinskii.utils').close_all_floating_wins()",
-                "lua require('radlinskii.utils').close_all_nvim_tree_buffers()",
+                "lua require('radlinskii.utils.window').close_all_floating_wins()",
+                "lua require('radlinskii.utils.window').close_all_nvim_tree_buffers()",
             },
         })
 
