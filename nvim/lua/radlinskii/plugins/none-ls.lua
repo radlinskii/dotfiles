@@ -25,24 +25,8 @@ return {
 
         local sources = {
             -- webdev stuff
-            b.formatting.eslint.with({
-                filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact", "jsx", "tsx" },
-            }),
-            b.formatting.prettier.with({
-                filetypes = {
-                    "css",
-                    "scss",
-                    "less",
-                    "html",
-                    "json",
-                    "jsonc",
-                    "yaml",
-                    "markdown",
-                    "markdown.mdx",
-                    "graphql",
-                    "handlebars",
-                },
-            }),
+            b.formatting.eslint,
+            b.formatting.prettier,
 
             b.formatting.stylua,
             b.formatting.clang_format,
