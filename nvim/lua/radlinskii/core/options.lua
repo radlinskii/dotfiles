@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.laststatus = 3 -- global statusline
+opt.laststatus = 3
 opt.showmode = false
 
 opt.clipboard = "unnamedplus"
@@ -11,7 +11,7 @@ opt.expandtab = true
 opt.smartindent = true
 opt.tabstop = 4
 opt.softtabstop = 4
-vim.shiftwidth = 4 -- no opt?
+opt.shiftwidth = 4
 
 opt.fillchars = { eob = " ", diff = "⣿" }
 
@@ -19,14 +19,14 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
 
-vim.o.scrolloff = 8 -- no opt?
+opt.scrolloff = 99999
 opt.colorcolumn = "80"
 
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
 opt.nu = true
-vim.wo.relativenumber = true -- what's wo?
+opt.relativenumber = true
 opt.ruler = false
 
 -- disable nvim intro
