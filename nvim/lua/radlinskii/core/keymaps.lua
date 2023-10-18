@@ -36,10 +36,10 @@ keymap.set({ "n", "x", "o" }, "i", "l", { silent = true, noremap = true, desc = 
 keymap.set(
     { "n", "x", "o" },
     "N",
-    "H",
-    { silent = true, noremap = true, desc = "Jump to beginning of the visible screen" }
+    "<C-i>",
+    { silent = true, noremap = true, desc = "Go to previous jump from the jumplist" }
 )
-keymap.set({ "n", "x", "o" }, "I", "L", { silent = true, noremap = true, desc = "Jump to end of the visible screen" })
+keymap.set({ "n", "x", "o" }, "I", "L", { silent = true, noremap = true, desc = "Go to next jump from the jumplist" })
 keymap.set({ "n", "x", "o" }, "h", "i", { silent = true, noremap = true, desc = "Insert mode in place" })
 keymap.set(
     { "n", "x", "o" },
@@ -181,6 +181,14 @@ keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increas
 keymap.set({ "x" }, "<", "<gv", { silent = true, noremap = true, desc = "Increase indent" })
 keymap.set({ "x" }, "E", ":m '>+1<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines up" })
 keymap.set({ "x" }, "U", ":m '<-2<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines down" })
+-- Don't copy the replaced text after pasting in visual mode
+-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+keymap.set(
+    { "x" },
+    "p",
+    'p:let @+=@0<CR>:let @"=@0<CR>',
+    { desc = "Don't copy replaced text", silent = true, noremap = true }
+)
 keymap.set(
     "x",
     "<leader>rs",
@@ -208,12 +216,3 @@ keymap.set({ "n" }, "<leader>b", "<cmd> enew <CR>", { desc = "New buffer", silen
 keymap.set({ "n" }, "<leader>lf", function()
     vim.lsp.buf.format({ async = true })
 end, { desc = "LSP formatting", silent = true, noremap = true })
-
--- Don't copy the replaced text after pasting in visual mode
--- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-keymap.set(
-    { "n" },
-    "p",
-    'p:let @+=@0<CR>:let @"=@0<CR>',
-    { desc = "Don't copy replaced text", silent = true, noremap = true }
-)

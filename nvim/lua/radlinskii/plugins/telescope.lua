@@ -59,10 +59,10 @@ return {
                     i = {
                         ["<C-l>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
-                        ["<Tab>"] = actions.move_selection_next,
-                        ["<S-Tab>"] = actions.move_selection_previous,
-                        ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
-                        ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
+                        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+                        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+                        ["<C-n>"] = actions.move_selection_next,
+                        ["<C-p>"] = actions.move_selection_previous,
                         ["<C-h>"] = actions.select_horizontal,
                         ["<C-x>"] = require("telescope.actions").delete_buffer,
                         ["<C-g>"] = actions.complete_tag,
@@ -78,10 +78,10 @@ return {
                         ["N"] = actions.move_to_top,
                         ["M"] = actions.move_to_middle,
                         ["I"] = actions.move_to_bottom,
-                        ["<Tab>"] = actions.move_selection_next,
-                        ["<S-Tab>"] = actions.move_selection_previous,
-                        ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
-                        ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
+                        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+                        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+                        ["<C-n>"] = actions.move_selection_next,
+                        ["<C-p>"] = actions.move_selection_previous,
                     },
                 },
 
@@ -203,13 +203,13 @@ return {
         )
         keymap.set(
             { "n" },
-            "<Tab>",
+            "<C-p>",
             "<cmd> Telescope buffers <CR>",
             { desc = "Telescope buffers", silent = true, noremap = true }
         )
         keymap.set(
             { "n" },
-            "<S-Tab>",
+            "<C-n>",
             "<cmd> Telescope buffers <CR>",
             { desc = "Telescope buffers", silent = true, noremap = true }
         )
