@@ -213,6 +213,24 @@ keymap.set(
 keymap.set({ "n" }, "<C-s>", "<cmd> w <CR>", { desc = "Save file", silent = true, noremap = true })
 keymap.set({ "n" }, "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file", silent = true, noremap = true })
 keymap.set({ "n" }, "<leader>b", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
-keymap.set({ "n" }, "<leader>lf", function()
-    vim.lsp.buf.format({ async = true })
-end, { desc = "LSP formatting", silent = true, noremap = true })
+
+keymap.set(
+    "n",
+    "<leader>lo",
+    "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<CR>",
+    { desc = "Open floating diagnostics", silent = true, noremap = true }
+)
+
+keymap.set(
+    "n",
+    "[d",
+    "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' } })<CR>",
+    { desc = "Go to prev diagnostic", silent = true, noremap = true }
+)
+
+keymap.set(
+    "n",
+    "]d",
+    "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' } })<CR>",
+    { desc = "Go to next diagnostic", silent = true, noremap = true }
+)

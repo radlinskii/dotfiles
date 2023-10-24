@@ -1,5 +1,7 @@
 return {
     "nvimtools/none-ls.nvim",
+    enabled = true,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "davidmh/cspell.nvim",
         "jay-babu/mason-null-ls.nvim",
@@ -24,12 +26,10 @@ return {
         local b = null_ls.builtins
 
         local sources = {
-            -- webdev stuff
             b.formatting.eslint,
             b.formatting.prettier,
 
             b.formatting.stylua,
-            b.formatting.clang_format,
 
             b.formatting.shfmt.with({ filetypes = { "bash", "sh", "zsh" } }),
             b.diagnostics.shellcheck.with({

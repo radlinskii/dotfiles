@@ -11,8 +11,6 @@ return {
         -- import mason-lspconfig
         local mason_lspconfig = require("mason-lspconfig")
 
-        local mason_tool_installer = require("mason-tool-installer")
-
         -- enable mason and configure icons
         mason.setup({
             ui = {
@@ -32,17 +30,24 @@ return {
                 "cssls",
                 "lua_ls",
                 "marksman",
+                "jsonls",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
         })
 
+        --[[
+        --used by conform and nvim-lint, none-ls doesn't need it
+
+        local mason_tool_installer = require("mason-tool-installer")
         mason_tool_installer.setup({
             ensure_installed = {
                 "prettier", -- prettier formatter
                 "stylua", -- lua formatter
-                "eslint",
+                "eslint_d",
+                "cspell",
             },
         })
+        ]]
     end,
 }

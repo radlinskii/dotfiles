@@ -1,8 +1,5 @@
 local M = {}
 
--- import lspconfig plugin
-local lspconfig = require("lspconfig")
-
 -- import cmp-nvim-lsp plugin
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -40,19 +37,10 @@ M.on_attach = function(_, bufnr)
     keymap.set("n", "<leader>lm", vim.lsp.buf.rename, opts)
 
     opts.desc = "LSP formatting"
-    keymap.set("n", "<leader>lg", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+    keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
 
     opts.desc = "LSP references"
     keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-
-    opts.desc = "Floating diagnostic"
-    keymap.set("n", "<leader>lf", "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<CR>", opts)
-
-    opts.desc = "Go to prev diagnostic"
-    keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' } })<CR>", opts)
-
-    opts.desc = "Go to next diagnostic"
-    keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' } })<CR>", opts)
 
     opts.desc = "Diagnostic setloclist"
     keymap.set("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
