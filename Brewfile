@@ -30,9 +30,9 @@ brew "bat" # better cat
 # brew "cloc" # lines of code counter
 # brew "entr" # file watcher command runner
 # brew "exa" # ls alternative
-# brew "fd" # find alternative
+brew "fd" # find alternative
 # brew "fnm" # Fast Node version manager
-# brew "fzf" # Fuzzy file searcher, used in scripts and in vim
+brew "fzf" # Fuzzy file searcher, used in scripts and in vim
 brew "gh" # GitHub CLI
 brew "git" # Git version control (latest version)
 # brew "git-delta" # a better git diff
@@ -59,4 +59,4 @@ brew "z" # switch between most used directories
 brew "zsh" # zsh (latest)
 brew "shfmt"
 brew "shellcheck"
-
+brew "luarocks"

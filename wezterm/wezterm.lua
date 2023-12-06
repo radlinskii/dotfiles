@@ -70,7 +70,7 @@ config.colors = colors_for_appearance(get_appearance())
 config.window_frame = {
     font = wezterm.font({ family = "Roboto", weight = "Bold" }),
     font_size = 14.0,
-    active_titlebar_bg = "#22aa3f", -- not working as expected
+    active_titlebar_bg = "#007353", -- not working as expected
     inactive_titlebar_bg = "#44996f",
 }
 
