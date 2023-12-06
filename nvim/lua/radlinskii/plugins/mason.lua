@@ -30,13 +30,12 @@ return {
                 "cssls",
                 "lua_ls",
                 "marksman",
-                "jsonls",
+                -- "jsonls",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
         })
 
-        --[[
         --used by conform and nvim-lint, none-ls doesn't need it
 
         local mason_tool_installer = require("mason-tool-installer")
@@ -48,6 +47,5 @@ return {
                 "cspell",
             },
         })
-        ]]
     end,
 }

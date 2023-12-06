@@ -33,6 +33,7 @@ local function nvim_tree_on_attach(bufnr)
     vim.keymap.set("n", "U", api.node.navigate.sibling.first, opts("First Sibling"))
     vim.keymap.set("n", "u", "k", opts("Prev item"))
     vim.keymap.set("n", "e", "j", opts("Next item"))
+    vim.keymap.set("n", "gs", api.node.run.system, opts("Run system"))
 end
 
 return {

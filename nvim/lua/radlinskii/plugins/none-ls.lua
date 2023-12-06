@@ -1,9 +1,9 @@
 return {
     "nvimtools/none-ls.nvim",
-    enabled = true,
+    enabled = false,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "davidmh/cspell.nvim",
+        -- "davidmh/cspell.nvim",
         "jay-babu/mason-null-ls.nvim",
     },
     config = function()
@@ -18,7 +18,8 @@ return {
             },
         })
 
-        local cspell = require("cspell")
+        -- local cspell = require("cspell")
+
         local null_ls = require("null-ls")
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         local null_ls_utils = require("null-ls.utils")
@@ -41,8 +42,8 @@ return {
                 args = { "--format", "json1", "--source-path=$DIRNAME", "--shell=bash", "--external-sources", "-" },
             }),
 
-            cspell.diagnostics,
-            cspell.code_actions,
+            -- cspell.diagnostics,
+            -- cspell.code_actions,
 
             b.diagnostics.markdownlint,
         }
