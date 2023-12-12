@@ -13,5 +13,6 @@ return {
             ["<Left>"] = { "" },
             ["<Right>"] = { "" },
         },
+        disabled_filetypes = { "fugitive" },
     },
 }
