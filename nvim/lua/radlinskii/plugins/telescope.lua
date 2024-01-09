@@ -138,7 +138,7 @@ return {
         keymap.set(
             { "n" },
             "<leader>ff",
-            "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '-g', '!.git' }})<CR>",
+            "<cmd> lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '-g', '!.git/**', '--hidden' }}) <CR>",
             { desc = "Find files, including hidden files, but those in .git folder", silent = true, noremap = true }
         )
         keymap.set(

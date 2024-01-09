@@ -25,6 +25,9 @@ return {
                     { "fileformat" },
                     { "filetype" },
                 },
+                lualine_y = {
+                    -- "progress"
+                },
             },
         })
     end,

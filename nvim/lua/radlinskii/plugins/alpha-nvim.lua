@@ -38,13 +38,21 @@ return {
             dashboard.button(
                 "<Space>fo",
                 "󰙰    Local Recent Files ",
-                "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = true}) <CR>"
+                "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = true})<CR>"
             ),
-            dashboard.button("<Space>fO", "󰝉    Recent Files ", "<cmd>Telescope oldfiles <CR>"),
-            dashboard.button("<Space>ff", "    Find File ", "<cmd>Telescope find_files<CR>"),
-            dashboard.button("<Space>fw", "󰈭    Find Word ", "<cmd>Telescope live_grep<CR>"),
+            dashboard.button(
+                "<Space>fO",
+                "󰝉    Recent Files ",
+                "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = false})<CR>"
+            ),
+            dashboard.button(
+                "<Space>ff",
+                "    Find File ",
+                "<cmd>lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '-g', '!.git', '--hidden' }})<CR>"
+            ),
+            dashboard.button("<Space>fs", "󰈭    Find Word ", "<cmd>Telescope live_grep<CR>"),
             dashboard.button("<Space>fgs", "    Git Status", "<cmd>Telescope git_status<CR>"),
-            dashboard.button("<Space>fa", "    Bookmarks ", "<cmd>Telescope marks<CR>"),
+            dashboard.button("<Space>fm", "    Bookmarks ", "<cmd>Telescope marks<CR>"),
             dashboard.button("<Space>fh", "󰮥    Help ", "<cmd>Telescope help_tags<CR>"),
             dashboard.button("q", "✖    Quit", ":qa<cr>"),
         }
