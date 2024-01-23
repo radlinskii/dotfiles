@@ -53,8 +53,9 @@ return {
 
                     return {
                         IblIndent = { fg = theme.ui.bg_gutter },
-                        Substitute = { fg = theme.ui.bg, bg = theme.ui.fg },
+                        Substitute = { bg = theme.ui.fg, fg = theme.ui.bg },
                         LazyNormal = { bg = theme.ui.bg, fg = theme.ui.fg },
+                        FlashLabel = { bg = "#ad33ad", fg = "#22dd22" },
                     }
                 end,
                 theme = "wave", -- Load "wave" theme when 'background' option is not set
