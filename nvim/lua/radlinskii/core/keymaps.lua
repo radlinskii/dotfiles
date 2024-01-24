@@ -168,6 +168,10 @@ keymap.set(
     { silent = true, noremap = true, desc = "Scroll a whole window down and move cursor to the center" }
 )
 
+-- use something different than tilde for swapping character case because of tilde being a dead key on windows
+keymap.set({ "n", "x", "o" }, "gk", "~", { silent = true, noremap = true, desc = "Swap case of next character" })
+keymap.set({ "n", "x", "o" }, "gK", "g~", { silent = true, noremap = true, desc = "Swap case of text object" })
+
 -- terminal
 keymap.set(
     { "t" },
@@ -181,6 +185,7 @@ keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increas
 keymap.set({ "x" }, "<", "<gv", { silent = true, noremap = true, desc = "Increase indent" })
 keymap.set({ "x" }, "E", ":m '>+1<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines up" })
 keymap.set({ "x" }, "U", ":m '<-2<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines down" })
+
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 keymap.set(
@@ -189,11 +194,12 @@ keymap.set(
     'p:let @+=@0<CR>:let @"=@0<CR>',
     { desc = "Don't copy replaced text", silent = true, noremap = true }
 )
+
 keymap.set(
-    "x",
+    { "x" },
     "<leader>rs",
     [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { noremap = true, desc = "Substitute current word" }
+    { noremap = true, desc = "Substitute current word inside the selection" }
 )
 
 --insert
