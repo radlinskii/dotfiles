@@ -38,7 +38,7 @@ return {
             dashboard.button(
                 "<Space>fo",
                 "󰙰    Local Recent Files ",
-                "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = true})<CR>"
+                "<cmd>lua require('telescope.builtin').oldfiles({only_cwd = true})<CR>"
             ),
             dashboard.button(
                 "<Space>fO",
