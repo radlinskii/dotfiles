@@ -8,7 +8,11 @@ return {
             if fugitive_buf_no >= 0 and buf_win_id >= 0 then
                 vim.api.nvim_win_close(buf_win_id, false)
             else
-                vim.cmd(":vert G")
+                if vim.o.lines > 60 then
+                    vim.cmd(":G")
+                else
+                    vim.cmd(":vert G")
+                end
             end
         end, { desc = "Toggle fugitive", noremap = true, silent = true })
     end,
