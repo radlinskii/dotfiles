@@ -36,14 +36,14 @@ return {
 
         dashboard.section.buttons.val = {
             dashboard.button(
-                "<Space>fo",
-                "󰙰    Local Recent Files ",
-                "<cmd>lua require('telescope.builtin').oldfiles({only_cwd = true})<CR>"
-            ),
-            dashboard.button(
                 "<Space>fO",
                 "󰝉    Recent Files ",
                 "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = false})<CR>"
+            ),
+            dashboard.button(
+                "<Space>fo",
+                "󰙰    Local Recent Files ",
+                "<cmd>lua require('telescope.builtin').oldfiles({only_cwd = true})<CR>"
             ),
             dashboard.button(
                 "<Space>ff",

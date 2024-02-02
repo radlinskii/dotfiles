@@ -11,4 +11,20 @@ return {
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
     },
+    config = function(_, opts)
+        local wk = require("which-key")
+
+        wk.register({
+            ["<leader>r"] = {
+                name = "Refactoring",
+            },
+        })
+        wk.register({
+            ["<leader>n"] = {
+                name = "No hightlighs",
+            },
+        })
+
+        wk.setup(opts)
+    end,
 }

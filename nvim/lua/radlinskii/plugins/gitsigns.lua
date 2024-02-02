@@ -76,6 +76,7 @@ end
 
 return {
     "lewis6991/gitsigns.nvim",
+    dependencies = { "folke/which-key.nvim" },
     ft = { "gitcommit", "diff" },
     init = function()
         -- load gitsigns only when a git file is opened
@@ -91,6 +92,15 @@ return {
                 end
             end,
         })
+    end,
+    config = function(_, opts)
+        local wk = require("which-key")
+        wk.register({
+            ["<leader>c"] = {
+                name = "Gitsigns",
+            },
+        })
+        require("gitsigns").setup(opts)
     end,
     opts = {
         on_attach = on_attach,

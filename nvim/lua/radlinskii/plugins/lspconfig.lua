@@ -4,9 +4,17 @@ return {
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
+        "folke/which-key.nvim",
     },
     config = function()
         local lspconfig = require("lspconfig")
+
+        local wk = require("which-key")
+        wk.register({
+            ["<leader>l"] = {
+                name = "LSP",
+            },
+        })
 
         local on_attach = require("radlinskii.utils.lsp").on_attach
         local capabilities = require("radlinskii.utils.lsp").capabilities

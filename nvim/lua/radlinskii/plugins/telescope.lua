@@ -4,6 +4,7 @@ return {
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
+        "folke/which-key.nvim",
     },
     config = function()
         local telescope = require("telescope")
@@ -107,6 +108,23 @@ return {
 
         -- set keymaps
         local keymap = vim.keymap -- for conciseness
+
+        local wk = require("which-key")
+        wk.register({
+            ["<leader>f"] = {
+                name = "Telescope",
+            },
+        })
+        wk.register({
+            ["<leader>fg"] = {
+                name = "Telescope Git",
+            },
+        })
+        wk.register({
+            ["<leader>fl"] = {
+                name = "Telescope LSP",
+            },
+        })
 
         keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 

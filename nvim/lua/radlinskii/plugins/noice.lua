@@ -36,9 +36,17 @@ return {
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
+        "folke/which-key.nvim",
     },
     config = function(_, opts)
         require("noice").setup(opts)
+
+        local wk = require("which-key")
+        wk.register({
+            ["<leader>n"] = {
+                name = "No Hightlighs / No Notifications",
+            },
+        })
 
         vim.keymap.set("n", "<leader>nn", function()
             require("noice").cmd("dismiss")

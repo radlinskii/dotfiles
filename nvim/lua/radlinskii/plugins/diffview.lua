@@ -1,22 +1,35 @@
 return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggle", "DiffviewFileHistory" },
+    dependencies = { "folke/which-key.nvim" },
     init = function()
+        local wk = require("which-key")
+        wk.register({
+            ["<leader>d"] = {
+                name = "Diffview/Debugger",
+            },
+        })
+        wk.register({
+            ["<leader>df"] = {
+                name = "Diffview",
+            },
+        })
+
         vim.keymap.set(
             "n",
-            "<leader>dc",
+            "<leader>dfc",
             "<cmd>DiffviewClose<CR>",
             { desc = "Close Diffview", noremap = true, silent = true }
         )
         vim.keymap.set(
             "n",
-            "<leader>do",
+            "<leader>dfo",
             "<cmd>DiffviewOpen<CR>",
             { desc = "Open Diffview", noremap = true, silent = true }
         )
         vim.keymap.set(
             "n",
-            "<leader>dh",
+            "<leader>dfh",
             "<cmd>DiffviewFileHistory %<CR>",
             { desc = "Open file history Diffview", noremap = true, silent = true }
         )
