@@ -208,7 +208,13 @@ keymap.set({ "i" }, "<C-f>", "<End>", { silent = true, noremap = true, desc = "E
 keymap.set({ "i" }, "<C-l>", "<C-f>", { silent = true, noremap = true, desc = "Reindent line" })
 
 -- normal
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights", silent = true, noremap = true })
+keymap.set("n", "<leader>nh", "<cmd> nohl <CR>", { desc = "Clear search highlights", silent = true, noremap = true })
+keymap.set(
+    "n",
+    "<leader>nw",
+    "<cmd> only <CR>",
+    { desc = "Close other windows than the current one", silent = true, noremap = true }
+)
 keymap.set(
     "n",
     "<leader>rs",

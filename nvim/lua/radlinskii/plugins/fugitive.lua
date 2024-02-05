@@ -8,7 +8,7 @@ return {
             if fugitive_buf_no >= 0 and buf_win_id >= 0 then
                 vim.api.nvim_win_close(buf_win_id, false)
             else
-                if vim.o.lines > 60 then
+                if vim.o.lines > 75 then
                     vim.cmd(":G")
                 else
                     vim.cmd(":vert G")

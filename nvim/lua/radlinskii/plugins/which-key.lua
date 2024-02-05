@@ -21,7 +21,7 @@ return {
         })
         wk.register({
             ["<leader>n"] = {
-                name = "No hightlighs",
+                name = "No!",
             },
         })
 
