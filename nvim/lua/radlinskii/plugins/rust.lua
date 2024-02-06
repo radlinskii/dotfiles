@@ -2,7 +2,7 @@ return {
     {
         "simrat39/rust-tools.nvim",
         ft = "rust",
-        dependencies = "neovim/nvim-lspconfig",
+        dependencies = { "neovim/nvim-lspconfig", "folke/which-key.nvim" },
         opts = function()
             local on_attach = require("radlinskii.utils.lsp").on_attach
             local capabilities = require("radlinskii.utils.lsp").capabilities

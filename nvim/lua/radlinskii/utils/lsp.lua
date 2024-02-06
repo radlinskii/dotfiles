@@ -2,12 +2,12 @@ local M = {}
 
 -- import cmp-nvim-lsp plugin
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local wk = require("which-key")
 
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 
 M.on_attach = function(_, bufnr)
+    local wk = require("which-key")
     opts.buffer = bufnr
 
     -- set keybinds
@@ -50,7 +50,7 @@ M.on_attach = function(_, bufnr)
         ["<leader>lw"] = {
             name = "LSP Workspace",
         },
-    })
+    }, { buffer = bufnr })
 
     opts.desc = "LSP Add workspace folder"
     keymap.set("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
@@ -72,7 +72,8 @@ M.on_attach = function(_, bufnr)
         ["<leader>fl"] = {
             name = "Telescope LSP",
         },
-    })
+    }, { buffer = bufnr })
+
     -- not changed
     opts.desc = "Show Telescope LSP references"
     keymap.set("n", "<leader>flr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references

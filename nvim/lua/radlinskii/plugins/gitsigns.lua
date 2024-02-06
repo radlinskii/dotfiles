@@ -3,6 +3,13 @@ local function on_attach(bufnr)
         return { desc = "GitSigns: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
 
+    local wk = require("which-key")
+    wk.register({
+        ["<leader>c"] = {
+            name = "Gitsigns",
+        },
+    }, { buffer = bufnr })
+
     -- Define the mappings for Normal mode
     vim.keymap.set("n", "]c", function()
         if vim.wo.diff then
@@ -94,12 +101,6 @@ return {
         })
     end,
     config = function(_, opts)
-        local wk = require("which-key")
-        wk.register({
-            ["<leader>c"] = {
-                name = "Gitsigns",
-            },
-        })
         require("gitsigns").setup(opts)
     end,
     opts = {

@@ -120,11 +120,6 @@ return {
                 name = "Telescope Git",
             },
         })
-        wk.register({
-            ["<leader>fl"] = {
-                name = "Telescope LSP",
-            },
-        })
 
         keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 
