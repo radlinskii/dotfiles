@@ -45,6 +45,7 @@ return {
                 "stylua", -- lua formatter
                 "eslint_d",
                 "cspell",
+                "markdownlint",
             },
         })
     end,
