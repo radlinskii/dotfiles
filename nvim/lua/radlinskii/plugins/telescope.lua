@@ -5,6 +5,7 @@ return {
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
         "folke/which-key.nvim",
+        "nvim-telescope/telescope-live-grep-args.nvim",
     },
     config = function()
         local telescope = require("telescope")
@@ -86,7 +87,7 @@ return {
                     },
                 },
 
-                extensions_list = { "themes", "terms", "fzf" },
+                extensions_list = { "themes", "terms", "fzf", "live_grep_args" },
                 extensions = {
                     fzf = {
                         fuzzy = true,
@@ -105,6 +106,7 @@ return {
         })
 
         telescope.load_extension("fzf")
+        telescope.load_extension("live_grep_args")
 
         -- set keymaps
         local keymap = vim.keymap -- for conciseness
@@ -121,8 +123,13 @@ return {
             },
         })
 
-        keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-
+        keymap.set(
+            { "n" },
+            "<leader>fc",
+            "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor() <CR>",
+            { desc = "Find string under cursor in cwd with args", silent = true, noremap = true }
+        )
+        keymap.set("n", "<leader>fC", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
         keymap.set(
             { "n" },
             "<leader>fa",
@@ -144,10 +151,15 @@ return {
         keymap.set(
             { "n" },
             "<leader>fs",
+            "<cmd> Telescope live_grep_args <CR>",
+            { silent = true, noremap = true, desc = "Live grep with args" }
+        )
+        keymap.set(
+            { "n" },
+            "<leader>fS",
             "<cmd> Telescope live_grep <CR>",
             { silent = true, noremap = true, desc = "Live grep" }
         )
-
         keymap.set(
             { "n" },
             "<leader>ff",
@@ -156,13 +168,13 @@ return {
         )
         keymap.set(
             { "n" },
-            "<leader>fo",
+            "<leader>fO",
             "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = true}) <CR>",
             { desc = "Find oldfiles from CWD", silent = true, noremap = true }
         )
         keymap.set(
             { "n" },
-            "<leader>fO",
+            "<leader>fo",
             "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = false}) <CR>",
             { desc = "Find global vim oldfiles", silent = true, noremap = true }
         )
@@ -225,6 +237,12 @@ return {
             "<C-n>",
             "<cmd> Telescope buffers <CR>",
             { desc = "Telescope buffers", silent = true, noremap = true }
+        )
+        keymap.set(
+            { "x" },
+            "<leader>fc",
+            "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_visual_selection() <CR>",
+            { desc = "Find selected string with args", silent = true, noremap = true }
         )
     end,
 }

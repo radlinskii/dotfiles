@@ -76,19 +76,22 @@ M.on_attach = function(_, bufnr)
 
     -- not changed
     opts.desc = "Show Telescope LSP references"
-    keymap.set("n", "<leader>flr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+    keymap.set("n", "<leader>flr", "<cmd>Telescope lsp_references<CR>", opts)
+
+    opts.desc = "Show Telescope LSP document symbols"
+    keymap.set("n", "<leader>fls", "<cmd>Telescope lsp_document_symbols<CR>", opts)
 
     opts.desc = "Show Telescope LSP definitions"
-    keymap.set("n", "<leader>fld", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+    keymap.set("n", "<leader>fld", "<cmd>Telescope lsp_definitions<CR>", opts)
 
     opts.desc = "Show Telescope LSP implementations"
-    keymap.set("n", "<leader>fli", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+    keymap.set("n", "<leader>fli", "<cmd>Telescope lsp_implementations<CR>", opts)
 
     opts.desc = "Show Telescope LSP type definitions"
-    keymap.set("n", "<leader>flt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+    keymap.set("n", "<leader>flt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
     opts.desc = "Show Telescope buffer diagnostics"
-    keymap.set("n", "<leader>fld", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+    keymap.set("n", "<leader>fld", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
