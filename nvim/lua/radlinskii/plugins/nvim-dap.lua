@@ -53,6 +53,7 @@ return {
         end
     end,
     dependencies = {
+        { "nvim-neotest/nvim-nio" },
         {
 
             "mfussenegger/nvim-dap",
