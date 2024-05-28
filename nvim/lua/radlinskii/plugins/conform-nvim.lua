@@ -14,6 +14,7 @@ return {
                 css = { "prettier" },
                 html = { "prettier" },
                 json = { "prettier" },
+                json5 = { "prettier" },
                 yaml = { "prettier" },
                 markdown = { "prettier" },
                 graphql = { "prettier" },

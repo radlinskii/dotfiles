@@ -20,7 +20,7 @@ return {
         local capabilities = require("radlinskii.utils.lsp").capabilities
 
         -- if you just want default config for the servers then put them in a table
-        local servers = { "html", "cssls", "tsserver", "marksman", "jsonls" }
+        local servers = { "html", "cssls", "marksman", "jsonls" }
 
         for _, lsp in ipairs(servers) do
             lspconfig[lsp].setup({
@@ -35,6 +35,9 @@ return {
 
             settings = {
                 Lua = {
+                    hint = {
+                        enable = true,
+                    },
                     diagnostics = {
                         globals = { "vim" },
                     },
@@ -46,6 +49,38 @@ return {
                         },
                         maxPreload = 100000,
                         preloadFileSize = 10000,
+                    },
+                },
+            },
+        })
+
+        lspconfig.tsserver.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+
+            settings = {
+                javascript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    },
+                },
+                typescript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
                     },
                 },
             },

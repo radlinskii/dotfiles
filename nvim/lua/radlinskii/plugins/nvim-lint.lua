@@ -34,6 +34,7 @@ return {
             typescriptreact = { "eslint_d", "cspell" },
             markdown = { "markdownlint", "cspell" },
             json = { "cspell" },
+            json5 = { "cspell" },
             css = { "cspell" },
             ["*"] = { "cspell" },
             -- shellcheck

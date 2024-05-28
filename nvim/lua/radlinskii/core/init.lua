@@ -11,6 +11,9 @@ end
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
+-- inlay hints
+vim.lsp.inlay_hint.enable()
+
 if vim.g.neovide then
     vim.o.guifont = "CaskaydiaCove Nerd Font Mono"
 

@@ -22,6 +22,7 @@ return {
                     "--line-number",
                     "--column",
                     "--smart-case",
+                    -- "--sort=path",
                 },
                 prompt_prefix = "   ",
                 selection_caret = "  ",
