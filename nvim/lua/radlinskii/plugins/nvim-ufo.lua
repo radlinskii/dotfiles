@@ -75,7 +75,7 @@ return {
 
         vim.keymap.set("n", "zM", function()
             require("ufo").closeAllFolds()
-        end, { desc = "Open all folds", noremap = true, silent = true })
+        end, { desc = "Fold all folds", noremap = true, silent = true })
 
         vim.keymap.set("n", "[z", function()
             require("ufo").goPreviousStartFold()

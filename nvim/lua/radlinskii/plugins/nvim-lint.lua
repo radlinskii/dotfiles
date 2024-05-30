@@ -36,6 +36,7 @@ return {
             json = { "cspell" },
             json5 = { "cspell" },
             css = { "cspell" },
+            lua = { "cspell" },
             ["*"] = { "cspell" },
             -- shellcheck
         }
