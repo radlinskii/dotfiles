@@ -10,6 +10,7 @@ return {
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
+        local lga_actions = require("telescope-live-grep-args.actions")
 
         telescope.setup({
             defaults = {
@@ -68,7 +69,12 @@ return {
                         ["<C-p>"] = actions.move_selection_previous,
                         ["<C-h>"] = actions.select_horizontal,
                         ["<C-x>"] = require("telescope.actions").delete_buffer,
-                        ["<C-g>"] = actions.complete_tag,
+                        ["<C-t>"] = actions.complete_tag,
+                        -- live grep args
+                        ["<C-k>"] = lga_actions.quote_prompt(),
+                        ["<C-g>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                        -- freeze the current list and start a fuzzy search in the frozen list
+                        ["<C-f>"] = actions.to_fuzzy_refine,
                     },
                     n = {
                         ["q"] = require("telescope.actions").close,
