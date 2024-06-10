@@ -2,12 +2,12 @@ return {
     "hrsh7th/nvim-cmp",
     event = { "CmdLineEnter", "InsertEnter" },
     dependencies = {
-        "hrsh7th/cmp-buffer",           -- source for text in buffer
-        "hrsh7th/cmp-path",             -- source for file system paths
-        "L3MON4D3/LuaSnip",             -- snippet engine
-        "saadparwaiz1/cmp_luasnip",     -- for autocompletion
+        "hrsh7th/cmp-buffer", -- source for text in buffer
+        "hrsh7th/cmp-path", -- source for file system paths
+        "L3MON4D3/LuaSnip", -- snippet engine
+        "saadparwaiz1/cmp_luasnip", -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
-        "onsails/lspkind.nvim",         -- vs-code like pictograms
+        "onsails/lspkind.nvim", -- vs-code like pictograms
         "hrsh7th/cmp-cmdline",
     },
     config = function()
@@ -54,8 +54,9 @@ return {
                 ["<C-n>"] = cmp.mapping.select_next_item(), -- next suggestion
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                ["<C-S-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-                ["<C-e>"] = cmp.mapping.abort(),          -- close completion window
+                -- TODO: not working on windows terminal
+                -- ["<C-S-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+                ["<C-e>"] = cmp.mapping.abort(), -- close completion window
                 ["<CR>"] = cmp.mapping.confirm({
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
@@ -94,8 +95,8 @@ return {
                 { name = "nvim_lsp" },
                 { name = "luasnip" }, -- snippets
                 { name = "nvim_lua" },
-                { name = "buffer" },  -- text within current buffer
-                { name = "path" },    -- file system paths
+                { name = "buffer" }, -- text within current buffer
+                { name = "path" }, -- file system paths
                 { name = "crates" },
             }),
             -- configure lspkind for vs-code like pictograms in completion menu

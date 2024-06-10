@@ -9,25 +9,47 @@ return {
             },
         })
 
-        -- Lua
         vim.keymap.set("n", "<leader>xx", function()
-            require("trouble").toggle()
+            require("trouble").toggle("diagnostics")
         end, {
             desc = "Toggle trouble window",
             noremap = true,
             silent = true,
         })
-        vim.keymap.set("n", "<leader>xw", function()
-            require("trouble").toggle("workspace_diagnostics")
+        vim.keymap.set("n", "<leader>xX", function()
+            require("trouble").toggle({ mode = "diagnostics", focus = true })
         end, {
-            desc = "Toggle workspace diagnostics",
+            desc = "Toggle and focus trouble window",
             noremap = true,
             silent = true,
         })
-        vim.keymap.set("n", "<leader>xd", function()
-            require("trouble").toggle("document_diagnostics")
-        end, {
+        vim.keymap.set(
+            "n",
+            "<leader>xe",
+            "<cmd>Trouble diagnostics toggle filter.severity = vim.diagnostic.severity.ERROR<cr>",
+            {
+                desc = "Toggle only errors",
+                noremap = true,
+                silent = true,
+            }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>xE",
+            "<cmd>Trouble diagnostics toggle focus = true filter.severity = vim.diagnostic.severity.ERROR<cr>",
+            {
+                desc = "Toggle and focus only errors",
+                noremap = true,
+                silent = true,
+            }
+        )
+        vim.keymap.set("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf = 0<cr>", {
             desc = "Toggle current buffer diagnostics",
+            noremap = true,
+            silent = true,
+        })
+        vim.keymap.set("n", "<leader>xD", "<cmd>Trouble diagnostics toggle focus=true filter.buf = 0<cr>", {
+            desc = "Toggle and focus current buffer diagnostics",
             noremap = true,
             silent = true,
         })
@@ -42,13 +64,6 @@ return {
             require("trouble").toggle("loclist")
         end, {
             desc = "toggle loclist",
-            noremap = true,
-            silent = true,
-        })
-        vim.keymap.set("n", "<leader>xr", function()
-            require("trouble").toggle("lsp_references")
-        end, {
-            desc = "Toggle lsp references in Trouble",
             noremap = true,
             silent = true,
         })

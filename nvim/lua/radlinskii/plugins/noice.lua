@@ -44,7 +44,7 @@ return {
         local wk = require("which-key")
         wk.register({
             ["<leader>n"] = {
-                name = "No Hightlighs / No Notifications",
+                name = "No Highlights / No Notifications",
             },
         })
 
