@@ -11,11 +11,12 @@ return {
         local neogit = require("neogit")
 
         -- TODO:
-        -- 1. remove <tab> mapping
+        -- 1. zo/zc not working in status before "Toggle" isn't called at least once
         -- 2. refresh git_signs after staging/unstaging files
         -- 3. be able to delete branch with -D option
         -- 4. telescope config is somehow used when getting lists of e.g. branches "unsupported layout_config config for bottom_pane strategy flip_columns"
         -- 5. floating windows breaking
+        -- 6. not being able to remove a mapping is weird, at least error message should say this
 
         neogit.setup({
             filewatcher = {
@@ -67,7 +68,8 @@ return {
                     ["E"] = "UnstageStaged",
                     ["u"] = false,
                     ["U"] = false,
-                    -- ["<tab>"] = false,
+                    ["<tab>"] = false,
+                    ["="] = "Toggle",
                 },
             },
         })
