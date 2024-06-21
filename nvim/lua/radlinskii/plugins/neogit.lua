@@ -64,12 +64,15 @@ return {
             -- },
             mappings = {
                 status = {
-                    ["e"] = "Unstage",
-                    ["E"] = "UnstageStaged",
-                    ["u"] = false,
                     ["U"] = false,
-                    ["<tab>"] = false,
-                    ["="] = "Toggle",
+                    ["k"] = false,
+                    ["u"] = "MoveUp",
+                    ["j"] = false,
+                    ["e"] = "MoveDown",
+                    ["h"] = "Unstage",
+                    ["H"] = "UnstageStaged",
+                    ["<c-v>"] = false,
+                    ["<c-y>"] = "VSplitOpen",
                 },
             },
         })

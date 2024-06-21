@@ -37,7 +37,7 @@ return {
             json5 = { "cspell" },
             css = { "cspell" },
             lua = { "cspell" },
-            ["*"] = { "cspell" },
+            -- ["*"] = { "cspell" },
             -- shellcheck
         }
 
@@ -47,6 +47,7 @@ return {
             group = lint_augroup,
             callback = function()
                 lint.try_lint()
+                -- lint.try_lint("cspell")
             end,
         })
 
