@@ -6,8 +6,9 @@ local js_based_languages = {
 }
 
 local json5BuildScriptPath = "./install.sh"
+local isMac = vim.loop.os_uname().sysname == "Darwin"
 
-if vim.fn.has("win32") then
+if isMac ~= true then
     json5BuildScriptPath = "powershell ./install.ps1"
 end
 
@@ -16,7 +17,7 @@ local vscodeJSDebugBuildCommand =
     "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out"
 
 -- for windows use different commands for removal and moving
-if vim.fn.has("win32") then
+if isMac ~= true then
     -- run the same build command as for other os
     vscodeJSDebugBuildCommand = "npm install --legacy-peer-deps --no-save" .. " && npx gulp vsDebugServerBundle"
 
@@ -35,7 +36,7 @@ end
 
 return {
     "rcarriga/nvim-dap-ui",
-    event = "VeryLazy",
+    ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     config = function()
         local dap = require("dap")
         local dapui = require("dapui")
