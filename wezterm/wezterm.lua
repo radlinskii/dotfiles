@@ -74,7 +74,7 @@ config.window_frame = {
     inactive_titlebar_bg = "#44996f",
 }
 
-config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font("IosevkaTerm Nerd Font")
 config.font_size = 13.6
 
 config.leader = { key = "e", mods = "CMD", timeout_milliseconds = 1000 }
