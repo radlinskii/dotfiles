@@ -46,7 +46,7 @@ M.on_attach = function(_, bufnr)
     opts.desc = "Diagnostic setloclist"
     keymap.set("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
-    opts.desc = "LSP Inlay Hints"
+    opts.desc = "Toggle LSP Inlay Hints"
     keymap.set("n", "<leader>ln", "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
 
     wk.register({

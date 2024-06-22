@@ -211,6 +211,18 @@ keymap.set({ "i" }, "<C-l>", "<C-f>", { silent = true, noremap = true, desc = "R
 keymap.set("n", "<leader>nh", "<cmd> nohl <CR>", { desc = "Clear search highlights", silent = true, noremap = true })
 keymap.set(
     "n",
+    "<leader>ni",
+    "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+    { desc = "Toggle LSP Inlay Hints", silent = true, noremap = true }
+)
+keymap.set(
+    "n",
+    "<leader>nr",
+    "<CMD>set rnu! rnu?<CR>",
+    { desc = "Toggle between relative and absolute line numbers", silent = true, noremap = true }
+)
+keymap.set(
+    "n",
     "<leader>nw",
     "<cmd> only <CR>",
     { desc = "Close other windows than the current one", silent = true, noremap = true }
