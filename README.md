@@ -2,6 +2,8 @@
 
 This repo holds configuration files for tooling I use regularly while working on MacOS.
 
+> Neovim setup is also used on Windows.
+
 ## Usage
 
 1. be sure you have git installed
