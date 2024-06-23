@@ -141,5 +141,10 @@ export VIMCONFIG=~/.config/nvim
 
 CDPATH=CDPATH:$HOME:$HOME/Projects:..
 
+# Add the command to autostart tmux
+# if command -v tmux &> /dev/null && [[ -z "$TMUX" ]]; then
+#   tmux new-session -A -s main
+# fi
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

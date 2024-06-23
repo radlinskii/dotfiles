@@ -77,8 +77,37 @@ config.window_frame = {
 config.font = wezterm.font("IosevkaTerm Nerd Font")
 config.font_size = 13.6
 
-config.leader = { key = "e", mods = "CMD", timeout_milliseconds = 1000 }
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
+    -- Split horizontally
+    {
+        key = "v",
+        mods = "LEADER",
+        action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
+    },
+    -- Split vertically
+    { key = "h", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
+
+    -- Move focus
+    { key = "n", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+    { key = "i", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+    { key = "u", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+    { key = "e", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+    { key = "LeftArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+    { key = "RightArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+    { key = "UpArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+    { key = "DownArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+
+    -- Resize Pane
+    { key = "n", mods = "LEADER|ALT", action = wezterm.action({ AdjustPaneSize = { "Left", 10 } }) },
+    { key = "i", mods = "LEADER|ALT", action = wezterm.action({ AdjustPaneSize = { "Right", 10 } }) },
+    { key = "u", mods = "LEADER|ALT", action = wezterm.action({ AdjustPaneSize = { "Up", 10 } }) },
+    { key = "e", mods = "LEADER|ALT", action = wezterm.action({ AdjustPaneSize = { "Down", 10 } }) },
+    { key = "LeftArrow", mods = "LEADER|ALT", action = wezterm.action({ AdjustPaneSize = { "Left", 10 } }) },
+    { key = "RightArrow", mods = "LEADER|ALT", action = wezterm.action({ AdjustPaneSize = { "Right", 10 } }) },
+    { key = "UpArrow", mods = "LEADER|ALT", action = wezterm.action({ AdjustPaneSize = { "Up", 10 } }) },
+    { key = "DownArrow", mods = "LEADER|ALT", action = wezterm.action({ AdjustPaneSize = { "Down", 10 } }) },
+
     -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
     { key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) },
     -- Make Option-Right equivalent to Alt-f; forward-word
