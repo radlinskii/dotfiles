@@ -80,11 +80,7 @@ config.font_size = 13.6
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
     -- Split horizontally
-    {
-        key = "v",
-        mods = "LEADER",
-        action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
-    },
+    { key = "v", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
     -- Split vertically
     { key = "h", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 
@@ -113,16 +109,6 @@ config.keys = {
     -- Make Option-Right equivalent to Alt-f; forward-word
     { key = "RightArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bf" }) },
     { key = "Backspace", mods = "CMD", action = wezterm.action({ SendString = "\x15" }) },
-    {
-        key = "i",
-        mods = "CMD",
-        action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-    },
-    {
-        key = ".",
-        mods = "CMD",
-        action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-    },
     {
         key = "c",
         mods = "CMD|SHIFT",
