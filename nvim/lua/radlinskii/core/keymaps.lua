@@ -172,13 +172,6 @@ keymap.set(
 keymap.set({ "n", "x", "o" }, "gk", "~", { silent = true, noremap = true, desc = "Swap case of next character" })
 keymap.set({ "n", "x", "o" }, "gK", "g~", { silent = true, noremap = true, desc = "Swap case of text object" })
 
--- terminal
-keymap.set(
-    { "t" },
-    "<C-x>",
-    vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
-    { desc = "Escape terminal mode", silent = true, noremap = true }
-)
 
 -- visual/select
 keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increase indent" })

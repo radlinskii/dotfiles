@@ -1,21 +1,8 @@
 return {
     "akinsho/toggleterm.nvim",
     version = "*",
-    opts = {},
-    config = function(_, opts)
-        local status, toggleterm = pcall(require, "toggleterm")
-        if not status then
-            return
-        end
-
-        -- vim.cmd("let &shell = has('win32') ? 'pwsh': 'zsh'")
-        -- vim.cmd(
-        --     "let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'"
-        -- )
-        -- vim.cmd("let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'")
-        -- vim.cmd("let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'")
-        -- vim.cmd("set shellquote= shellxquote=")
-
+    config = function()
+        local toggleterm = require("toggleterm")
         local is_windows = vim.loop.os_uname().version:match("Windows")
 
         toggleterm.setup({
@@ -41,7 +28,7 @@ return {
             start_in_insert = true,
             insert_mappings = true,
             persist_size = true,
-            close_on_exit = false,
+            close_on_exit = true,
             direction = "float",
             float_opts = {
                 border = "curved",
@@ -58,13 +45,11 @@ return {
             },
         })
 
-        -- local Terminal = require("toggleterm.terminal").Terminal
-        -- local node = Terminal:new({ cmd = "node", hidden = true })
-        --
-        -- function RUN_NODE()
-        --     node:toggle()
-        -- end
-        --
-        -- vim.api.nvim_buf_set_keymap(0, "n", ";n", "<Cmd>lua RUN_NODE()<CR>", {})
+        function _G.set_terminal_keymaps()
+            local opts = { buffer = 0 }
+            vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+        end
+
+        vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
     end,
 }
