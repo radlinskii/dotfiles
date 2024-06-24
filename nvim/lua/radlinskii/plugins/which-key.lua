@@ -5,7 +5,7 @@ return {
         vim.o.timeout = true
         vim.o.timeoutlen = 300
     end,
-    keys = { "<leader>", "<c-r>", '"', "'", "`", "y", "d", "c", "v", "g", "z", "<c-w>", "[", "]" },
+    lazy = false,
     opts = {
         -- your configuration comes here
         -- or leave it empty to use the default settings

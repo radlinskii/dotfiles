@@ -3,13 +3,23 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim", -- required
         "sindrets/diffview.nvim", -- optional - Diff integration
+        "folke/which-key.nvim",
 
         -- Only one of these is needed, not both.
         "nvim-telescope/telescope.nvim", -- optional
     },
+    keys = { "<leader>g", desc = "Neogit" },
+    init = function()
+        local wk = require("which-key")
+
+        wk.register({
+            ["<leader>g"] = {
+                name = "Neogit",
+            },
+        })
+    end,
     config = function()
         local neogit = require("neogit")
-
         -- TODO:
         -- 1. zo/zc not working in status before "Toggle" isn't called at least once
         -- 2. refresh git_signs after staging/unstaging files

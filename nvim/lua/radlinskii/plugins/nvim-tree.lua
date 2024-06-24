@@ -23,6 +23,16 @@ end
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },
+    keys = { "<leader>e", desc = "Files Tree" },
+    init = function()
+        local wk = require("which-key")
+
+        wk.register({
+            ["<leader>e"] = {
+                name = "Files Tree",
+            },
+        })
+    end,
     config = function()
         local nvimtree = require("nvim-tree")
 
@@ -118,13 +128,6 @@ return {
         })
 
         local keymap = vim.keymap
-
-        local wk = require("which-key")
-        wk.register({
-            ["<leader>e"] = {
-                name = "Files Tree",
-            },
-        })
 
         keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
         keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file explorer" })

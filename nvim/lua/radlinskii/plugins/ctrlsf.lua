@@ -1,15 +1,17 @@
 return {
     "dyng/ctrlsf.vim",
-    event = { "VeryLazy", "BufRead" },
+    keys = { "<leader>s", desc = "CtrlSF" },
     dependencies = { "folke/which-key.nvim" },
-    config = function()
+    init = function()
         local wk = require("which-key")
+
         wk.register({
             ["<leader>s"] = {
                 name = "CtrlSF Search",
             },
         })
-
+    end,
+    config = function()
         vim.keymap.set(
             "n",
             "<leader>sf",

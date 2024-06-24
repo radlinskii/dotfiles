@@ -4,6 +4,7 @@ return {
     dependencies = { "folke/which-key.nvim" },
     init = function()
         local wk = require("which-key")
+
         wk.register({
             ["<leader>d"] = {
                 name = "Diffview/Debugger",

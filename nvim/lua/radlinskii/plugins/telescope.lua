@@ -7,6 +7,22 @@ return {
         "folke/which-key.nvim",
         "nvim-telescope/telescope-live-grep-args.nvim",
     },
+    keys = { "<leader>f", desc = "Telescope" },
+    cmd = { "Telescope" },
+    init = function()
+        local wk = require("which-key")
+
+        wk.register({
+            ["<leader>f"] = {
+                name = "Telescope",
+            },
+        })
+        wk.register({
+            ["<leader>fg"] = {
+                name = "Telescope Git",
+            },
+        })
+    end,
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
@@ -115,137 +131,127 @@ return {
         telescope.load_extension("fzf")
         telescope.load_extension("live_grep_args")
 
-        -- set keymaps
-        local keymap = vim.keymap -- for conciseness
-
-        local wk = require("which-key")
-        wk.register({
-            ["<leader>f"] = {
-                name = "Telescope",
-            },
-        })
-        wk.register({
-            ["<leader>fg"] = {
-                name = "Telescope Git",
-            },
-        })
-
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fc",
             "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor() <CR>",
             { desc = "Find string under cursor in cwd with args", silent = true, noremap = true }
         )
-        keymap.set("n", "<leader>fC", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-        keymap.set(
+        vim.keymap.set(
+            "n",
+            "<leader>fC",
+            "<cmd>Telescope grep_string<cr>",
+            { desc = "Find string under cursor in cwd" }
+        )
+        vim.keymap.set(
             { "n" },
             "<leader>fa",
             "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
             { silent = true, noremap = true, desc = "Find all" }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fh",
             "<cmd> Telescope help_tags <CR>",
             { silent = true, noremap = true, desc = "Help page" }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fz",
             "<cmd> Telescope current_buffer_fuzzy_find <CR>",
             { silent = true, noremap = true, desc = "Find in current buffer" }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fs",
             "<cmd> Telescope live_grep_args <CR>",
             { silent = true, noremap = true, desc = "Live grep with args" }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fS",
             "<cmd> Telescope live_grep <CR>",
             { silent = true, noremap = true, desc = "Live grep" }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>ff",
             "<cmd> lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '-g', '!.git/**', '--hidden' }}) <CR>",
             { desc = "Find files, including hidden files, but those in .git folder", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
-            "<leader>fO",
+            "<leader>fo",
             "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = true}) <CR>",
             { desc = "Find oldfiles from CWD", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
-            "<leader>fo",
+            "<leader>fO",
             "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = false}) <CR>",
             { desc = "Find global vim oldfiles", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fr",
             "<cmd> Telescope lsp_references <CR>",
             { desc = "Find LSP references", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fp",
             "<cmd> Telescope diagnostics <CR>",
             { desc = "Open telescope diagnostics", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fm",
             "<cmd> Telescope marks <CR>",
             { desc = "Telescope bookmarks", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fgc",
             "<cmd> Telescope git_commits <CR>",
             { desc = "Git commits", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fgs",
             "<cmd> Telescope git_status <CR>",
             { desc = "Git status", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fgb",
             "<cmd> Telescope git_branches <CR>",
             { desc = "Git branches", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>fgz",
             "<cmd> Telescope git_stash <CR>",
             { desc = "Git stashes", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<leader>ft",
             "<cmd> Telescope terms <CR>",
             { desc = "Pick hidden term", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<C-p>",
             "<cmd> Telescope buffers <CR>",
             { desc = "Telescope buffers", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "n" },
             "<C-n>",
             "<cmd> Telescope buffers <CR>",
             { desc = "Telescope buffers", silent = true, noremap = true }
         )
-        keymap.set(
+        vim.keymap.set(
             { "x" },
             "<leader>fc",
             "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_visual_selection() <CR>",

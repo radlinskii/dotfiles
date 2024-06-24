@@ -3,7 +3,7 @@ require("radlinskii.core.options")
 require("radlinskii.core.autocmds")
 require("radlinskii.core.usercmds")
 
-local is_windows = require("radlinskii.utils.system").is_windows
+local is_windows = require("radlinskii.utils.system").is_windows()
 
 -- disable some default providers
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do

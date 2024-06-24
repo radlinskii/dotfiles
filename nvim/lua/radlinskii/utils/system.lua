@@ -1,7 +1,7 @@
-local is_windows = vim.loop.os_uname().version:match("Windows")
-
 local M = {
-    is_windows,
+    is_windows = function()
+        return vim.loop.os_uname().version:match("Windows")
+    end,
 }
 
 return M

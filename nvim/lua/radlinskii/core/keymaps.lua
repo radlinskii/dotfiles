@@ -229,7 +229,7 @@ keymap.set(
     "n",
     "<leader>nc",
     "<cmd> TSContextToggle <CR>",
-    { desc = "toggle Treesitter Context", silent = true, noremap = true }
+    { desc = "Toggle Treesitter Context", silent = true, noremap = true }
 )
 
 keymap.set({ "n" }, "<C-s>", "<cmd> w <CR>", { desc = "Save file", silent = true, noremap = true })

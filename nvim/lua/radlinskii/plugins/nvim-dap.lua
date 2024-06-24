@@ -1,4 +1,4 @@
-local is_windows = require("radlinskii.utils.system").is_windows
+local is_windows = require("radlinskii.utils.system").is_windows()
 
 local js_based_languages = {
     "typescript",
@@ -38,6 +38,20 @@ end
 return {
     "rcarriga/nvim-dap-ui",
     ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    init = function()
+        local wk = require("which-key")
+
+        wk.register({
+            ["<leader>d"] = {
+                name = "Diffview/Debugger",
+            },
+        })
+        wk.register({
+            ["<leader>db"] = {
+                name = "Debugger",
+            },
+        })
+    end,
     config = function()
         local dap = require("dap")
         local dapui = require("dapui")
@@ -128,18 +142,6 @@ return {
                         },
                     }
                 end
-
-                local wk = require("which-key")
-                wk.register({
-                    ["<leader>d"] = {
-                        name = "Diffview/Debugger",
-                    },
-                })
-                wk.register({
-                    ["<leader>db"] = {
-                        name = "Debugger",
-                    },
-                })
             end,
             keys = {
                 {

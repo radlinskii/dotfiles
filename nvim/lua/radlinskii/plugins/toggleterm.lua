@@ -1,5 +1,9 @@
 return {
     "ryanmsnyder/toggleterm-manager.nvim",
+    keys = {
+        { "<C-\\>", desc = "ToggleTerm" },
+        { "<leader>ft", desc = "ToggleTerm" },
+    },
     dependencies = {
         "folke/which-key.nvim",
         "nvim-telescope/telescope.nvim",
@@ -8,12 +12,12 @@ return {
             "akinsho/toggleterm.nvim",
             config = function()
                 local toggleterm = require("toggleterm")
-                local is_windows = require("radlinskii.utils.system").is_windows
+                local is_windows = require("radlinskii.utils.system").is_windows()
 
                 toggleterm.setup({
                     shell = function()
                         if is_windows then
-                            return "pwsh.exe"
+                            return "pwsh"
                         else
                             return vim.o.shell
                         end

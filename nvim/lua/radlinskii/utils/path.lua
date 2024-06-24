@@ -1,4 +1,4 @@
-local is_windows = require("radlinskii.utils.system").is_windows
+local is_windows = require("radlinskii.utils.system").is_windows()
 local path_separator = is_windows and "\\" or "/"
 
 ---@class PathUtils

@@ -3,10 +3,11 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
     },
-    lazy = true,
-    init = function()
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
         local path = require("radlinskii.utils.path")
-        local cspell = require("lint").linters.cspell
+        local lint = require("lint")
+        local cspell = lint.linters.cspell
 
         local config_file_name = ".cspell.json"
         local function find_json(cwd)
@@ -22,10 +23,6 @@ return {
 
         table.insert(cspell.args, "-c")
         table.insert(cspell.args, find_json(vim.fn.getcwd()))
-    end,
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-        local lint = require("lint")
 
         lint.linters_by_ft = {
             javascript = { "eslint_d", "cspell" },
