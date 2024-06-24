@@ -172,7 +172,6 @@ keymap.set(
 keymap.set({ "n", "x", "o" }, "gk", "~", { silent = true, noremap = true, desc = "Swap case of next character" })
 keymap.set({ "n", "x", "o" }, "gK", "g~", { silent = true, noremap = true, desc = "Swap case of text object" })
 
-
 -- visual/select
 keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increase indent" })
 keymap.set({ "x" }, "<", "<gv", { silent = true, noremap = true, desc = "Increase indent" })
@@ -225,6 +224,12 @@ keymap.set(
     "<leader>rs",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { noremap = true, desc = "Substitute current word" }
+)
+keymap.set(
+    "n",
+    "<leader>nc",
+    "<cmd> TSContextToggle <CR>",
+    { desc = "toggle Treesitter Context", silent = true, noremap = true }
 )
 
 keymap.set({ "n" }, "<C-s>", "<cmd> w <CR>", { desc = "Save file", silent = true, noremap = true })

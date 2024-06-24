@@ -1,6 +1,9 @@
 require("radlinskii.core.keymaps")
 require("radlinskii.core.options")
 require("radlinskii.core.autocmds")
+require("radlinskii.core.usercmds")
+
+local is_windows = require("radlinskii.utils.system").is_windows
 
 -- disable some default providers
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
@@ -8,14 +11,13 @@ for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
 end
 
 -- add binaries installed by mason.nvim to path
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
 -- inlay hints
 vim.lsp.inlay_hint.enable()
 
 if vim.g.neovide then
-    vim.o.guifont = "CaskaydiaCove Nerd Font Mono"
+    vim.o.guifont = "IosevkaTerm Nerd Font Propo"
 
     -- Helper function for transparency formatting
     -- local alpha = function()

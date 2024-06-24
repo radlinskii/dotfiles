@@ -1,3 +1,5 @@
+local is_windows = require("radlinskii.utils.system").is_windows
+
 local js_based_languages = {
     "typescript",
     "javascript",
@@ -6,9 +8,8 @@ local js_based_languages = {
 }
 
 local json5BuildScriptPath = "./install.sh"
-local isMac = vim.loop.os_uname().sysname == "Darwin"
 
-if isMac ~= true then
+if is_windows then
     json5BuildScriptPath = "powershell ./install.ps1"
 end
 
@@ -17,7 +18,7 @@ local vscodeJSDebugBuildCommand =
     "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out"
 
 -- for windows use different commands for removal and moving
-if isMac ~= true then
+if is_windows then
     -- run the same build command as for other os
     vscodeJSDebugBuildCommand = "npm install --legacy-peer-deps --no-save" .. " && npx gulp vsDebugServerBundle"
 

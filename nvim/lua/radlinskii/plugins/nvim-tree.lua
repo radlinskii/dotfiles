@@ -16,6 +16,8 @@ local function nvim_tree_on_attach(bufnr)
     vim.keymap.set("n", "u", "k", opts("Prev item"))
     vim.keymap.set("n", "e", "j", opts("Next item"))
     vim.keymap.set("n", "gs", api.node.run.system, opts("Run system"))
+
+    vim.keymap.del("n", "s", { buffer = bufnr })
 end
 
 return {

@@ -8,7 +8,7 @@ return {
             "akinsho/toggleterm.nvim",
             config = function()
                 local toggleterm = require("toggleterm")
-                local is_windows = vim.loop.os_uname().version:match("Windows")
+                local is_windows = require("radlinskii.utils.system").is_windows
 
                 toggleterm.setup({
                     shell = function()
@@ -61,7 +61,12 @@ return {
     config = function(_, opts)
         local toggletermManager = require("toggleterm-manager")
 
-        toggletermManager.setup(opts)
+        toggletermManager.setup({
+            mappings = {
+                i = { ["<C-x>"] = { action = toggletermManager.actions.delete_term, exit_on_action = false } },
+                n = { ["<x>"] = { action = toggletermManager.actions.delete_term, exit_on_action = false } },
+            },
+        })
 
         vim.keymap.set("n", "<leader>ft", "<cmd>Telescope toggleterm_manager<cr>", {
             desc = "Toggle trouble window",
