@@ -231,6 +231,17 @@ keymap.set(
     "<cmd> TSContextToggle <CR>",
     { desc = "Toggle Treesitter Context", silent = true, noremap = true }
 )
+keymap.set("n", "<leader>no", function()
+    local currentScrolloff = vim.o.scrolloff
+
+    if currentScrolloff == 1 then
+        -- the same as in radlinskii/core/options.lua
+        vim.o.scrolloff = 99999
+    else
+        vim.o.scrolloff = 1
+    end
+end, { desc = "Toggle scrolloff", silent = true, noremap = true })
+
 keymap.set(
     "n",
     "<leader>rs",
