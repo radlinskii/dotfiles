@@ -37,7 +37,7 @@ return {
         dashboard.section.buttons.val = {
             dashboard.button(
                 "<Space>fo",
-                "󰙰    Local Recent Files (not working on windows)",
+                "󰙰    Local Recent Files",
                 "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = true})<CR>"
             ),
             dashboard.button(
