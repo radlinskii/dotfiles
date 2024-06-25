@@ -1,6 +1,16 @@
 return {
     "dyng/ctrlsf.vim",
-    keys = { "<leader>s", desc = "CtrlSF" },
+    keys = { { "<leader>s", desc = "CtrlSF", mode = { "n", "x" } } },
+    cmd = {
+        "CtrlSF",
+        "CtrlSFOpen",
+        "CtrlSFPrompt",
+        "CtrlSFToggle",
+        "CtrlSFCwordPath",
+        "CtrlSFPwordPath",
+        "CtrlSFVwordPath",
+        "CtrlSFCCwordPath",
+    },
     dependencies = { "folke/which-key.nvim" },
     init = function()
         local wk = require("which-key")
@@ -12,6 +22,10 @@ return {
         })
     end,
     config = function()
+        -- pass path as 3rd argument,
+        -- e.g. :CtrlSF desc **/core
+        -- https://github.com/dyng/ctrlsf.vim/issues/313
+
         vim.keymap.set(
             "n",
             "<leader>sf",
@@ -39,7 +53,7 @@ return {
             "n",
             "<leader>so",
             ":CtrlSFOpen<cr>",
-            { desc = "Toggle CtrlSF window", noremap = true, silent = true }
+            { desc = "Open CtrlSF window", noremap = true, silent = true }
         )
         vim.keymap.set(
             "n",
