@@ -60,3 +60,5 @@ brew "zsh" # zsh (latest)
 brew "shfmt"
 brew "shellcheck"
 brew "luarocks"
+brew "lazygit"
+
