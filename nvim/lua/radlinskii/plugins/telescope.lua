@@ -22,6 +22,19 @@ return {
                 name = "Telescope Git",
             },
         })
+
+        vim.keymap.set(
+            { "n" },
+            "<C-p>",
+            "<cmd> Telescope buffers <CR>",
+            { desc = "Telescope buffers", silent = true, noremap = true }
+        )
+        vim.keymap.set(
+            { "n" },
+            "<C-n>",
+            "<cmd> Telescope buffers <CR>",
+            { desc = "Telescope buffers", silent = true, noremap = true }
+        )
     end,
     config = function()
         local telescope = require("telescope")
@@ -241,13 +254,7 @@ return {
         )
         vim.keymap.set(
             { "n" },
-            "<C-p>",
-            "<cmd> Telescope buffers <CR>",
-            { desc = "Telescope buffers", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<C-n>",
+            "<leader>fb",
             "<cmd> Telescope buffers <CR>",
             { desc = "Telescope buffers", silent = true, noremap = true }
         )
