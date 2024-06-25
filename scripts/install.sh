@@ -53,35 +53,50 @@ create_symlinks() {
     fi
 }
 
-echo "${Blue}Creating symlinks${NoColor}"
+function has_param() {
+    local terms="$1"
+    shift
 
-create_symlinks "wezterm" "$HOME/.config/wezterm"
+    for term in $terms; do
+        for arg; do
+            if [[ $arg == "$term" ]]; then
+                return 0
+            fi
+        done
+    done
 
-create_symlinks "less" "$HOME"
+    return 1
+}
 
-create_symlinks "zsh" "$HOME"
+if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
+    echo "${Blue}Creating symlinks${NoColor}"
 
-create_symlinks "git" "$HOME"
+    create_symlinks "wezterm" "$HOME/.config/wezterm"
+    create_symlinks "less" "$HOME"
+    create_symlinks "zsh" "$HOME"
+    create_symlinks "git" "$HOME"
+    create_symlinks "tmux" "$HOME"
+    create_symlinks "nvim" "$HOME/.config/nvim"
+fi
 
-create_symlinks "tmux" "$HOME"
+if has_param "-m --mac" "$@" || [[ $# -eq 0 ]]; then
+    echo "${Blue}Configuring macOS${NoColor}"
 
-create_symlinks "nvim" "$HOME/.config/nvim"
+    ./scripts/macos.sh
+fi
 
-echo "${Blue}Configuring macOS${NoColor}"
+if has_param "-b --brew" "$@" || [[ $# -eq 0 ]]; then
+    echo "${Blue}Setting up Homebrew${NoColor}"
 
-# setup macos defaults
-./scripts/macos.sh
+    ./scripts/brew.sh
+fi
 
-echo "${Blue}Setting up Homebrew${NoColor}"
-
-# setup Homebrew
-./scripts/brew.sh
-
-# install om-my-zsh
-if [[ ! -d "$ZSH" ]]; then
-    echo "${Blue}Installing oh-my-zsh${NoColor}"
-    sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-else
-    echo "${Blue}Omitting oh-my-zsh installation${NoColor}"
-    echo "$ZSH directory already exists"
+if has_param "-o --omz" "$@" || [[ $# -eq 0 ]]; then
+    if [[ ! -d "$ZSH" ]]; then
+        echo "${Blue}Installing oh-my-zsh${NoColor}"
+        sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+    else
+        echo "${Blue}Omitting oh-my-zsh installation${NoColor}"
+        echo "$ZSH directory already exists"
+    fi
 fi
