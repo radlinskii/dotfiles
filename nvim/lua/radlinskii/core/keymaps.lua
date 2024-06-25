@@ -216,20 +216,26 @@ keymap.set(
 keymap.set(
     "n",
     "<leader>nw",
-    "<cmd> only <CR>",
+    "<cmd>only<CR>",
     { desc = "Close other windows than the current one", silent = true, noremap = true }
 )
 keymap.set(
     "n",
-    "<leader>rs",
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { noremap = true, desc = "Substitute current word" }
+    "<leader>ns",
+    "<cmd>noautocmd w<CR>",
+    { desc = "Save buffer without running autocommands (autoformat)", silent = true, noremap = true }
 )
 keymap.set(
     "n",
     "<leader>nc",
     "<cmd> TSContextToggle <CR>",
     { desc = "Toggle Treesitter Context", silent = true, noremap = true }
+)
+keymap.set(
+    "n",
+    "<leader>rs",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { noremap = true, desc = "Substitute current word" }
 )
 
 keymap.set({ "n" }, "<C-s>", "<cmd> w <CR>", { desc = "Save file", silent = true, noremap = true })
