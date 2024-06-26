@@ -69,7 +69,8 @@ nvim ~/.local_zshrc.sh
 
 #### 6. [lazygit](https://github.com/jesseduffield/lazygit) setup within nvim using [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) might require [neovim-remote](https://github.com/mhinz/neovim-remote).
 
-On Windows setting up `nvr` might require `NVIM_LISTEN_ADDRESS` value could be `localhost:6789` as it is the default value that `nvr` tries to connect to.
+Setting up `nvr` might require assigning evironment variable `NVIM_LISTEN_ADDRESS`.
+Value could be `localhost:6789` as it is the default value that `nvr` tries to connect to.
 
 ## Acknowledgements
 
