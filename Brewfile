@@ -61,4 +61,5 @@ brew "shfmt"
 brew "shellcheck"
 brew "luarocks"
 brew "lazygit"
+brew "neovim-remote"
 

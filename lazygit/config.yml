@@ -1,14 +1,9 @@
 os:
-    # Windows specific
+    # dependent on neovim-remote https://github.com/mhinz/neovim-remote
     open: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTab {{filename}}<cr>'"
     edit: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTab {{filename}}<cr>'"
     editAtLine: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTabAtLine {{line}} {{filename}}<cr>'"
     openDir: "nvim --remote-tab {{dir}}"
-    # not sure if those still work
-    # editTemplate: "nvim {{filename}}"
-    # editAtLineTemplate: "nvim +{{line}} {{filename}}"
-    # editAtLineAndWaitTemplate: "nvim +{{line}} {{filename}}"
-    # openDirInEditorTemplate: "nvim {{dir}}"
 keybinding:
     universal:
         prevItem-alt: "u"
@@ -38,15 +33,6 @@ keybinding:
         viewGitFlowOptions: "I"
         setUpstream: "U"
 customCommands:
-    - key: "P"
-      prompts:
-          - type: "confirm"
-            title: "Are you sure you want to push the remote?"
-            initialValue: ""
-      command: git push
-      context: "global"
-      subprocess: true
-      description: "push to remote"
     - key: "p"
       prompts:
           - type: "confirm"
@@ -59,10 +45,10 @@ customCommands:
     - key: "<c-n>"
       prompts:
           - type: "confirm"
-            title: "Are you sure you want to push the remote without pre-push hook"
+            title: "Are you sure you want to push the remote without pre-push hook?"
             initialValue: ""
       command: git push --no-verify
-      description: "push to remote without pre-push hook?"
+      description: "push --no-verify"
       context: "global"
     - key: "<c-u>"
       prompts:

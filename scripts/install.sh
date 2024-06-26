@@ -77,6 +77,7 @@ if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
     create_symlinks "git" "$HOME"
     create_symlinks "tmux" "$HOME"
     create_symlinks "nvim" "$HOME/.config/nvim"
+    create_symlinks "lazygit" "$HOME/.config/lazygit"
 fi
 
 if has_param "-m --mac" "$@" || [[ $# -eq 0 ]]; then

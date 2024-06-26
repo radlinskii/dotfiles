@@ -7,17 +7,20 @@ return {
         "LazyGitFilter",
         "LazyGitFilterCurrentFile",
     },
-    -- optional for floating window border decoration
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
     keys = {
         { "<leader>g", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
     init = function()
-        vim.g.lazygit_floating_window_scaling_factor = 0.9 -- 1
+        local is_windows = require("radlinskii.utils.system").is_windows()
+
+        vim.g.lazygit_floating_window_scaling_factor = 1
         vim.g.lazygit_floating_window_use_plenary = 1
+
+        if is_windows == false then
+            vim.g.lazygit_config_file_path = "~/.config/lazygit/config.yml"
+        end
     end,
 }
