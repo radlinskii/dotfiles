@@ -1,0 +1,75 @@
+os:
+    # Windows specific
+    open: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTab {{filename}}<cr>'"
+    edit: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTab {{filename}}<cr>'"
+    editAtLine: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTabAtLine {{line}} {{filename}}<cr>'"
+    openDir: "nvim --remote-tab {{dir}}"
+    # not sure if those still work
+    # editTemplate: "nvim {{filename}}"
+    # editAtLineTemplate: "nvim +{{line}} {{filename}}"
+    # editAtLineAndWaitTemplate: "nvim +{{line}} {{filename}}"
+    # openDirInEditorTemplate: "nvim {{dir}}"
+keybinding:
+    universal:
+        prevItem-alt: "u"
+        nextItem-alt: "e"
+        prevBlock-alt: "n"
+        nextBlock-alt: "i"
+        nextMatch: "="
+        prevMatch: "-"
+        new: "k"
+        edit: "o"
+        openFile: "O"
+        scrollUpMain-alt1: "U"
+        scrollDownMain-alt1: "E"
+        scrollUpMain-alt2: "<c-y>"
+        scrollDownMain-alt2: "<c-e>"
+        undo: "l"
+        redo: "<c-r>"
+        diffingMenu: "M"
+        filteringMenu: "<c-f>"
+    files:
+        ignoreFile: "I"
+    commits:
+        moveDownCommit: "<c-e>"
+        moveUpCommit: "<c-u>"
+        startInteractiveRebase: "h"
+    branches:
+        viewGitFlowOptions: "I"
+        setUpstream: "U"
+customCommands:
+    - key: "P"
+      prompts:
+          - type: "confirm"
+            title: "Are you sure you want to push the remote?"
+            initialValue: ""
+      command: git push
+      context: "global"
+      subprocess: true
+      description: "push to remote"
+    - key: "p"
+      prompts:
+          - type: "confirm"
+            title: "Are you sure you want to pull without rebase?"
+            initialValue: ""
+      command: git pull
+      context: "global"
+      subprocess: true
+      description: "pull without rebase"
+    - key: "<c-n>"
+      prompts:
+          - type: "confirm"
+            title: "Are you sure you want to push the remote without pre-push hook"
+            initialValue: ""
+      command: git push --no-verify
+      description: "push to remote without pre-push hook?"
+      context: "global"
+    - key: "<c-u>"
+      prompts:
+          - type: "confirm"
+            title: "Are you sure you want to pull --rebase?"
+            initialValue: ""
+      command: git pull --rebase
+      description: "pull --rebase"
+      context: "global"
+      subprocess: true
