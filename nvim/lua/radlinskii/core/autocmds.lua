@@ -1,6 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 
--- don't list quickfix buffers
+-- Don't list quickfix buffers
 autocmd("FileType", {
     pattern = "qf",
     callback = function()
@@ -8,18 +8,19 @@ autocmd("FileType", {
     end,
 })
 
--- Auto resize panes when resizing nvim window
+-- Autoresize panes when resizing nvim window
 autocmd("VimResized", {
     pattern = "*",
     command = "tabdo wincmd =",
 })
 
--- open help windows as vertical splits by default
+-- Open help windows as vertical splits by default
 autocmd("FileType", {
     pattern = "help",
     command = ":wincmd L | :vert resize 84",
 })
 
+-- Autosave buffers when leaving them
 autocmd({ "BufLeave", "FocusLost" }, {
     pattern = { "*" },
     callback = function()

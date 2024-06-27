@@ -13,7 +13,7 @@ return {
         local function lightModeColorScheme()
             vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#79a4f5" })
             vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#a59Fc8" })
-            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#f49896" })
+            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#d47876" })
         end
         local function darkModeColorScheme()
             vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#4E699C" })
