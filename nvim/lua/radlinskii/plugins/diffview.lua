@@ -1,7 +1,7 @@
 return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggle", "DiffviewFileHistory" },
-    keys = { { "<leader>df", desc = "DiffView", mode = { "n" } } },
+    keys = { { "<leader>df", desc = "DiffView" } },
     dependencies = { "folke/which-key.nvim" },
     init = function()
         local wk = require("which-key")

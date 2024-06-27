@@ -1,6 +1,6 @@
 return {
     "dyng/ctrlsf.vim",
-    keys = { { "<leader>s", desc = "CtrlSF", mode = { "n", "x" } } },
+    keys = { { "<leader>s", desc = "+CtrlSF", mode = { "n", "x" } } },
     cmd = {
         "CtrlSF",
         "CtrlSFOpen",
@@ -12,16 +12,15 @@ return {
         "CtrlSFCCwordPath",
     },
     dependencies = { "folke/which-key.nvim" },
-    init = function()
+    config = function()
         local wk = require("which-key")
 
         wk.register({
             ["<leader>s"] = {
-                name = "CtrlSF Search",
+                name = "CtrlSF",
             },
         })
-    end,
-    config = function()
+
         -- pass path as 3rd argument,
         -- e.g. :CtrlSF desc **/core
         -- https://github.com/dyng/ctrlsf.vim/issues/313

@@ -1,8 +1,16 @@
 return {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },
-    keys = { { "<leader>x", desc = "Trouble" } },
+    keys = { { "<leader>x", desc = "+Trouble" } },
     config = function(_, opts)
+        local wk = require("which-key")
+
+        wk.register({
+            ["<leader>x"] = {
+                name = "+Trouble",
+            },
+        })
+
         vim.keymap.set("n", "<leader>xx", function()
             require("trouble").toggle("diagnostics")
         end, {

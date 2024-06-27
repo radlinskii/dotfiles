@@ -22,7 +22,7 @@ local git_ignored = setmetatable({}, {
 return {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },
-    keys = { { "<leader>o", "<cmd>Oil --float<cr>", desc = "Oil file explorer" } },
+    keys = { { "<leader>o", "<cmd>Oil --float<cr>", desc = "Open Oil directory explorer" } },
     opts = {
         default_file_explorer = true,
         delete_to_trash = true,
@@ -41,7 +41,7 @@ return {
                 desc = "Open the entry in a horizontal split",
             },
             ["<C-e>"] = "actions.close",
-            ["<C-c>"] = false,
+            -- ["q"] = "actions.close",
             ["<C-s>"] = {
                 callback = function()
                     vim.cmd("write")

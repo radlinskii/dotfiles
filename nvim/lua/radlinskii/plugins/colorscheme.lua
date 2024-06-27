@@ -55,6 +55,10 @@ return {
                         IblIndent = { fg = theme.ui.bg_gutter },
                         Substitute = { bg = theme.ui.fg, fg = theme.ui.bg },
                         LazyNormal = { bg = theme.ui.bg, fg = theme.ui.fg },
+                        NormalFloat = { bg = theme.ui.bg_p1, fg = theme.ui.fg },
+                        FloatBorder = { bg = theme.ui.bg_p1, fg = theme.ui.fg },
+                        WhichKeyBorder = { bg = theme.ui.bg_p2, fg = theme.ui.fg },
+                        WhichKeyFloat = { bg = theme.ui.bg_p2, fg = theme.ui.fg },
                         FlashLabel = { bg = "#ad33ad", fg = "#22dd22" },
                     }
                 end,

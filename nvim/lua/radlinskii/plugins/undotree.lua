@@ -1,15 +1,6 @@
 return {
     "mbbill/undotree",
-    keys = { { "<leader>u", desc = "UndoTree" } },
-    init = function()
-        local wk = require("which-key")
-
-        wk.register({
-            ["<leader>u"] = {
-                name = "UndoTree init",
-            },
-        })
-    end,
+    keys = { { "<leader>u", "<cmd> UndotreeToggle <CR>", desc = "Toggle UndoTree" } },
     config = function()
         local is_windows = require("radlinskii.utils.system").is_windows()
 
@@ -44,12 +35,5 @@ return {
             vim.keymap.set("n", "U", "<Nop>", opts)
             vim.keymap.set("n", "C", "<Nop>", opts)
         end
-
-        vim.keymap.set(
-            "n",
-            "<leader>u",
-            "<cmd> UndotreeToggle <CR>",
-            { desc = "Toggle Undotree", noremap = true, silent = true }
-        )
     end,
 }
