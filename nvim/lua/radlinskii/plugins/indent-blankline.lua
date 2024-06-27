@@ -1,6 +1,7 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPre" },
+    dependencies = { "hiphish/rainbow-delimiters.nvim" },
+    event = { "BufReadPre", "BufNewFile" },
     main = "ibl",
     config = function()
         local highlight = {
@@ -50,8 +51,8 @@ return {
             },
             scope = {
                 highlight = highlight,
-                show_start = false,
-                show_end = false,
+                show_start = true,
+                show_end = true,
             },
         })
 

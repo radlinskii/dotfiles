@@ -157,6 +157,18 @@ keymap.set(
 )
 keymap.set(
     { "n", "x" },
+    "<C-b>",
+    "<PageUp>zz",
+    { silent = true, noremap = true, desc = "Scroll a whole window up and move cursor to the center" }
+)
+keymap.set(
+    { "n", "x" },
+    "<C-f>",
+    "<PageDown>zz",
+    { silent = true, noremap = true, desc = "Scroll a whole window down and move cursor to the center" }
+)
+keymap.set(
+    { "n", "x" },
     "<PageUp>",
     "<PageUp>zz",
     { silent = true, noremap = true, desc = "Scroll a whole window up and move cursor to the center" }

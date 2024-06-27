@@ -46,3 +46,5 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
 opt.wrap = false
+
+opt.background = "light"

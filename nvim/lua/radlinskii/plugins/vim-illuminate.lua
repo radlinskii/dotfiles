@@ -1,7 +1,6 @@
 return {
     "RRethy/vim-illuminate",
-    event = "BufReadPre",
-    -- enabled = false,
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
         -- vim.cmd("hi IlluminatedWordText guibg=#5e4a3a gui=none")
         -- vim.cmd("hi IlluminatedWordRead guibg=#5e4a3a gui=none")

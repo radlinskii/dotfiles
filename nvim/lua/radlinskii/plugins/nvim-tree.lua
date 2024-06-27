@@ -16,6 +16,8 @@ local function nvim_tree_on_attach(bufnr)
     vim.keymap.set("n", "u", "k", opts("Prev item"))
     vim.keymap.set("n", "e", "j", opts("Next item"))
     vim.keymap.set("n", "gs", api.node.run.system, opts("Run system"))
+    vim.keymap.set("n", "<c-o>v", api.node.open.vertical, opts("Split vertical"))
+    vim.keymap.set("n", "<c-o>h", api.node.open.horizontal, opts("Split horizontal"))
 
     vim.keymap.del("n", "s", { buffer = bufnr })
 end
@@ -23,13 +25,13 @@ end
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },
-    keys = { "<leader>e", desc = "Files Tree" },
+    keys = { { "<leader>e", desc = "Files Tree" } },
     init = function()
         local wk = require("which-key")
 
         wk.register({
             ["<leader>e"] = {
-                name = "Files Tree",
+                name = "Files Tree init",
             },
         })
     end,

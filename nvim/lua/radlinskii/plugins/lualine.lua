@@ -1,6 +1,7 @@
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "folke/noice.nvim", "nvim-tree/nvim-web-devicons", "rebelot/kanagawa.nvim" },
+    event = { "VimEnter" },
     config = function()
         local lualine = require("lualine")
         local lazy_status = require("lazy.status") -- to configure lazy pending updates count

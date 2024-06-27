@@ -1,6 +1,15 @@
 return {
     "mbbill/undotree",
-    event = "BufReadPre",
+    keys = { { "<leader>u", desc = "UndoTree" } },
+    init = function()
+        local wk = require("which-key")
+
+        wk.register({
+            ["<leader>u"] = {
+                name = "UndoTree init",
+            },
+        })
+    end,
     config = function()
         local is_windows = require("radlinskii.utils.system").is_windows()
 

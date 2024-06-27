@@ -17,7 +17,7 @@ return {
             end,
         },
     },
-    event = "BufRead",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
         vim.opt.foldcolumn = "1"
         vim.opt.foldlevel = 99

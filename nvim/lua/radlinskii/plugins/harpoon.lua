@@ -1,16 +1,7 @@
 return {
     "ThePrimeagen/harpoon",
     dependencies = { "folke/which-key.nvim" },
-    keys = { "<leader>h", desc = "Harpoon" },
-    init = function()
-        local wk = require("which-key")
-
-        wk.register({
-            ["<leader>h"] = {
-                name = "Harpoon",
-            },
-        })
-    end,
+    keys = { { "<leader>h", desc = "Harpoon" } },
     config = function()
         -- Harpoon mappings for Normal mode
         vim.keymap.set("n", "<leader>hm", function()

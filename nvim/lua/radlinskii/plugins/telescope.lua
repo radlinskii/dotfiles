@@ -7,16 +7,11 @@ return {
         "folke/which-key.nvim",
         "nvim-telescope/telescope-live-grep-args.nvim",
     },
-    keys = { "<leader>f", desc = "Telescope" },
+    keys = { { "<leader>f", desc = "Telescope" } },
     cmd = { "Telescope" },
     init = function()
         local wk = require("which-key")
 
-        wk.register({
-            ["<leader>f"] = {
-                name = "Telescope",
-            },
-        })
         wk.register({
             ["<leader>fg"] = {
                 name = "Telescope Git",
@@ -72,7 +67,7 @@ return {
                         mirror = true,
                     },
                     flip_lines = 60,
-                    flip_columns = 120,
+                    flip_columns = 140,
                 },
                 file_sorter = require("telescope.sorters").get_fuzzy_file,
                 file_ignore_patterns = { "node_modules" },

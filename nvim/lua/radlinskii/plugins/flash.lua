@@ -1,12 +1,11 @@
 return {
     "folke/flash.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
         char = {
             label = { exclude = "neuhjkliardc" },
         },
     },
-
     keys = {
         {
             "s",
