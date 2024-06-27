@@ -59,3 +59,7 @@ customCommands:
       description: "pull --rebase"
       context: "global"
       subprocess: true
+gui:
+    theme:
+        selectedLineBgColor:
+            - reverse
