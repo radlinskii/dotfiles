@@ -13,7 +13,7 @@ return {
     keys = {
         { "<leader>g", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
     },
-    init = function()
+    config = function()
         local is_windows = require("radlinskii.utils.system").is_windows()
 
         vim.g.lazygit_floating_window_scaling_factor = 0.93

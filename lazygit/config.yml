@@ -3,7 +3,7 @@ os:
     open: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTab {{filename}}<cr>'"
     edit: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTab {{filename}}<cr>'"
     editAtLine: "nvr --remote-tab {{filename}} --remote-send ':ReopenInLastTabAtLine {{line}} {{filename}}<cr>'"
-    openDir: "nvim --remote-tab {{dir}}"
+    openDir: "nvr --remote-tab {{dir}}"
 keybinding:
     universal:
         prevItem-alt: "u"
@@ -23,6 +23,7 @@ keybinding:
         redo: "<c-r>"
         diffingMenu: "M"
         filteringMenu: "<c-f>"
+        pushFiles: "<disabled>"
     files:
         ignoreFile: "I"
     commits:
@@ -33,33 +34,28 @@ keybinding:
         viewGitFlowOptions: "I"
         setUpstream: "U"
 customCommands:
-    - key: "p"
+    - key: "P"
       prompts:
           - type: "confirm"
-            title: "Are you sure you want to pull without rebase?"
+            title: "Are you sure you want to push the remote?"
             initialValue: ""
-      command: git pull
+      command: git push
+      description: "push to remote"
       context: "global"
-      subprocess: true
-      description: "pull without rebase"
+      stream: true
     - key: "<c-n>"
       prompts:
           - type: "confirm"
             title: "Are you sure you want to push the remote without pre-push hook?"
             initialValue: ""
       command: git push --no-verify
-      description: "push --no-verify"
+      description: "push to remote without pre-push hook"
       context: "global"
-    - key: "<c-u>"
-      prompts:
-          - type: "confirm"
-            title: "Are you sure you want to pull --rebase?"
-            initialValue: ""
-      command: git pull --rebase
-      description: "pull --rebase"
-      context: "global"
-      subprocess: true
+      stream: true
 gui:
     theme:
         selectedLineBgColor:
             - reverse
+    commandLogSize: 14
+    nerdFontsVersion: "3"
+    showDivergenceFromBaseBranch: "arrowAndNumber"
