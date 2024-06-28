@@ -62,7 +62,8 @@ return {
         view_options = {
             show_hidden = true,
             is_always_hidden = function(name, _)
-                return name == ".." -- or name == ".git"
+                -- return name == ".." or name == ".git"
+                return name == ".."
             end,
             is_hidden_file = function(name, _)
                 -- dotfiles are always considered hidden

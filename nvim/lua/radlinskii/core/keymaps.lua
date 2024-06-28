@@ -136,6 +136,31 @@ keymap.set("n", "<C-w>I", "<C-w>L", { silent = true, noremap = true, desc = "Mov
 
 keymap.set(
     "n",
+    "<C-w><C-u>",
+    "<C-w>+",
+    { silent = true, noremap = true, desc = "Increase current window height N lines" }
+)
+keymap.set(
+    "n",
+    "<C-w><C-e>",
+    "<C-w>-",
+    { silent = true, noremap = true, desc = "Decrease current window height N lines" }
+)
+keymap.set(
+    "n",
+    "<C-w><C-i>",
+    "<C-w>>",
+    { silent = true, noremap = true, desc = "Increase current window width N columns" }
+)
+keymap.set(
+    "n",
+    "<C-w><C-n>",
+    "<C-w><",
+    { silent = true, noremap = true, desc = "Decrease current window width N columns" }
+)
+
+keymap.set(
+    "n",
     "<C-w>h",
     "<C-w>i",
     { silent = true, noremap = true, desc = "Split window and go to the declaration of item under the cursor" }
@@ -209,7 +234,7 @@ keymap.set(
 --insert
 keymap.set({ "i" }, "<C-b>", "<ESC>^i", { silent = true, noremap = true, desc = "Beginning of line" })
 keymap.set({ "i" }, "<C-f>", "<End>", { silent = true, noremap = true, desc = "End of line" })
-keymap.set({ "i" }, "<C-l>", "<C-f>", { silent = true, noremap = true, desc = "Reindent line" })
+keymap.set({ "i" }, "<C-j>", "<C-f>", { silent = true, noremap = true, desc = "Reindent line" })
 
 -- normal
 keymap.set("n", "<leader>nh", "<cmd> nohl <CR>", { desc = "Clear search highlights", silent = true, noremap = true })

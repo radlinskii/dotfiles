@@ -2,7 +2,7 @@ return {
     "ryanmsnyder/toggleterm-manager.nvim",
     keys = {
         { "<C-\\>", desc = "ToggleTerm" },
-        { "<leader>ft", desc = "ToggleTerm" },
+        { "<leader>ft", desc = "Find Open ToggleTerm terminals" },
     },
     dependencies = {
         "folke/which-key.nvim",
@@ -64,7 +64,7 @@ return {
             end,
         },
     },
-    config = function(_, opts)
+    config = function()
         local toggletermManager = require("toggleterm-manager")
 
         toggletermManager.setup({

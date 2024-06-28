@@ -69,6 +69,11 @@ return {
             noremap = true,
             silent = true,
         })
+        vim.keymap.set("n", "<leader>xl", "<Cmd>", {
+            desc = "toggle loclist",
+            noremap = true,
+            silent = true,
+        })
 
         require("trouble").setup(opts)
     end,

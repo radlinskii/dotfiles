@@ -15,6 +15,6 @@ return {
             ["<Left>"] = { "" },
             ["<Right>"] = { "" },
         },
-        disabled_filetypes = { "fugitive" },
+        disabled_filetypes = { "fugitive", "lazy" },
     },
 }

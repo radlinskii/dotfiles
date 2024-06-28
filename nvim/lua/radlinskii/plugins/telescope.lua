@@ -1,3 +1,5 @@
+-- TODO: add <C-o>h and <C-o>v mappings
+
 return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -92,6 +94,8 @@ return {
                         ["<C-n>"] = actions.move_selection_next,
                         ["<C-p>"] = actions.move_selection_previous,
                         ["<C-h>"] = actions.select_horizontal,
+                        ["<C-o>h"] = actions.select_horizontal,
+                        ["<C-o>v"] = actions.select_vertical,
                         ["<C-x>"] = require("telescope.actions").delete_buffer,
                         ["<C-t>"] = actions.complete_tag,
                         -- live grep args
@@ -105,6 +109,8 @@ return {
                         ["<C-l>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
                         ["<C-h>"] = actions.select_horizontal,
+                        ["<C-o>h"] = actions.select_horizontal,
+                        ["<C-o>v"] = actions.select_vertical,
                         ["<C-x>"] = require("telescope.actions").delete_buffer,
                         ["e"] = actions.move_selection_next,
                         ["u"] = actions.move_selection_previous,
@@ -243,7 +249,8 @@ return {
         )
         vim.keymap.set(
             { "n" },
-            "<leader>ft",
+            "<leader>fH",
+            -- TODO: wtf is hidden term?
             "<cmd> Telescope terms <CR>",
             { desc = "Pick hidden term", silent = true, noremap = true }
         )
