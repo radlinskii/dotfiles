@@ -42,7 +42,6 @@ return {
             filters = {
                 dotfiles = false,
                 custom = { ".DS_Store" },
-                exclude = { vim.fn.stdpath("config") .. "/lua/custom" },
             },
             disable_netrw = true,
             hijack_netrw = true,
@@ -54,67 +53,27 @@ return {
                 update_root = false,
             },
             view = {
-                adaptive_size = false,
                 side = "right",
-                width = 35,
-                relativenumber = true,
+                width = 40,
+                relativenumber = false,
                 preserve_window_proportions = true,
-            },
-            git = {
-                enable = false,
-                ignore = true,
-            },
-            filesystem_watchers = {
-                enable = true,
             },
             actions = {
                 open_file = {
-                    resize_window = true,
                     window_picker = {
-                        enable = false, -- test
+                        enable = false,
                     },
                 },
             },
             renderer = {
-                root_folder_label = false,
-                highlight_git = true,
-                highlight_opened_files = "none",
-
+                highlight_git = "name",
+                highlight_diagnostics = "name",
+                highlight_opened_files = "name",
+                highlight_modified = "name",
+                highlight_bookmarks = "name",
+                highlight_clipboard = "name",
                 indent_markers = {
                     enable = true,
-                },
-
-                icons = {
-                    show = {
-                        file = true,
-                        folder = true,
-                        folder_arrow = true,
-                        git = true,
-                    },
-
-                    glyphs = {
-                        default = "󰈚",
-                        symlink = "",
-                        folder = {
-                            default = "",
-                            empty = "",
-                            empty_open = "",
-                            open = "",
-                            symlink = "",
-                            symlink_open = "",
-                            arrow_open = "",
-                            arrow_closed = "",
-                        },
-                        git = {
-                            unstaged = "✗",
-                            staged = "✓",
-                            unmerged = "",
-                            renamed = "➜",
-                            untracked = "★",
-                            deleted = "",
-                            ignored = "◌",
-                        },
-                    },
                 },
             },
             on_attach = nvim_tree_on_attach,
