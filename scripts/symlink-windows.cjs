@@ -55,3 +55,15 @@ function createSymLink(source, target) {
 }
 
 module.exports = { createSymLink };
+
+/*
+
+// Usage:
+const { createSymLink } = require("./symlink-windows.cjs");
+
+const sourceFile = "C:\\path\to\source";
+const targetFile = "C:\\path\to\target";
+
+createSymLink(sourceFile, targetFile)
+
+*/
