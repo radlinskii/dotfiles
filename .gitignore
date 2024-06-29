@@ -1,4 +1,5 @@
 .vscode
 .idea
 Brewfile.lock.json
+scripts/run-symlinks-on-windows.cjs
 
