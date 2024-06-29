@@ -94,8 +94,9 @@ return {
                         ["<C-n>"] = actions.move_selection_next,
                         ["<C-p>"] = actions.move_selection_previous,
                         ["<C-h>"] = actions.select_horizontal,
-                        ["<C-o>h"] = actions.select_horizontal,
-                        ["<C-o>v"] = actions.select_vertical,
+                        -- TODO: this needs to change because in insert mode c-o is useful
+                        -- ["<C-o>h"] = actions.select_horizontal,
+                        -- ["<C-o>v"] = actions.select_vertical,
                         ["<C-x>"] = require("telescope.actions").delete_buffer,
                         ["<C-t>"] = actions.complete_tag,
                         -- live grep args
@@ -109,8 +110,9 @@ return {
                         ["<C-l>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
                         ["<C-h>"] = actions.select_horizontal,
-                        ["<C-o>h"] = actions.select_horizontal,
-                        ["<C-o>v"] = actions.select_vertical,
+                        -- TODO: this needs to change because in insert mode c-o is useful
+                        -- ["<C-o>h"] = actions.select_horizontal,
+                        -- ["<C-o>v"] = actions.select_vertical,
                         ["<C-x>"] = require("telescope.actions").delete_buffer,
                         ["e"] = actions.move_selection_next,
                         ["u"] = actions.move_selection_previous,

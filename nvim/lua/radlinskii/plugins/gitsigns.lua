@@ -50,7 +50,12 @@ local function on_attach(bufnr)
     vim.keymap.set("n", "<leader>cc", "<cmd>Gitsigns<CR>", opts("Call GitSigns command"))
 
     -- fugitive
-    vim.keymap.set("n", "<leader>cB", "<cmd>G blame<CR>", opts("Blame buffer"))
+    vim.keymap.set(
+        "n",
+        "<leader>cB",
+        "<cmd>G blame<CR>",
+        { desc = "Fugitive: Blame buffer", buffer = bufnr, noremap = true, silent = true, nowait = true }
+    )
 
     -- Define the mappings for Visual mode
     vim.keymap.set("x", "]c", function()
