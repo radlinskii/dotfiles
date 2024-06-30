@@ -16,8 +16,8 @@ local function nvim_tree_on_attach(bufnr)
     vim.keymap.set("n", "u", "k", opts("Prev item"))
     vim.keymap.set("n", "e", "j", opts("Next item"))
     vim.keymap.set("n", "gs", api.node.run.system, opts("Run system"))
-    vim.keymap.set("n", "<c-o>v", api.node.open.vertical, opts("Split vertical"))
-    vim.keymap.set("n", "<c-o>h", api.node.open.horizontal, opts("Split horizontal"))
+    vim.keymap.set("n", "<c-/>", api.node.open.vertical, opts("Split vertical"))
+    vim.keymap.set("n", "<c-_>", api.node.open.vertical, opts("Split vertical"))
 
     vim.keymap.del("n", "s", { buffer = bufnr })
 end

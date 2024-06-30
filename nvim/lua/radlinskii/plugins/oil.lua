@@ -34,14 +34,10 @@ return {
             autosave_changes = true,
         },
         keymaps = {
-            ["<C-o>v"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-            ["<C-o>h"] = {
-                "actions.select",
-                opts = { horizontal = true },
-                desc = "Open the entry in a horizontal split",
-            },
-            ["<C-e>"] = "actions.close",
-            -- ["q"] = "actions.close",
+            ["<C-_>"] = { "actions.select", opts = { vertical = true }, desc = "Open in a vertical split" },
+            ["<C-/>"] = { "actions.select", opts = { vertical = true }, desc = "Open in a vertical split" },
+            ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open in a horizontal split" },
+            ["<C-c>"] = "actions.close",
             ["<C-s>"] = {
                 callback = function()
                     vim.cmd("write")

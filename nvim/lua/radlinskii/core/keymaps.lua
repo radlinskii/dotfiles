@@ -159,13 +159,32 @@ keymap.set(
     { silent = true, noremap = true, desc = "Decrease current window width N columns" }
 )
 
+keymap.set("n", "<C-w>h", "<C-w>i<C-w>L", {
+    silent = true,
+    noremap = true,
+    desc = "Split window vertically and go to the declaration of item under the cursor",
+})
+keymap.set("n", "<C-w>/", "<C-w>v", {
+    silent = true,
+    noremap = true,
+    desc = "Split window vertically",
+})
+keymap.set("n", "<C-w>x", "<C-w>s", {
+    silent = true,
+    noremap = true,
+    desc = "Split window horizontally",
+})
+keymap.set("n", "<C-w>s", "<C-w>x", {
+    silent = true,
+    noremap = true,
+    desc = "Swap current with next",
+})
 keymap.set(
     "n",
-    "<C-w>h",
-    "<C-w>i",
-    { silent = true, noremap = true, desc = "Split window and go to the declaration of item under the cursor" }
+    "<C-w>l",
+    "<C-w>n<C-w>L",
+    { silent = true, noremap = true, desc = "Open new buffer in a vertical split" }
 )
-keymap.set("n", "<C-w>l", "<C-w>n", { silent = true, noremap = true, desc = "Open new window" })
 
 -- scroll
 keymap.set(
@@ -235,6 +254,7 @@ keymap.set(
 keymap.set({ "i" }, "<C-b>", "<ESC>^i", { silent = true, noremap = true, desc = "Beginning of line" })
 keymap.set({ "i" }, "<C-f>", "<End>", { silent = true, noremap = true, desc = "End of line" })
 keymap.set({ "i" }, "<C-j>", "<C-f>", { silent = true, noremap = true, desc = "Reindent line" })
+-- <C-b>,<C-f>,<C-j>,<C-k>,<C-l> are used in some of the plugins e.g. telescope and cmp
 
 -- normal
 keymap.set("n", "<leader>nh", "<cmd> nohl <CR>", { desc = "Clear search highlights", silent = true, noremap = true })

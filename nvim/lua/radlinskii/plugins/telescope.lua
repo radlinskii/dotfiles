@@ -87,42 +87,53 @@ return {
                 buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
                 mappings = {
                     i = {
-                        ["<C-l>"] = actions.cycle_history_next,
+                        ["<C-e>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
-                        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-                        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-                        ["<C-n>"] = actions.move_selection_next,
-                        ["<C-p>"] = actions.move_selection_previous,
-                        ["<C-h>"] = actions.select_horizontal,
-                        -- TODO: this needs to change because in insert mode c-o is useful
-                        -- ["<C-o>h"] = actions.select_horizontal,
-                        -- ["<C-o>v"] = actions.select_vertical,
-                        ["<C-x>"] = require("telescope.actions").delete_buffer,
-                        ["<C-t>"] = actions.complete_tag,
+                        ["<C-b>"] = actions.preview_scrolling_up,
+                        ["<C-f>"] = actions.preview_scrolling_down,
+                        ["<C-u>"] = false,
+
+                        ["<C-/>"] = actions.select_vertical,
+                        ["<C-_>"] = actions.select_vertical,
+
+                        -- buffers
+                        ["<C-d>"] = actions.delete_buffer,
+
                         -- live grep args
-                        ["<C-k>"] = lga_actions.quote_prompt(),
-                        ["<C-g>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                        ["<C-k>"] = lga_actions.quote_prompt(), -- "kuote"
+                        ["<C-j>"] = lga_actions.quote_prompt({ postfix = " --iglob " }), -- "jlob"
                         -- freeze the current list and start a fuzzy search in the frozen list
-                        ["<C-f>"] = actions.to_fuzzy_refine,
+                        ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
+
+                        ["<C-o>?"] = actions.which_key,
                     },
                     n = {
-                        ["q"] = require("telescope.actions").close,
-                        ["<C-l>"] = actions.cycle_history_next,
+                        ["q"] = actions.close,
+                        ["<C-c>"] = actions.close,
+                        ["<C-e>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
-                        ["<C-h>"] = actions.select_horizontal,
-                        -- TODO: this needs to change because in insert mode c-o is useful
-                        -- ["<C-o>h"] = actions.select_horizontal,
-                        -- ["<C-o>v"] = actions.select_vertical,
-                        ["<C-x>"] = require("telescope.actions").delete_buffer,
+                        ["<C-b>"] = actions.preview_scrolling_up,
+                        ["<C-f>"] = actions.preview_scrolling_down,
+
+                        ["<C-/>"] = actions.select_vertical,
+                        ["<C-_>"] = actions.select_vertical,
+
                         ["e"] = actions.move_selection_next,
                         ["u"] = actions.move_selection_previous,
                         ["N"] = actions.move_to_top,
                         ["M"] = actions.move_to_middle,
                         ["I"] = actions.move_to_bottom,
-                        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-                        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
                         ["<C-n>"] = actions.move_selection_next,
                         ["<C-p>"] = actions.move_selection_previous,
+
+                        -- buffers
+                        ["<C-d>"] = actions.delete_buffer,
+
+                        -- live grep args
+                        ["<C-k>"] = lga_actions.quote_prompt(), -- "kuote"
+                        ["<C-j>"] = lga_actions.quote_prompt({ postfix = " --iglob " }), -- jlob
+                        -- freeze the current list and start a fuzzy search in the frozen list
+                        ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
                     },
                 },
 
