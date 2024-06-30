@@ -17,9 +17,10 @@ return {
         },
         disabled_filetypes = { "lazy" },
         hints = {
-            ["[kj][%^_]"] = {
+            -- j -> e, k -> u, h -> n, l -> i, i -> h, e -> l
+            ["[ue][%^_]"] = {
                 message = function(key)
-                    return "Use " .. (key:sub(1, 1) == "k" and "-" or "<CR> or +") .. " instead of " .. key
+                    return "Use " .. (key:sub(1, 1) == "u" and "-" or "<CR> or +") .. " instead of " .. key
                 end,
                 length = 2,
             },
@@ -47,57 +48,57 @@ return {
                 end,
                 length = 2,
             },
-            ["%^i"] = {
+            ["%^h"] = {
                 message = function()
-                    return "Use I instead of ^i"
+                    return "Use H instead of ^h"
                 end,
                 length = 2,
             },
-            ["%D[k-]o"] = {
+            ["%D[u-]o"] = {
                 message = function(keys)
                     return "Use O instead of " .. keys:sub(2)
                 end,
                 length = 3,
             },
-            ["%D[j+]O"] = {
+            ["%D[e+]O"] = {
                 message = function(keys)
                     return "Use o instead of " .. keys:sub(2)
                 end,
                 length = 3,
             },
-            ["[^fFtT]li"] = {
+            ["[^fFtT]lh"] = {
                 message = function()
-                    return "Use a instead of li"
+                    return "Use a instead of lh"
                 end,
                 length = 3,
             },
             ["2([dcy=<>])%1"] = {
                 message = function(key)
-                    return "Use " .. key:sub(3) .. "j instead of " .. key
+                    return "Use " .. key:sub(3) .. "e instead of " .. key
                 end,
                 length = 3,
             },
 
             -- hints for f/F/t/T
-            ["[^dcy=]f.h"] = {
+            ["[^dcy=]f.n"] = {
                 message = function(keys)
                     return "Use t" .. keys:sub(3, 3) .. " instead of " .. keys:sub(2)
                 end,
                 length = 4,
             },
-            ["[^dcy=]F.l"] = {
+            ["[^dcy=]F.i"] = {
                 message = function(keys)
                     return "Use T" .. keys:sub(3, 3) .. " instead of " .. keys:sub(2)
                 end,
                 length = 4,
             },
-            ["[^dcy=]T.h"] = {
+            ["[^dcy=]T.n"] = {
                 message = function(keys)
                     return "Use F" .. keys:sub(3, 3) .. " instead of " .. keys:sub(2)
                 end,
                 length = 4,
             },
-            ["[^dcy=]t.l"] = {
+            ["[^dcy=]t.i"] = {
                 message = function(keys)
                     return "Use f" .. keys:sub(3, 3) .. " instead of " .. keys:sub(2)
                 end,
@@ -105,25 +106,25 @@ return {
             },
 
             -- hints for delete + insert
-            ["d[bBwWeE%^%$]i"] = {
+            ["d[bBwWlL%^%$]h"] = {
                 message = function(keys)
                     return "Use " .. "c" .. keys:sub(2, 2) .. " instead of " .. keys
                 end,
                 length = 3,
             },
-            ["dg[eE]i"] = {
+            ["dg[lL]h"] = {
                 message = function(keys)
                     return "Use " .. "c" .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
                 length = 4,
             },
-            ["d[tTfF].i"] = {
+            ["d[tTfF].h"] = {
                 message = function(keys)
                     return "Use " .. "c" .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
                 length = 4,
             },
-            ["d[ia][\"'`{}%[%]()<>bBwWspt]i"] = {
+            ["d[ha][\"'`{}%[%]()<>bBwWspt]h"] = {
                 message = function(keys)
                     return "Use " .. "c" .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
@@ -155,49 +156,49 @@ return {
                 end,
                 length = 5,
             },
-            ["V%d[kj][dcy=<>]"] = {
+            ["V%d[ue][dcy=<>]"] = {
                 message = function(keys)
                     return "Use " .. keys:sub(4, 4) .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
                 length = 4,
             },
-            ['V%d[kj]".[dy]'] = {
+            ['V%d[ue]".[dy]'] = {
                 message = function(keys)
                     return "Use " .. keys:sub(4, 6) .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
                 length = 6,
             },
-            ["V%d%d[kj][dcy=<>]"] = {
+            ["V%d%d[ue][dcy=<>]"] = {
                 message = function(keys)
                     return "Use " .. keys:sub(5, 5) .. keys:sub(2, 4) .. " instead of " .. keys
                 end,
                 length = 5,
             },
-            ['V%d%d[kj]".[dy]'] = {
+            ['V%d%d[ue]".[dy]'] = {
                 message = function(keys)
                     return "Use " .. keys:sub(5, 7) .. keys:sub(2, 4) .. " instead of " .. keys
                 end,
                 length = 7,
             },
-            ["[vV][bBwWeE%^%$][dcy=<>]"] = {
+            ["[vV][bBwWlL%^%$][dcy=<>]"] = {
                 message = function(keys)
                     return "Use " .. keys:sub(3, 3) .. keys:sub(2, 2) .. " instead of " .. keys
                 end,
                 length = 3,
             },
-            ['[vV][bBwWeE%^%$]".[dy]'] = {
+            ['[vV][bBwWlL%^%$]".[dy]'] = {
                 message = function(keys)
                     return "Use " .. keys:sub(3, 5) .. keys:sub(2, 2) .. " instead of " .. keys
                 end,
                 length = 5,
             },
-            ["[vV]g[eE][dcy=<>]"] = {
+            ["[vV]g[lL][dcy=<>]"] = {
                 message = function(keys)
                     return "Use " .. keys:sub(4, 4) .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
                 length = 4,
             },
-            ['[vV]g[eE]".[dy]'] = {
+            ['[vV]g[lL]".[dy]'] = {
                 message = function(keys)
                     return "Use " .. keys:sub(4, 6) .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
@@ -215,13 +216,13 @@ return {
                 end,
                 length = 6,
             },
-            ["[vV][ia][\"'`{}%[%]()<>bBwWspt][dcy=<>]"] = {
+            ["[vV][ha][\"'`{}%[%]()<>bBwWspt][dcy=<>]"] = {
                 message = function(keys)
                     return "Use " .. keys:sub(4, 4) .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
                 length = 4,
             },
-            ['[vV][ia]["\'`{}%[%]()<>bBwWspt]".[dy]'] = {
+            ['[vV][ha]["\'`{}%[%]()<>bBwWspt]".[dy]'] = {
                 message = function(keys)
                     return "Use " .. keys:sub(4, 6) .. keys:sub(2, 3) .. " instead of " .. keys
                 end,
