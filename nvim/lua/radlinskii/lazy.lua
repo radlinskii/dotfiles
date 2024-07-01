@@ -12,6 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("lazy.view.config").commands.update.key_plugin = "gu"
+
 require("lazy").setup({ { import = "radlinskii.plugins" } }, {
     defaults = {
         lazy = true,
