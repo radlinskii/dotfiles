@@ -278,6 +278,12 @@ keymap.set(
 )
 keymap.set(
     "n",
+    "<leader>nb",
+    [[<cmd> w <bar> only <bar> %bd <bar> e# <bar> bd# <CR>'"]],
+    { desc = "Close other buffers than the current one", silent = true, noremap = true }
+)
+keymap.set(
+    "n",
     "<leader>ns",
     "<cmd>noautocmd w<CR>",
     { desc = "Save buffer without running autocommands (autoformat)", silent = true, noremap = true }
