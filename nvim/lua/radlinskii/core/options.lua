@@ -47,4 +47,17 @@ opt.updatetime = 250
 opt.whichwrap:append("<>[]hl")
 opt.wrap = false
 
-opt.background = "light"
+-- this will get later anyway overriden by auto-dark-mode.nvim
+-- but with this, there is less blinking on the initial load,
+-- before the auto-dark-mode plugin is called
+local function set_initial_background()
+    local hour = tonumber(os.date("%H"))
+
+    if hour >= 8 and hour < 15 then
+        opt.background = "light"
+    else
+        opt.background = "dark"
+    end
+end
+
+set_initial_background()
