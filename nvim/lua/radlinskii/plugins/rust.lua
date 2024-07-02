@@ -1,4 +1,4 @@
----@type LazyPluginSpec
+---@type LazyPluginSpec[]
 return {
     {
         "simrat39/rust-tools.nvim",
