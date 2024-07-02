@@ -41,6 +41,7 @@ return {
         -- configure nvim-tree
         nvimtree.setup({
             filters = {
+                git_ignored = false,
                 dotfiles = false,
                 custom = { ".DS_Store" },
             },
