@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
     "dyng/ctrlsf.vim",
     keys = { { "<leader>s", desc = "+CtrlSF", mode = { "n", "x" } } },

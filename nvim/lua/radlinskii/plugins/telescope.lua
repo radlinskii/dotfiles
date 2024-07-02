@@ -1,5 +1,4 @@
--- TODO: add <C-o>h and <C-o>v mappings
-
+---@type LazyPluginSpec
 return {
     "nvim-telescope/telescope.nvim",
     dependencies = {

@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
     "chrisgrieser/nvim-rip-substitute",
     keys = {

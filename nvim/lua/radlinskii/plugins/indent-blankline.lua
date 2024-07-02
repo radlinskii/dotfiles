@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
     "lukas-reineke/indent-blankline.nvim",
     dependencies = { "hiphish/rainbow-delimiters.nvim" },

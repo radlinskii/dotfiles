@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "folke/noice.nvim", "nvim-tree/nvim-web-devicons", "rebelot/kanagawa.nvim" },

@@ -35,6 +35,7 @@ if is_windows then
     vscodeJSDebugBuildCommand = vscodeJSDebugBuildCommand .. " && move dist out"
 end
 
+---@type LazyPluginSpec
 return {
     "rcarriga/nvim-dap-ui",
     ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },

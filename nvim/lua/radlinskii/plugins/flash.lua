@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
     "folke/flash.nvim",
     event = { "BufReadPre", "BufNewFile" },

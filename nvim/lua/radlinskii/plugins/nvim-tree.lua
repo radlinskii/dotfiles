@@ -22,6 +22,7 @@ local function nvim_tree_on_attach(bufnr)
     vim.keymap.del("n", "s", { buffer = bufnr })
 end
 
+---@type LazyPluginSpec
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },

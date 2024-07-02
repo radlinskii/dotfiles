@@ -19,6 +19,7 @@ local git_ignored = setmetatable({}, {
     end,
 })
 
+---@type LazyPluginSpec
 return {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },

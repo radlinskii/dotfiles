@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
     "Shatur/neovim-session-manager",
     lazy = false,

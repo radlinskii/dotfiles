@@ -89,6 +89,7 @@ local function on_attach(bufnr)
     vim.keymap.set("x", "<leader>cc", "<cmd>'<,'>Gitsigns<CR>", opts("Call GitSigns command on selection"))
 end
 
+---@type LazyPluginSpec
 return {
     "lewis6991/gitsigns.nvim",
     dependencies = { "folke/which-key.nvim" },
