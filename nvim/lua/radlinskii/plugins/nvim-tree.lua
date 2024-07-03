@@ -8,8 +8,9 @@ local function nvim_tree_on_attach(bufnr)
     -- default mappings
     api.config.mappings.default_on_attach(bufnr)
 
-    vim.keymap.set("n", "J", api.tree.expand_all, opts("Expand All"))
-    vim.keymap.set("n", "j", api.fs.rename_basename, opts("Rename: Basename"))
+    vim.keymap.set("n", "A", api.tree.expand_all, opts("Expand All"))
+    vim.keymap.set("n", "R", api.fs.rename_basename, opts("Rename: Basename"))
+    vim.keymap.set("n", "<C-l>", api.tree.reload, opts("Refresh"))
     vim.keymap.set("n", "K", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
     vim.keymap.set("n", "E", api.node.navigate.sibling.last, opts("Last Sibling"))
     vim.keymap.set("n", "U", api.node.navigate.sibling.first, opts("First Sibling"))
@@ -20,6 +21,7 @@ local function nvim_tree_on_attach(bufnr)
     vim.keymap.set("n", "<c-_>", api.node.open.vertical, opts("Split vertical"))
 
     vim.keymap.del("n", "s", { buffer = bufnr })
+    vim.keymap.del("n", "J", { buffer = bufnr })
 end
 
 ---@type LazyPluginSpec
@@ -63,8 +65,12 @@ return {
             actions = {
                 open_file = {
                     window_picker = {
-                        enable = false,
+                        enable = true,
+                        chars = "TSRADCXZPFWQ0123456789",
                     },
+                },
+                expand_all = {
+                    exclude = { ".git", "node_modules" },
                 },
             },
             renderer = {
