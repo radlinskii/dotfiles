@@ -51,6 +51,7 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
+                ["<C-e>"] = cmp.config.disable,
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-l>"] = cmp.mapping.complete(), -- show completion suggestions

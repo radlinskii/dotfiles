@@ -251,10 +251,12 @@ keymap.set(
 )
 
 --insert
-keymap.set({ "i" }, "<C-b>", "<ESC>^i", { silent = true, noremap = true, desc = "Beginning of line" })
-keymap.set({ "i" }, "<C-f>", "<End>", { silent = true, noremap = true, desc = "End of line" })
+-- https://www.reddit.com/r/vim/comments/4w0lib/comment/d63baic/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+keymap.set({ "i" }, "<C-b>", "<ESC>^i", { silent = true, noremap = true, desc = "Move to the beginning of line" })
+keymap.set({ "i" }, "<C-f>", "<ESC>ea", { silent = true, noremap = true, desc = "Move to the end of the word" })
+keymap.set({ "i" }, "<C-h>", "<ESC>ldei", { silent = true, noremap = true, desc = "Delete word till the end" })
 keymap.set({ "i" }, "<C-j>", "<C-f>", { silent = true, noremap = true, desc = "Reindent line" })
--- <C-b>,<C-f>,<C-j>,<C-k>,<C-l> are used in some of the plugins e.g. telescope and cmp
+-- <C-b>,<C-f>,<C-j>,<C-k>,<C-l>,<C-/> are used in some of the plugins e.g. telescope and cmp
 
 -- normal
 keymap.set("n", "<leader>nh", "<cmd> nohl <CR>", { desc = "Clear search highlights", silent = true, noremap = true })
