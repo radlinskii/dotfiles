@@ -111,6 +111,15 @@ return {
                 format = lspkind.cmp_format({
                     maxwidth = 50,
                     ellipsis_char = "...",
+                    mode = "symbol_text",
+                    menu = {
+                        buffer = "[Buffer]",
+                        nvim_lsp = "[LSP]",
+                        luasnip = "[LuaSnip]",
+                        nvim_lua = "[Lua]",
+                        path = "[Path]",
+                        crates = "[Crates]",
+                    },
                 }),
             },
         })
