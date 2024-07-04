@@ -51,11 +51,12 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ["<C-e>"] = cmp.config.disable,
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                ["<C-l>"] = cmp.mapping.complete(), -- show completion suggestions
+                ["<C-/>"] = cmp.mapping.complete(), -- "?" show completion suggestions
+                ["<C-_>"] = cmp.mapping.complete(), -- "?" show completion suggestions
                 ["<C-k>"] = cmp.mapping.abort(), -- "klose" completion window
+                ["<C-e>"] = cmp.config.disable, -- don't use <c-e> for abort
                 ["<CR>"] = cmp.mapping.confirm({
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
