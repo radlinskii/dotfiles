@@ -302,6 +302,12 @@ keymap.set(
     "<cmd> TSContextToggle <CR>",
     { desc = "Toggle Treesitter Context", silent = true, noremap = true }
 )
+keymap.set(
+    "n",
+    "<leader>nt",
+    "<cmd> TSToggle highlight <CR>",
+    { desc = "Toggle Treesitter highlights", silent = true, noremap = true }
+)
 keymap.set("n", "<leader>no", function()
     local currentScrolloff = vim.o.scrolloff
 
