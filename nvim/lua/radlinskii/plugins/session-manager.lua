@@ -67,6 +67,11 @@ return {
                 auto_session_use_git_branch = true,
             })
 
+            --TODO:
+            -- local file_content = vim.fn.readfile(session_control_file)
+            -- local content = table.concat(file_content, " ")
+            -- in auto-session/init.lua:632
+
             -- TODO: telescope errors because of flip_columns config
             vim.keymap.set("n", "<leader>fA", require("auto-session.session-lens").search_session, {
                 noremap = true,
