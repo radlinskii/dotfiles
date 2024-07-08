@@ -53,7 +53,7 @@ opt.wrap = false
 local function set_initial_background()
     local hour = tonumber(os.date("%H"))
 
-    if hour >= 8 and hour < 16 then
+    if hour >= 8 and hour < 17 then
         opt.background = "light"
     else
         opt.background = "dark"

@@ -30,7 +30,7 @@ return {
             -- in auto-session/init.lua:632
 
             -- use Autosession search for switching
-            -- and Autosettion delete for deleting sessions
+            -- and Autosession delete for deleting sessions
         end,
     },
 }
