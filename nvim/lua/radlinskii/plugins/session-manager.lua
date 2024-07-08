@@ -9,7 +9,6 @@ return {
         },
         config = function()
             require("auto-session").setup({
-                -- log_level = "debug",
                 auto_session_suppress_dirs = {
                     "/",
                     "~",
@@ -23,11 +22,6 @@ return {
                 },
                 auto_session_use_git_branch = true,
             })
-
-            --TODO:
-            -- local file_content = vim.fn.readfile(session_control_file)
-            -- local content = table.concat(file_content, " ")
-            -- in auto-session/init.lua:632
 
             -- use Autosession search for switching
             -- and Autosession delete for deleting sessions
