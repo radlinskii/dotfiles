@@ -29,12 +29,8 @@ return {
             -- local content = table.concat(file_content, " ")
             -- in auto-session/init.lua:632
 
-            -- TODO: telescope errors because of flip_columns config
-            vim.keymap.set("n", "<leader>fA", require("auto-session.session-lens").search_session, {
-                noremap = true,
-                silent = true,
-                desc = "List AutoSession records",
-            })
+            -- use Autosession search for switching
+            -- and Autosettion delete for deleting sessions
         end,
     },
 }
