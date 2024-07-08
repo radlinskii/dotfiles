@@ -61,3 +61,6 @@ local function set_initial_background()
 end
 
 set_initial_background()
+
+-- recommended for AutoSession
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

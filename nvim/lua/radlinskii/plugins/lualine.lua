@@ -1,7 +1,11 @@
 ---@type LazyPluginSpec
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "folke/noice.nvim", "nvim-tree/nvim-web-devicons", "rebelot/kanagawa.nvim" },
+    dependencies = {
+        "folke/noice.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "rebelot/kanagawa.nvim",
+    },
     event = { "VimEnter" },
     config = function()
         local lualine = require("lualine")
@@ -22,12 +26,13 @@ return {
                         lazy_status.updates,
                         cond = lazy_status.has_updates,
                     },
-                    { "encoding" },
+                    -- { "encoding" },
                     { "fileformat" },
-                    { "filetype" },
+                    -- { "filetype" },
                 },
                 lualine_y = {
                     -- "progress"
+                    "filetype",
                 },
             },
         })
