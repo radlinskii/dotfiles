@@ -1,5 +1,6 @@
 require("radlinskii.core.keymaps")
 require("radlinskii.core.options")
+require("radlinskii.core.tabline")
 require("radlinskii.core.autocmds")
 require("radlinskii.core.usercmds")
 

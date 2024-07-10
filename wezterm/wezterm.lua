@@ -50,7 +50,7 @@ local function colors_for_appearance(appearance)
         return {
             -- The default text color
             foreground = "#d0d0d0",
-            background = "#1b1b00",
+            background = "#181616",
             selection_fg = "black",
             selection_bg = "#fffacd",
             tab_bar = common_tab_bar_colors(),

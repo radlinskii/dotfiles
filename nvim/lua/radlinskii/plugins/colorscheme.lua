@@ -61,6 +61,12 @@ return {
                         WhichKeyBorder = { bg = theme.ui.bg_p2, fg = theme.ui.fg },
                         WhichKeyFloat = { bg = theme.ui.bg_p2, fg = theme.ui.fg },
                         FlashLabel = { bg = "#ad33ad", fg = "#22dd22" },
+                        -- TabLineFill - Tab pages line, where there are no labels.
+                        TabLineFill = { bg = theme.ui.bg_m2 },
+                        -- TabLine - Tab pages line, not active tab page label.
+                        TabLine = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+                        -- TabLineSel - Tab pages line, active tab page label.
+                        TabLineSel = { bg = theme.ui.bg_p1, fg = theme.diag.warning },
                     }
                 end,
                 theme = "wave", -- Load "wave" theme when 'background' option is not set
