@@ -1,6 +1,8 @@
 ---@type LazyPluginSpec
 return {
     "kevinhwang91/nvim-ufo",
+    -- event = { "VeryLazy" },
+    lazy = false,
     dependencies = {
         "kevinhwang91/promise-async",
         {
@@ -18,7 +20,6 @@ return {
             end,
         },
     },
-    event = { "BufReadPre", "BufNewFile" },
     config = function()
         vim.opt.foldcolumn = "1"
         vim.opt.foldlevel = 99
