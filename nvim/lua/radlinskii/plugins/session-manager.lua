@@ -20,7 +20,8 @@ return {
                     "~/Projects",
                     "~/Library",
                 },
-                auto_session_use_git_branch = true,
+                -- issue on windows with "-" in git branch name turns into "\\" in file name
+                -- auto_session_use_git_branch = true,
             })
 
             -- use Autosession search for switching
