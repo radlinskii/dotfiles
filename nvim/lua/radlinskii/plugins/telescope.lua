@@ -261,13 +261,6 @@ return {
         )
         vim.keymap.set(
             { "n" },
-            "<leader>fH",
-            -- TODO: wtf is hidden term?
-            "<cmd> Telescope terms <CR>",
-            { desc = "Pick hidden term", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
             "<leader>fb",
             "<cmd> Telescope buffers <CR>",
             { desc = "Telescope buffers", silent = true, noremap = true }

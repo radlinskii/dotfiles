@@ -76,7 +76,7 @@ return {
         })
 
         vim.keymap.set("n", "<leader>ft", "<cmd>Telescope toggleterm_manager<cr>", {
-            desc = "Toggle trouble window",
+            desc = "Find Open ToggleTerm terminals",
             noremap = true,
             silent = true,
         })
