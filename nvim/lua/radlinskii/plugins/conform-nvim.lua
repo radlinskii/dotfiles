@@ -23,7 +23,7 @@ return {
             format_on_save = {
                 lsp_fallback = true,
                 async = false,
-                timeout_ms = 1000,
+                timeout_ms = 1500,
             },
         })
 
@@ -31,16 +31,16 @@ return {
             conform.format({
                 lsp_fallback = true,
                 async = false,
-                timeout_ms = 1000,
+                timeout_ms = 1500,
             })
-        end, { desc = "Format file", noremap = true, silent = true })
+        end, { desc = "Format range", noremap = true, silent = true })
 
         vim.keymap.set({ "n" }, "<leader>rf", function()
             conform.format({
                 lsp_fallback = true,
                 async = false,
-                timeout_ms = 1000,
+                timeout_ms = 1500,
             })
-        end, { desc = "Format range", noremap = true, silent = true })
+        end, { desc = "Format file", noremap = true, silent = true })
     end,
 }
