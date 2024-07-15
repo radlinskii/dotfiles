@@ -332,7 +332,7 @@ keymap.set({ "n" }, "<leader>b", "<cmd> enew <CR>", { desc = "New buffer", silen
 
 keymap.set(
     "n",
-    "<leader>lo",
+    "<leader>ro",
     "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<CR>",
     { desc = "Open floating diagnostics", silent = true, noremap = true }
 )

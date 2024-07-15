@@ -10,9 +10,6 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
 
-        local wk = require("which-key")
-        wk.add({ "<leader>l", group = "LSP" })
-
         local on_attach = require("radlinskii.utils.lsp").on_attach
         local capabilities = require("radlinskii.utils.lsp").capabilities
 
@@ -46,6 +43,7 @@ return {
                         },
                         maxPreload = 100000,
                         preloadFileSize = 10000,
+                        checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
                     },
                 },
             },

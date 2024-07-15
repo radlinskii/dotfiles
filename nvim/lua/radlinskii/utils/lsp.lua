@@ -10,10 +10,10 @@ M.on_attach = function(_, bufnr)
     local wk = require("which-key")
     opts.buffer = bufnr
 
-    -- set keybinds
+    local ft = vim.bo.filetype
 
-    -- Key mappings for Normal mode
-    opts.desc = "Show LSP references"
+    -- set keybinds
+    wk.add({ "<leader>l", group = "LSP", icon = { cat = "filetype", name = ft }, buffer = bufnr })
 
     -- LSP mappings for Normal mode
     opts.desc = "LSP declaration"
@@ -46,10 +46,7 @@ M.on_attach = function(_, bufnr)
     opts.desc = "Diagnostic setloclist"
     keymap.set("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
-    opts.desc = "Toggle LSP Inlay Hints"
-    keymap.set("n", "<leader>ln", "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
-
-    wk.add({ "<leader>lw", group = "LSP Workspace", buffer = bufnr })
+    wk.add({ "<leader>lw", group = "LSP Workspace", icon = { cat = "filetype", name = ft }, buffer = bufnr })
 
     opts.desc = "LSP Add workspace folder"
     keymap.set("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
@@ -67,7 +64,7 @@ M.on_attach = function(_, bufnr)
     opts.desc = "LSP code action"
     keymap.set({ "n", "v" }, "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
-    wk.add({ "<leader>fl", name = "Telescope LSP", buffer = bufnr })
+    wk.add({ "<leader>fl", name = "Telescope LSP", icon = { cat = "filetype", name = ft }, buffer = bufnr })
 
     opts.desc = "Show Telescope LSP references"
     keymap.set("n", "<leader>flr", "<cmd>Telescope lsp_references<CR>", opts)

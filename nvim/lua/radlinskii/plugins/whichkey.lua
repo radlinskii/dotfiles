@@ -12,7 +12,7 @@ return {
             function()
                 require("which-key").show({ global = false })
             end,
-            desc = "Loacal Buffer keymaps",
+            desc = "Local Buffer keymaps",
         },
     },
     priority = 900,
@@ -20,22 +20,25 @@ return {
         win = {
             border = "single", -- none, single, double, shadow
         },
+        icons = {
+            BS = "⌫ ",
+        },
     },
     config = function(_, opts)
         local wk = require("which-key")
 
         wk.setup(opts)
 
-        wk.add({ "<leader>h", group = "Harpoon" })
-        wk.add({ "<leader>s", group = "CtrlSF" })
+        wk.add({ "<leader>h", group = "Harpoon", icon = { cat = "filetype", name = "harpoon" } })
+        wk.add({ "<leader>s", group = "CtrlSF", icon = { icon = " ", hl = "MiniIconsGreen" } })
         wk.add({ "<leader>f", group = "Telescope" })
-        wk.add({ "<leader>fg", group = "Telescope Git" })
-        wk.add({ "<leader>e", group = "NvimTree" })
-        wk.add({ "<leader>r", group = "Refactoring" })
-        wk.add({ "<leader>n", group = "Misc" })
-        wk.add({ "<leader>d", group = "Diffview/Debugger" })
-        wk.add({ "<leader>df", group = "Diffview" })
+        wk.add({ "<leader>fg", group = "Telescope Git", icon = { cat = "filetype", name = "git" } })
+        wk.add({ "<leader>e", group = "NvimTree", icon = { cat = "filetype", name = "nvimtree" } })
+        wk.add({ "<leader>r", group = "Refactoring", icon = { icon = "󱌢" } })
+        wk.add({ "<leader>n", group = "Misc", icon = { icon = "", hl = "MiniIconsRed" } })
+        wk.add({ "<leader>d", group = "Diffview/Debugger", icon = { icon = "󰦓" } })
+        wk.add({ "<leader>df", group = "Diffview", icon = { icon = "󰦓" } })
         wk.add({ "<leader>db", group = "Debugger" })
-        wk.add({ "<leader>x", group = "Trouble" })
+        wk.add({ "<leader>x", group = "Trouble", icon = { icon = "󰙅", hl = "MiniIconsRed" } })
     end,
 }

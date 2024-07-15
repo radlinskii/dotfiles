@@ -27,12 +27,20 @@ return {
             },
         })
 
-        vim.keymap.set({ "n", "v" }, "<leader>lc", function()
+        vim.keymap.set({ "x" }, "<leader>rf", function()
             conform.format({
                 lsp_fallback = true,
                 async = false,
                 timeout_ms = 1000,
             })
-        end, { desc = "Format file or range (in visual mode)", noremap = true, silent = true })
+        end, { desc = "Format file", noremap = true, silent = true })
+
+        vim.keymap.set({ "n" }, "<leader>rf", function()
+            conform.format({
+                lsp_fallback = true,
+                async = false,
+                timeout_ms = 1000,
+            })
+        end, { desc = "Format range", noremap = true, silent = true })
     end,
 }
