@@ -5,33 +5,119 @@ return {
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
-        "folke/which-key.nvim",
         "nvim-telescope/telescope-live-grep-args.nvim",
     },
-    keys = { { "<leader>f", desc = "Telescope" } },
-    cmd = { "Telescope" },
-    init = function()
-        local wk = require("which-key")
-
-        wk.register({
-            ["<leader>fg"] = {
-                name = "Telescope Git",
-            },
-        })
-
-        vim.keymap.set(
-            { "n" },
+    keys = {
+        {
             "<C-p>",
             "<cmd> Telescope buffers <CR>",
-            { desc = "Telescope buffers", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
+            mode = { "n" },
+            desc = "Telescope buffers",
+        },
+        {
             "<C-n>",
             "<cmd> Telescope buffers <CR>",
-            { desc = "Telescope buffers", silent = true, noremap = true }
-        )
-    end,
+            desc = "Telescope buffers",
+            mode = { "n" },
+        },
+        {
+            "<leader>fc",
+            "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor() <CR>",
+            desc = "Find string under cursor in cwd with args",
+        },
+        {
+            "<leader>fC",
+            "<cmd>Telescope grep_string<cr>",
+            desc = "Find string under cursor in cwd",
+        },
+        {
+            "<leader>fa",
+            "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+            desc = "Find all",
+        },
+        {
+            "<leader>fh",
+            "<cmd> Telescope help_tags <CR>",
+            desc = "Help page",
+        },
+        {
+            "<leader>fz",
+            "<cmd> Telescope current_buffer_fuzzy_find <CR>",
+            desc = "Find in current buffer",
+        },
+        {
+            "<leader>fs",
+            "<cmd> Telescope live_grep_args <CR>",
+            desc = "Live grep with args",
+        },
+        {
+            "<leader>fS",
+            "<cmd> Telescope live_grep <CR>",
+            desc = "Live grep",
+        },
+        {
+            "<leader>ff",
+            "<cmd> lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '-g', '!.git/**', '--hidden' }}) <CR>",
+            desc = "Find files, including hidden files, but those in .git folder",
+        },
+        {
+            "<leader>fo",
+            "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = true}) <CR>",
+            desc = "Find oldfiles from CWD",
+        },
+        {
+            "<leader>fO",
+            "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = false}) <CR>",
+            desc = "Find global vim oldfiles",
+        },
+        {
+            "<leader>fr",
+            "<cmd> Telescope lsp_references <CR>",
+            desc = "Find LSP references",
+        },
+        {
+            "<leader>fp",
+            "<cmd> Telescope diagnostics <CR>",
+            desc = "Open telescope diagnostics",
+        },
+        {
+            "<leader>fm",
+            "<cmd> Telescope marks <CR>",
+            desc = "Telescope bookmarks",
+        },
+        {
+            "<leader>fgc",
+            "<cmd> Telescope git_commits <CR>",
+            desc = "Git commits",
+        },
+        {
+            "<leader>fgs",
+            "<cmd> Telescope git_status <CR>",
+            desc = "Git status",
+        },
+        {
+            "<leader>fgb",
+            "<cmd> Telescope git_branches <CR>",
+            desc = "Git branches",
+        },
+        {
+            "<leader>fgz",
+            "<cmd> Telescope git_stash <CR>",
+            desc = "Git stashes",
+        },
+        {
+            "<leader>fb",
+            "<cmd> Telescope buffers <CR>",
+            desc = "Telescope buffers",
+        },
+        {
+            "<leader>fc",
+            "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_visual_selection() <CR>",
+            desc = "Find selected string with args",
+            mode = { "x" },
+        },
+    },
+    cmd = { "Telescope" },
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
@@ -130,7 +216,7 @@ return {
 
                         -- live grep args
                         ["<C-k>"] = lga_actions.quote_prompt(), -- "kuote"
-                        ["<C-j>"] = lga_actions.quote_prompt({ postfix = " --iglob " }), -- jlob
+                        ["<C-j>"] = lga_actions.quote_prompt({ postfix = " --iglob " }), -- jglob
                         -- freeze the current list and start a fuzzy search in the frozen list
                         ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
                     },
@@ -156,120 +242,5 @@ return {
 
         telescope.load_extension("fzf")
         telescope.load_extension("live_grep_args")
-
-        vim.keymap.set(
-            { "n" },
-            "<leader>fc",
-            "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor() <CR>",
-            { desc = "Find string under cursor in cwd with args", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            "n",
-            "<leader>fC",
-            "<cmd>Telescope grep_string<cr>",
-            { desc = "Find string under cursor in cwd" }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fa",
-            "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
-            { silent = true, noremap = true, desc = "Find all" }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fh",
-            "<cmd> Telescope help_tags <CR>",
-            { silent = true, noremap = true, desc = "Help page" }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fz",
-            "<cmd> Telescope current_buffer_fuzzy_find <CR>",
-            { silent = true, noremap = true, desc = "Find in current buffer" }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fs",
-            "<cmd> Telescope live_grep_args <CR>",
-            { silent = true, noremap = true, desc = "Live grep with args" }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fS",
-            "<cmd> Telescope live_grep <CR>",
-            { silent = true, noremap = true, desc = "Live grep" }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>ff",
-            "<cmd> lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '-g', '!.git/**', '--hidden' }}) <CR>",
-            { desc = "Find files, including hidden files, but those in .git folder", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fo",
-            "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = true}) <CR>",
-            { desc = "Find oldfiles from CWD", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fO",
-            "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = false}) <CR>",
-            { desc = "Find global vim oldfiles", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fr",
-            "<cmd> Telescope lsp_references <CR>",
-            { desc = "Find LSP references", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fp",
-            "<cmd> Telescope diagnostics <CR>",
-            { desc = "Open telescope diagnostics", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fm",
-            "<cmd> Telescope marks <CR>",
-            { desc = "Telescope bookmarks", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fgc",
-            "<cmd> Telescope git_commits <CR>",
-            { desc = "Git commits", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fgs",
-            "<cmd> Telescope git_status <CR>",
-            { desc = "Git status", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fgb",
-            "<cmd> Telescope git_branches <CR>",
-            { desc = "Git branches", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fgz",
-            "<cmd> Telescope git_stash <CR>",
-            { desc = "Git stashes", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "n" },
-            "<leader>fb",
-            "<cmd> Telescope buffers <CR>",
-            { desc = "Telescope buffers", silent = true, noremap = true }
-        )
-        vim.keymap.set(
-            { "x" },
-            "<leader>fc",
-            "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_visual_selection() <CR>",
-            { desc = "Find selected string with args", silent = true, noremap = true }
-        )
     end,
 }

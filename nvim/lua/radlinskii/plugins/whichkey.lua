@@ -6,12 +6,19 @@ return {
         vim.o.timeoutlen = 400
     end,
     lazy = false,
+    keys = {
+        {
+            "<leader>?",
+            function()
+                require("which-key").show({ global = false })
+            end,
+            desc = "Loacal Buffer keymaps",
+        },
+    },
     priority = 900,
     opts = {
-
-        window = {
+        win = {
             border = "single", -- none, single, double, shadow
-            margin = { 1, 3, 1, 2 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
         },
     },
     config = function(_, opts)
@@ -19,15 +26,16 @@ return {
 
         wk.setup(opts)
 
-        wk.register({
-            ["<leader>r"] = {
-                name = "Refactoring",
-            },
-        })
-        wk.register({
-            ["<leader>n"] = {
-                name = "No!",
-            },
-        })
+        wk.add({ "<leader>h", group = "Harpoon" })
+        wk.add({ "<leader>s", group = "CtrlSF" })
+        wk.add({ "<leader>f", group = "Telescope" })
+        wk.add({ "<leader>fg", group = "Telescope Git" })
+        wk.add({ "<leader>e", group = "NvimTree" })
+        wk.add({ "<leader>r", group = "Refactoring" })
+        wk.add({ "<leader>n", group = "Misc" })
+        wk.add({ "<leader>d", group = "Diffview/Debugger" })
+        wk.add({ "<leader>df", group = "Diffview" })
+        wk.add({ "<leader>db", group = "Debugger" })
+        wk.add({ "<leader>x", group = "Trouble" })
     end,
 }

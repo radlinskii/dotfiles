@@ -11,11 +11,7 @@ return {
         local lspconfig = require("lspconfig")
 
         local wk = require("which-key")
-        wk.register({
-            ["<leader>l"] = {
-                name = "LSP",
-            },
-        })
+        wk.add({ "<leader>l", group = "LSP" })
 
         local on_attach = require("radlinskii.utils.lsp").on_attach
         local capabilities = require("radlinskii.utils.lsp").capabilities

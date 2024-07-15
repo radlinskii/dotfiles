@@ -4,11 +4,7 @@ local function on_attach(bufnr)
     end
 
     local wk = require("which-key")
-    wk.register({
-        ["<leader>c"] = {
-            name = "Gitsigns",
-        },
-    }, { buffer = bufnr })
+    wk.add({ "<leader>c", group = "Gitsigns" })
 
     -- Define the mappings for Normal mode
     vim.keymap.set("n", "]c", function()

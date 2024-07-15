@@ -27,8 +27,15 @@ end
 ---@type LazyPluginSpec
 return {
     "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },
-    keys = { { "<leader>e" } },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+        { "<leader>ee", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer" },
+        { "<leader>ef", "<cmd>NvimTreeFocus<CR>", desc = "Focus file explorer" },
+        { "<leader>ec", "<cmd>NvimTreeFindFileToggle<CR>", desc = "Toggle file explorer on current file" },
+        { "<leader>ex", "<cmd>NvimTreeCollapse<CR>", desc = "Collapse file explorer" },
+        { "<leader>er", "<cmd>NvimTreeRefresh<CR>", desc = "Refresh file explorer" },
+    },
+
     config = function()
         local nvimtree = require("nvim-tree")
 
@@ -65,7 +72,7 @@ return {
             actions = {
                 open_file = {
                     window_picker = {
-                        enable = true,
+                        enable = false,
                         chars = "TSRADCXZPFWQ0123456789",
                     },
                 },
@@ -86,25 +93,5 @@ return {
             },
             on_attach = nvim_tree_on_attach,
         })
-
-        local keymap = vim.keymap
-        local wk = require("which-key")
-
-        wk.register({
-            ["<leader>e"] = {
-                name = "Files Tree",
-            },
-        })
-
-        keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-        keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file explorer" })
-        keymap.set(
-            "n",
-            "<leader>ec",
-            "<cmd>NvimTreeFindFileToggle<CR>",
-            { desc = "Toggle file explorer on current file" }
-        )
-        keymap.set("n", "<leader>ex", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
-        keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
     end,
 }

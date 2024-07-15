@@ -3,10 +3,13 @@ return {
     "ryanmsnyder/toggleterm-manager.nvim",
     keys = {
         { "<C-\\>", desc = "ToggleTerm" },
-        { "<leader>ft", desc = "Find Open ToggleTerm terminals" },
+        {
+            "<leader>ft",
+            "<cmd>Telescope toggleterm_manager<cr>",
+            desc = "Find Open ToggleTerm terminals",
+        },
     },
     dependencies = {
-        "folke/which-key.nvim",
         "nvim-telescope/telescope.nvim",
         "nvim-lua/plenary.nvim", -- only needed because it's a dependency of telescope
         {
@@ -73,12 +76,6 @@ return {
                 i = { ["<C-x>"] = { action = toggletermManager.actions.delete_term, exit_on_action = false } },
                 n = { ["<x>"] = { action = toggletermManager.actions.delete_term, exit_on_action = false } },
             },
-        })
-
-        vim.keymap.set("n", "<leader>ft", "<cmd>Telescope toggleterm_manager<cr>", {
-            desc = "Find Open ToggleTerm terminals",
-            noremap = true,
-            silent = true,
         })
     end,
 }

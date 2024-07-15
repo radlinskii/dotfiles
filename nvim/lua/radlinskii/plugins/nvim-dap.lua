@@ -39,20 +39,6 @@ end
 return {
     "rcarriga/nvim-dap-ui",
     ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-    init = function()
-        local wk = require("which-key")
-
-        wk.register({
-            ["<leader>d"] = {
-                name = "Diffview/Debugger",
-            },
-        })
-        wk.register({
-            ["<leader>db"] = {
-                name = "Debugger",
-            },
-        })
-    end,
     config = function()
         local dap = require("dap")
         local dapui = require("dapui")
@@ -209,7 +195,6 @@ return {
                     build = vscodeJSDebugBuildCommand,
                     version = "1.*",
                 },
-                { "folke/which-key.nvim" },
                 {
                     "mxsdev/nvim-dap-vscode-js",
                     config = function()

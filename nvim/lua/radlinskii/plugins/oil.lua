@@ -22,7 +22,7 @@ local git_ignored = setmetatable({}, {
 ---@type LazyPluginSpec
 return {
     "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = { { "<leader>o", "<cmd>Oil --float<cr>", desc = "Open Oil directory explorer" } },
     opts = {
         default_file_explorer = true,

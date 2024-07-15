@@ -49,11 +49,7 @@ M.on_attach = function(_, bufnr)
     opts.desc = "Toggle LSP Inlay Hints"
     keymap.set("n", "<leader>ln", "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
 
-    wk.register({
-        ["<leader>lw"] = {
-            name = "LSP Workspace",
-        },
-    }, { buffer = bufnr })
+    wk.add({ "<leader>lw", group = "LSP Workspace", buffer = bufnr })
 
     opts.desc = "LSP Add workspace folder"
     keymap.set("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
@@ -71,13 +67,8 @@ M.on_attach = function(_, bufnr)
     opts.desc = "LSP code action"
     keymap.set({ "n", "v" }, "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
-    wk.register({
-        ["<leader>fl"] = {
-            name = "Telescope LSP",
-        },
-    }, { buffer = bufnr })
+    wk.add({ "<leader>fl", name = "Telescope LSP", buffer = bufnr })
 
-    -- not changed
     opts.desc = "Show Telescope LSP references"
     keymap.set("n", "<leader>flr", "<cmd>Telescope lsp_references<CR>", opts)
 

@@ -1,7 +1,45 @@
 ---@type LazyPluginSpec
 return {
     "dyng/ctrlsf.vim",
-    keys = { { "<leader>s", desc = "+CtrlSF", mode = { "n", "x" } } },
+    keys = {
+        {
+            "<leader>sf",
+            "<Plug>CtrlSFPrompt",
+            desc = "Provide a phrase to search for",
+        },
+        {
+            "<leader>ss",
+            "<Plug>CtrlSFCwordPath",
+            desc = "Provide a phrase to search for word under the cursor",
+        },
+        {
+            "<leader>sw",
+            "<Plug>CtrlSFCCwordPath",
+            desc = "Provide a phrase to search for word under the cursor with boundaries",
+        },
+        {
+            "<leader>sp",
+            "<Plug>CtrlSFPwordPath",
+            desc = "Provide a phrase to search for the last searched word in vim",
+        },
+        {
+            "<leader>so",
+            ":CtrlSFOpen<cr>",
+            desc = "Open CtrlSF window",
+        },
+        {
+            "<leader>st",
+            ":CtrlSFToggle<cr>",
+            desc = "Toggle CtrlSF window",
+        },
+        -- visual mode
+        {
+            "<leader>sf",
+            "<Plug>CtrlSFVwordPath",
+            desc = "Provide currently visually selected word to search for",
+            mode = { "x" },
+        },
+    },
     cmd = {
         "CtrlSF",
         "CtrlSFOpen",
@@ -12,62 +50,10 @@ return {
         "CtrlSFVwordPath",
         "CtrlSFCCwordPath",
     },
-    dependencies = { "folke/which-key.nvim" },
     config = function()
-        local wk = require("which-key")
-
-        wk.register({
-            ["<leader>s"] = {
-                name = "CtrlSF",
-            },
-        })
-
         -- pass path as 3rd argument,
         -- e.g. :CtrlSF desc **/core
         -- https://github.com/dyng/ctrlsf.vim/issues/313
-
-        vim.keymap.set(
-            "n",
-            "<leader>sf",
-            "<Plug>CtrlSFPrompt",
-            { desc = "Provide a phrase to search for", noremap = true, silent = false }
-        )
-        vim.keymap.set(
-            "n",
-            "<leader>ss",
-            "<Plug>CtrlSFCwordPath",
-            { desc = "Provide a phrase to search for word under the cursor", noremap = true, silent = false }
-        )
-        vim.keymap.set("n", "<leader>sw", "<Plug>CtrlSFCCwordPath", {
-            desc = "Provide a phrase to search for word under the cursor with boundaries",
-            noremap = true,
-            silent = false,
-        })
-        vim.keymap.set(
-            "n",
-            "<leader>sp",
-            "<Plug>CtrlSFPwordPath",
-            { desc = "Provide a phrase to search for the last searched word in vim", noremap = true, silent = false }
-        )
-        vim.keymap.set(
-            "n",
-            "<leader>so",
-            ":CtrlSFOpen<cr>",
-            { desc = "Open CtrlSF window", noremap = true, silent = true }
-        )
-        vim.keymap.set(
-            "n",
-            "<leader>st",
-            ":CtrlSFToggle<cr>",
-            { desc = "Toggle CtrlSF window", noremap = true, silent = true }
-        )
-
-        vim.keymap.set(
-            "v",
-            "<leader>sf",
-            "<Plug>CtrlSFVwordPath",
-            { desc = "Provide currently visually selected word to search for", noremap = true, silent = false }
-        )
 
         vim.g.ctrlsf_mapping = {
             open = { "<CR>", "o" },

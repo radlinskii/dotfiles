@@ -36,31 +36,21 @@ return {
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
-        "folke/which-key.nvim",
     },
-    config = function(_, opts)
-        require("noice").setup(opts)
-
-        local wk = require("which-key")
-        wk.register({
-            ["<leader>n"] = {
-                name = "No Highlights / No Notifications",
-            },
-        })
-
-        vim.keymap.set("n", "<leader>nn", function()
-            require("noice").cmd("dismiss")
-        end, {
+    keys = {
+        {
+            "<leader>nn",
+            function()
+                require("noice").cmd("dismiss")
+            end,
             desc = "Dismiss all notifications",
-            noremap = true,
-            silent = true,
-        })
-        vim.keymap.set("n", "<leader>fn", function()
-            require("noice").cmd("telescope")
-        end, {
+        },
+        {
+            "<leader>fn",
+            function()
+                require("noice").cmd("telescope")
+            end,
             desc = "Find notification in history using Telescope",
-            noremap = true,
-            silent = true,
-        })
-    end,
+        },
+    },
 }
