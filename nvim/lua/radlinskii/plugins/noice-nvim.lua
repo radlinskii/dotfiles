@@ -32,6 +32,22 @@ return {
             inc_rename = false, -- enables an input dialog for inc-rename.nvim
             lsp_doc_border = false, -- add a border to hover docs and signature help
         },
+
+        timeout = 3000,
+        max_height = function()
+            return math.floor(vim.o.lines * 0.75)
+        end,
+        max_width = function()
+            return math.floor(vim.o.columns * 0.60)
+        end,
+        on_open = function(win)
+            vim.api.nvim_win_set_config(win, { focusable = false })
+        end,
+        render = "default",
+        stages = "fade_in_slide_out",
+
+        -- defualt messages to mini
+        messages = { view = "mini", view_warn = "mini" },
     },
     dependencies = {
         "MunifTanjim/nui.nvim",
