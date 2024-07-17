@@ -18,6 +18,7 @@ return {
     priority = 900,
     opts = {
         preset = "modern",
+        delay = 400,
         win = {
             width = 0.8,
         },

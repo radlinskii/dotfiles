@@ -16,6 +16,9 @@ return {
                 theme = "auto",
             },
             sections = {
+                lualine_c = {
+                    { "filename", path = 1 },
+                },
                 lualine_x = {
                     {
                         require("noice").api.statusline.mode.get,
@@ -27,11 +30,17 @@ return {
                     --     cond = lazy_status.has_updates,
                     -- },
                     -- { "encoding" },
-                    { "fileformat" },
-                    -- { "filetype" },
+                    {
+                        "fileformat",
+                        symbols = {
+                            unix = " ", -- e712 + space
+                            dos = " ", -- e70f + space
+                            mac = " ", -- e711 + space
+                        },
+                    },
                 },
                 lualine_y = {
-                    -- "progress"
+                    -- "progress",
                     "filetype",
                 },
             },
