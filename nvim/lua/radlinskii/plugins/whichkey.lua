@@ -17,11 +17,17 @@ return {
     },
     priority = 900,
     opts = {
+        preset = "modern",
         win = {
-            border = "single", -- none, single, double, shadow
+            width = 0.8,
         },
         icons = {
-            BS = "⌫ ",
+            keys = {
+                BS = "⌫ ",
+            },
+        },
+        layout = {
+            align = "center",
         },
     },
     config = function(_, opts)
