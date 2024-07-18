@@ -27,9 +27,6 @@ return {
                 BS = "⌫ ",
             },
         },
-        layout = {
-            align = "center",
-        },
     },
     config = function(_, opts)
         local wk = require("which-key")
