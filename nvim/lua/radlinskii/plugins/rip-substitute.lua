@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 return {
     "chrisgrieser/nvim-rip-substitute",
+    enabled = false,
     keys = {
         {
             "<leader>rr",
