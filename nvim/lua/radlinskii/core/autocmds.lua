@@ -27,3 +27,12 @@ autocmd({ "BufLeave", "FocusLost" }, {
         vim.cmd("silent! wall")
     end,
 })
+
+-- Highlighting when yanking text
+autocmd("TextYankPost", {
+    desc = "Highlight yanked text",
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 250 })
+    end,
+})
