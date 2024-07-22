@@ -36,10 +36,15 @@ keymap.set({ "n", "x", "o" }, "i", "l", { silent = true, noremap = true, desc = 
 keymap.set(
     { "n", "x", "o" },
     "N",
-    "<C-i>",
-    { silent = true, noremap = true, desc = "Go to previous jump from the jumplist" }
+    "H",
+    { silent = true, noremap = true, desc = "Go to [count] top line of the window" }
 )
-keymap.set({ "n", "x", "o" }, "I", "L", { silent = true, noremap = true, desc = "Go to next jump from the jumplist" })
+keymap.set(
+    { "n", "x", "o" },
+    "I",
+    "L",
+    { silent = true, noremap = true, desc = "Go to [count] Last line of the window" }
+)
 keymap.set({ "n", "x", "o" }, "h", "i", { silent = true, noremap = true, desc = "Insert mode in place" })
 keymap.set(
     { "n", "x", "o" },
@@ -48,7 +53,7 @@ keymap.set(
     { silent = true, noremap = true, desc = "Start insert mode at the non-blank-spaced beginning of current line" }
 )
 keymap.set({ "n", "x", "o" }, "k", "u", { silent = true, noremap = true, desc = "Undo last change" })
-keymap.set({ "n", "x", "o" }, "K", "U", { silent = true, noremap = true, desc = "Undo all changes" })
+keymap.set({ "n", "x", "o" }, "K", "U", { silent = true, noremap = true, desc = "Undo all latest changes in one line" })
 keymap.set({ "n", "x", "o" }, "j", "nzzzv", { silent = true, noremap = true, desc = "Find next appearance" })
 keymap.set({ "n", "x", "o" }, "J", "Nzzzv", { silent = true, noremap = true, desc = "Find previous appearance" })
 keymap.set({ "n", "x", "o" }, "l", "e", { silent = true, noremap = true, desc = "Go to end of the next word" })
@@ -57,14 +62,6 @@ keymap.set(
     "L",
     "E",
     { silent = true, noremap = true, desc = "Go to the end of the next non-blank-spaced word" }
-)
-keymap.set({ "n", "x", "o" }, "E", "J", { silent = true, noremap = true, desc = "Remove line break" })
-
-keymap.set(
-    { "n", "x", "o" },
-    "gE",
-    "gJ",
-    { silent = true, noremap = true, desc = "Remove line break without trimming whitespace" }
 )
 keymap.set(
     { "n", "x", "o" },
@@ -77,6 +74,14 @@ keymap.set(
     "gL",
     "gE",
     { silent = true, noremap = true, desc = "Go to the end of the previous non-blank-spaced word" }
+)
+
+keymap.set({ "n", "x", "o" }, "E", "J", { silent = true, noremap = true, desc = "Remove line break" })
+keymap.set(
+    { "n", "x", "o" },
+    "gE",
+    "gJ",
+    { silent = true, noremap = true, desc = "Remove line break without trimming whitespace" }
 )
 keymap.set(
     { "n", "x", "o" },
