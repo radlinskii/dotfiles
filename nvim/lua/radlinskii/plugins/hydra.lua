@@ -14,7 +14,6 @@ return {
                 { "<c-e>", ":resize -2<CR>", { silent = true } },
                 { "<c-u>", ":resize +2<CR>", { silent = true } },
                 { "<c-i>", ":vertical resize +2<CR>", { silent = true } },
-                { "q", nil, { exit = true, nowait = true } }, -- Exit the hydra
             },
         })
 
@@ -23,11 +22,10 @@ return {
             mode = "n",
             body = "z",
             heads = {
-                { "i", "zl", { silent = true } },
-                { "n", "zh", { silent = true } },
+                { "i", "3zl", { silent = true } },
+                { "n", "3zh", { silent = true } },
                 { "I", "zL", { silent = true } },
                 { "N", "zH", { silent = true } },
-                { "q", nil, { exit = true, nowait = true } }, -- Exit the hydra
             },
         })
     end,
