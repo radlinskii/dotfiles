@@ -164,7 +164,7 @@ keymap.set(
     { silent = true, noremap = true, desc = "Decrease current window width N columns" }
 )
 
-keymap.set("n", "<C-w>h", "<C-w>i<C-w>L", {
+keymap.set("n", "<C-w>d", "<C-w>i<C-w>L", {
     silent = true,
     noremap = true,
     desc = "Split window vertically and go to the declaration of item under the cursor",
@@ -332,7 +332,6 @@ keymap.set(
 )
 
 keymap.set({ "n" }, "<C-s>", "<cmd> w <CR>", { desc = "Save file", silent = true, noremap = true })
-keymap.set({ "n" }, "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file", silent = true, noremap = true })
 keymap.set({ "n" }, "<leader>b", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
 
 keymap.set(
