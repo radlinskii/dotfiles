@@ -9,11 +9,21 @@ return {
     event = { "VimEnter" },
     config = function()
         local lualine = require("lualine")
+        local custom_lualine_themes = require("radlinskii.utils.lualine_themes")
         -- local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+
+        ---@type string | table
+        local theme = "auto"
+
+        if vim.o.background == "light" then
+            theme = custom_lualine_themes.get_light_theme()
+        elseif vim.o.background == "dark" then
+            theme = custom_lualine_themes.get_light_theme()
+        end
 
         lualine.setup({
             options = {
-                theme = "auto",
+                theme,
             },
             sections = {
                 lualine_c = {
