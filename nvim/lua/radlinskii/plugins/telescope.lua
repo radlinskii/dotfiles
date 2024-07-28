@@ -81,6 +81,11 @@ return {
             desc = "Open telescope diagnostics",
         },
         {
+            "<leader>fj",
+            "<cmd> Telescope jumplist <CR>",
+            desc = "Telescope jumplist",
+        },
+        {
             "<leader>fm",
             "<cmd> Telescope marks <CR>",
             desc = "Telescope bookmarks",
