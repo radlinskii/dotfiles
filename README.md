@@ -6,19 +6,19 @@ This repo holds configuration files for tooling I use regularly while working on
 
 ## Usage
 
-#### 1. be sure you have git installed
+### 1. be sure you have git installed
 
 ```sh
 xcode-select --install
 ```
 
-#### 2. clone the repo
+### 2. clone the repo
 
 ```sh
 git clone git@github.com:radlinskii/dotfiles.git
 ```
 
-#### 3. once inside the repo's folder run the install script
+### 3. once inside the repo's folder run the install script
 
 ```sh
 ./scripts/install.sh
@@ -33,7 +33,7 @@ To only run parts of `install.sh` responsible for specific configurations pass f
 
 Example usage: `./scripts/install.sh -l -b`
 
-#### 4. manually adjust the git config
+### 4. manually adjust the git config
 
 ```sh
 git config --global core.excludesfile ~/.gitignore_global
@@ -45,7 +45,7 @@ git config --global pull.rebase true
 
 To add nvim as `difftool` and `mergetool` add:
 
-```
+```ini
 [diff]
     tool = nvimdiff
 [difftool]
@@ -62,13 +62,13 @@ To add nvim as `difftool` and `mergetool` add:
 
 to the `.gitconfig` file
 
-#### 5. put local-machine-specific shell configuration and secret env vars in `~/.local_zshrc.sh`
+### 5. put local-machine-specific shell configuration and secret env vars in `~/.local_zshrc.sh`
 
 ```sh
 nvim ~/.local_zshrc.sh
 ```
 
-#### 6. [lazygit](https://github.com/jesseduffield/lazygit) setup within nvim using [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) might require [neovim-remote](https://github.com/mhinz/neovim-remote).
+### 6. [lazygit](https://github.com/jesseduffield/lazygit) setup within nvim using [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) might require [neovim-remote](https://github.com/mhinz/neovim-remote)
 
 Setting up `nvr` might require assigning evironment variable `NVIM_LISTEN_ADDRESS`.
 Value could be `localhost:6789` as it is the default value that `nvr` tries to connect to.

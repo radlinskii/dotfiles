@@ -39,6 +39,20 @@ return {
             -- shellcheck
         }
 
+        lint.linters.markdownlint.args = {
+
+            "--disable",
+            "MD013", -- disable line length limit
+            -- "MD024", -- allow multiple headings with the same comment
+            "MD030", -- allow spaces after list markers
+            -- "MD033", -- allow inline HTML
+            -- "MD036", -- allow emphasis blocks
+            -- "MD040", -- allow code blocks without language --[[ specification ]]
+            -- "MD041", -- allow non-headers on the first line, e.g. meta section
+            -- "MD046", -- allow mixed code-block styles
+            "--",
+        }
+
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
         vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
