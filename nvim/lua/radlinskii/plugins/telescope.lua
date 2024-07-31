@@ -6,6 +6,7 @@ return {
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
         "nvim-telescope/telescope-live-grep-args.nvim",
+        "nvim-telescope/telescope-frecency.nvim",
     },
     keys = {
         {
@@ -72,8 +73,8 @@ return {
         },
         {
             "<leader>fr",
-            "<cmd> Telescope lsp_references <CR>",
-            desc = "Find LSP references",
+            "<cmd> Telescope frecency <CR>",
+            desc = "Find file based on frecency",
         },
         {
             "<leader>fp",
@@ -130,22 +131,6 @@ return {
 
         telescope.setup({
             defaults = {
-                vimgrep_arguments = {
-                    "rg",
-                    "-L",
-                    "--color=never",
-                    "--no-heading",
-                    "--with-filename",
-                    "--line-number",
-                    "--column",
-                    "--smart-case",
-                    -- "--sort=path",
-                },
-                prompt_prefix = "   ",
-                selection_caret = "  ",
-                entry_prefix = "  ",
-                initial_mode = "insert",
-                selection_strategy = "reset",
                 sorting_strategy = "ascending",
                 layout_strategy = "flex",
                 layout_config = {
@@ -158,23 +143,27 @@ return {
                         prompt_position = "top",
                         mirror = true,
                     },
-                    flip_lines = 60,
-                    flip_columns = 140,
+                    flex = {
+                        flip_lines = 60,
+                        flip_columns = 140,
+                    },
                 },
-                file_sorter = require("telescope.sorters").get_fuzzy_file,
+                prompt_prefix = "   ",
+                selection_caret = "> ",
+                path_display = { "smart" }, -- { "truncate" },
+                dynamic_preview_title = true,
+                vimgrep_arguments = {
+                    "rg",
+                    "-L",
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                    "--smart-case",
+                    -- "--sort=path",
+                },
                 file_ignore_patterns = { "node_modules" },
-                generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-                path_display = { "truncate" },
-                winblend = 0,
-                border = {},
-                borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-                color_devicons = true,
-                set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-                file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-                grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-                qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-                -- Developer configurations: Not meant for general override
-                buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
                 mappings = {
                     i = {
                         ["<C-e>"] = actions.cycle_history_next,
@@ -186,14 +175,15 @@ return {
                         ["<C-/>"] = actions.select_vertical,
                         ["<C-_>"] = actions.select_vertical,
 
+                        -- freeze the current list and start a fuzzy search in the frozen list
+                        ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
+
                         -- buffers
                         ["<C-d>"] = actions.delete_buffer,
 
                         -- live grep args
                         ["<C-k>"] = lga_actions.quote_prompt(), -- "kuote"
                         ["<C-j>"] = lga_actions.quote_prompt({ postfix = " --iglob " }), -- "jlob"
-                        -- freeze the current list and start a fuzzy search in the frozen list
-                        ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
 
                         ["<C-o>?"] = actions.which_key,
                     },
@@ -216,25 +206,30 @@ return {
                         ["<C-n>"] = actions.move_selection_next,
                         ["<C-p>"] = actions.move_selection_previous,
 
+                        -- freeze the current list and start a fuzzy search in the frozen list
+                        ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
+
                         -- buffers
                         ["<C-d>"] = actions.delete_buffer,
 
                         -- live grep args
                         ["<C-k>"] = lga_actions.quote_prompt(), -- "kuote"
                         ["<C-j>"] = lga_actions.quote_prompt({ postfix = " --iglob " }), -- jglob
-                        -- freeze the current list and start a fuzzy search in the frozen list
-                        ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
                     },
                 },
-
-                extensions_list = { "themes", "terms", "fzf", "live_grep_args" },
-                extensions = {
-                    fzf = {
-                        fuzzy = true,
-                        override_generic_sorter = true,
-                        override_file_sorter = true,
-                        case_mode = "smart_case",
-                    },
+            },
+            extensions_list = { "themes", "terms", "fzf", "live_grep_args", "frecency" },
+            extensions = {
+                fzf = {
+                    fuzzy = true,
+                    override_generic_sorter = true,
+                    override_file_sorter = true,
+                    case_mode = "smart_case",
+                },
+                frecency = {
+                    auto_validate = false,
+                    matcher = "fuzzy",
+                    default_workspace = "CWD",
                 },
             },
             pickers = {
@@ -247,5 +242,6 @@ return {
 
         telescope.load_extension("fzf")
         telescope.load_extension("live_grep_args")
+        telescope.load_extension("frecency")
     end,
 }
