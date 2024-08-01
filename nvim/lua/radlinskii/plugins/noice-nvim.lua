@@ -54,7 +54,7 @@ return {
                     vim.api.nvim_win_set_config(win, { focusable = false })
                 end,
                 render = "wrapped-compact",
-                stages = "slide",
+                stages = "static",
             },
         },
     },

@@ -14,6 +14,9 @@ end
 -- add binaries installed by mason.nvim to path
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
+
 -- inlay hints
 vim.lsp.inlay_hint.enable()
 

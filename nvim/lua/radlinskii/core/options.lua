@@ -4,7 +4,6 @@ opt.laststatus = 3
 opt.showmode = false
 
 opt.clipboard = "unnamedplus"
-opt.cursorline = true
 
 -- Indenting
 opt.expandtab = true
@@ -17,10 +16,13 @@ opt.fillchars = { eob = " ", diff = "⣿" }
 
 opt.ignorecase = true
 opt.smartcase = true
+
 opt.mouse = "a"
 
 opt.scrolloff = 99999
+
 opt.colorcolumn = "80"
+opt.cursorline = true
 
 -- Numbers
 opt.number = true
@@ -33,11 +35,27 @@ opt.ruler = false
 opt.shortmess:append("sI")
 
 opt.signcolumn = "yes"
+
 opt.splitbelow = true
 opt.splitright = true
+
 opt.termguicolors = true
+
 opt.timeoutlen = 400
+
 opt.undofile = true
+
+-- Enable break indent
+opt.breakindent = true
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+-- opt.list = true
+-- opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Preview substitutions live, as you type!
+opt.inccommand = "split"
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250

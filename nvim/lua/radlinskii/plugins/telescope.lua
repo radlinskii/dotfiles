@@ -6,6 +6,7 @@ return {
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
         "nvim-telescope/telescope-live-grep-args.nvim",
+        "nvim-telescope/telescope-ui-select.nvim",
         "nvim-telescope/telescope-frecency.nvim",
     },
     keys = {
@@ -75,6 +76,11 @@ return {
             "<leader>fr",
             "<cmd> Telescope frecency <CR>",
             desc = "Find file based on frecency",
+        },
+        {
+            "<leader>f.",
+            "<cmd> Telescope resume <CR>",
+            desc = "Resume last search",
         },
         {
             "<leader>fp",
@@ -243,5 +249,6 @@ return {
         telescope.load_extension("fzf")
         telescope.load_extension("live_grep_args")
         telescope.load_extension("frecency")
+        telescope.load_extension("ui-select")
     end,
 }
