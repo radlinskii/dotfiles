@@ -63,6 +63,11 @@ return {
             desc = "Find files, including hidden files, but those in .git folder",
         },
         {
+            "<leader>fr",
+            "<cmd> Telescope frecency <CR>",
+            desc = "Find file based on frecency",
+        },
+        {
             "<leader>fo",
             "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = true}) <CR>",
             desc = "Find oldfiles from CWD",
@@ -71,11 +76,6 @@ return {
             "<leader>fO",
             "<cmd> lua require('telescope.builtin').oldfiles({cwd_only = false}) <CR>",
             desc = "Find global vim oldfiles",
-        },
-        {
-            "<leader>fr",
-            "<cmd> Telescope frecency <CR>",
-            desc = "Find file based on frecency",
         },
         {
             "<leader>f.",
