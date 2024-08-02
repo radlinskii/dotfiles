@@ -2,6 +2,7 @@
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
+    version = "4.4.7", -- TODO: wait for fix of https://github.com/folke/noice.nvim/issues/923
     opts = {
         routes = {
             {
@@ -54,7 +55,7 @@ return {
                     vim.api.nvim_win_set_config(win, { focusable = false })
                 end,
                 render = "wrapped-compact",
-                stages = "static",
+                stages = "slide", -- "static",
             },
         },
     },
