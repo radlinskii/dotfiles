@@ -4,7 +4,7 @@ return {
     -- TODO: watch https://github.com/leath-dub/snipe.nvim/pull/13
     keys = {
         {
-            "<leader>rb",
+            "<leader><leader>",
             function()
                 require("snipe").open_buffer_menu()
             end,
