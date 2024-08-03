@@ -6,24 +6,12 @@ return {
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-        local path = require("radlinskii.utils.path")
+        local cspell_utils = require("radlinskii.utils.cspell")
         local lint = require("lint")
         local cspell = lint.linters.cspell
 
-        local config_file_name = ".cspell.json"
-        local function find_json(cwd)
-            local workspace_cspell_json_file_path = path.join(cwd, config_file_name)
-            local global_cspell_json_file_path = path.join(vim.loop.os_homedir(), config_file_name)
-
-            if vim.fn.filereadable(workspace_cspell_json_file_path) == 1 then
-                return workspace_cspell_json_file_path
-            elseif vim.fn.filereadable(global_cspell_json_file_path) == 1 then
-                return global_cspell_json_file_path
-            end
-        end
-
         table.insert(cspell.args, "-c")
-        table.insert(cspell.args, find_json(vim.fn.getcwd()))
+        table.insert(cspell.args, cspell_utils.find_json())
 
         lint.linters_by_ft = {
             javascript = { "eslint_d", "cspell" },
@@ -35,7 +23,7 @@ return {
             json5 = { "cspell" },
             css = { "cspell" },
             lua = { "cspell" },
-            -- ["*"] = { "cspell" },
+            ["*"] = { "cspell" },
             -- shellcheck
         }
 

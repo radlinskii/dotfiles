@@ -1,6 +1,6 @@
 {
     "flagWords": [],
-    "language": "en",
+    "version": "0.2",
     "words": [
         "Alviste",
         "Autoresize",
@@ -212,6 +212,7 @@
         "radlinskii",
         "rafamadriz",
         "rcarriga",
+        "readfile",
         "rebelot",
         "reineke",
         "relativenumber",
@@ -224,6 +225,7 @@
         "scrolloff",
         "sessionoptions",
         "setloclist",
+        "setreg",
         "shada",
         "shellcheck",
         "shfmt",
@@ -293,8 +295,9 @@
         "winid",
         "winpos",
         "winsize",
+        "writefile",
         "yabai",
         "zoxide"
     ],
-    "version": "0.2"
+    "language": "en"
 }
