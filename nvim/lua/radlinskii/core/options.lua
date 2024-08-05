@@ -5,6 +5,12 @@ opt.showmode = false
 
 opt.clipboard = "unnamedplus"
 
+local shellslash_exists = vim.fn.exists("+shellslash") ~= 0
+
+if shellslash_exists then
+    opt.shellslash = true
+end
+
 -- Indenting
 opt.expandtab = true
 opt.smartindent = true
