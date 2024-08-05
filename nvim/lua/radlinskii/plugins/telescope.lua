@@ -242,6 +242,7 @@ return {
                 buffers = {
                     sort_lastused = true,
                     sort_mru = true,
+                    path_display = { "filename_first" },
                 },
             },
         })
