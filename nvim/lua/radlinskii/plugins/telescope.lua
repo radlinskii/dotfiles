@@ -242,6 +242,7 @@ return {
                 buffers = {
                     sort_lastused = true,
                     sort_mru = true,
+                    -- TODO: watch https://github.com/nvim-telescope/telescope.nvim/issues/3157
                     path_display = { "filename_first" },
                 },
             },
