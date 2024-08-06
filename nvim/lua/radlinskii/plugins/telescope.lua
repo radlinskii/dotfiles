@@ -245,6 +245,10 @@ return {
                     -- TODO: watch https://github.com/nvim-telescope/telescope.nvim/issues/3157
                     path_display = { "filename_first" },
                 },
+                oldfiles = {
+                    -- TODO: watch https://github.com/nvim-telescope/telescope.nvim/issues/3157
+                    path_display = { "filename_first" },
+                },
             },
         })
 
