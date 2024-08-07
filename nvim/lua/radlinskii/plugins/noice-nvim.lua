@@ -2,7 +2,7 @@
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
-    version = "4.4.7", -- watch https://github.com/folke/noice.nvim/issues/923
+    version = "4.4.7", -- TODO: watch https://github.com/folke/noice.nvim/issues/923
     opts = {
         routes = {
             {
