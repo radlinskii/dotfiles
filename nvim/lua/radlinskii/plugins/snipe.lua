@@ -13,11 +13,10 @@ return {
     },
     opts = {
         hints = {
-            dictionary = "tsragpfwqdcxzhkmjo",
+            dictionary = "tsragpfwbdcxzvhkmjo",
         },
         ui = {
             position = "cursor",
-            -- position = "topright",
         },
         navigate = {
             next_page = "U",
