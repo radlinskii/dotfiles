@@ -61,7 +61,7 @@ opt.breakindent = true
 -- opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
-opt.inccommand = "split"
+-- opt.inccommand = "split"
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
