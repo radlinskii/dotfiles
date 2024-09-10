@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    event = { "VeryLazy" },
     version = "4.4.7", -- TODO: watch https://github.com/folke/noice.nvim/issues/923
     opts = {
         routes = {

@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
     "nvimtools/hydra.nvim",
-    event = "VeryLazy",
+    event = { "VeryLazy" },
     config = function()
         local Hydra = require("hydra")
 
