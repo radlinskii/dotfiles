@@ -279,12 +279,6 @@ keymap.set(
 )
 keymap.set(
     "n",
-    "<leader>nr",
-    "<CMD>set rnu! rnu?<CR>",
-    { desc = "Toggle between relative and absolute line numbers", silent = true, noremap = true }
-)
-keymap.set(
-    "n",
     "<leader>nw",
     "<cmd>only<CR>",
     { desc = "Close other windows than the current one", silent = true, noremap = true }
@@ -323,6 +317,28 @@ keymap.set("n", "<leader>no", function()
         vim.o.scrolloff = 1
     end
 end, { desc = "Toggle scrolloff", silent = true, noremap = true })
+
+-- keymap.set(
+--     "n",
+--     "<leader>nr",
+--     "<CMD>set rnu! rnu?<CR>",
+--     { desc = "Toggle between relative and absolute line numbers", silent = true, noremap = true }
+-- )
+keymap.set("n", "<leader>nr", function()
+    if vim.o.number == false and vim.o.relativenumber == false then
+        vim.o.number = true
+        print("nu:1/rnu:0")
+    elseif vim.o.number == true and vim.o.relativenumber == false then
+        vim.o.relativenumber = true
+        print("nu:1/rnu:1")
+    elseif vim.o.number == true and vim.o.relativenumber == true then
+        vim.o.number = false
+        print("nu:0/rnu:1")
+    else
+        vim.o.relativenumber = false
+        print("nu:0/rnu:0")
+    end
+end, { desc = "Cycle line numbers config", silent = true, noremap = true })
 
 keymap.set(
     "n",

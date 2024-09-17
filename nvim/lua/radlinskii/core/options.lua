@@ -18,7 +18,14 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 
-opt.fillchars = { eob = " ", diff = "⣿" }
+opt.fillchars = {
+    diff = "⣿",
+    eob = " ",
+    fold = " ",
+    foldopen = "▼",
+    foldsep = " ",
+    foldclose = "▶", -- "⏵","▷","►", "▶"
+}
 
 opt.ignorecase = true
 opt.smartcase = true
@@ -31,10 +38,9 @@ opt.colorcolumn = "80"
 opt.cursorline = true
 
 -- Numbers
-opt.number = true
 opt.numberwidth = 2
-opt.nu = true
-opt.relativenumber = true
+opt.relativenumber = false
+opt.number = false
 opt.ruler = false
 
 -- disable nvim intro

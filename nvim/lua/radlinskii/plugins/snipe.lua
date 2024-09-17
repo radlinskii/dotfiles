@@ -2,6 +2,7 @@
 return {
     "leath-dub/snipe.nvim",
     -- TODO: watch https://github.com/leath-dub/snipe.nvim/pull/13
+    enabled = false,
     keys = {
         {
             "<leader><leader>",

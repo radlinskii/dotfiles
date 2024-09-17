@@ -30,7 +30,7 @@ return {
             fold = " ",
             foldopen = "▼",
             foldsep = " ",
-            foldclose = "⏵",
+            foldclose = "▶", -- "⏵","▷","►", "▶"
         })
 
         local handler = function(virtualText, lineNum, endLineNum, width, truncate)
