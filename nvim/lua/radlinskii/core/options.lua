@@ -94,3 +94,5 @@ set_initial_background()
 
 -- recommended for AutoSession
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+vim.opt.guicursor = "n-v-c:block-blinkon1-blinkoff200,i:ver50-blinkon1-blinkoff200"
