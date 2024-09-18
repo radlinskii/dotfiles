@@ -8,7 +8,7 @@ return {
             desc = "Provide a phrase to search for",
         },
         {
-            "<leader>ss",
+            "<leader>sc",
             "<Plug>CtrlSFCwordPath",
             desc = "Provide a phrase to search for word under the cursor",
         },

@@ -37,6 +37,7 @@ return {
         dashboard.section.header.opts.hl = "String"
 
         dashboard.section.buttons.val = {
+            dashboard.button("<Space>SR", "    Restore Session", "<cmd>SessionRestore<CR>"),
             dashboard.button(
                 "<Space>fo",
                 "󰙰    Local Recent Files",
@@ -52,10 +53,11 @@ return {
                 "    Find File ",
                 "<cmd>lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '-g', '!.git', '--hidden' }})<CR>"
             ),
-            dashboard.button("<Space>fs", "󰈭    Find Word ", "<cmd>Telescope live_grep<CR>"),
-            dashboard.button("<Space>fgs", "    Git Status", "<cmd>Telescope git_status<CR>"),
-            dashboard.button("<Space>fm", "    Bookmarks ", "<cmd>Telescope marks<CR>"),
-            dashboard.button("<Space>fh", "󰮥    Help ", "<cmd>Telescope help_tags<CR>"),
+            dashboard.button("<Space>b", "    Open New Buffer", "<cmd>enew<CR>"),
+            -- dashboard.button("<Space>fs", "󰈭    Find string", "<cmd>Telescope live_grep<CR>"),
+            -- dashboard.button("<Space>fgs", "    Git Status", "<cmd>Telescope git_status<CR>"),
+            -- dashboard.button("<Space>fm", "    Find Bookmarks", "<cmd>Telescope marks<CR>"),
+            dashboard.button("<Space>fh", "󰮥    Find Help", "<cmd>Telescope help_tags<CR>"),
             dashboard.button("q", "✖    Quit", ":qa<cr>"),
         }
 
