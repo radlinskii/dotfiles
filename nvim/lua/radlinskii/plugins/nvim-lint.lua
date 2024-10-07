@@ -23,6 +23,7 @@ return {
             json5 = { "cspell" },
             css = { "cspell" },
             lua = { "cspell" },
+            go = { "golangcilint" },
             ["*"] = { "cspell" },
             -- shellcheck
         }

@@ -40,6 +40,7 @@ return {
                 "vimdoc",
                 "dockerfile",
                 "gitignore",
+                "go",
             },
             -- use flash.nvim treesitter mode instead
             -- incremental_selection = {

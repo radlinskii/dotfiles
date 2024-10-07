@@ -42,6 +42,7 @@ return {
                 "lua_ls",
                 "marksman",
                 "jsonls",
+                "gopls",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
@@ -107,6 +108,23 @@ return {
                             },
                         },
                     })
+                elseif server_name == "gopls" then
+                    lspconfig.gopls.setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        cmd = { "gopls" },
+                        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+                        root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+                        settings = {
+                            gopls = {
+                                completeUnimported = true,
+                                usePlaceholders = true,
+                                analyses = {
+                                    unusedparams = true,
+                                },
+                            },
+                        },
+                    })
                 else
                     lspconfig[server_name].setup({
                         on_attach = on_attach,
@@ -133,6 +151,12 @@ return {
                 { "eslint_d", version = "v13.1.2" }, -- TODO: bundles eslint@9 which doesn't work with eslintrc.js, but with eslint.config.js files
                 "cspell",
                 "markdownlint",
+                "gofumpt",
+                "goimports",
+                "golines",
+                "gomodifytags",
+                "gotests",
+                "golangci-lint",
             },
         })
     end,
