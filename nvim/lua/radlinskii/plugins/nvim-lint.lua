@@ -24,6 +24,8 @@ return {
             css = { "cspell" },
             lua = { "cspell" },
             go = { "golangcilint" },
+            htmldjango = { "djlint" },
+            html = { "djlint" },
             ["*"] = { "cspell" },
             -- shellcheck
         }

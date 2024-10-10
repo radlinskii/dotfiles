@@ -26,10 +26,10 @@ git clone git@github.com:radlinskii/dotfiles.git
 
 To only run parts of `install.sh` responsible for specific configurations pass flags to it:
 
--   for linking config files run it with flag `-l` or `--link`.
--   to only configure `MacOS` specific settings run it with flag `-m` or `--mac`.
--   to only install `Homebrew` packages run it with flag `-b` or `--brew`.
--   to install `oh-my-zsh` use `-o` or `--omz` flag.
+- for linking config files run it with flag `-l` or `--link`.
+- to only configure `MacOS` specific settings run it with flag `-m` or `--mac`.
+- to only install `Homebrew` packages run it with flag `-b` or `--brew`.
+- to install `oh-my-zsh` use `-o` or `--omz` flag.
 
 Example usage: `./scripts/install.sh -l -b`
 
@@ -75,7 +75,7 @@ Value could be `localhost:6789` as it is the default value that `nvr` tries to c
 
 ## Acknowledgements
 
--   Nick Nisi's [dotfiles](https://github.com/nicknisi/dotfiles)
+- Nick Nisi's [dotfiles](https://github.com/nicknisi/dotfiles)
 
 ## License
 

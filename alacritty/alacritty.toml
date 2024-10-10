@@ -5,9 +5,7 @@ window.startup_mode = "Maximized"
 font.normal = { family = "IosevkaTerm Nerd Font Propo" }
 
 [keyboard]
-bindings = [
-  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" }
-]
+bindings = [{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" }]
 
 # Colors (Kanagawa Dragon)
 # Source https//github.com/rebelot/kanagawa.nvim
@@ -47,4 +45,3 @@ color = '#ffa066'
 [[colors.indexed_colors]]
 index = 17
 color = '#ff5d62'
-

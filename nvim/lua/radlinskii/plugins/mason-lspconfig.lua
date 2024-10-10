@@ -43,6 +43,7 @@ return {
                 "marksman",
                 "jsonls",
                 "gopls",
+                "taplo",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
@@ -148,7 +149,8 @@ return {
             ensure_installed = {
                 "prettier", -- prettier formatter
                 "stylua", -- lua formatter
-                { "eslint_d", version = "v13.1.2" }, -- TODO: bundles eslint@9 which doesn't work with eslintrc.js, but with eslint.config.js files
+                -- { "eslint_d", version = "v13.1.2" }, -- TODO: bundles eslint@9 which doesn't work with eslintrc.js, but with eslint.config.js files
+                -- just run: npm i -g eslint_d@13.1.2
                 "cspell",
                 "markdownlint",
                 "gofumpt",
@@ -157,6 +159,7 @@ return {
                 "gomodifytags",
                 "gotests",
                 "golangci-lint",
+                "djlint",
             },
         })
     end,
