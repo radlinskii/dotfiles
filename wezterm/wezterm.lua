@@ -92,10 +92,10 @@ config.keys = {
     { key = "x", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 
     -- Move focus
-    { key = "n", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
-    { key = "i", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
-    { key = "u", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
-    { key = "e", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+    { key = "LeftArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+    { key = "RightArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+    { key = "UpArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+    { key = "DownArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
 
     -- Resize Pane
     { key = "LeftArrow", mods = "CTRL|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Left", 10 } }) },

@@ -132,8 +132,6 @@ export HISTFILESIZE=100000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTFILE=~/.zsh_history
 
-export LESSKEY=~/.lesskey
-
 # Use Neovim as "preferred editor"
 export VISUAL=nvim
 export EDITOR="nvim"

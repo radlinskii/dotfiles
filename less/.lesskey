@@ -1,7 +1,0 @@
-#command
-u back-line
-e forw-line
-j repeat-search
-J reverse-search
-n left-scroll
-i right-scroll

@@ -39,7 +39,7 @@ opt.cursorline = true
 
 -- Numbers
 opt.numberwidth = 2
-opt.relativenumber = false
+opt.relativenumber = true
 opt.number = false
 opt.ruler = false
 
