@@ -23,7 +23,7 @@ cursor_mode() {
     zle -N zle-line-init
 }
 
-cursor_mode
+# cursor_mode
 
 # use vi keybindings for zle
 bindkey -v
@@ -50,16 +50,16 @@ bindkey -v
 # bindkey -M vicmd 'hW' select-in-blank-word
 # bindkey -M vicmd 'ha' select-in-shell-word
 
-bindkey -M vicmd "^R" history-incremental-search-backward
-bindkey -M vicmd "^S" history-incremental-search-forward
+# bindkey -M vicmd "^R" history-incremental-search-backward
+# bindkey -M vicmd "^S" history-incremental-search-forward
 
 # colemak-dh bindings for vim insert mode
-bindkey -M viins "^[[A" up-line-or-beginning-search
-bindkey -M viins "^[[B" down-line-or-beginning-search
-bindkey -M viins "\eOC" forward-char
-bindkey -M viins "\eOD" backward-char
+# bindkey -M viins "^[[A" up-line-or-beginning-search
+# bindkey -M viins "^[[B" down-line-or-beginning-search
+# bindkey -M viins "\eOC" forward-char
+# bindkey -M viins "\eOD" backward-char
 
 # todo: map Shift+arrows to jump vi-backward-word and vi-forward-word
 
-bindkey -M viins "^R" history-incremental-search-backward
-bindkey -M viins "^S" history-incremental-search-forward
+# bindkey -M viins "^R" history-incremental-search-backward
+# bindkey -m viins "^s" history-incremental-search-forward

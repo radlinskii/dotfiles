@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+alias fzfm="fzf --multi"
+
 alias x="exit"
 
 alias sz="source ~/.zshrc"

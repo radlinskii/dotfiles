@@ -132,6 +132,10 @@ export HISTFILESIZE=100000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTFILE=~/.zsh_history
 
+source <(fzf --zsh)
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+
 # Use Neovim as "preferred editor"
 export VISUAL=nvim
 export EDITOR="nvim"
