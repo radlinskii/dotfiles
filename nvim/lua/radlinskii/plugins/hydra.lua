@@ -22,10 +22,10 @@ return {
             mode = "n",
             body = "z",
             heads = {
-                { "i", "3zl", { silent = true } },
-                { "n", "3zh", { silent = true } },
-                { "I", "zL", { silent = true } },
-                { "N", "zH", { silent = true } },
+                { "l", "3zl", { silent = true } },
+                { "h", "3zh", { silent = true } },
+                { "L", "zL", { silent = true } },
+                { "H", "zH", { silent = true } },
             },
         })
     end,

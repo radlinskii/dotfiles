@@ -11,21 +11,21 @@ local function nvim_tree_on_attach(bufnr)
     -- default mappings
     api.config.mappings.default_on_attach(bufnr)
 
-    vim.keymap.set("n", "A", api.tree.expand_all, opts("Expand All"))
-    vim.keymap.set("n", "R", api.fs.rename_basename, opts("Rename: Basename"))
-    vim.keymap.set("n", "<C-l>", api.tree.reload, opts("Refresh"))
-    vim.keymap.set("n", "K", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
-    vim.keymap.set("n", "E", api.node.navigate.sibling.last, opts("Last Sibling"))
-    vim.keymap.set("n", "U", api.node.navigate.sibling.first, opts("First Sibling"))
-    vim.keymap.set("n", "u", "k", opts("Prev item"))
-    vim.keymap.set("n", "e", "j", opts("Next item"))
+    -- vim.keymap.set("n", "A", api.tree.expand_all, opts("Expand All"))
+    -- vim.keymap.set("n", "R", api.fs.rename_basename, opts("Rename: Basename"))
+    -- vim.keymap.set("n", "<C-l>", api.tree.reload, opts("Refresh"))
+    -- vim.keymap.set("n", "K", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
+    -- vim.keymap.set("n", "E", api.node.navigate.sibling.last, opts("Last Sibling"))
+    -- vim.keymap.set("n", "U", api.node.navigate.sibling.first, opts("First Sibling"))
+    -- vim.keymap.set("n", "u", "k", opts("Prev item"))
+    -- vim.keymap.set("n", "e", "j", opts("Next item"))
     vim.keymap.set("n", "gs", api.node.run.system, opts("Run system"))
     vim.keymap.set("n", "<c-/>", api.node.open.vertical, opts("Split vertical"))
     vim.keymap.set("n", "<c-_>", api.node.open.vertical, opts("Split vertical"))
     vim.keymap.set("n", "<c-c>", api.tree.close, opts("Close"))
 
-    vim.keymap.del("n", "s", { buffer = bufnr })
-    vim.keymap.del("n", "J", { buffer = bufnr })
+    -- vim.keymap.del("n", "s", { buffer = bufnr })
+    -- vim.keymap.del("n", "j", { buffer = bufnr })
 end
 
 ---@type LazyPluginSpec

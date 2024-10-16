@@ -5,7 +5,6 @@ local keymap = vim.keymap
 
 -- General Keymaps -------------------
 
--- colemak
 keymap.set(
     { "n", "x", "o" },
     "<Up>",
@@ -18,126 +17,130 @@ keymap.set(
     'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
     { expr = true, silent = true, noremap = true, desc = "Move down" }
 )
-keymap.set(
-    { "n", "x", "o" },
-    "u",
-    'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
-    { expr = true, silent = true, noremap = true, desc = "Move up" }
-)
-keymap.set(
-    { "n", "x", "o" },
-    "e",
-    'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
-    { expr = true, silent = true, noremap = true, desc = "Move down" }
-)
-keymap.set({ "n", "x", "o" }, "n", "h", { silent = true, noremap = true, desc = "Move left" })
-keymap.set({ "n", "x", "o" }, "i", "l", { silent = true, noremap = true, desc = "Move right" })
-
-keymap.set(
-    { "n", "x", "o" },
-    "N",
-    "H",
-    { silent = true, noremap = true, desc = "Go to [count] top line of the window" }
-)
-keymap.set(
-    { "n", "x", "o" },
-    "I",
-    "L",
-    { silent = true, noremap = true, desc = "Go to [count] Last line of the window" }
-)
-keymap.set({ "n", "x", "o" }, "h", "i", { silent = true, noremap = true, desc = "Insert mode in place" })
-keymap.set(
-    { "n", "x", "o" },
-    "H",
-    "I",
-    { silent = true, noremap = true, desc = "Start insert mode at the non-blank-spaced beginning of current line" }
-)
-keymap.set({ "n", "x", "o" }, "k", "u", { silent = true, noremap = true, desc = "Undo last change" })
-keymap.set({ "n", "x", "o" }, "K", "U", { silent = true, noremap = true, desc = "Undo all latest changes in one line" })
-keymap.set({ "n", "x", "o" }, "j", "nzzzv", { silent = true, noremap = true, desc = "Find next appearance" })
-keymap.set({ "n", "x", "o" }, "J", "Nzzzv", { silent = true, noremap = true, desc = "Find previous appearance" })
-keymap.set({ "n", "x", "o" }, "l", "e", { silent = true, noremap = true, desc = "Go to end of the next word" })
-keymap.set(
-    { "n", "x", "o" },
-    "L",
-    "E",
-    { silent = true, noremap = true, desc = "Go to the end of the next non-blank-spaced word" }
-)
-keymap.set(
-    { "n", "x", "o" },
-    "gl",
-    "ge",
-    { silent = true, noremap = true, desc = "Go to the end of the previous word" }
-)
-keymap.set(
-    { "n", "x", "o" },
-    "gL",
-    "gE",
-    { silent = true, noremap = true, desc = "Go to the end of the previous non-blank-spaced word" }
-)
-
-keymap.set({ "n", "x", "o" }, "E", "J", { silent = true, noremap = true, desc = "Remove line break" })
-keymap.set(
-    { "n", "x", "o" },
-    "gE",
-    "gJ",
-    { silent = true, noremap = true, desc = "Remove line break without trimming whitespace" }
-)
-keymap.set(
-    { "n", "x", "o" },
-    "gH",
-    "gI",
-    { silent = true, noremap = true, desc = "Start insert mode at the 1st column" }
-)
-keymap.set(
-    { "n", "x", "o" },
-    "gh",
-    "gi",
-    { silent = true, noremap = true, desc = "Start insert mode at the last position in insert mode" }
-)
-keymap.set({ "n", "x", "o" }, "gi", "gh", { silent = true, noremap = true, desc = "Start Select mode" })
-keymap.set({ "n", "x", "o" }, "gI", "gH", { silent = true, noremap = true, desc = "Start Select-Line mode" })
-keymap.set(
-    { "n", "x", "o" },
-    "gj",
-    "gn",
-    { silent = true, noremap = true, desc = "Find the next match and visually select it" }
-)
-keymap.set(
-    { "n", "x", "o" },
-    "gJ",
-    "gN",
-    { silent = true, noremap = true, desc = "Find the previous match and visually select it" }
-)
-
-keymap.set({ "n", "x", "o" }, "zN", "zH", { silent = true, noremap = true, desc = "Scroll left half a screen width" })
-keymap.set({ "n", "x", "o" }, "zn", "zh", { silent = true, noremap = true, desc = "Scroll N columns left" })
-keymap.set({ "n", "x", "o" }, "zI", "zL", { silent = true, noremap = true, desc = "Scroll right half a screen width" })
-keymap.set({ "n", "x", "o" }, "zi", "zl", { silent = true, noremap = true, desc = "Scroll N columns right" })
-keymap.set({ "n", "x", "o" }, "zl", "zi", { silent = true, noremap = true, desc = "Toggle foldenable" })
-keymap.set(
-    { "n", "x", "o" },
-    "[Z",
-    "zk",
-    { silent = true, noremap = true, desc = "Move to the end of the previous fold" }
-)
-keymap.set(
-    { "n", "x", "o" },
-    "]z",
-    "zj",
-    { silent = true, noremap = true, desc = "Move to the start of the next fold" }
-)
+keymap.set({ "n", "x", "o" }, "n", "nzzzv", { silent = true, noremap = true, desc = "Find next appearance" })
+keymap.set({ "n", "x", "o" }, "N", "Nzzzv", { silent = true, noremap = true, desc = "Find previous appearance" })
+-- colemak
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "u",
+--     'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+--     { expr = true, silent = true, noremap = true, desc = "Move up" }
+-- )
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "e",
+--     'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+--     { expr = true, silent = true, noremap = true, desc = "Move down" }
+-- )
+-- keymap.set({ "n", "x", "o" }, "n", "h", { silent = true, noremap = true, desc = "Move left" })
+-- keymap.set({ "n", "x", "o" }, "i", "l", { silent = true, noremap = true, desc = "Move right" })
+--
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "N",
+--     "H",
+--     { silent = true, noremap = true, desc = "Go to [count] top line of the window" }
+-- )
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "I",
+--     "L",
+--     { silent = true, noremap = true, desc = "Go to [count] Last line of the window" }
+-- )
+-- keymap.set({ "n", "x", "o" }, "h", "i", { silent = true, noremap = true, desc = "Insert mode in place" })
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "H",
+--     "I",
+--     { silent = true, noremap = true, desc = "Start insert mode at the non-blank-spaced beginning of current line" }
+-- )
+-- keymap.set({ "n", "x", "o" }, "k", "u", { silent = true, noremap = true, desc = "Undo last change" })
+-- keymap.set({ "n", "x", "o" }, "K", "U", { silent = true, noremap = true, desc = "Undo all latest changes in one line" })
+-- keymap.set({ "n", "x", "o" }, "j", "nzzzv", { silent = true, noremap = true, desc = "Find next appearance" })
+-- keymap.set({ "n", "x", "o" }, "J", "Nzzzv", { silent = true, noremap = true, desc = "Find previous appearance" })
+-- keymap.set({ "n", "x", "o" }, "l", "e", { silent = true, noremap = true, desc = "Go to end of the next word" })
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "L",
+--     "E",
+--     { silent = true, noremap = true, desc = "Go to the end of the next non-blank-spaced word" }
+-- )
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "gl",
+--     "ge",
+--     { silent = true, noremap = true, desc = "Go to the end of the previous word" }
+-- )
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "gL",
+--     "gE",
+--     { silent = true, noremap = true, desc = "Go to the end of the previous non-blank-spaced word" }
+-- )
+--
+-- keymap.set({ "n", "x", "o" }, "E", "J", { silent = true, noremap = true, desc = "Remove line break" })
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "gE",
+--     "gJ",
+--     { silent = true, noremap = true, desc = "Remove line break without trimming whitespace" }
+-- )
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "gH",
+--     "gI",
+--     { silent = true, noremap = true, desc = "Start insert mode at the 1st column" }
+-- )
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "gh",
+--     "gi",
+--     { silent = true, noremap = true, desc = "Start insert mode at the last position in insert mode" }
+-- )
+-- keymap.set({ "n", "x", "o" }, "gi", "gh", { silent = true, noremap = true, desc = "Start Select mode" })
+-- keymap.set({ "n", "x", "o" }, "gI", "gH", { silent = true, noremap = true, desc = "Start Select-Line mode" })
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "gj",
+--     "gn",
+--     { silent = true, noremap = true, desc = "Find the next match and visually select it" }
+-- )
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "gJ",
+--     "gN",
+--     { silent = true, noremap = true, desc = "Find the previous match and visually select it" }
+-- )
+--
+-- keymap.set({ "n", "x", "o" }, "zN", "zH", { silent = true, noremap = true, desc = "Scroll left half a screen width" })
+-- keymap.set({ "n", "x", "o" }, "zn", "zh", { silent = true, noremap = true, desc = "Scroll N columns left" })
+-- keymap.set({ "n", "x", "o" }, "zI", "zL", { silent = true, noremap = true, desc = "Scroll right half a screen width" })
+-- keymap.set({ "n", "x", "o" }, "zi", "zl", { silent = true, noremap = true, desc = "Scroll N columns right" })
+-- keymap.set({ "n", "x", "o" }, "zl", "zi", { silent = true, noremap = true, desc = "Toggle foldenable" })
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "[Z",
+--     "zk",
+--     { silent = true, noremap = true, desc = "Move to the end of the previous fold" }
+-- )
+-- keymap.set(
+--     { "n", "x", "o" },
+--     "]z",
+--     "zj",
+--     { silent = true, noremap = true, desc = "Move to the start of the next fold" }
+-- )
 
 -- windows
-keymap.set("n", "<C-w>u", "<C-w>k", { silent = true, noremap = true, desc = "Focus window up" })
-keymap.set("n", "<C-w>e", "<C-w>j", { silent = true, noremap = true, desc = "Focus window down" })
-keymap.set("n", "<C-w>n", "<C-w>h", { silent = true, noremap = true, desc = "Focus window left" })
-keymap.set("n", "<C-w>i", "<C-w>l", { silent = true, noremap = true, desc = "Focus window right" })
-
-keymap.set("n", "<C-w>U", "<C-w>K", { silent = true, noremap = true, desc = "Move current window to the very top" })
-keymap.set("n", "<C-w>E", "<C-w>J", { silent = true, noremap = true, desc = "Move current window to the very bottom" })
-keymap.set("n", "<C-w>N", "<C-w>H", { silent = true, noremap = true, desc = "Move current window to the far left" })
-keymap.set("n", "<C-w>I", "<C-w>L", { silent = true, noremap = true, desc = "Move current window to the far right" })
+-- free mappings: <C-w> + [a, m, y, h, j, k]
+-- keymap.set("n", "<C-w>u", "<C-w>k", { silent = true, noremap = true, desc = "Focus window up" })
+-- keymap.set("n", "<C-w>e", "<C-w>j", { silent = true, noremap = true, desc = "Focus window down" })
+-- keymap.set("n", "<C-w>n", "<C-w>h", { silent = true, noremap = true, desc = "Focus window left" })
+-- keymap.set("n", "<C-w>i", "<C-w>l", { silent = true, noremap = true, desc = "Focus window right" })
+--
+-- keymap.set("n", "<C-w>U", "<C-w>K", { silent = true, noremap = true, desc = "Move current window to the very top" })
+-- keymap.set("n", "<C-w>E", "<C-w>J", { silent = true, noremap = true, desc = "Move current window to the very bottom" })
+-- keymap.set("n", "<C-w>N", "<C-w>H", { silent = true, noremap = true, desc = "Move current window to the far left" })
+-- keymap.set("n", "<C-w>I", "<C-w>L", { silent = true, noremap = true, desc = "Move current window to the far right" })
 
 keymap.set(
     "n",
@@ -163,7 +166,7 @@ keymap.set(
     "<C-w><",
     { silent = true, noremap = true, desc = "Decrease current window width N columns" }
 )
-
+-- defualt CTRL_W_d is splitting horizontally
 keymap.set("n", "<C-w>d", "<C-w>i<C-w>L", {
     silent = true,
     noremap = true,
@@ -207,13 +210,13 @@ keymap.set(
 keymap.set(
     { "n", "x" },
     "<C-b>",
-    "<PageUp>zz",
+    "<C-b>zz",
     { silent = true, noremap = true, desc = "Scroll a whole window up and move cursor to the center" }
 )
 keymap.set(
     { "n", "x" },
     "<C-f>",
-    "<PageDown>zz",
+    "<C-f>zz",
     { silent = true, noremap = true, desc = "Scroll a whole window down and move cursor to the center" }
 )
 keymap.set(
@@ -236,8 +239,8 @@ keymap.set({ "n", "x", "o" }, "gK", "g~", { silent = true, noremap = true, desc 
 -- visual/select
 keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increase indent" })
 keymap.set({ "x" }, "<", "<gv", { silent = true, noremap = true, desc = "Increase indent" })
-keymap.set({ "x" }, "E", ":m '>+1<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines up" })
-keymap.set({ "x" }, "U", ":m '<-2<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines down" })
+keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines up" })
+keymap.set({ "x" }, "K", ":m '<-2<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines down" })
 
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
@@ -318,12 +321,6 @@ keymap.set("n", "<leader>no", function()
     end
 end, { desc = "Toggle scrolloff", silent = true, noremap = true })
 
--- keymap.set(
---     "n",
---     "<leader>nr",
---     "<CMD>set rnu! rnu?<CR>",
---     { desc = "Toggle between relative and absolute line numbers", silent = true, noremap = true }
--- )
 keymap.set("n", "<leader>nr", function()
     if vim.o.number == false and vim.o.relativenumber == false then
         vim.o.number = true

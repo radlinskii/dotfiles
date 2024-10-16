@@ -28,13 +28,13 @@ return {
             local opts = { buffer = 0, noremap = true, silent = true }
 
             vim.keymap.set("n", "q", "<Plug>UndotreeClose", opts)
-            vim.keymap.set("n", "u", "<plug>UndotreeNextState", opts)
-            vim.keymap.set("n", "e", "<plug>UndotreePreviousState", opts)
-            vim.keymap.set("n", "k", "<plug>UndotreeUndo", opts)
-            vim.keymap.set("n", "J", "<Nop>", opts)
-            vim.keymap.set("n", "K", "<Nop>", opts)
-            vim.keymap.set("n", "U", "<Nop>", opts)
-            vim.keymap.set("n", "C", "<Nop>", opts)
+            -- vim.keymap.set("n", "u", "<plug>UndotreeNextState", opts)
+            -- vim.keymap.set("n", "e", "<plug>UndotreePreviousState", opts)
+            -- vim.keymap.set("n", "k", "<plug>UndotreeUndo", opts)
+            -- vim.keymap.set("n", "J", "<Nop>", opts)
+            -- vim.keymap.set("n", "K", "<Nop>", opts)
+            -- vim.keymap.set("n", "U", "<Nop>", opts)
+            -- vim.keymap.set("n", "C", "<Nop>", opts)
         end
     end,
 }
