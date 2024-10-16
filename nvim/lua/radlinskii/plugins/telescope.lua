@@ -123,6 +123,16 @@ return {
             desc = "Telescope buffers",
         },
         {
+            "<leader>fq",
+            "<cmd> Telescope quickfix <CR>",
+            desc = "Telescope quickfix",
+        },
+        {
+            "<leader>fl",
+            "<cmd> Telescope loclist <CR>",
+            desc = "Telescope loclist",
+        },
+        {
             "<leader>fc",
             "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_visual_selection() <CR>",
             desc = "Find selected string with args",
@@ -134,6 +144,21 @@ return {
         local telescope = require("telescope")
         local actions = require("telescope.actions")
         local lga_actions = require("telescope-live-grep-args.actions")
+
+        local select_one_or_multi = function(prompt_bufnr)
+            local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+            local multi = picker:get_multi_selection()
+            if not vim.tbl_isempty(multi) then
+                require("telescope.actions").close(prompt_bufnr)
+                for _, j in pairs(multi) do
+                    if j.path ~= nil then
+                        vim.cmd(string.format("%s %s", "edit", j.path))
+                    end
+                end
+            else
+                require("telescope.actions").select_default(prompt_bufnr)
+            end
+        end
 
         telescope.setup({
             defaults = {
@@ -192,6 +217,8 @@ return {
                         ["<C-j>"] = lga_actions.quote_prompt({ postfix = " --iglob " }), -- "jlob"
 
                         ["<C-o>?"] = actions.which_key,
+
+                        ["<CR>"] = select_one_or_multi,
                     },
                     n = {
                         ["q"] = actions.close,
@@ -211,6 +238,8 @@ return {
                         ["I"] = actions.move_to_bottom,
                         ["<C-n>"] = actions.move_selection_next,
                         ["<C-p>"] = actions.move_selection_previous,
+
+                        ["<CR>"] = select_one_or_multi,
 
                         -- freeze the current list and start a fuzzy search in the frozen list
                         ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
