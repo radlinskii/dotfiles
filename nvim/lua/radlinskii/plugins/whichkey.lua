@@ -34,7 +34,8 @@ return {
         wk.setup(opts)
 
         wk.add({ "<leader>h", group = "Harpoon", icon = { cat = "filetype", name = "harpoon" } })
-        wk.add({ "<leader>s", group = "CtrlSF/Sessions", icon = { icon = " ", hl = "MiniIconsGreen" } })
+        wk.add({ "<leader>s", group = "CtrlSF", icon = { icon = " ", hl = "MiniIconsGreen" } })
+        wk.add({ "<leader>S", group = "Sessions", icon = { icon = " ", hl = "MiniIconsGreen" } })
         wk.add({ "<leader>f", group = "Telescope" })
         wk.add({ "<leader>fg", group = "Telescope Git", icon = { cat = "filetype", name = "git" } })
         wk.add({ "<leader>e", group = "NvimTree", icon = { cat = "filetype", name = "nvimtree" } })

@@ -41,6 +41,7 @@ git config --global user.name "Your Name"
 git config --global user.email "Your Email"
 git config --global init.defaultBranch main
 git config --global pull.rebase true
+git config --global push.autoSetupRemote true
 ```
 
 To add nvim as `difftool` and `mergetool` add:

@@ -72,7 +72,6 @@ if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
     echo "${Blue}Creating symlinks${NoColor}"
 
     create_symlinks "wezterm" "$HOME/.config/wezterm"
-    create_symlinks "less" "$HOME"
     create_symlinks "zsh" "$HOME"
     create_symlinks "git" "$HOME"
     create_symlinks "tmux" "$HOME"
