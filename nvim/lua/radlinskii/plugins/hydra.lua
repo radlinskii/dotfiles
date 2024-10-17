@@ -10,10 +10,10 @@ return {
             mode = "n",
             body = "<c-w>",
             heads = {
-                { "<c-n>", ":vertical resize -2<CR>", { silent = true } },
-                { "<c-e>", ":resize -2<CR>", { silent = true } },
-                { "<c-u>", ":resize +2<CR>", { silent = true } },
-                { "<c-i>", ":vertical resize +2<CR>", { silent = true } },
+                { ">", ":vertical resize -2<CR>", { silent = true } },
+                { "<", ":vertical resize +2<CR>", { silent = true } },
+                { "-", ":resize -2<CR>", { silent = true } },
+                { "+", ":resize +2<CR>", { silent = true } },
             },
         })
 

@@ -84,7 +84,7 @@ config.window_frame = {
 config.font = wezterm.font("IosevkaTerm Nerd Font")
 config.font_size = 13.6
 
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
+config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
     -- Split horizontally
     { key = "/", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },

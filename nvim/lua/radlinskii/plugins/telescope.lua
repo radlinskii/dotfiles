@@ -197,6 +197,8 @@ return {
                 file_ignore_patterns = { "node_modules" },
                 mappings = {
                     i = {
+                        ["<C-c>"] = actions.close,
+                        ["<esc>"] = false,
                         ["<C-e>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
                         ["<C-b>"] = actions.preview_scrolling_up,
@@ -221,12 +223,13 @@ return {
                         ["<CR>"] = select_one_or_multi,
                     },
                     n = {
-                        ["q"] = actions.close,
                         ["<C-c>"] = actions.close,
+                        ["<esc>"] = false,
                         ["<C-e>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
                         ["<C-b>"] = actions.preview_scrolling_up,
                         ["<C-f>"] = actions.preview_scrolling_down,
+                        ["<C-u>"] = false,
 
                         ["<C-/>"] = actions.select_vertical,
                         ["<C-_>"] = actions.select_vertical,
