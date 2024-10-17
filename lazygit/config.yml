@@ -24,6 +24,7 @@ keybinding:
         diffingMenu: "M"
         filteringMenu: "<c-f>"
         pushFiles: "<disabled>"
+        quit: <c-c>
     files:
         ignoreFile: "I"
     commits:

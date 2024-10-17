@@ -6,6 +6,10 @@ return {
     opts = {
         disable_mouse = false,
         restricted_keys = {
+            ["h"] = {},
+            ["j"] = {},
+            ["k"] = {},
+            ["l"] = {},
             ["<Up>"] = { "n", "x" },
             ["<Down>"] = { "n", "x" },
             ["<Left>"] = { "n", "x" },

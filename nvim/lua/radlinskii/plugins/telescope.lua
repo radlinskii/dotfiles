@@ -201,8 +201,8 @@ return {
                         ["<esc>"] = false,
                         ["<C-e>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
-                        ["<C-b>"] = actions.preview_scrolling_up,
-                        ["<C-f>"] = actions.preview_scrolling_down,
+                        ["<PageUp>"] = actions.preview_scrolling_up,
+                        ["<PageDown>"] = actions.preview_scrolling_down,
                         ["<C-u>"] = false,
 
                         ["<C-/>"] = actions.select_vertical,
@@ -227,8 +227,8 @@ return {
                         ["<esc>"] = false,
                         ["<C-e>"] = actions.cycle_history_next,
                         ["<C-y>"] = actions.cycle_history_prev,
-                        ["<C-b>"] = actions.preview_scrolling_up,
-                        ["<C-f>"] = actions.preview_scrolling_down,
+                        ["<PageUp>"] = actions.preview_scrolling_up,
+                        ["<PageDown>"] = actions.preview_scrolling_down,
                         ["<C-u>"] = false,
 
                         ["<C-/>"] = actions.select_vertical,

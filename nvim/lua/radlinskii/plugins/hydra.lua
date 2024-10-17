@@ -22,6 +22,8 @@ return {
             mode = "n",
             body = "z",
             heads = {
+                { "<right>", "3z<right>", { silent = true } },
+                { "<left>", "3z<left>", { silent = true } },
                 { "l", "3zl", { silent = true } },
                 { "h", "3zh", { silent = true } },
                 { "L", "zL", { silent = true } },

@@ -40,7 +40,7 @@ opt.cursorline = true
 -- Numbers
 opt.numberwidth = 2
 opt.relativenumber = true
-opt.number = false
+opt.number = true
 opt.ruler = false
 
 -- disable nvim intro
