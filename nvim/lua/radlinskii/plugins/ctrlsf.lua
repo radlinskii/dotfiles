@@ -4,38 +4,38 @@ return {
     keys = {
         {
             "<leader>sf",
-            "<Plug>CtrlSFPrompt",
+            "<Plug>CtrlSFPrompt -hidden ",
             desc = "Provide a phrase to search for",
         },
         {
             "<leader>sc",
-            "<Plug>CtrlSFCwordPath",
+            "<Plug>CtrlSFCwordPath -hidden ",
             desc = "Provide a phrase to search for word under the cursor",
         },
         {
             "<leader>sw",
-            "<Plug>CtrlSFCCwordPath",
+            "<Plug>CtrlSFCCwordPath -hidden ",
             desc = "Provide a phrase to search for word under the cursor with boundaries",
         },
         {
             "<leader>sp",
-            "<Plug>CtrlSFPwordPath",
+            "<Plug>CtrlSFPwordPath -hidden ",
             desc = "Provide a phrase to search for the last searched word in vim",
         },
         {
             "<leader>so",
-            ":CtrlSFOpen<cr>",
+            ":CtrlSFOpen<cr> -hidden ",
             desc = "Open CtrlSF window",
         },
         {
             "<leader>st",
-            ":CtrlSFToggle<cr>",
+            ":CtrlSFToggle <cr>",
             desc = "Toggle CtrlSF window",
         },
         -- visual mode
         {
             "<leader>sf",
-            "<Plug>CtrlSFVwordPath",
+            "<Plug>CtrlSFVwordPath -hidden ",
             desc = "Provide currently visually selected word to search for",
             mode = { "x" },
         },
@@ -69,10 +69,10 @@ return {
             prev = "(",
             nfile = "]",
             pfile = "[",
-            pquit = "q",
+            pquit = { "<C-c>" },
             loclist = "",
             chgmode = "M",
-            stop = "<C-C>",
+            stop = "<C-e>",
         }
 
         vim.g.ctrlsf_auto_focus = {
@@ -81,5 +81,9 @@ return {
         }
 
         vim.g.ctrlsf_winsize = 80
+
+        -- added an alias for ag
+        -- to always ignore some directories
+        -- check custom_aliases.sh
     end,
 }

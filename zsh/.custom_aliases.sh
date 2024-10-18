@@ -106,3 +106,6 @@ alias gdts='git difftool --staged'
 alias gdtr='git diff-tree --no-commit-id --name-only -r'
 alias gdtup='git difftool @{upstream}'
 alias gdtw='git difftool --word-diff'
+
+# ag for ctrlsf.vim
+alias ag='ag --path-to-ignore ~/.ignore'
