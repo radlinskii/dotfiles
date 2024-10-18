@@ -192,9 +192,10 @@ return {
                     "--line-number",
                     "--column",
                     "--smart-case",
+                    "--hidden",
                     -- "--sort=path",
                 },
-                file_ignore_patterns = { "node_modules" },
+                file_ignore_patterns = { "node_modules", ".git" },
                 mappings = {
                     i = {
                         ["<C-c>"] = actions.close,

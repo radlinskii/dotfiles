@@ -4,22 +4,22 @@ return {
     keys = {
         {
             "<leader>sf",
-            "<Plug>CtrlSFPrompt",
+            "<Plug>CtrlSFPrompt ",
             desc = "Provide a phrase to search for",
         },
         {
             "<leader>sc",
-            "<Plug>CtrlSFCwordPath",
+            "<Plug>CtrlSFCwordPath ",
             desc = "Provide a phrase to search for word under the cursor",
         },
         {
             "<leader>sw",
-            "<Plug>CtrlSFCCwordPath",
+            "<Plug>CtrlSFCCwordPath ",
             desc = "Provide a phrase to search for word under the cursor with boundaries",
         },
         {
             "<leader>sp",
-            "<Plug>CtrlSFPwordPath",
+            "<Plug>CtrlSFPwordPath ",
             desc = "Provide a phrase to search for the last searched word in vim",
         },
         {
@@ -29,13 +29,13 @@ return {
         },
         {
             "<leader>st",
-            ":CtrlSFToggle<cr>",
+            ":CtrlSFToggle <cr>",
             desc = "Toggle CtrlSF window",
         },
         -- visual mode
         {
             "<leader>sf",
-            "<Plug>CtrlSFVwordPath",
+            "<Plug>CtrlSFVwordPath ",
             desc = "Provide currently visually selected word to search for",
             mode = { "x" },
         },
@@ -69,17 +69,20 @@ return {
             prev = "(",
             nfile = "]",
             pfile = "[",
-            pquit = "q",
+            pquit = { "<C-c>" },
             loclist = "",
             chgmode = "M",
-            stop = "<C-C>",
+            stop = "<C-e>",
         }
 
         vim.g.ctrlsf_auto_focus = {
             at = "done",
             duration_less_than = 1000,
         }
-
         vim.g.ctrlsf_winsize = 80
+        vim.g.ctrlsf_backend = "rg"
+        vim.g.ctrlsf_extra_backend_args = {
+            rg = "--hidden --color=never ",
+        }
     end,
 }
