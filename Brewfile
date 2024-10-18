@@ -6,7 +6,7 @@ tap "homebrew/bundle"
 tap "homebrew/core"
 
 # brew "noti" # utility to display notifications from scripts
-# brew "trash" # rm, but put in the trash rather than completely delete
+brew "trash" # rm, but put in the trash rather than completely delete
 
 # Applications
 # cask "kitty" # a better terminal emulator
@@ -24,6 +24,7 @@ cask "font-jetbrains-mono"
 # cask "font-cascadia-mono"
 cask "font-symbols-only-nerd-font"
 cask "font-recursive-code"
+cask "font-iosevka-nerd-font"
 
 # packages
 brew "bat" # better cat
@@ -40,9 +41,9 @@ brew "git" # Git version control (latest version)
 # brew "gnupg" # GPG
 brew "grep" # grep (latest)
 # brew "highlight" # code syntax highlighting
-# brew "htop" # a top alternative
-# brew "jq" # work with JSON files in shell scripts
-# brew "lazygit" # a better git UI
+brew "btop" # a top alternative
+brew "jq" # work with JSON files in shell scripts
+brew "lazygit" # a better git UI
 # brew "neofetch" # pretty system info
 brew "neovim" # A better vim
 brew "python" # python (latest)
@@ -54,12 +55,11 @@ brew "vim" # Vim (latest)
 brew "less" # less (latest)
 # brew "wdiff" # word differences in text files
 brew "wget" # internet file retriever
-brew "z" # switch between most used directories
-# brew "zoxide" # switch between most used directories
+# brew "z" # switch between most used directories
+brew "zoxide" # switch between most used directories
 brew "zsh" # zsh (latest)
-brew "shfmt"
-brew "shellcheck"
-brew "luarocks"
-brew "lazygit"
-brew "neovim-remote"
-
+brew "shfmt" # shell script formatter
+brew "luarocks" # used by neovim
+brew "neovim-remote" # neovim remote server
+brew "superfile" # file manager
+brew "tlrc" # more human friendly man pages

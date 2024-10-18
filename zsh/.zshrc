@@ -77,7 +77,7 @@ zstyle ':omz:update' mode auto # update automatically without asking
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    z
+    # z
     git
     npm
     nvm
@@ -90,6 +90,9 @@ plugins=(
     last-working-dir # opens new terminal session in last working dir
     extract
     web-search # google smthn
+    fancy-ctrl-z
+    command-not-found
+    zoxide
 )
 
 zstyle ':omz:plugins:nvm' autoload yes
