@@ -44,6 +44,7 @@ return {
                 "jsonls",
                 "gopls",
                 "taplo",
+                "astro",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
@@ -160,6 +161,7 @@ return {
                 "gotests",
                 "golangci-lint",
                 "djlint",
+                "stylelint",
             },
         })
     end,

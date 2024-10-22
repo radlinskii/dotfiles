@@ -12,6 +12,8 @@ return {
                 javascriptreact = { "prettier" },
                 typescriptreact = { "prettier" },
                 css = { "prettier" },
+                scss = { "prettier" },
+                sass = { "prettier" },
                 html = { "prettier" },
                 htmldjango = { "djlint" },
                 json = { "prettier" },
@@ -21,6 +23,7 @@ return {
                 graphql = { "prettier" },
                 lua = { "stylua" },
                 go = { "gofumpt", "goimports", "gomodifytags", "golines" },
+                astro = { "prettier" },
             },
             format_on_save = {
                 lsp_fallback = true,

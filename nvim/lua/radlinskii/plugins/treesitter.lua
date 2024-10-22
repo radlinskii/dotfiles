@@ -41,6 +41,7 @@ return {
                 "dockerfile",
                 "gitignore",
                 "go",
+                "astro",
             },
             -- use flash.nvim treesitter mode instead
             -- incremental_selection = {
