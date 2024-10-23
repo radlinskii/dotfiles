@@ -59,7 +59,7 @@ return {
         },
         {
             "<leader>ff",
-            "<cmd> lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '-g', '!.git/**', '--hidden' }}) <CR>",
+            "<cmd> lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '--hidden' }}) <CR>",
             desc = "Find files, including hidden files, but those in .git folder",
         },
         {
@@ -195,7 +195,7 @@ return {
                     "--hidden",
                     -- "--sort=path",
                 },
-                file_ignore_patterns = { "node_modules", ".git" },
+                file_ignore_patterns = { "node_modules", ".git/", ".DS_STORE" },
                 mappings = {
                     i = {
                         ["<C-c>"] = actions.close,
