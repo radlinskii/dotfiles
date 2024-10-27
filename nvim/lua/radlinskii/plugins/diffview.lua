@@ -4,17 +4,17 @@ return {
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggle", "DiffviewFileHistory" },
     keys = {
         {
-            "<leader>dfc",
+            "<leader>dc",
             "<cmd>DiffviewClose<CR>",
             desc = "Close Diffview",
         },
         {
-            "<leader>dfo",
+            "<leader>do",
             "<cmd>DiffviewOpen<CR>",
             desc = "Open Diffview",
         },
         {
-            "<leader>dfh",
+            "<leader>dh",
             "<cmd>DiffviewFileHistory %<CR>",
             desc = "Open file history Diffview",
         },

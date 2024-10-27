@@ -132,7 +132,7 @@ return {
             end,
             keys = {
                 {
-                    "<leader>dbo",
+                    "<leader>Do",
                     function()
                         require("dap").step_out()
                     end,
@@ -141,7 +141,7 @@ return {
                     silent = true,
                 },
                 {
-                    "<leader>dbs",
+                    "<leader>Ds",
                     function()
                         require("dap").step_over()
                     end,
@@ -150,7 +150,7 @@ return {
                     silent = true,
                 },
                 -- {
-                --     "<leader>dba",
+                --     "<leader>Da",
                 --     function()
                 --         if vim.fn.filereadable("../../.vscode/launch.json") then
                 --             local dap_vscode = require("dap.ext.vscode")
@@ -167,21 +167,21 @@ return {
                 -- silent = true,
                 -- },
                 {
-                    "<leader>dbb",
+                    "<leader>Db",
                     "<cmd> DapToggleBreakpoint <CR>",
                     desc = "Toggle breakpoint",
                     noremap = true,
                     silent = true,
                 },
                 {
-                    "<leader>dbr",
+                    "<leader>Dr",
                     "<cmd> DapContinue <CR>",
                     desc = "Run or continue the debugger",
                     noremap = true,
                     silent = true,
                 },
                 {
-                    "<leader>dbx",
+                    "<leader>Dx",
                     "<cmd> DapTerminate <CR>",
                     desc = "Terminate debugger session",
                     noremap = true,
