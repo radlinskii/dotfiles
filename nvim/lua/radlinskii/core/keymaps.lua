@@ -136,7 +136,7 @@ keymap.set(
 )
 keymap.set(
     "n",
-    "<leader>nw",
+    "<leader>nq",
     "<cmd>only<CR>",
     { desc = "Close other windows than the current one", silent = true, noremap = true }
 )
@@ -148,7 +148,7 @@ keymap.set(
 )
 keymap.set(
     "n",
-    "<leader>ns",
+    "<leader>nw",
     "<cmd>noautocmd w<CR>",
     { desc = "Save buffer without running autocommands (autoformat)", silent = true, noremap = true }
 )
