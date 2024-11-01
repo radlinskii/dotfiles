@@ -40,6 +40,7 @@ brew "git" # Git version control (latest version)
 # brew "glow" # markdown viewer
 # brew "gnupg" # GPG
 brew "grep" # grep (latest)
+brew "ripgrep" # very fast file searcher
 # brew "highlight" # code syntax highlighting
 brew "btop" # a top alternative
 brew "jq" # work with JSON files in shell scripts
@@ -47,7 +48,6 @@ brew "lazygit" # a better git UI
 # brew "neofetch" # pretty system info
 brew "neovim" # A better vim
 brew "python" # python (latest)
-brew "ripgrep" # very fast file searcher
 # brew "shellcheck" # diagnostics for shell sripts
 brew "tmux" # terminal multiplexer
 brew "tree" # pretty-print directory contents

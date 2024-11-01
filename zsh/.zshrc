@@ -11,7 +11,9 @@ DEFAULT_USER="$(whoami)"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
+####
 # git clone https://github.com/JKerboeuf/chill.zsh-theme.git ${ZSH_CUSTOM}/themes/Chill
+####
 ZSH_THEME="Chill/chill"
 
 # Set list of themes to pick from when loading at random
@@ -92,6 +94,11 @@ plugins=(
     command-not-found
     zoxide
 )
+
+####
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+####
 
 zstyle ':omz:plugins:nvm' autoload yes
 

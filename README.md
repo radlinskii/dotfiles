@@ -69,7 +69,21 @@ to the `.gitconfig` file
 nvim ~/.local_zshrc.sh
 ```
 
-### 6. [lazygit](https://github.com/jesseduffield/lazygit) setup within nvim using [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) might require [neovim-remote](https://github.com/mhinz/neovim-remote)
+### 6. Even more tooling
+
+Other tools to install, also can be found in `Brewfile`:
+
+`zsh`, `omz`, `zoxide`, `fzf`, `ripgrep`, `bat`, `tmux`, `lazygit`, `btop`, `superfile`, `unzip`, `fd`, `tldr`, `tree`
+
+and more:
+
+`shfmt`, `luarocks`, `eslint_d`
+
+Other environments to setup:
+
+[node & npm](https://nodejs.org/en/download/package-manager), [go](https://go.dev/doc/install), [rust](https://www.rust-lang.org/tools/install), and from whatever you can find it `python`.
+
+### 7. [lazygit](https://github.com/jesseduffield/lazygit) setup within nvim using [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) might require [neovim-remote](https://github.com/mhinz/neovim-remote)
 
 Setting up `nvr` might require assigning evironment variable `NVIM_LISTEN_ADDRESS`.
 Value could be `localhost:6789` as it is the default value that `nvr` tries to connect to.
