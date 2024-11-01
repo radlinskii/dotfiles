@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 Black='\033[0;30m'
 Red='\033[0;31m'
 Green='\033[0;32m'
@@ -17,6 +19,8 @@ White='\033[1;37m'
 NoColor='\033[0m'
 
 create_symlinks() {
+    setopt nullglob
+
     local source="$1"
     local destination_directory="$2"
     if [[ ! -d "$source" && ! -f "$source" ]]; then
@@ -41,16 +45,16 @@ create_symlinks() {
     fi
 
     if [[ -d "$source" ]]; then
-        for file in "$source"/{.[!.]*,*}; do
+        for file in "$source"/{*,.[!.]*}; do
             if [[ -f "$file" ]]; then
                 create_symlinks "$file" "$destination_directory"
-            fi
-
-            if [[ -d "$file" ]]; then
+            elif [[ -d "$file" && "$file" != "$source" ]]; then
                 create_symlinks "$file" "$destination_directory/$(basename "$file")"
             fi
         done
     fi
+
+    unsetopt nullglob
 }
 
 function has_param() {
@@ -68,6 +72,8 @@ function has_param() {
     return 1
 }
 
+os=$(uname -s)
+
 if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
     echo "${Blue}Creating symlinks${NoColor}"
 
@@ -77,27 +83,30 @@ if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
     create_symlinks "tmux" "$HOME"
     create_symlinks "nvim" "$HOME/.config/nvim"
     create_symlinks "lazygit" "$HOME/.config/lazygit"
-    create_symlinks "superfile" "$HOME/Library/Application Support/superfile"
-fi
 
-if has_param "-m --mac" "$@" || [[ $# -eq 0 ]]; then
-    echo "${Blue}Configuring macOS${NoColor}"
+    # macOS
+    if [[ "$os" == "Darwin" ]]; then
+        create_symlinks "superfile" "$HOME/Library/Application Support/superfile"
+    fi
 
-    ./scripts/macos.sh
-fi
-
-if has_param "-b --brew" "$@" || [[ $# -eq 0 ]]; then
-    echo "${Blue}Setting up Homebrew${NoColor}"
-
-    ./scripts/brew.sh
-fi
-
-if has_param "-o --omz" "$@" || [[ $# -eq 0 ]]; then
-    if [[ ! -d "$ZSH" ]]; then
-        echo "${Blue}Installing oh-my-zsh${NoColor}"
-        sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-    else
-        echo "${Blue}Omitting oh-my-zsh installation${NoColor}"
-        echo "$ZSH directory already exists"
+    # Linux
+    if [[ "$os" == "Linux" ]]; then
+        create_symlinks "superfile" "$HOME/.config/superfile"
     fi
 fi
+
+# macOS
+if [[ "$os" == "Darwin" ]]; then
+    if has_param "-m --mac" "$@" || [[ $# -eq 0 ]]; then
+        echo "${Blue}Configuring macOS${NoColor}"
+
+        ./scripts/macos.sh
+    fi
+
+    if has_param "-b --brew" "$@" || [[ $# -eq 0 ]]; then
+        echo "${Blue}Setting up Homebrew${NoColor}"
+
+        ./scripts/brew.sh
+    fi
+fi
+
