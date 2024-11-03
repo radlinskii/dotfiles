@@ -14,6 +14,8 @@ sudo apt install lazygit -y
 sudo apt install build-essential  -y
 sudo apt install btop -y
 sudo apt install unzip -y
+sudo apt install tmux -y
+sudo apt install fontconfig -y
 
 # sudo apt install python3 -y
 # sudo apt install python3-pip -y

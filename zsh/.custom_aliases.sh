@@ -2,6 +2,27 @@
 
 alias fzfm="fzf --multi"
 
+function tmx() {
+  local session_name="${1:-main}"
+
+  # Check if the session already exists
+  if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux new-session -d -s "$session_name"
+  fi
+
+  # Check if the "btop" window exists in the session
+  if ! tmux list-windows -t "$session_name" | grep -q "btop"; then
+    # Create the "btop" window if it doesn't exist
+    tmux new-window -t "$session_name" 'btop'
+  fi
+
+  # Attach to the session, the first window is active
+  tmux select-window -t "$session_name:1"
+  # Reload config to load battery and cpu plugins
+  tmux source-file ~/.tmux.conf
+  tmux attach-session -t "$session_name"
+}
+
 alias x="exit"
 
 alias sz="source ~/.zshrc"
