@@ -53,6 +53,24 @@ customCommands:
       description: "push to remote without pre-push hook"
       context: "global"
       stream: true
+    - key: "<c-p>"
+      prompts:
+          - type: "confirm"
+            title: "Are you sure you want to FORCE push the remote without pre-push hook?!"
+            initialValue: ""
+      command: git push --force-with-lease --no-verify
+      description: "FORCE push to remote without pre-push hook"
+      context: "global"
+      stream: true
+    - key: "<c-f>"
+      prompts:
+          - type: "confirm"
+            title: "Are you sure you want to FORCE push the remote?!"
+            initialValue: ""
+      command: git push --force-with-lease
+      description: "FORCE push to remote"
+      context: "global"
+      stream: true
 gui:
     theme:
         selectedLineBgColor:
