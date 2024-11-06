@@ -1,6 +1,6 @@
 .vscode
 .idea
 Brewfile.lock.json
-scripts/run-symlinks-on-windows.cjs
-nvim/lazy-lock.json
+scripts_config/run-symlinks-on-windows.cjs
+nvim_config/lazy-lock.json
 
