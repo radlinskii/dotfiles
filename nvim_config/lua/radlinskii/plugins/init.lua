@@ -1,2 +1,4 @@
 ---@type LazyPluginSpec[]
-return {}
+return {
+    { "meznaric/key-analyzer.nvim", opts = {}, event = "VeryLazy" },
+}
