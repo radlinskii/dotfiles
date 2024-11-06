@@ -77,21 +77,21 @@ os=$(uname -s)
 if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
     echo "${Blue}Creating symlinks${NoColor}"
 
-    create_symlinks "wezterm" "$HOME/.config/wezterm"
-    create_symlinks "zsh" "$HOME"
-    create_symlinks "git" "$HOME"
-    create_symlinks "tmux" "$HOME"
-    create_symlinks "nvim" "$HOME/.config/nvim"
-    create_symlinks "lazygit" "$HOME/.config/lazygit"
+    create_symlinks "wezterm_config" "$HOME/.config/wezterm"
+    create_symlinks "zsh_config" "$HOME"
+    create_symlinks "git_config" "$HOME"
+    create_symlinks "tmux_config" "$HOME"
+    create_symlinks "nvim_config" "$HOME/.config/nvim"
+    create_symlinks "lazygit_config" "$HOME/.config/lazygit"
 
     # macOS
     if [[ "$os" == "Darwin" ]]; then
-        create_symlinks "superfile" "$HOME/Library/Application Support/superfile"
+        create_symlinks "superfile_config" "$HOME/Library/Application Support/superfile"
     fi
 
     # Linux
     if [[ "$os" == "Linux" ]]; then
-        create_symlinks "superfile" "$HOME/.config/superfile"
+        create_symlinks "superfile_config" "$HOME/.config/superfile"
     fi
 fi
 
