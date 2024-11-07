@@ -58,10 +58,10 @@ create_symlinks() {
 }
 
 function has_param() {
-    local terms="$1"
+    local terms=(${(s: :)1})  # Split terms into an array
     shift
 
-    for term in $terms; do
+    for term in "${terms[@]}"; do
         for arg; do
             if [[ $arg == "$term" ]]; then
                 return 0
@@ -82,16 +82,18 @@ if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
     create_symlinks "git_config" "$HOME"
     create_symlinks "tmux_config" "$HOME"
     create_symlinks "nvim_config" "$HOME/.config/nvim"
-    create_symlinks "lazygit_config" "$HOME/.config/lazygit"
+
 
     # macOS
     if [[ "$os" == "Darwin" ]]; then
         create_symlinks "superfile_config" "$HOME/Library/Application Support/superfile"
+        create_symlinks "lazygit_config" "$HOME/Library/Application Support/lazygit"
     fi
 
     # Linux
     if [[ "$os" == "Linux" ]]; then
         create_symlinks "superfile_config" "$HOME/.config/superfile"
+        create_symlinks "lazygit_config" "$HOME/.config/lazygit"
     fi
 fi
 
@@ -100,13 +102,13 @@ if [[ "$os" == "Darwin" ]]; then
     if has_param "-m --mac" "$@" || [[ $# -eq 0 ]]; then
         echo "${Blue}Configuring macOS${NoColor}"
 
-        ./scripts/macos.sh
+        ./scripts_config/macos.sh
     fi
 
     if has_param "-b --brew" "$@" || [[ $# -eq 0 ]]; then
         echo "${Blue}Setting up Homebrew${NoColor}"
 
-        ./scripts/brew.sh
+        ./scripts_config/brew.sh
     fi
 fi
 
