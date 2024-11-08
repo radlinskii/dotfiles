@@ -11,6 +11,18 @@ return {
     config = function()
         local treesitter = require("nvim-treesitter.configs")
 
+        require("treesitter-context").setup({
+            multiwindow = true, -- Enable multiwindow support. TODO: what does it do?
+            max_lines = 10, -- How many lines the window should span. Values <= 0 mean no limit.
+            min_window_height = 30, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+            multiline_threshold = 5, -- Maximum number of lines to show for a single context
+            separator = "─",
+        })
+
+        vim.keymap.set("n", "gC", function()
+            require("treesitter-context").go_to_context(vim.v.count1)
+        end, { silent = true, noremap = true })
+
         treesitter.setup({
             highlight = {
                 enable = true,
