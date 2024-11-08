@@ -27,20 +27,10 @@ keymap.set("n", "<C-w>d", "<C-w>i<C-w>L", {
     noremap = true,
     desc = "Split window vertically and go to the declaration of item under the cursor",
 })
-keymap.set("n", "<C-w>/", "<C-w>v", {
-    silent = true,
-    noremap = true,
-    desc = "Split window vertically",
-})
-keymap.set("n", "<C-w>x", "<C-w>s", {
+keymap.set("n", "<C-w>h", "<C-w>s", {
     silent = true,
     noremap = true,
     desc = "Split window horizontally",
-})
-keymap.set("n", "<C-w>s", "<C-w>x", {
-    silent = true,
-    noremap = true,
-    desc = "Swap current with next",
 })
 keymap.set(
     "n",

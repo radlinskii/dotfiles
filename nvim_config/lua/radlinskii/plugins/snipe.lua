@@ -22,8 +22,8 @@ return {
             prev_page = "<left>",
             cancel_snipe = "<C-c>",
             close_buffer = "<C-d>",
-            open_vsplit = "<C-/>",
-            open_split = "<C-x>",
+            open_vsplit = "<C-v>",
+            open_split = "<C-h>",
             -- Change tag manually
             change_tag = "C",
         },

@@ -58,8 +58,8 @@ return {
         vim.g.ctrlsf_mapping = {
             open = { "<CR>", "o" },
             openb = "O",
-            split = "<C-X>",
-            vsplit = { "<C-/>", "<C-_>" },
+            split = "<C-h>",
+            vsplit = "<C-v>",
             tab = "t",
             tabb = "T",
             popen = "p",

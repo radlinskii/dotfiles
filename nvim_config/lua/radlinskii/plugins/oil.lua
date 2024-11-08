@@ -36,9 +36,8 @@ return {
             autosave_changes = true,
         },
         keymaps = {
-            ["<C-_>"] = { "actions.select", opts = { vertical = true }, desc = "Open in a vertical split" },
-            ["<C-/>"] = { "actions.select", opts = { vertical = true }, desc = "Open in a vertical split" },
-            ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open in a horizontal split" },
+            ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open in a vertical split" },
+            ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open in a horizontal split" },
             ["<C-c>"] = "actions.close",
             ["<C-s>"] = {
                 callback = function()

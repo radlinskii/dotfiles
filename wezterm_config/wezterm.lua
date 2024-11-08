@@ -87,9 +87,9 @@ config.font_size = 13.6
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
     -- Split horizontally
-    { key = "/", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
+    { key = "v", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
     -- Split vertically
-    { key = "x", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
+    { key = "h", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 
     -- Move focus
     { key = "LeftArrow", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },

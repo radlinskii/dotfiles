@@ -184,8 +184,8 @@ return {
                         ["<PageDown>"] = actions.preview_scrolling_down,
                         ["<C-u>"] = false,
 
-                        ["<C-/>"] = actions.select_vertical,
-                        ["<C-_>"] = actions.select_vertical,
+                        ["<C-v>"] = actions.select_vertical,
+                        ["<C-h>"] = actions.select_horizontal,
 
                         -- freeze the current list and start a fuzzy search in the frozen list
                         ["<C-l>"] = actions.to_fuzzy_refine, -- "lock" and refine
@@ -210,8 +210,8 @@ return {
                         ["<PageDown>"] = actions.preview_scrolling_down,
                         ["<C-u>"] = false,
 
-                        ["<C-/>"] = actions.select_vertical,
-                        ["<C-_>"] = actions.select_vertical,
+                        ["<C-v>"] = actions.select_vertical,
+                        ["<C-h>"] = actions.select_horizontal,
 
                         ["e"] = actions.move_selection_next,
                         ["u"] = actions.move_selection_previous,
