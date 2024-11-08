@@ -152,6 +152,8 @@ return {
                 files = {
                     ["enter"] = actions.file_edit,
                     ["ctrl-x"] = actions.file_split,
+                    ["ctrl-v"] = actions.file_vsplit,
+                    -- todo: not working
                     ["ctrl-/"] = actions.file_vsplit,
                     ["ctrl-_"] = actions.file_vsplit,
                 },

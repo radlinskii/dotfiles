@@ -1,7 +1,6 @@
 ---@type LazyPluginSpec
 return {
     "leath-dub/snipe.nvim",
-    enabled = false,
     keys = {
         {
             "<leader><leader>",
@@ -19,8 +18,14 @@ return {
             position = "cursor",
         },
         navigate = {
-            next_page = "U",
-            prev_page = "E",
+            next_page = "<right>",
+            prev_page = "<left>",
+            cancel_snipe = "<C-c>",
+            close_buffer = "<C-d>",
+            open_vsplit = "<C-/>",
+            open_split = "<C-x>",
+            -- Change tag manually
+            change_tag = "C",
         },
     },
 }
