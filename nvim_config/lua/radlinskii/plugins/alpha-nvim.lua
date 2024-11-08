@@ -16,9 +16,9 @@ return {
         end
 
         local logo = {
-            [[       ___           ___           ___                                    ___       ]],
-            [[      /__/\         /  /\         /  /\          ___        ___          /__/\      ]],
-            [[      \  \:\       /  /:/_       /  /::\        /__/\      /  /\        |  |::\     ]],
+            [[       ___           ___           ___          ___          ___          ___       ]],
+            [[      /__/\         /  /\         /  /\        /__/\        /  /\        /__/\      ]],
+            [[      \  \:\       /  /:/_       /  /::\       \  \:\      /  /:/       |  |::\     ]],
             [[       \  \:\     /  /:/ /\     /  /:/\:\       \  \:\    /  /:/        |  |:|:\    ]],
             [[   _____\__\:\   /  /:/ /:/_   /  /:/  \:\       \  \:\  /__/::\      __|__|:|\:\   ]],
             [[  /__/::::::::\ /__/:/ /:/ /\ /__/:/ \__\:\  ___  \__\:\ \__\/\:\__  /__/::::| \:\  ]],
@@ -66,23 +66,12 @@ return {
             dashboard.button(
                 "<Space>fo",
                 "󰙰    Local Recent Files",
-                "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = true})<CR>"
+                "<cmd>lua require('fzf-lua').oldfiles({ cwd_only = true }) <CR>"
             ),
-            dashboard.button(
-                "<Space>fO",
-                "󰝉    Recent Files ",
-                "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = false})<CR>"
-            ),
-            dashboard.button(
-                "<Space>ff",
-                "    Find File ",
-                "<cmd>lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '-g', '!.git', '--hidden' }})<CR>"
-            ),
+            dashboard.button("<Space>fO", "󰝉    Global Recent Files ", "<cmd>FzfLua oldfiles<CR>"),
+            dashboard.button("<Space>ff", "    Find File ", "<cmd>FzfLua files<CR>"),
             dashboard.button("<Space>b", "    Open New Buffer", "<cmd>enew<CR>"),
-            -- dashboard.button("<Space>fs", "󰈭    Find string", "<cmd>Telescope live_grep<CR>"),
-            -- dashboard.button("<Space>fgs", "    Git Status", "<cmd>Telescope git_status<CR>"),
-            -- dashboard.button("<Space>fm", "    Find Bookmarks", "<cmd>Telescope marks<CR>"),
-            dashboard.button("<Space>fh", "󰮥    Find Help", "<cmd>Telescope help_tags<CR>"),
+            dashboard.button("<Space>fh", "󰮥    Find Help", "<cmd>FzfLua help_tags<CR>"),
             dashboard.button("q", "✖    Quit", ":qa<cr>"),
         }
         dashboard.section.footer.val = fortune()

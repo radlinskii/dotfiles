@@ -30,28 +30,41 @@ M.on_attach = function(_, bufnr)
 
     -- LSP code action mapping for both Normal and Visual modes
     opts.desc = "LSP code action"
-    keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts)
+    keymap.set({ "n", "v" }, "<leader>la", function()
+        require("fzf-lua").register_ui_select(function(_, items)
+            local min_h, max_h = 0.15, 0.70
+            local h = (#items + 4) / vim.o.lines
+            if h < min_h then
+                h = min_h
+            elseif h > max_h then
+                h = max_h
+            end
+            return { winopts = { height = h, width = 0.60, row = 0.40 } }
+        end)
+
+        vim.lsp.buf.code_action()
+    end, opts)
 
     opts.desc = "Restart LSP"
     keymap.set("n", "<leader>lx", "<cmd>LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
     opts.desc = "LSP document symbols"
-    keymap.set("n", "<leader>ls", require("telescope.builtin").lsp_document_symbols, opts)
+    keymap.set("n", "<leader>ls", "<cmd>FzfLua lsp_document_symbols<CR>", opts)
 
     opts.desc = "LSP format"
     keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
 
     opts.desc = "LSP definition"
-    keymap.set("n", "<leader>ld", require("telescope.builtin").lsp_definitions, opts)
+    keymap.set("n", "<leader>ld", "<cmd>FzfLua lsp_definitions<CR>", opts)
 
     opts.desc = "LSP implementation"
-    keymap.set("n", "<leader>li", require("telescope.builtin").lsp_implementations, opts)
+    keymap.set("n", "<leader>li", "<cmd>FzfLua lsp_implementations <CR>", opts)
 
     opts.desc = "LSP definition type"
-    keymap.set("n", "<leader>lt", require("telescope.builtin").lsp_type_definitions, opts)
+    keymap.set("n", "<leader>lt", "<cmd>FzfLua lsp_typedefs<CR>", opts)
 
     opts.desc = "LSP references"
-    keymap.set("n", "<leader>lr", require("telescope.builtin").lsp_references, opts)
+    keymap.set("n", "<leader>lr", "<cmd>FzfLua lsp_references<CR>", opts)
 
     wk.add({ "<leader>lw", group = "LSP Workspace", icon = { cat = "filetype", name = ft }, buffer = bufnr })
 
@@ -59,7 +72,7 @@ M.on_attach = function(_, bufnr)
     keymap.set("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 
     opts.desc = "LSP workspace symbols"
-    keymap.set("n", "<leader>lws", require("telescope.builtin").lsp_dynamic_workspace_symbols, opts)
+    keymap.set("n", "<leader>lws", "<cmd>FzfLua lsp_workspace_symbols<CR>", opts)
 
     opts.desc = "LSP Remove workspace folder"
     keymap.set("n", "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)

@@ -4,7 +4,6 @@ return {
         "rmagatti/auto-session",
         lazy = false,
         enabled = true,
-        dependencies = { "nvim-telescope/telescope.nvim" },
         keys = {
             {
                 "<leader>SS",

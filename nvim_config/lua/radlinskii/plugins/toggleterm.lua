@@ -3,15 +3,8 @@ return {
     "ryanmsnyder/toggleterm-manager.nvim",
     keys = {
         { "<C-\\>", desc = "ToggleTerm" },
-        {
-            "<leader>ft",
-            "<cmd>Telescope toggleterm_manager<cr>",
-            desc = "Find Open ToggleTerm terminals",
-        },
     },
     dependencies = {
-        "nvim-telescope/telescope.nvim",
-        "nvim-lua/plenary.nvim", -- only needed because it's a dependency of telescope
         {
             "akinsho/toggleterm.nvim",
             config = function()

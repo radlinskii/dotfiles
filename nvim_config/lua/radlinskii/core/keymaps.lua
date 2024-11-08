@@ -119,7 +119,7 @@ keymap.set({ "i" }, "<C-l>", "<ESC>ea", { silent = true, noremap = true, desc = 
 keymap.set({ "i" }, "<C-f>", "<ESC>ldei", { silent = true, noremap = true, desc = "Delete word till the end" })
 keymap.set({ "i" }, "<C-j>", "<C-f>", { silent = true, noremap = true, desc = "Reindent line" })
 
--- <C-b>,<C-f>,<C-j>,<C-k>,<C-l>,<C-/>(<C-_>) are used in some of the plugins e.g. telescope and cmp
+-- <C-b>,<C-f>,<C-j>,<C-k>,<C-l>,<C-/>(<C-_>) are used in some of the plugins e.g. fzf-lua and cmp
 
 -- C-c -> ESC
 -- C-m -> CR
@@ -136,7 +136,7 @@ keymap.set(
 )
 keymap.set(
     "n",
-    "<leader>nq",
+    "<leader>nw",
     "<cmd>only<CR>",
     { desc = "Close other windows than the current one", silent = true, noremap = true }
 )
@@ -148,7 +148,7 @@ keymap.set(
 )
 keymap.set(
     "n",
-    "<leader>nw",
+    "<leader>nW",
     "<cmd>noautocmd w<CR>",
     { desc = "Save buffer without running autocommands (autoformat)", silent = true, noremap = true }
 )
@@ -199,6 +199,7 @@ keymap.set(
 )
 keymap.set({ "n" }, "<leader>w", "<cmd> w <CR>", { desc = "Write file", silent = true, noremap = true })
 keymap.set({ "n" }, "<leader>b", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader><leader>", "<cmd>b#<CR>", { desc = "Alternate buffer", silent = true, noremap = true })
 
 keymap.set(
     "n",

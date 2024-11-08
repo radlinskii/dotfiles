@@ -1,5 +1,6 @@
 ---@type LazyPluginSpec
 return {
+    enabled = false,
     "nvim-telescope/telescope.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
@@ -9,18 +10,6 @@ return {
         "nvim-telescope/telescope-ui-select.nvim",
     },
     keys = {
-        {
-            "<C-p>",
-            "<cmd> Telescope buffers <CR>",
-            mode = { "n" },
-            desc = "Telescope buffers",
-        },
-        {
-            "<C-n>",
-            "<cmd> Telescope buffers <CR>",
-            desc = "Telescope buffers",
-            mode = { "n" },
-        },
         {
             "<leader>fc",
             "<cmd> lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor() <CR>",
@@ -55,11 +44,6 @@ return {
             "<leader>fS",
             "<cmd> Telescope live_grep <CR>",
             desc = "Live grep",
-        },
-        {
-            "<leader>ff",
-            "<cmd> lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '--hidden' }}) <CR>",
-            desc = "Find files, including hidden files, but those in .git folder",
         },
         {
             "<leader>fo",

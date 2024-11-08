@@ -66,12 +66,5 @@ return {
             end,
             desc = "Dismiss all notifications",
         },
-        {
-            "<leader>fn",
-            function()
-                require("noice").cmd("telescope")
-            end,
-            desc = "Find notification in history using Telescope",
-        },
     },
 }
