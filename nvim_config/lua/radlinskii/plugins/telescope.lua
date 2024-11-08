@@ -7,7 +7,6 @@ return {
         "nvim-tree/nvim-web-devicons",
         "nvim-telescope/telescope-live-grep-args.nvim",
         "nvim-telescope/telescope-ui-select.nvim",
-        "nvim-telescope/telescope-frecency.nvim",
     },
     keys = {
         {
@@ -61,11 +60,6 @@ return {
             "<leader>ff",
             "<cmd> lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--follow', '--hidden' }}) <CR>",
             desc = "Find files, including hidden files, but those in .git folder",
-        },
-        {
-            "<leader>fr",
-            "<cmd> Telescope frecency <CR>",
-            desc = "Find file based on frecency",
         },
         {
             "<leader>fo",
@@ -181,7 +175,7 @@ return {
                 },
                 prompt_prefix = "   ",
                 selection_caret = "> ",
-                path_display = { "smart" }, -- { "truncate" },
+                path_display = { "truncate" },
                 dynamic_preview_title = true,
                 vimgrep_arguments = {
                     "rg",
@@ -257,7 +251,7 @@ return {
                     },
                 },
             },
-            extensions_list = { "themes", "terms", "fzf", "live_grep_args", "frecency" },
+            extensions_list = { "themes", "terms", "fzf", "live_grep_args" },
             extensions = {
                 fzf = {
                     fuzzy = true,
@@ -265,29 +259,21 @@ return {
                     override_file_sorter = true,
                     case_mode = "smart_case",
                 },
-                frecency = {
-                    auto_validate = false,
-                    matcher = "fuzzy",
-                    default_workspace = "CWD",
-                },
             },
             pickers = {
                 buffers = {
                     sort_lastused = true,
                     sort_mru = true,
-                    -- TODO: watch https://github.com/nvim-telescope/telescope.nvim/issues/3157
-                    path_display = { "filename_first" },
+                    path_display = { "truncate" },
                 },
                 oldfiles = {
-                    -- TODO: watch https://github.com/nvim-telescope/telescope.nvim/issues/3157
-                    path_display = { "filename_first" },
+                    path_display = { "truncate" },
                 },
             },
         })
 
         telescope.load_extension("fzf")
         telescope.load_extension("live_grep_args")
-        telescope.load_extension("frecency")
         telescope.load_extension("ui-select")
     end,
 }
