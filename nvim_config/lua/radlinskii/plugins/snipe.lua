@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 return {
     "leath-dub/snipe.nvim",
+    enabled = false,
     keys = {
         {
             "<leader><leader>",
