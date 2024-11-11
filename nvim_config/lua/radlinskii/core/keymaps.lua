@@ -126,19 +126,13 @@ keymap.set(
 )
 keymap.set(
     "n",
-    "<leader>nw",
-    "<cmd>only<CR>",
-    { desc = "Close other windows than the current one", silent = true, noremap = true }
-)
-keymap.set(
-    "n",
     "<leader>nb",
     [[<cmd> w <bar> only <bar> %bd <bar> e# <bar> bd# <CR>'"]],
     { desc = "Close other buffers than the current one", silent = true, noremap = true }
 )
 keymap.set(
     "n",
-    "<leader>nW",
+    "<leader>nw",
     "<cmd>noautocmd w<CR>",
     { desc = "Save buffer without running autocommands (autoformat)", silent = true, noremap = true }
 )
@@ -189,6 +183,7 @@ keymap.set(
 )
 keymap.set({ "n" }, "<leader>w", "<cmd> w <CR>", { desc = "Write file", silent = true, noremap = true })
 keymap.set({ "n" }, "<leader>bn", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer", silent = true, noremap = true })
 keymap.set({ "n" }, "<leader>bb", "<cmd>b#<CR>", { desc = "Alternate buffer", silent = true, noremap = true })
 
 keymap.set(
