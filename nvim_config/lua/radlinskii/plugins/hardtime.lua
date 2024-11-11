@@ -21,6 +21,6 @@ return {
             ["<Left>"] = {},
             ["<Right>"] = {},
         },
-        disabled_filetypes = {},
+        disabled_filetypes = { "buffer_manager", "harpoon", "snipe-menu" },
     },
 }

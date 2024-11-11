@@ -143,6 +143,7 @@ return {
         local fzf_lua = require("fzf-lua")
 
         fzf_lua.setup({
+            -- "fzf-native",
             winopts = {
                 width = 0.95,
                 height = 0.93,
@@ -151,8 +152,13 @@ return {
             actions = {
                 files = {
                     ["enter"] = actions.file_edit,
-                    ["ctrl-h"] = actions.file_split,
+                    ["ctrl-h"] = actions.file_split, -- TODO: not working
                     ["ctrl-v"] = actions.file_vsplit,
+                },
+            },
+            previewers = {
+                bat = {
+                    theme = "ansi",
                 },
             },
             grep = {
@@ -160,6 +166,7 @@ return {
                 glob_separator = "%s%-%-%s", -- query separator pattern (lua): ' -- '
             },
             buffers = {
+                -- previewer = false,
                 formatter = "path.filename_first",
                 actions = {
                     -- actions inherit from 'actions.files' and merge

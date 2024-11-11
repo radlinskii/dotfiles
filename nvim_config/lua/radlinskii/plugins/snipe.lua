@@ -4,7 +4,7 @@ return {
     enabled = false,
     keys = {
         {
-            "<leader><leader>",
+            "<leader>bs",
             function()
                 require("snipe").open_buffer_menu()
             end,
@@ -16,7 +16,7 @@ return {
             dictionary = "tsragpfwbdcxzvhkmjo",
         },
         ui = {
-            position = "cursor",
+            position = "center",
         },
         navigate = {
             next_page = "<right>",
@@ -26,7 +26,8 @@ return {
             open_vsplit = "<C-v>",
             open_split = "<C-h>",
             -- Change tag manually
-            change_tag = "C",
+            change_tag = "<C-e>",
         },
+        sort = "default",
     },
 }

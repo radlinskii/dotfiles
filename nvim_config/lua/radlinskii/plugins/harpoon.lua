@@ -14,6 +14,10 @@ return {
             "<leader>ho",
             function()
                 require("harpoon.ui").toggle_quick_menu()
+                -- wait for the menu to open
+                vim.defer_fn(function()
+                    vim.fn.feedkeys("$")
+                end, 50)
             end,
             desc = "Open Harpoon quick menu",
         },
@@ -106,4 +110,22 @@ return {
             desc = "Navigate to 6th mark in harpoon",
         },
     },
+    config = function()
+        local opts = { noremap = true, silent = true }
+        local autocmd = vim.api.nvim_create_autocmd
+
+        autocmd("FileType", {
+            desc = "Toggle buffer manager off",
+            pattern = { "harpoon" },
+            callback = function()
+                vim.api.nvim_buf_set_keymap(
+                    0,
+                    "n",
+                    "<C-c>",
+                    "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>",
+                    opts
+                )
+            end,
+        })
+    end,
 }

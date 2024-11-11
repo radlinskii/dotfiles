@@ -188,8 +188,8 @@ keymap.set(
     { noremap = true, desc = "Substitute current word" }
 )
 keymap.set({ "n" }, "<leader>w", "<cmd> w <CR>", { desc = "Write file", silent = true, noremap = true })
-keymap.set({ "n" }, "<leader>b", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
-keymap.set({ "n" }, "<leader><leader>", "<cmd>b#<CR>", { desc = "Alternate buffer", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader>bn", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader>bb", "<cmd>b#<CR>", { desc = "Alternate buffer", silent = true, noremap = true })
 
 keymap.set(
     "n",
