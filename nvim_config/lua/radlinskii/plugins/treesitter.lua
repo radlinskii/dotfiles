@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = { "VeryLazy", "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     dependencies = {
         -- "nvim-treesitter/nvim-treesitter-textobjects",

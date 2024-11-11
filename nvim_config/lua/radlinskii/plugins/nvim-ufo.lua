@@ -1,8 +1,9 @@
 ---@type LazyPluginSpec
 return {
     "kevinhwang91/nvim-ufo",
-    -- event = { "VeryLazy" },
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
+    -- try lazyloading it only when buffer is opened
+    -- lazy = false,
     dependencies = {
         "kevinhwang91/promise-async",
         {

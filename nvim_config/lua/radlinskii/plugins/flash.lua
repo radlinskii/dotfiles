@@ -1,7 +1,8 @@
 ---@type LazyPluginSpec
 return {
     "folke/flash.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    -- should work properly lazy loaded with just keys
+    -- event = { "BufReadPre", "BufNewFile" },
     opts = {
         incremental = true,
         modes = {

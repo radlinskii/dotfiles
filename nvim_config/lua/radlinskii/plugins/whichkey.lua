@@ -5,7 +5,7 @@ return {
         vim.o.timeout = true
         vim.o.timeoutlen = 400
     end,
-    lazy = false,
+    event = { "VeryLazy" },
     keys = {
         {
             "<leader>?",

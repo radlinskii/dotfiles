@@ -21,6 +21,12 @@ return {
             ["<Left>"] = {},
             ["<Right>"] = {},
         },
-        disabled_filetypes = { "buffer_manager", "harpoon", "snipe-menu" },
+        disabled_filetypes = {
+            "buffer_manager",
+            "harpoon",
+            "snipe-menu",
+            "alpha",
+            "NvimTree",
+        },
     },
 }

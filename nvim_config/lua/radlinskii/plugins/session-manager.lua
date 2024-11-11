@@ -2,8 +2,10 @@
 return {
     {
         "rmagatti/auto-session",
-        lazy = false,
         enabled = true,
+        -- can be lazy loaded if the auto_restore is disabled
+        -- lazy = false,
+        cmd = { "SessionRestore", "SessionSave" },
         keys = {
             {
                 "<leader>SS",

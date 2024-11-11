@@ -38,7 +38,64 @@ end
 ---@type LazyPluginSpec
 return {
     "rcarriga/nvim-dap-ui",
-    ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    keys = {
+        {
+            "<leader>Do",
+            function()
+                require("dap").step_out()
+            end,
+            desc = "Step Out",
+            noremap = true,
+            silent = true,
+        },
+        {
+            "<leader>Ds",
+            function()
+                require("dap").step_over()
+            end,
+            desc = "Step Over",
+            noremap = true,
+            silent = true,
+        },
+        -- {
+        --     "<leader>Da",
+        --     function()
+        --         if vim.fn.filereadable("../../.vscode/launch.json") then
+        --             local dap_vscode = require("dap.ext.vscode")
+        --             dap_vscode.load_launchjs(nil, {
+        --                 ["pwa-node"] = js_based_languages,
+        --                 ["chrome"] = js_based_languages,
+        --                 ["pwa-chrome"] = js_based_languages,
+        --             })
+        --         end
+        --         require("dap").continue()
+        --     end,
+        --     desc = "Run with Args",
+        -- noremap = true,
+        -- silent = true,
+        -- },
+        {
+            "<leader>Db",
+            "<cmd> DapToggleBreakpoint <CR>",
+            desc = "Toggle breakpoint",
+            noremap = true,
+            silent = true,
+        },
+        {
+            "<leader>Dr",
+            "<cmd> DapContinue <CR>",
+            desc = "Run or continue the debugger",
+            noremap = true,
+            silent = true,
+        },
+        {
+            "<leader>Dx",
+            "<cmd> DapTerminate <CR>",
+            desc = "Terminate debugger session",
+            noremap = true,
+            silent = true,
+        },
+    },
     config = function()
         local dap = require("dap")
         local dapui = require("dapui")
@@ -130,64 +187,6 @@ return {
                     }
                 end
             end,
-            keys = {
-                {
-                    "<leader>Do",
-                    function()
-                        require("dap").step_out()
-                    end,
-                    desc = "Step Out",
-                    noremap = true,
-                    silent = true,
-                },
-                {
-                    "<leader>Ds",
-                    function()
-                        require("dap").step_over()
-                    end,
-                    desc = "Step Over",
-                    noremap = true,
-                    silent = true,
-                },
-                -- {
-                --     "<leader>Da",
-                --     function()
-                --         if vim.fn.filereadable("../../.vscode/launch.json") then
-                --             local dap_vscode = require("dap.ext.vscode")
-                --             dap_vscode.load_launchjs(nil, {
-                --                 ["pwa-node"] = js_based_languages,
-                --                 ["chrome"] = js_based_languages,
-                --                 ["pwa-chrome"] = js_based_languages,
-                --             })
-                --         end
-                --         require("dap").continue()
-                --     end,
-                --     desc = "Run with Args",
-                -- noremap = true,
-                -- silent = true,
-                -- },
-                {
-                    "<leader>Db",
-                    "<cmd> DapToggleBreakpoint <CR>",
-                    desc = "Toggle breakpoint",
-                    noremap = true,
-                    silent = true,
-                },
-                {
-                    "<leader>Dr",
-                    "<cmd> DapContinue <CR>",
-                    desc = "Run or continue the debugger",
-                    noremap = true,
-                    silent = true,
-                },
-                {
-                    "<leader>Dx",
-                    "<cmd> DapTerminate <CR>",
-                    desc = "Terminate debugger session",
-                    noremap = true,
-                    silent = true,
-                },
-            },
             dependencies = {
                 -- Install the vscode-js-debug adapter
                 {

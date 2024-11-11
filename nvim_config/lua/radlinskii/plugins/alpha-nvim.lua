@@ -70,7 +70,7 @@ return {
             ),
             dashboard.button("<Space>fO", "󰝉    Global Recent Files ", "<cmd>FzfLua oldfiles<CR>"),
             dashboard.button("<Space>ff", "    Find File ", "<cmd>FzfLua files<CR>"),
-            dashboard.button("<Space>b", "    Open New Buffer", "<cmd>enew<CR>"),
+            dashboard.button("<Space>bn", "    Open New Buffer", "<cmd>enew<CR>"),
             dashboard.button("<Space>fh", "󰮥    Find Help", "<cmd>FzfLua help_tags<CR>"),
             dashboard.button("q", "✖    Quit", ":qa<cr>"),
         }

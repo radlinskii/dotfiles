@@ -152,7 +152,7 @@ return {
             actions = {
                 files = {
                     ["enter"] = actions.file_edit,
-                    ["ctrl-h"] = actions.file_split, -- TODO: not working
+                    ["ctrl-h"] = actions.file_split, -- TODO: not working on windows?
                     ["ctrl-v"] = actions.file_vsplit,
                 },
             },
