@@ -71,6 +71,12 @@ customCommands:
       description: "FORCE push to remote"
       context: "global"
       stream: true
+    - key: "<c-l>"
+      prompts:
+      command: open $(git remote get-url origin)
+      description: "open remote origin in the browser"
+      context: "global"
+      stream: true
 gui:
     theme:
         selectedLineBgColor:
