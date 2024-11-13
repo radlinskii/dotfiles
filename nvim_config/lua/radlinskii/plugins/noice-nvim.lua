@@ -16,6 +16,13 @@ return {
                 },
                 view = "mini",
             },
+            {
+                filter = {
+                    event = "notify",
+                    find = "You pressed the",
+                },
+                view = "mini",
+            },
         },
         lsp = {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
