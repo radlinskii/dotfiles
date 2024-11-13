@@ -53,7 +53,7 @@ customCommands:
       description: "push to remote without pre-push hook"
       context: "global"
       stream: true
-    - key: "<c-p>"
+    - key: "!"
       prompts:
           - type: "confirm"
             title: "Are you sure you want to FORCE push the remote without pre-push hook?!"
@@ -62,7 +62,7 @@ customCommands:
       description: "FORCE push to remote without pre-push hook"
       context: "global"
       stream: true
-    - key: "<c-f>"
+    - key: "<c-p>"
       prompts:
           - type: "confirm"
             title: "Are you sure you want to FORCE push the remote?!"
