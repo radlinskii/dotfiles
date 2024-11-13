@@ -3,7 +3,9 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
--- General Keymaps -------------------
+-- #
+-- Navigation mappings
+-- #
 
 keymap.set(
     { "n", "x", "o" },
@@ -20,8 +22,19 @@ keymap.set(
 keymap.set({ "n", "x", "o" }, "n", "nzzzv", { silent = true, noremap = true, desc = "Find next appearance" })
 keymap.set({ "n", "x", "o" }, "N", "Nzzzv", { silent = true, noremap = true, desc = "Find previous appearance" })
 
--- window management
--- defualt CTRL_W_d is splitting horizontally
+-- #
+-- Operator mappings
+-- #
+
+-- use something different than tilde for swapping character case because of tilde being a dead key on windows
+keymap.set({ "n", "x", "o" }, "gk", "~", { silent = true, noremap = true, desc = "Swap case of next character" })
+keymap.set({ "n", "x", "o" }, "gK", "g~", { silent = true, noremap = true, desc = "Swap case of text object" })
+
+-- #
+-- Window management mappings
+-- #
+
+-- default CTRL_W_d is splitting horizontally
 keymap.set("n", "<C-w>d", "<C-w>i<C-w>L", {
     silent = true,
     noremap = true,
@@ -39,7 +52,10 @@ keymap.set(
     { silent = true, noremap = true, desc = "Open new buffer in a vertical split" }
 )
 
--- scroll
+-- #
+-- Scrolling mappings
+-- #
+
 keymap.set(
     { "n", "x" },
     "<C-d>",
@@ -77,11 +93,10 @@ keymap.set(
     { silent = true, noremap = true, desc = "Scroll a whole window down and move cursor to the center" }
 )
 
--- use something different than tilde for swapping character case because of tilde being a dead key on windows
-keymap.set({ "n", "x", "o" }, "gk", "~", { silent = true, noremap = true, desc = "Swap case of next character" })
-keymap.set({ "n", "x", "o" }, "gK", "g~", { silent = true, noremap = true, desc = "Swap case of text object" })
+-- #
+-- Visual/Select mode mappings
+-- #
 
--- visual/select
 keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increase indent" })
 keymap.set({ "x" }, "<", "<gv", { silent = true, noremap = true, desc = "Increase indent" })
 keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines up" })
@@ -103,7 +118,10 @@ keymap.set(
     { noremap = true, desc = "Substitute current word inside the selection" }
 )
 
---insert
+-- #
+-- Insert mode mappings
+-- #
+
 -- https://www.reddit.com/r/vim/comments/4w0lib/comment/d63baic/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 keymap.set({ "i" }, "<C-l>", "<ESC>ea", { silent = true, noremap = true, desc = "Move to the end of the word" })
 keymap.set({ "i" }, "<C-f>", "<ESC>ldei", { silent = true, noremap = true, desc = "Delete word till the end" })
@@ -116,7 +134,10 @@ keymap.set({ "i" }, "<C-j>", "<C-f>", { silent = true, noremap = true, desc = "R
 -- C-h -> BS
 -- C-i -> TAB
 
--- normal
+-- #
+-- Toggle / clear mappings
+-- #
+
 keymap.set("n", "<leader>nh", "<cmd> nohl <CR>", { desc = "Clear search highlights", silent = true, noremap = true })
 keymap.set(
     "n",
@@ -132,9 +153,15 @@ keymap.set(
 )
 keymap.set(
     "n",
+    "<leader>ns",
+    "<cmd>lua vim.opt.spell = not(vim.opt.spell:get()) <CR>",
+    { desc = "Toggle spell checking", silent = true, noremap = true }
+)
+keymap.set(
+    "n",
     "<leader>nw",
-    "<cmd>noautocmd w<CR>",
-    { desc = "Save buffer without running autocommands (autoformat)", silent = true, noremap = true }
+    "<cmd>lua vim.opt.wrap = not(vim.opt.wrap:get()) <CR>",
+    { desc = "Toggle line wrapping", silent = true, noremap = true }
 )
 keymap.set(
     "n",
@@ -175,20 +202,34 @@ keymap.set("n", "<leader>nr", function()
     end
 end, { desc = "Cycle line numbers config", silent = true, noremap = true })
 
+-- #
+-- Buffer mappings
+-- #
+
+keymap.set({ "n" }, "<leader>bw", "<cmd> w <CR>", { desc = "Write buffer", silent = true, noremap = true })
+keymap.set(
+    "n",
+    "<leader>bW",
+    "<cmd>noautocmd w<CR>",
+    { desc = "Save buffer without running autocommands (autoformat)", silent = true, noremap = true }
+)
+keymap.set({ "n" }, "<leader>bn", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader>bb", "<cmd>b#<CR>", { desc = "Alternate buffer", silent = true, noremap = true })
+
+-- #
+-- Refactoring mappings
+-- #
+
 keymap.set(
     "n",
     "<leader>rs",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { noremap = true, desc = "Substitute current word" }
 )
-keymap.set({ "n" }, "<leader>w", "<cmd> w <CR>", { desc = "Write file", silent = true, noremap = true })
-keymap.set({ "n" }, "<leader>bn", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
-keymap.set({ "n" }, "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer", silent = true, noremap = true })
-keymap.set({ "n" }, "<leader>bb", "<cmd>b#<CR>", { desc = "Alternate buffer", silent = true, noremap = true })
-
 keymap.set(
     "n",
-    "<leader>ro",
+    "<leader>xo",
     "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<CR>",
     { desc = "Open floating diagnostics", silent = true, noremap = true }
 )

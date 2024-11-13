@@ -18,6 +18,10 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 
+opt.spelllang = "en_us"
+-- disabled by default, enable with <leader>ns
+opt.spell = false
+
 opt.fillchars = {
     diff = "⣿",
     eob = " ",

@@ -5,6 +5,11 @@ return {
     cmd = { "FzfLua" },
     keys = {
         {
+            "<leader>fa",
+            "<cmd> FzfLua <CR>",
+            desc = "FzfLua",
+        },
+        {
             "<C-p>",
             "<cmd> FzfLua buffers <CR>",
             mode = { "n" },
@@ -44,22 +49,27 @@ return {
         {
             "<leader>fc",
             "<cmd> FzfLua grep_cword <CR>",
-            desc = "Find string under cursor in cwd with args",
+            desc = "Find string under [c]ursor in cwd with args",
         },
         {
             "<leader>fC",
             "<cmd>FzfLua grep_last<cr>",
-            desc = "Continue last grep search",
+            desc = "[C]ontinue last grep search",
+        },
+        {
+            "<leader>fw",
+            "<cmd> FzfLua grep <CR>",
+            desc = "Grep [w]ords",
         },
         {
             "<leader>fs",
-            "<cmd> FzfLua grep <CR>",
-            desc = "Grep",
+            "<cmd> FzfLua live_grep <CR>",
+            desc = "Live grep [s]earch",
         },
         {
             "<leader>fS",
-            "<cmd> FzfLua live_grep <CR>",
-            desc = "Live grep",
+            "<cmd> FzfLua live_grep_resume <CR>",
+            desc = "Continue last grep [S]earch as live grep",
         },
         {
             "<leader>fz",
@@ -125,6 +135,11 @@ return {
             "<leader>fq",
             "<cmd> FzfLua quickfix <CR>",
             desc = "Find items in quickfix list",
+        },
+        {
+            "<leader>fr",
+            "<cmd> FzfLua registers <CR>",
+            desc = "Search stuff in registers",
         },
         {
             "<leader>fl",
