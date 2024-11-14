@@ -61,5 +61,8 @@ return {
             --     }
             matchup = { enable = true },
         })
+
+        -- Configure treesitter to use the markdown parser for mdx files
+        vim.treesitter.language.register("markdown", "mdx")
     end,
 }

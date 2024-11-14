@@ -20,6 +20,9 @@ vim.g.have_nerd_font = true
 -- inlay hints
 vim.lsp.inlay_hint.enable()
 
+-- Register the mdx filetype
+vim.filetype.add({ extension = { mdx = "mdx" } })
+
 if vim.g.neovide then
     vim.o.guifont = "IosevkaTerm Nerd Font Propo"
 
