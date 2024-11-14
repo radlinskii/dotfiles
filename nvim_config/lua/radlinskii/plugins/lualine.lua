@@ -53,6 +53,14 @@ return {
                     -- "progress",
                     "filetype",
                 },
+                lualine_z = {
+                    {
+                        "location",
+                        fmt = function(str)
+                            return str .. "/" .. vim.fn.line("$")
+                        end,
+                    },
+                },
             },
         })
     end,
