@@ -136,5 +136,7 @@ wezterm.on("gui-startup", function(cmd)
     window:gui_window():maximize()
 end)
 
+config.max_fps = 120
+
 -- and finally, return the configuration to wezterm
 return config
