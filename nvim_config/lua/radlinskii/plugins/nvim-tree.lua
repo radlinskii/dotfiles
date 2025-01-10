@@ -18,8 +18,10 @@ local function nvim_tree_on_attach(bufnr)
     vim.keymap.set("n", "<c-v>", api.node.open.vertical, opts("Split vertical"))
     vim.keymap.set("n", "<c-h>", api.node.open.horizontal, opts("Split vertical"))
     vim.keymap.set("n", "<c-c>", api.tree.close, opts("Close"))
-    vim.keymap.set("n", "<right>", api.node.open.edit, opts("Open"))
-    vim.keymap.set("n", "<left>", api.node.navigate.parent_close, opts("Open"))
+    vim.keymap.set("n", "<right>", api.node.open.no_window_picker, opts("Open: No window picker"))
+    vim.keymap.set("n", "o", api.node.open.no_window_picker, opts("Open: No window picker"))
+    vim.keymap.set("n", "O", api.node.open.edit, opts("Open: with picker"))
+    vim.keymap.set("n", "<left>", api.node.navigate.parent_close, opts("Close parent directory"))
 
     vim.keymap.del("n", "q", { buffer = bufnr })
     vim.keymap.del("n", "s", { buffer = bufnr })
@@ -49,6 +51,7 @@ return {
         -- change color for arrows in tree to light blue
         vim.cmd([[ highlight NvimTreeFolderArrowClosed guifg=#3FC5FF ]])
         vim.cmd([[ highlight NvimTreeFolderArrowOpen guifg=#3FC5FF ]])
+        vim.cmd([[ highlight NvimTreeWindowPicker guifg=#009944 guibg=#990079 ]])
 
         -- configure nvim-tree
         nvimtree.setup({
@@ -97,7 +100,7 @@ return {
             actions = {
                 open_file = {
                     window_picker = {
-                        enable = false,
+                        enable = true,
                         chars = "TSRADCXZPFWQ0123456789",
                     },
                 },
