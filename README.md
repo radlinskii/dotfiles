@@ -1,6 +1,6 @@
 # dotfiles
 
-This repo holds configuration files for tooling I use regularly while working on MacOS.
+This repo holds configuration files for tooling I use regularly while working on MacOS
 
 > Neovim and some other parts of the setup are also used on Windows.
 
