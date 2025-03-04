@@ -2,6 +2,7 @@
 return {
     {
         "sphamba/smear-cursor.nvim",
+        enabled = false,
         event = { "BufReadPre", "BufNewFile" },
         opts = {
             stiffness = 0.8, -- 0.6 - [0, 1]

@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
     "ibhagwan/fzf-lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "s1n7ax/nvim-window-picker" },
     cmd = { "FzfLua" },
     keys = {
         {
@@ -157,6 +157,14 @@ return {
         local actions = require("fzf-lua.actions")
         local fzf_lua = require("fzf-lua")
 
+        local file_edit_with_window_picker = function(selected, opts)
+            local fallback = vim.api.nvim_get_current_win()
+            local window_id = require("window-picker").pick_window() or fallback
+
+            vim.api.nvim_set_current_win(window_id)
+            require("fzf-lua.actions").file_edit(selected, opts)
+        end
+
         fzf_lua.setup({
             -- "fzf-native",
             winopts = {
@@ -166,7 +174,8 @@ return {
             },
             actions = {
                 files = {
-                    ["enter"] = actions.file_edit,
+                    ["enter"] = file_edit_with_window_picker,
+                    ["ctrl-o"] = actions.file_edit,
                     ["ctrl-h"] = actions.file_split, -- TODO: not working on windows?
                     ["ctrl-v"] = actions.file_vsplit,
                 },
