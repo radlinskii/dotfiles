@@ -7,7 +7,7 @@ return {
     config = function()
         require("window-picker").setup({
             hint = "floating-big-letter",
-            selection_chars = "TSRADCXZPFWQ0123456789",
+            selection_chars = "TNSERIAOPFWQLUY",
             filter_rules = {
                 include_current_win = true,
             },
