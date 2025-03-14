@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec[]
 return {
     {
-        enabled = false,
+        enabled = not require("radlinskii.utils.system").is_windows(),
         "sphamba/smear-cursor.nvim",
         event = { "BufReadPre", "BufNewFile" },
         opts = {
@@ -13,7 +13,7 @@ return {
         },
     },
     {
-        enabled = false,
+        enabled = not require("radlinskii.utils.system").is_windows(),
         "karb94/neoscroll.nvim",
         event = { "BufReadPre", "BufNewFile" },
         opts = {
