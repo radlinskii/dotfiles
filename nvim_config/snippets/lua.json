@@ -1,0 +1,6 @@
+{
+    "nvim config path": {
+        "body": "vim.fn.stdpath(\"config\")",
+        "prefix": "nvim config path"
+    }
+}
