@@ -1,8 +1,5 @@
 local M = {}
 
--- import cmp-nvim-lsp plugin
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 
@@ -81,29 +78,30 @@ M.on_attach = function(_, bufnr)
     keymap.set("n", "<leader>lwl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 end
 
--- used to enable autocompletion (assign to every lsp server config)
-M.capabilities = cmp_nvim_lsp.default_capabilities()
-
--- UFO: https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
-M.capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-}
-
-M.capabilities.textDocument.completion.completionItem = {
-    documentationFormat = { "markdown", "plaintext" },
-    snippetSupport = true,
-    preselectSupport = true,
-    insertReplaceSupport = true,
-    labelDetailsSupport = true,
-    deprecatedSupport = true,
-    commitCharactersSupport = true,
-    tagSupport = { valueSet = { 1 } },
-    resolveSupport = {
-        properties = {
-            "documentation",
-            "detail",
-            "additionalTextEdits",
+M.capabilities = {
+    textDocument = {
+        foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+        },
+        completion = {
+            completionItem = {
+                documentationFormat = { "markdown", "plaintext" },
+                snippetSupport = true,
+                preselectSupport = true,
+                insertReplaceSupport = true,
+                labelDetailsSupport = true,
+                deprecatedSupport = true,
+                commitCharactersSupport = true,
+                tagSupport = { valueSet = { 1 } },
+                resolveSupport = {
+                    properties = {
+                        "documentation",
+                        "detail",
+                        "additionalTextEdits",
+                    },
+                },
+            },
         },
     },
 }

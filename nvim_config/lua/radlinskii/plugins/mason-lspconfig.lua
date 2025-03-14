@@ -8,9 +8,8 @@ return {
             "neovim/nvim-lspconfig",
             event = { "BufReadPre", "BufNewFile" },
             dependencies = {
-                -- dependencies of radlinskii.utils.lsp module
-                "hrsh7th/cmp-nvim-lsp",
                 "folke/which-key.nvim",
+                "saghen/blink.cmp",
             },
         },
     },
@@ -20,7 +19,8 @@ return {
         local lspconfig = require("lspconfig")
 
         local on_attach = require("radlinskii.utils.lsp").on_attach
-        local capabilities = require("radlinskii.utils.lsp").capabilities
+        local custom_capabilities = require("radlinskii.utils.lsp").capabilities
+        local capabilities = require("blink.cmp").get_lsp_capabilities(custom_capabilities)
 
         -- enable mason and configure icons
         mason.setup({

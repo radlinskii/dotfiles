@@ -1,127 +1,79 @@
 ---@type LazyPluginSpec
 return {
-    "hrsh7th/nvim-cmp",
-    event = { "CmdLineEnter", "InsertEnter" },
-    dependencies = {
-        "hrsh7th/cmp-buffer", -- source for text in buffer
-        "hrsh7th/cmp-path", -- source for file system paths
-        "L3MON4D3/LuaSnip", -- snippet engine
-        "saadparwaiz1/cmp_luasnip", -- for autocompletion
-        "rafamadriz/friendly-snippets", -- useful snippets
-        "onsails/lspkind.nvim", -- vs-code like pictograms
-        "hrsh7th/cmp-cmdline",
-    },
-    config = function()
-        local cmp = require("cmp")
-        local luasnip = require("luasnip")
-        local lspkind = require("lspkind")
-
-        -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-        require("luasnip.loaders.from_vscode").lazy_load()
-
-        cmp.setup.cmdline("/", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = "buffer" },
-            },
-        })
-
-        cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
-                { name = "path" },
-            }, {
-                {
-                    name = "cmdline",
-                    option = {
-                        ignore_cmds = { "Man", "!" },
-                    },
-                },
-            }),
-        })
-
-        cmp.setup({
-            completion = {
-                completeopt = "menu,menuone,preview,noselect",
-                -- completeopt = "menu,menuone",
-            },
-            snippet = { -- configure how nvim-cmp interacts with snippet engine
-                expand = function(args)
-                    luasnip.lsp_expand(args.body)
-                end,
-            },
-            mapping = cmp.mapping.preset.insert({
-                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                ["<C-/>"] = cmp.mapping.complete(), -- "c-?" show completion suggestions
-                ["<C-_>"] = cmp.mapping.complete(), -- "c-?" show completion suggestions
-                ["<C-k>"] = cmp.mapping.abort(), -- "klose" completion window
-                ["<C-e>"] = cmp.config.disable, -- don't use <c-e> for abort
-                ["<CR>"] = cmp.mapping.confirm({
-                    behavior = cmp.ConfirmBehavior.Insert,
-                    select = true,
-                }),
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.confirm({ select = true })
-                    elseif require("luasnip").expand_or_jumpable() then
-                        vim.fn.feedkeys(
-                            vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-                            ""
-                        )
-                    else
-                        fallback()
-                    end
-                end, {
-                    "i",
-                    "s",
-                }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.confirm({ select = true })
-                    elseif require("luasnip").jumpable(-1) then
-                        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-                    else
-                        fallback()
-                    end
-                end, {
-                    "i",
-                    "s",
-                }),
-            }),
-
-            -- sources for autocompletion
-            sources = cmp.config.sources({
-                { name = "nvim_lsp" },
-                { name = "luasnip" }, -- snippets
-                { name = "nvim_lua" },
-                {
-                    name = "buffer",
-                    option = {
+    "saghen/blink.cmp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    version = "*", -- use a release tag to download pre-built binaries
+    opts = {
+        keymap = {
+            preset = "super-tab",
+            ["<C-k>"] = { "cancel" }, -- "k"ancel
+            ["<C-e>"] = { "hide" }, -- hid"e"
+            ["<C-j>"] = { "show_signature", "hide_signature", "fallback" },
+            ["<C-_>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<C-/>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<C-p>"] = {},
+            ["<C-n>"] = {},
+            ["<CR>"] = { "accept", "fallback" },
+        },
+        appearance = {
+            use_nvim_cmp_as_default = true,
+            nerd_font_variant = "mono",
+        },
+        -- Default list of enabled providers defined so that you can extend it
+        -- elsewhere in your config, without redefining it, due to `opts_extend`
+        sources = {
+            default = { "lsp", "path", "snippets", "buffer" },
+            providers = {
+                buffer = {
+                    opts = {
+                        -- filter to only "normal" buffers
                         get_bufnrs = function()
-                            return vim.api.nvim_list_bufs()
+                            return vim.tbl_filter(function(bufnr)
+                                return vim.bo[bufnr].buftype == ""
+                            end, vim.api.nvim_list_bufs())
                         end,
                     },
                 },
-                { name = "path" }, -- file system paths
-                { name = "crates" },
-            }),
-            -- configure lspkind for vs-code like pictograms in completion menu
-            formatting = {
-                format = lspkind.cmp_format({
-                    maxwidth = 50,
-                    ellipsis_char = "...",
-                    mode = "symbol_text",
-                    menu = {
-                        buffer = "[Buffer]",
-                        nvim_lsp = "[LSP]",
-                        luasnip = "[LuaSnip]",
-                        nvim_lua = "[Lua]",
-                        path = "[Path]",
-                        crates = "[Crates]",
-                    },
-                }),
             },
-        })
-    end,
+        },
+        cmdline = {
+            keymap = {
+                preset = "super-tab",
+                ["<C-k>"] = { "cancel" }, -- "k"ancel
+                ["<C-e>"] = { "hide" }, -- hid"e"
+                ["<C-j>"] = { "show_signature", "hide_signature", "fallback" },
+                ["<C-_>"] = { "show", "show_documentation", "hide_documentation" },
+                ["<C-/>"] = { "show", "show_documentation", "hide_documentation" },
+                ["<C-p>"] = {},
+                ["<C-n>"] = {},
+                -- ["<CR>"] = { "accept", "fallback" },
+            },
+            completion = {
+                menu = {
+                    auto_show = true,
+                },
+                ghost_text = { enabled = true },
+            },
+        },
+        completion = {
+            accept = {
+                auto_brackets = { enabled = true },
+            },
+            ghost_text = { enabled = true, show_with_menu = true },
+            menu = {
+                auto_show = true,
+                draw = {
+                    columns = {
+                        { "label", "label_description", gap = 1 },
+                        { "kind_icon", "kind", gap = 1 },
+                    },
+                },
+            },
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 500,
+            },
+        },
+    },
+    opts_extend = { "sources.default" },
 }
