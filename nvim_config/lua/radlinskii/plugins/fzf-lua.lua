@@ -174,8 +174,8 @@ return {
             },
             actions = {
                 files = {
-                    ["enter"] = file_edit_with_window_picker,
-                    ["ctrl-o"] = actions.file_edit,
+                    ["enter"] = actions.file_edit,
+                    ["ctrl-o"] = file_edit_with_window_picker,
                     ["ctrl-h"] = actions.file_split, -- TODO: not working on windows?
                     ["ctrl-v"] = actions.file_vsplit,
                 },
