@@ -48,11 +48,8 @@ usercmd("ReopenInLastTab", function(opts)
     end
 end, { nargs = 1, complete = "file", desc = "Used by lazygit to open hunks, tested on Windows" })
 
-local function add_words_to_cspell_config(current_buffer)
+local function add_words_to_cspell_config(words)
     local cspell_config_path = require("radlinskii.utils.cspell").find_json()
-    local target = current_buffer and vim.api.nvim_buf_get_name(0) or "."
-    local words = vim.fn.system("cspell lint --quiet --words-only " .. target)
-
     local cspell_file = vim.fn.readfile(cspell_config_path)
     local cspell_file_str = table.concat(cspell_file, "\n")
 
@@ -87,10 +84,27 @@ local function add_words_to_cspell_config(current_buffer)
     end
 end
 
-usercmd("CSpellAddCurrentWordsToCSpellConfig", function()
-    add_words_to_cspell_config(true)
+usercmd("CSpellAddWordFromCurrentDocumentToCSpellConfig", function()
+    local target = vim.api.nvim_buf_get_name(0)
+    local words = vim.fn.system("cspell lint --quiet --words-only " .. target)
+
+    add_words_to_cspell_config(words)
 end, { nargs = 0, desc = "Add words found by cspell in the current buffer to cspell config" })
 
 usercmd("CSpellAddAllWordsToCSpellConfig", function()
-    add_words_to_cspell_config(true)
+    local target = "."
+    local words = vim.fn.system("cspell lint --quiet --words-only " .. target)
+
+    add_words_to_cspell_config(words)
 end, { nargs = 0, desc = "Add all words found by cspell in CWD to cspell config" })
+
+usercmd("CSpellAddCurrentWordToCSpellConfig", function()
+    local word = vim.fn.expand("<cword>")
+
+    add_words_to_cspell_config(word .. "\n")
+end, { nargs = 0, desc = "Add all words found by cspell in CWD to cspell config" })
+
+usercmd("EchoWord", function()
+    local word = vim.fn.expand("<cword>")
+    print("Current word: " .. word)
+end, {})
