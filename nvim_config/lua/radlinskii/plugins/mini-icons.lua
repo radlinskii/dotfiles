@@ -3,7 +3,6 @@ return {
     opts = {
         -- Customize per category. See `:h MiniIcons.config` for details.
     },
-    lazy = true,
     specs = {
         { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
     },
