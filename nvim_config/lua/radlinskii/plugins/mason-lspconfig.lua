@@ -10,6 +10,7 @@ return {
             dependencies = {
                 "folke/which-key.nvim",
                 "saghen/blink.cmp",
+                "ibhagwan/fzf-lua",
             },
         },
     },
@@ -20,7 +21,7 @@ return {
 
         local on_attach = require("radlinskii.utils.lsp").on_attach
         local custom_capabilities = require("radlinskii.utils.lsp").capabilities
-        local capabilities = require("blink.cmp").get_lsp_capabilities(custom_capabilities)
+        local blink_capabilities = require("blink.cmp").get_lsp_capabilities(custom_capabilities)
 
         -- enable mason and configure icons
         mason.setup({
@@ -55,7 +56,7 @@ return {
                 if server_name == "ts_ls" then
                     lspconfig.ts_ls.setup({
                         on_attach = on_attach,
-                        capabilities = capabilities,
+                        capabilities = blink_capabilities,
 
                         settings = {
                             javascript = {
@@ -87,7 +88,7 @@ return {
                 elseif server_name == "lua_ls" then
                     lspconfig.lua_ls.setup({
                         on_attach = on_attach,
-                        capabilities = capabilities,
+                        capabilities = blink_capabilities,
 
                         settings = {
                             Lua = {
@@ -113,7 +114,7 @@ return {
                 elseif server_name == "gopls" then
                     lspconfig.gopls.setup({
                         on_attach = on_attach,
-                        capabilities = capabilities,
+                        capabilities = blink_capabilities,
                         cmd = { "gopls" },
                         filetypes = { "go", "gomod", "gowork", "gotmpl" },
                         root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
@@ -130,7 +131,7 @@ return {
                 else
                     lspconfig[server_name].setup({
                         on_attach = on_attach,
-                        capabilities = capabilities,
+                        capabilities = blink_capabilities,
                     })
                 end
             end,

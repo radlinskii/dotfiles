@@ -27,20 +27,7 @@ M.on_attach = function(_, bufnr)
 
     -- LSP code action mapping for both Normal and Visual modes
     opts.desc = "LSP code action"
-    keymap.set({ "n", "v" }, "<leader>la", function()
-        require("fzf-lua").register_ui_select(function(_, items)
-            local min_h, max_h = 0.15, 0.70
-            local h = (#items + 4) / vim.o.lines
-            if h < min_h then
-                h = min_h
-            elseif h > max_h then
-                h = max_h
-            end
-            return { winopts = { height = h, width = 0.60, row = 0.40 } }
-        end)
-
-        vim.lsp.buf.code_action()
-    end, opts)
+    keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts)
 
     opts.desc = "Restart LSP"
     keymap.set("n", "<leader>lx", "<cmd>LspRestart<CR>", opts) -- mapping to restart lsp if necessary
