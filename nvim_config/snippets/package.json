@@ -9,6 +9,10 @@
             {
                 "language": "all",
                 "path": "./allFiletypes.json"
+            },
+            {
+                "language": "all",
+                "path": "./localAllFileTypes.json"
             }
         ]
     }

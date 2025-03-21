@@ -4,4 +4,5 @@ Brewfile.lock.json
 scripts_config/run-symlinks-on-windows.cjs
 nvim_config/lazy-lock.json
 .cspell.json
+nvim_config/snippets/localAllFileTypes.json
 
