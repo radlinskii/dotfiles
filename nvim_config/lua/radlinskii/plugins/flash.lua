@@ -1,15 +1,19 @@
 ---@type LazyPluginSpec
 return {
     "folke/flash.nvim",
-    -- should work properly lazy loaded with just keys
-    -- event = { "BufReadPre", "BufNewFile" },
     opts = {
-        incremental = true,
+        search = {
+            incremental = true,
+            mode = "search",
+            exclude = {
+                "blink-cmp-menu",
+                "blink-cmp-documentation",
+                "blink-cmp-signature",
+            },
+        },
         modes = {
             search = { enabled = true },
-            char = {
-                label = { exclude = "neuhjkliardcNEUHJKLIARDC" },
-            },
+            char = { label = { exclude = "neuhjkliardcNEUHJKLIARDC" } },
         },
     },
     keys = {
