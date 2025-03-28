@@ -12,14 +12,14 @@ return {
         }
 
         local function lightModeColorScheme()
-            vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#79a4f5" })
-            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#a59Fc8" })
-            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#d47876" })
+            vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#6994f5" })
+            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#a55Fb8" })
+            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#e46876" })
         end
         local function darkModeColorScheme()
             vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#4E699C" })
-            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#644F88" })
-            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#9A4056" })
+            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#844Fa8" })
+            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#AA4056" })
         end
 
         local function getColorScheme()

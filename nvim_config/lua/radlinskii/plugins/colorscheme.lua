@@ -54,6 +54,7 @@ return {
 
                     return {
                         IblIndent = { fg = theme.ui.bg_gutter },
+                        MatchParen = { ctermbg = "green", bg = theme.diff.add, italic = true, underline = true },
                         Substitute = { bg = theme.ui.fg, fg = theme.ui.bg },
                         LazyNormal = { bg = theme.ui.bg, fg = theme.ui.fg },
                         NormalFloat = { bg = theme.ui.bg_p1, fg = theme.ui.fg },
