@@ -190,7 +190,7 @@ return {
                 glob_separator = "%s%-%-%s", -- query separator pattern (lua): ' -- '
             },
             buffers = {
-                -- previewer = false,
+                previewer = false,
                 formatter = "path.filename_first",
                 actions = {
                     -- actions inherit from 'actions.files' and merge
@@ -205,7 +205,6 @@ return {
                 formatter = "path.filename_first",
             },
         })
-
 
         fzf_lua.register_ui_select(function(_, items)
             local min_h, max_h = 0.15, 0.70
