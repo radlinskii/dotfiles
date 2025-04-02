@@ -52,14 +52,13 @@ return {
                 menu = {
                     auto_show = true,
                 },
-                ghost_text = { enabled = true },
             },
         },
         completion = {
+            list = { selection = { preselect = true, auto_insert = true } },
             accept = {
                 auto_brackets = { enabled = true },
             },
-            ghost_text = { enabled = true, show_with_menu = true },
             menu = {
                 auto_show = true,
                 draw = {
