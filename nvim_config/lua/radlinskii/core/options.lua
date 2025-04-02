@@ -22,14 +22,22 @@ opt.spelllang = "en_us"
 -- disabled by default, enable with <leader>ns
 opt.spell = false
 
-opt.fillchars = {
-    diff = "⣿",
+-- Nice and simple folding replacing UFO:
+opt.foldenable = true
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldtext = ""
+opt.foldcolumn = "1"
+opt.fillchars:append({
     eob = " ",
     fold = " ",
     foldopen = "▼",
     foldsep = " ",
     foldclose = "▶", -- "⏵","▷","►", "▶"
-}
+})
+opt.foldmethod = "expr"
+-- Default to treesitter folding but created Autocmd for switching to lsp in autocmds.lua
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 opt.ignorecase = true
 opt.smartcase = true
