@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 return {
     "folke/flash.nvim",
+    enabled = true,
     opts = {
         search = {
             incremental = true,
@@ -13,7 +14,10 @@ return {
         },
         modes = {
             search = { enabled = true },
-            char = { label = { exclude = "neuhjkliardcNEUHJKLIARDC" } },
+            char = {
+                -- TODO: broken after 0.11 update
+                enabled = false,
+            },
         },
     },
     keys = {
