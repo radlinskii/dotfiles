@@ -3,6 +3,7 @@ return {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons", "s1n7ax/nvim-window-picker" },
     cmd = { "FzfLua" },
+    event = { "VeryLazy" },
     keys = {
         {
             "<leader>fa",

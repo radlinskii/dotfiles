@@ -2,6 +2,7 @@
 return {
     "saghen/blink.cmp",
     dependencies = { "rafamadriz/friendly-snippets" },
+    event = { "VeryLazy" },
     version = "*", -- use a release tag to download pre-built binaries
     opts = {
         keymap = {
