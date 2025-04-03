@@ -4,7 +4,6 @@ return {
     enabled = true,
     opts = {
         search = {
-            incremental = true,
             mode = "search",
             exclude = {
                 "blink-cmp-menu",
@@ -14,10 +13,6 @@ return {
         },
         modes = {
             search = { enabled = true },
-            char = {
-                -- TODO: broken after 0.11 update
-                enabled = false,
-            },
         },
     },
     keys = {
