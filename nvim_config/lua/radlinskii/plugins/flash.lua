@@ -1,7 +1,6 @@
 ---@type LazyPluginSpec
 return {
     "folke/flash.nvim",
-    enabled = true,
     event = { "VeryLazy" },
     opts = {
         search = {
@@ -10,6 +9,10 @@ return {
                 "blink-cmp-menu",
                 "blink-cmp-documentation",
                 "blink-cmp-signature",
+                "notify",
+                "cmp_menu",
+                "noice",
+                "flash_prompt",
             },
         },
         modes = {
