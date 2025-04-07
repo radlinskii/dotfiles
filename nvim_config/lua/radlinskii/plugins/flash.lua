@@ -16,7 +16,7 @@ return {
             },
         },
         modes = {
-            search = { enabled = true },
+            search = { enabled = false },
         },
     },
     keys = {
