@@ -3,12 +3,12 @@ return {
     "MagicDuck/grug-far.nvim",
     keys = {
         {
-            "<leader>sr",
+            "<leader>rr",
             "<cmd>GrugFar<cr>",
             desc = "Find and Replace",
         },
         {
-            "<leader>sr",
+            "<leader>rr",
             "<cmd>GrugFarWithin<cr>",
             desc = "Find and replace within a selection",
             mode = { "x" },
