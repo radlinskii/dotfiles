@@ -14,6 +14,13 @@ return {
             end,
             desc = "Local Buffer keymaps",
         },
+        {
+            "<c-w><space>",
+            function()
+                require("which-key").show({ keys = "<c-w>", loop = true })
+            end,
+            desc = "Window Hydra Mode (which-key)",
+        },
     },
     priority = 900,
     opts = {
