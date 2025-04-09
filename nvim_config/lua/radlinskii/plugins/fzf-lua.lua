@@ -190,9 +190,11 @@ return {
                 rg_glob = true,
                 glob_separator = "%s%-%-%s", -- query separator pattern (lua): ' -- '
             },
+            defaults = {
+                formatter = { "path.filename_first", 2 },
+            },
             buffers = {
                 previewer = false,
-                formatter = "path.filename_first",
                 actions = {
                     -- actions inherit from 'actions.files' and merge
                     -- by supplying a table of functions we're telling
@@ -201,9 +203,6 @@ return {
                     -- eliminating an otherwise unaesthetic win "flash"
                     ["ctrl-d"] = { fn = actions.buf_del, reload = true },
                 },
-            },
-            oldfiles = {
-                formatter = "path.filename_first",
             },
         })
 
