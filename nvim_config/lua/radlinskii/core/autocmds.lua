@@ -29,13 +29,14 @@ autocmd({ "BufLeave", "FocusLost" }, {
 })
 
 -- Highlighting when yanking text
-autocmd("TextYankPost", {
-    desc = "Highlight yanked text",
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 250 })
-    end,
-})
+-- already done by yanky.nvim
+-- autocmd("TextYankPost", {
+--     desc = "Highlight yanked text",
+--     pattern = "*",
+--     callback = function()
+--         vim.highlight.on_yank({ higroup = "IncSearch", timeout = 250 })
+--     end,
+-- })
 
 -- Prefer LSP folding if client supports it
 autocmd("LspAttach", {
