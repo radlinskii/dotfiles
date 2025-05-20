@@ -103,15 +103,6 @@ keymap.set({ "x" }, "<", "<gv", { silent = true, noremap = true, desc = "Increas
 keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines up" })
 keymap.set({ "x" }, "K", ":m '<-2<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines down" })
 
--- Don't copy the replaced text after pasting in visual mode
--- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-keymap.set(
-    { "x" },
-    "p",
-    'p:let @+=@0<CR>:let @"=@0<CR>',
-    { desc = "Don't copy replaced text", silent = true, noremap = true }
-)
-
 keymap.set(
     { "x" },
     "<leader>rs",
