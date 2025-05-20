@@ -1,8 +1,8 @@
 ---@type LazyPluginSpec
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     dependencies = {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         {
             "neovim/nvim-lspconfig",
@@ -15,27 +15,92 @@ return {
         },
     },
     config = function()
-        local mason = require("mason")
         local mason_lspconfig = require("mason-lspconfig")
+        local mason = require("mason")
         local lspconfig = require("lspconfig")
+        --used by to install linters and formatters, none-ls would not need it
+        local mason_tool_installer = require("mason-tool-installer")
+
+        mason.setup()
 
         local on_attach = require("radlinskii.utils.lsp").on_attach
         local custom_capabilities = require("radlinskii.utils.lsp").capabilities
         local blink_capabilities = require("blink.cmp").get_lsp_capabilities(custom_capabilities)
 
-        -- enable mason and configure icons
-        mason.setup({
-            ui = {
-                icons = {
-                    package_installed = "✓",
-                    package_pending = "➜",
-                    package_uninstalled = "✗",
+        vim.lsp.config("*", {
+            capabilities = blink_capabilities,
+            on_attach = on_attach,
+            root_markers = { ".git" },
+        })
+
+        vim.lsp.config("ts_ls", {
+            settings = {
+                javascript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    },
+                },
+                typescript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    },
+                },
+            },
+        })
+
+        vim.lsp.config("lua_ls", {
+            settings = {
+                Lua = {
+                    hint = {
+                        enable = true,
+                    },
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        library = {
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                            [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
+                        },
+                        maxPreload = 100000,
+                        preloadFileSize = 10000,
+                        checkThirdParty = false, -- TODO: check what it does
+                    },
+                },
+            },
+        })
+
+        vim.lsp.config("gopls", {
+            cmd = { "gopls" },
+            filetypes = { "go", "gomod", "gowork", "gotmpl" },
+            root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+            settings = {
+                gopls = {
+                    completeUnimported = true,
+                    usePlaceholders = true,
+                    analyses = {
+                        unusedparams = true,
+                    },
                 },
             },
         })
 
         mason_lspconfig.setup({
-            -- list of servers for mason to install
             ensure_installed = {
                 "ts_ls",
                 "html",
@@ -47,98 +112,7 @@ return {
                 "taplo",
                 "astro",
             },
-            -- auto-install configured servers (with lspconfig)
-            automatic_installation = true, -- not the same as ensure_installed
         })
-
-        mason_lspconfig.setup_handlers({
-            function(server_name)
-                if server_name == "ts_ls" then
-                    lspconfig.ts_ls.setup({
-                        on_attach = on_attach,
-                        capabilities = blink_capabilities,
-
-                        settings = {
-                            javascript = {
-                                inlayHints = {
-                                    includeInlayParameterNameHints = "all",
-                                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                                    includeInlayFunctionParameterTypeHints = true,
-                                    includeInlayVariableTypeHints = true,
-                                    includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                                    includeInlayPropertyDeclarationTypeHints = true,
-                                    includeInlayFunctionLikeReturnTypeHints = true,
-                                    includeInlayEnumMemberValueHints = true,
-                                },
-                            },
-                            typescript = {
-                                inlayHints = {
-                                    includeInlayParameterNameHints = "all",
-                                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                                    includeInlayFunctionParameterTypeHints = true,
-                                    includeInlayVariableTypeHints = true,
-                                    includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                                    includeInlayPropertyDeclarationTypeHints = true,
-                                    includeInlayFunctionLikeReturnTypeHints = true,
-                                    includeInlayEnumMemberValueHints = true,
-                                },
-                            },
-                        },
-                    })
-                elseif server_name == "lua_ls" then
-                    lspconfig.lua_ls.setup({
-                        on_attach = on_attach,
-                        capabilities = blink_capabilities,
-
-                        settings = {
-                            Lua = {
-                                hint = {
-                                    enable = true,
-                                },
-                                diagnostics = {
-                                    globals = { "vim" },
-                                },
-                                workspace = {
-                                    library = {
-                                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                                        [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
-                                    },
-                                    maxPreload = 100000,
-                                    preloadFileSize = 10000,
-                                    checkThirdParty = false, -- TODO: check what it does
-                                },
-                            },
-                        },
-                    })
-                elseif server_name == "gopls" then
-                    lspconfig.gopls.setup({
-                        on_attach = on_attach,
-                        capabilities = blink_capabilities,
-                        cmd = { "gopls" },
-                        filetypes = { "go", "gomod", "gowork", "gotmpl" },
-                        root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
-                        settings = {
-                            gopls = {
-                                completeUnimported = true,
-                                usePlaceholders = true,
-                                analyses = {
-                                    unusedparams = true,
-                                },
-                            },
-                        },
-                    })
-                else
-                    lspconfig[server_name].setup({
-                        on_attach = on_attach,
-                        capabilities = blink_capabilities,
-                    })
-                end
-            end,
-        })
-
-        --used by conform and nvim-lint, none-ls doesn't need it
-        local mason_tool_installer = require("mason-tool-installer")
 
         mason_tool_installer.setup({
             ensure_installed = {

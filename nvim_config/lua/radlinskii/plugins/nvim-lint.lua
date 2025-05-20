@@ -2,7 +2,7 @@
 return {
     "mfussenegger/nvim-lint",
     dependencies = {
-        "williamboman/mason.nvim",
+        "mason-org/mason-lspconfig.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
