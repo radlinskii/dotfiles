@@ -34,6 +34,8 @@ return {
         })
 
         vim.lsp.config("ts_ls", {
+            capabilities = blink_capabilities,
+            on_attach = on_attach,
             settings = {
                 javascript = {
                     inlayHints = {
@@ -63,6 +65,8 @@ return {
         })
 
         vim.lsp.config("lua_ls", {
+            capabilities = blink_capabilities,
+            on_attach = on_attach,
             settings = {
                 Lua = {
                     hint = {
@@ -86,6 +90,8 @@ return {
         })
 
         vim.lsp.config("gopls", {
+            capabilities = blink_capabilities,
+            on_attach = on_attach,
             cmd = { "gopls" },
             filetypes = { "go", "gomod", "gowork", "gotmpl" },
             root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
