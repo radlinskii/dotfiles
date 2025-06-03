@@ -12,7 +12,7 @@ return {
         "nvim-lua/plenary.nvim",
     },
     keys = {
-        { "<leader>g", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
+        { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
     },
     config = function()
         local is_windows = require("radlinskii.utils.system").is_windows()

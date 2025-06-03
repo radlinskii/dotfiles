@@ -68,6 +68,10 @@ return {
                         TabLine = { bg = theme.ui.bg_p2, fg = theme.ui.fg_dim },
                         -- TabLineSel - Tab pages line, active tab page label.
                         TabLineSel = { bg = theme.ui.bg_m1, fg = theme.diag.warning },
+                        LspReferenceWrite = { bg = theme.ui.bg_p2 },
+                        LspReferenceRead = { bg = theme.ui.bg_p2 },
+                        LspReferenceTarget = { bg = theme.ui.bg_p2 },
+                        LspReferenceText = { bg = theme.ui.bg_p2 },
                     }
                 end,
                 theme = "wave", -- Load "wave" theme when 'background' option is not set

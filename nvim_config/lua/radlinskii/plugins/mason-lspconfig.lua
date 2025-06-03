@@ -73,7 +73,7 @@ return {
                         enable = true,
                     },
                     diagnostics = {
-                        globals = { "vim" },
+                        globals = { "vim", "Snacks" },
                     },
                     workspace = {
                         library = {
