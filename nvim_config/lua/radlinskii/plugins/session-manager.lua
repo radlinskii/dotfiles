@@ -2,9 +2,9 @@
 return {
     {
         "rmagatti/auto-session",
+        lazy = false,
         -- can be lazy loaded if the auto_restore is disabled
-        -- lazy = false,
-        cmd = { "SessionRestore", "SessionSave" },
+        -- cmd = { "SessionRestore", "SessionSave" },
         keys = {
             {
                 "<leader>SS",
@@ -30,9 +30,9 @@ return {
                     "~/Projects",
                     "~/Library",
                 },
-                auto_save = false,
+                auto_save = true,
                 auto_create = true,
-                auto_restore = false,
+                auto_restore = true,
                 -- issue on windows with "-" in git branch name turns into "\\" in file name
                 -- auto_session_use_git_branch = true,
             })
