@@ -2,9 +2,9 @@
 return {
     {
         "rmagatti/auto-session",
+        lazy = false,
         -- can be lazy loaded if the auto_restore is disabled
-        -- lazy = false,
-        cmd = { "SessionRestore", "SessionSave" },
+        -- cmd = { "SessionRestore", "SessionSave" },
         keys = {
             {
                 "<leader>SS",
@@ -18,6 +18,8 @@ return {
             },
         },
         config = function()
+            local is_windows = require("radlinskii.utils.system").is_windows()
+
             require("auto-session").setup({
                 auto_session_suppress_dirs = {
                     "/",
@@ -30,9 +32,9 @@ return {
                     "~/Projects",
                     "~/Library",
                 },
-                auto_save = false,
-                auto_create = true,
-                auto_restore = false,
+                auto_save = not is_windows,
+                auto_create = not is_windows,
+                auto_restore = not is_windows,
                 -- issue on windows with "-" in git branch name turns into "\\" in file name
                 -- auto_session_use_git_branch = true,
             })
