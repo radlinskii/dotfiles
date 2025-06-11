@@ -43,7 +43,7 @@ customCommands:
       command: git push
       description: "push to remote"
       context: "global"
-      stream: true
+      output: log
     - key: "<c-n>"
       prompts:
           - type: "confirm"
@@ -52,7 +52,7 @@ customCommands:
       command: git push --no-verify
       description: "push to remote without pre-push hook"
       context: "global"
-      stream: true
+      output: log
     - key: "!"
       prompts:
           - type: "confirm"
@@ -61,7 +61,7 @@ customCommands:
       command: git push --force-with-lease --no-verify
       description: "FORCE push to remote without pre-push hook"
       context: "global"
-      stream: true
+      output: log
     - key: "<c-p>"
       prompts:
           - type: "confirm"
@@ -70,13 +70,13 @@ customCommands:
       command: git push --force-with-lease
       description: "FORCE push to remote"
       context: "global"
-      stream: true
+      output: log
     - key: "<c-l>"
       prompts:
       command: open $(git remote get-url origin)
       description: "open remote origin in the browser"
       context: "global"
-      stream: true
+      output: log
 gui:
     theme:
         selectedLineBgColor:
