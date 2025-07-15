@@ -189,6 +189,7 @@ return {
             grep = {
                 rg_glob = true,
                 glob_separator = "%s%-%-%s", -- query separator pattern (lua): ' -- '
+                hidden = true,
             },
             defaults = {
                 formatter = { "path.filename_first", 2 },
