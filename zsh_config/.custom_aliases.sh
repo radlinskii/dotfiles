@@ -128,3 +128,4 @@ alias gdtr='git diff-tree --no-commit-id --name-only -r'
 alias gdtup='git difftool @{upstream}'
 alias gdtw='git difftool --word-diff'
 
+alias lg="lazygit"
