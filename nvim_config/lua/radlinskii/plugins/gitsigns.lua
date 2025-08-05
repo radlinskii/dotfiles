@@ -7,9 +7,9 @@ local function on_attach(bufnr)
     wk.add({ "<leader>c", group = "Gitsigns" })
 
     -- Define the mappings for Normal mode
-    vim.keymap.set("n", "]c", function()
+    vim.keymap.set("n", "]h", function()
         if vim.wo.diff then
-            return "]c"
+            return "]h"
         end
         vim.schedule(function()
             require("gitsigns").next_hunk()
@@ -17,9 +17,9 @@ local function on_attach(bufnr)
         return "<Ignore>"
     end, opts("Jump to next hunk"))
 
-    vim.keymap.set("n", "[c", function()
+    vim.keymap.set("n", "[h", function()
         if vim.wo.diff then
-            return "[c"
+            return "[h"
         end
         vim.schedule(function()
             require("gitsigns").prev_hunk()
@@ -35,7 +35,7 @@ local function on_attach(bufnr)
 
     vim.keymap.set("n", "<leader>cu", "<cmd>Gitsigns undo_stage_hunk<CR>", opts("Undo stage hunk"))
 
-    vim.keymap.set("n", "<leader>ca", "<cmd>Gitsigns stage_buffer<CR>", opts("Stage buffer"))
+    vim.keymap.set("n", "<leader>cS", "<cmd>Gitsigns stage_buffer<CR>", opts("Stage buffer"))
 
     vim.keymap.set("n", "<leader>cr", "<cmd>Gitsigns reset_hunk<CR>", opts("Reset hunk"))
 
@@ -54,9 +54,9 @@ local function on_attach(bufnr)
     )
 
     -- Define the mappings for Visual mode
-    vim.keymap.set("x", "]c", function()
+    vim.keymap.set("x", "]h", function()
         if vim.wo.diff then
-            return "]c"
+            return "]h"
         end
         vim.schedule(function()
             require("gitsigns").next_hunk()
@@ -64,9 +64,9 @@ local function on_attach(bufnr)
         return "<Ignore>"
     end, opts("Jump to next hunk"))
 
-    vim.keymap.set("x", "[c", function()
+    vim.keymap.set("x", "[h", function()
         if vim.wo.diff then
-            return "[c"
+            return "[h"
         end
         vim.schedule(function()
             require("gitsigns").prev_hunk()
