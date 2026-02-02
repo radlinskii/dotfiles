@@ -5,6 +5,26 @@ opt.showmode = false
 
 opt.clipboard = "unnamedplus"
 
+-- allow copy to clipboard through ssh using OSC 52
+local function paste()
+    return {
+        vim.fn.split(vim.fn.getreg(""), "\n"),
+        vim.fn.getregtype(""),
+    }
+end
+
+vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+        ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+        ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+        ["+"] = paste,
+        ["*"] = paste,
+    },
+}
+
 local shellslash_exists = vim.fn.exists("+shellslash") ~= 0
 
 if shellslash_exists then
