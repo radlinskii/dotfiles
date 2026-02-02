@@ -36,9 +36,9 @@ Example usage: `./scripts/install.sh -l -b`
 ### 4. manually adjust the git config
 
 ```sh
-git config --global core.excludesfile ~/.gitignore_global
 git config --global user.name "Your Name"
 git config --global user.email "Your Email"
+git config --global core.excludesfile ~/.gitignore_global
 git config --global init.defaultBranch main
 git config --global pull.rebase true
 git config --global push.autoSetupRemote true
@@ -81,7 +81,7 @@ and more:
 
 Other environments to setup:
 
-[node & npm](https://nodejs.org/en/download/package-manager), [go](https://go.dev/doc/install), [rust](https://www.rust-lang.org/tools/install), and from whatever you can find it `python`.
+[node & npm](https://nodejs.org/en/download/package-manager), [go](https://go.dev/doc/install), [rust](https://www.rust-lang.org/tools/install), and `python`.
 
 ### 7. [lazygit](https://github.com/jesseduffield/lazygit) setup within nvim using [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) might require [neovim-remote](https://github.com/mhinz/neovim-remote)
 
