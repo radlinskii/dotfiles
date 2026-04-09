@@ -24,6 +24,12 @@ keymap.set({ "n", "x", "o" }, "n", "nzzzv", { silent = true, noremap = true, des
 keymap.set({ "n", "x", "o" }, "N", "Nzzzv", { silent = true, noremap = true, desc = "Find previous appearance" })
 
 -- #
+-- Terminal mode mappings
+-- #
+
+keymap.set({ "t" }, "<Esc>", [[<C-\><C-n>]], { silent = true, desc = "Enter normal mode" })
+
+-- #
 -- Operator mappings
 -- #
 

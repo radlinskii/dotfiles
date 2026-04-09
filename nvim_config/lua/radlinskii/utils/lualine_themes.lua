@@ -31,6 +31,11 @@ M.get_dark_theme = function()
         b = { bg = kanagawa_theme.diff.text, fg = kanagawa_theme.syn.constant },
     }
 
+    theme.terminal = {
+        a = { bg = kanagawa_theme.syn.constant, fg = kanagawa_theme.ui.bg },
+        b = { bg = kanagawa_theme.ui.fg_reverse, fg = kanagawa_theme.syn.constant },
+    }
+
     theme.inactive = {
         a = { bg = kanagawa_theme.ui.bg_m3, fg = kanagawa_theme.ui.fg_dim },
         b = { bg = kanagawa_theme.ui.bg_m3, fg = kanagawa_theme.ui.fg_dim, gui = "bold" },
@@ -70,6 +75,11 @@ M.get_light_theme = function()
     theme.replace = {
         a = { bg = kanagawa_theme.syn.constant, fg = kanagawa_theme.ui.bg },
         b = { bg = kanagawa_theme.diff.text, fg = kanagawa_theme.syn.constant },
+    }
+
+    theme.terminal = {
+        a = { bg = kanagawa_theme.syn.constant, fg = kanagawa_theme.ui.bg },
+        b = { bg = kanagawa_theme.diff.change, fg = kanagawa_theme.syn.constant },
     }
 
     theme.inactive = {
