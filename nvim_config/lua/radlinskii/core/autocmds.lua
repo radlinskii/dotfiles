@@ -28,23 +28,14 @@ autocmd({ "BufLeave", "FocusLost" }, {
     end,
 })
 
--- Highlighting when yanking text
--- already done by yanky.nvim
--- autocmd("TextYankPost", {
---     desc = "Highlight yanked text",
---     pattern = "*",
---     callback = function()
---         vim.highlight.on_yank({ higroup = "IncSearch", timeout = 250 })
---     end,
--- })
-
--- Prefer LSP folding if client supports it
-autocmd("LspAttach", {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client ~= nil and client:supports_method("textDocument/foldingRange") then
-            local win = vim.api.nvim_get_current_win()
-            vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-        end
+-- wrap, linebreak and spellcheck on markdown and text files
+autocmd("FileType", {
+    pattern = { "markdown", "text", "gitcommit" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.spell = true
     end,
 })
+
+autocmd("LspAttach", { callback = require("radlinskii.utils.lsp").on_attach })

@@ -40,6 +40,9 @@ return {
                         color = { fg = "#ff9e64" },
                     },
                     {
+                        "lsp_status",
+                    },
+                    {
                         "fileformat",
                         symbols = {
                             unix = " ", -- e712 + space

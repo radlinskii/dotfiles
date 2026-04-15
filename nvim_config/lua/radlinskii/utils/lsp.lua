@@ -13,9 +13,6 @@ M.on_attach = function(_, bufnr)
     wk.add({ "<leader>l", group = "LSP", icon = { cat = "filetype", name = ft }, buffer = bufnr })
 
     -- LSP mappings for Normal mode
-    opts.desc = "LSP declaration"
-    keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, opts)
-
     opts.desc = "LSP hover"
     keymap.set("n", "<leader>lh", vim.lsp.buf.hover, opts)
 
@@ -30,7 +27,7 @@ M.on_attach = function(_, bufnr)
     keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts)
 
     opts.desc = "Restart LSP"
-    keymap.set("n", "<leader>lx", "<cmd>LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+    keymap.set("n", "<leader>lx", "<cmd>lsp restart<CR>", opts) -- mapping to restart lsp if necessary
 
     opts.desc = "LSP document symbols"
     keymap.set("n", "<leader>ls", "<cmd>FzfLua lsp_document_symbols<CR>", opts)
@@ -38,17 +35,45 @@ M.on_attach = function(_, bufnr)
     opts.desc = "LSP format"
     keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
 
-    opts.desc = "LSP definition"
-    keymap.set("n", "<leader>ld", "<cmd>FzfLua lsp_definitions<CR>", opts)
+    opts.desc = "LSP definitions"
+    keymap.set("n", "<leader>ld", function()
+        require("fzf-lua").lsp_definitions({ jump1 = true })
+    end, opts)
+
+    opts.desc = "LSP Definitions"
+    keymap.set("n", "<leader>lD", function()
+        require("fzf-lua").lsp_definitions({ jump1 = false })
+    end, opts)
 
     opts.desc = "LSP implementation"
-    keymap.set("n", "<leader>li", "<cmd>FzfLua lsp_implementations <CR>", opts)
+    keymap.set("n", "<leader>li", function()
+        require("fzf-lua").lsp_implementations({ jump1 = true })
+    end, opts)
+
+    opts.desc = "LSP Implementations"
+    keymap.set("n", "<leader>lI", function()
+        require("fzf-lua").lsp_implementations({ jump1 = false })
+    end, opts)
 
     opts.desc = "LSP definition type"
-    keymap.set("n", "<leader>lt", "<cmd>FzfLua lsp_typedefs<CR>", opts)
+    keymap.set("n", "<leader>lt", function()
+        require("fzf-lua").lsp_typedefs({ jump1 = true })
+    end, opts)
+
+    opts.desc = "LSP Definition types"
+    keymap.set("n", "<leader>lT", function()
+        require("fzf-lua").lsp_typedefs({ jump1 = false })
+    end, opts)
 
     opts.desc = "LSP references"
-    keymap.set("n", "<leader>lr", "<cmd>FzfLua lsp_references<CR>", opts)
+    keymap.set("n", "<leader>lr", function()
+        require("fzf-lua").lsp_references({ jump1 = true })
+    end, opts)
+
+    opts.desc = "LSP References"
+    keymap.set("n", "<leader>lR", function()
+        require("fzf-lua").lsp_references({ jump1 = false })
+    end, opts)
 
     wk.add({ "<leader>lw", group = "LSP Workspace", icon = { cat = "filetype", name = ft }, buffer = bufnr })
 
