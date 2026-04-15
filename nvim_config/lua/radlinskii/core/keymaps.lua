@@ -58,6 +58,20 @@ keymap.set(
     "<C-w>n<C-w>L",
     { silent = true, noremap = true, desc = "Open new buffer in a vertical split" }
 )
+keymap.set(
+    "n",
+    "<M-h>",
+    ":vertical resize -2<CR>",
+    { silent = true, noremap = true, desc = "Resize window vertical -2" }
+)
+keymap.set(
+    "n",
+    "<M-l>",
+    ":vertical resize +2<CR>",
+    { silent = true, noremap = true, desc = "Resize window vertical +2" }
+)
+keymap.set("n", "<M-k>", ":resize -2<CR>", { silent = true, noremap = true, desc = "Resize window horizontal -2" })
+keymap.set("n", "<M-j>", ":resize +2<CR>", { silent = true, noremap = true, desc = "Resize window horizontal +2" })
 
 -- #
 -- Scrolling mappings
@@ -99,15 +113,6 @@ keymap.set(
     "<PageDown>zz",
     { silent = true, noremap = true, desc = "Scroll a whole window down and move cursor to the center" }
 )
-
--- #
--- Visual/Select mode mappings
--- #
-
-keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increase indent" })
-keymap.set({ "x" }, "<", "<gv", { silent = true, noremap = true, desc = "Increase indent" })
-keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines up" })
-keymap.set({ "x" }, "K", ":m '<-2<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines down" })
 
 -- #
 -- Insert mode mappings
@@ -223,19 +228,6 @@ keymap.set(
     "<leader>xo",
     "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<CR>",
     { desc = "Open floating diagnostics", silent = true, noremap = true }
-)
-
-keymap.set(
-    "n",
-    "[d",
-    "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }, wrap = true })<CR>",
-    { desc = "Go to prev diagnostic", silent = true, noremap = true }
-)
-keymap.set(
-    "n",
-    "]d",
-    "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' }, wrap = true })<CR>",
-    { desc = "Go to next diagnostic", silent = true, noremap = true }
 )
 
 keymap.set(
