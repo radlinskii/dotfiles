@@ -8,6 +8,7 @@ return {
         },
         highlight = {
             keyword = "bg",
+            pattern = [[.*<(KEYWORDS)\s*]],
         },
     },
 }

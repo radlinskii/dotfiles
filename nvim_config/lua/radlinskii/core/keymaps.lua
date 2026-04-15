@@ -27,7 +27,7 @@ keymap.set({ "n", "x", "o" }, "N", "Nzzzv", { silent = true, noremap = true, des
 -- Terminal mode mappings
 -- #
 
-keymap.set({ "t" }, "<Esc>", [[<C-\><C-n>]], { silent = true, desc = "Enter normal mode" })
+keymap.set({ "t" }, "<C-q>", [[<C-\><C-n>]], { silent = true, desc = "Enter normal mode" })
 
 -- #
 -- Operator mappings
@@ -108,13 +108,6 @@ keymap.set({ "x" }, ">", ">gv", { silent = true, noremap = true, desc = "Increas
 keymap.set({ "x" }, "<", "<gv", { silent = true, noremap = true, desc = "Increase indent" })
 keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines up" })
 keymap.set({ "x" }, "K", ":m '<-2<CR>gv=gv", { silent = true, noremap = true, desc = "Move selected lines down" })
-
-keymap.set(
-    { "x" },
-    "<leader>rs",
-    [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { noremap = true, desc = "Substitute current word inside the selection" }
-)
 
 -- #
 -- Insert mode mappings

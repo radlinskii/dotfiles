@@ -10,7 +10,6 @@ return {
     config = function()
         local lualine = require("lualine")
         local custom_lualine_themes = require("radlinskii.utils.lualine_themes")
-        -- local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
         ---@type string | table
         local theme = "auto"
@@ -18,7 +17,7 @@ return {
         if vim.o.background == "light" then
             theme = custom_lualine_themes.get_light_theme()
         elseif vim.o.background == "dark" then
-            theme = custom_lualine_themes.get_light_theme()
+            theme = custom_lualine_themes.get_dark_theme()
         end
 
         lualine.setup({
@@ -31,15 +30,15 @@ return {
                 },
                 lualine_x = {
                     {
-                        require("noice").api.statusline.mode.get,
-                        cond = require("noice").api.statusline.mode.has,
+                        require("noice").api.status.mode.get,
+                        cond = require("noice").api.status.mode.has,
                         color = { fg = "#ff9e64" },
                     },
-                    -- {
-                    --     lazy_status.updates,
-                    --     cond = lazy_status.has_updates,
-                    -- },
-                    -- { "encoding" },
+                    {
+                        require("noice").api.status.search.get,
+                        cond = require("noice").api.status.search.has,
+                        color = { fg = "#ff9e64" },
+                    },
                     {
                         "fileformat",
                         symbols = {

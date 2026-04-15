@@ -5,17 +5,6 @@ return {
     config = function()
         local is_windows = require("radlinskii.utils.system").is_windows()
 
-        if vim.fn.has("persistent_undo") then
-            local target_path = vim.fn.expand("~/.local/share/nvim/custom_undodir")
-
-            if vim.fn.isdirectory(target_path) == false then
-                os.execute("mkdir -p " .. target_path)
-            end
-
-            vim.opt.undodir = target_path
-            vim.opt.undofile = true
-        end
-
         if is_windows then
             vim.g.undotree_DiffCommand = "FC"
         end

@@ -12,7 +12,7 @@ local function on_attach(bufnr)
             return "]h"
         end
         vim.schedule(function()
-            require("gitsigns").next_hunk()
+            require("gitsigns").nav_hunk("next")
         end)
         return "<Ignore>"
     end, opts("Jump to next hunk"))
@@ -22,7 +22,7 @@ local function on_attach(bufnr)
             return "[h"
         end
         vim.schedule(function()
-            require("gitsigns").prev_hunk()
+            require("gitsigns").nav_hunk("prev")
         end)
         return "<Ignore>"
     end, opts("Jump to previous hunk"))
@@ -59,7 +59,7 @@ local function on_attach(bufnr)
             return "]h"
         end
         vim.schedule(function()
-            require("gitsigns").next_hunk()
+            require("gitsigns").nav_hunk("next")
         end)
         return "<Ignore>"
     end, opts("Jump to next hunk"))
@@ -69,7 +69,7 @@ local function on_attach(bufnr)
             return "[h"
         end
         vim.schedule(function()
-            require("gitsigns").prev_hunk()
+            require("gitsigns").nav_hunk("prev")
         end)
         return "<Ignore>"
     end, opts("Jump to previous hunk"))
@@ -109,6 +109,7 @@ return {
         require("gitsigns").setup(opts)
     end,
     opts = {
+        current_line_blame = true,
         on_attach = on_attach,
         signs = {
             add = { text = "▌" },

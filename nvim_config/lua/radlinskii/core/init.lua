@@ -17,6 +17,21 @@ vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+local sev = vim.diagnostic.severity
+
+vim.diagnostic.config({
+    virtual_text = { prefix = "●", spacing = 4 },
+    severity_sort = true,
+    signs = {
+        text = {
+            [sev.ERROR] = " ",
+            [sev.WARN] = " ",
+            [sev.INFO] = "󰠠 ",
+            [sev.HINT] = " ",
+        },
+    },
+})
+
 -- inlay hints
 vim.lsp.inlay_hint.enable()
 

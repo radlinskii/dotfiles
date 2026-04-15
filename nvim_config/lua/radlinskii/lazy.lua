@@ -7,7 +7,6 @@ end
 
 vim.opt.rtp:prepend(lazy_path)
 
-require("lazy.view.config").commands.update.key_plugin = "gu"
 require("lazy.view.config").keys.close = "<c-c>"
 require("lazy.view.config").keys.abort = "q"
 

@@ -68,7 +68,7 @@ end
 M.capabilities = {
     textDocument = {
         foldingRange = {
-            dynamicRegistration = false,
+            dynamicRegistration = true,
             lineFoldingOnly = true,
         },
         completion = {
@@ -89,6 +89,39 @@ M.capabilities = {
                     },
                 },
             },
+        },
+        selectionRange = {
+            dynamicRegistration = true,
+        },
+        inlineCompletion = {
+            dynamicRegistration = true,
+        },
+        linkedEditingRange = {
+            dynamicRegistration = true,
+        },
+        documentLink = {
+            dynamicRegistration = true,
+        },
+        documentColor = {
+            dynamicRegistration = true,
+        },
+        colorPresentation = {
+            dynamicRegistration = true,
+        },
+        diagnostic = {
+            dynamicRegistration = true,
+        },
+        codeLens = {
+            dynamicRegistration = true,
+        },
+        semanticTokens = {
+            dynamicRegistration = true,
+            range = false,
+        },
+    },
+    workspace = {
+        diagnostics = {
+            refreshSupported = true,
         },
     },
 }

@@ -25,7 +25,7 @@ return {
 
         local on_attach = require("radlinskii.utils.lsp").on_attach
         local custom_capabilities = require("radlinskii.utils.lsp").capabilities
-        local blink_capabilities = require("blink.cmp").get_lsp_capabilities(custom_capabilities)
+        local blink_capabilities = require("blink.cmp").get_lsp_capabilities() -- TODO: test if custom_capabilities are obsolete
 
         vim.lsp.config("*", {
             capabilities = blink_capabilities,
@@ -72,18 +72,8 @@ return {
                     hint = {
                         enable = true,
                     },
-                    diagnostics = {
-                        globals = { "vim", "Snacks" },
-                    },
                     workspace = {
-                        library = {
-                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                            [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
-                        },
-                        maxPreload = 100000,
-                        preloadFileSize = 10000,
-                        checkThirdParty = false, -- TODO: check what it does
+                        checkThirdParty = false,
                     },
                 },
             },

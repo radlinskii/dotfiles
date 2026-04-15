@@ -34,9 +34,12 @@ end
 -- Indenting
 opt.expandtab = true
 opt.smartindent = true
+opt.autoindent = true
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
+
+opt.breakindent = true -- Enable break indent
 
 opt.spelllang = "en_us"
 -- disabled by default, enable with <leader>ns
@@ -61,6 +64,11 @@ opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 opt.ignorecase = true
 opt.smartcase = true
+
+opt.hlsearch = true
+opt.incsearch = true
+opt.showmatch = true
+opt.cmdheight = 1
 
 opt.mouse = "a"
 
@@ -87,10 +95,19 @@ opt.termguicolors = true
 
 opt.timeoutlen = 400
 
-opt.undofile = true
+if vim.fn.has("persistent_undo") then
+    local target_path = vim.fn.expand("~/.local/share/nvim/custom_undodir")
 
--- Enable break indent
-opt.breakindent = true
+    if vim.fn.isdirectory(target_path) == false then
+        os.execute("mkdir -p " .. target_path)
+    end
+
+    opt.backup = false
+    opt.writebackup = false -- no backup files
+    opt.swapfile = false -- no swapfiles
+    opt.undodir = target_path
+    opt.undofile = true
+end
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -108,6 +125,9 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
 opt.wrap = false
+
+-- opt.iskeyword:append("-") -- include - in words
+opt.path:append("**") -- include subdirs in search
 
 -- this will get later anyway overridden by auto-dark-mode.nvim
 -- but with this, there is less blinking on the initial load,

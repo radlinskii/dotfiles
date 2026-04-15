@@ -26,8 +26,7 @@ return {
                 astro = { "prettier" },
             },
             format_on_save = {
-                lsp_fallback = true,
-                async = false,
+                lsp_format = "fallback",
                 timeout_ms = 1500,
             },
         })
