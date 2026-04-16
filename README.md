@@ -85,12 +85,8 @@ Other environments to setup:
 
 ### 7. [lazygit](https://github.com/jesseduffield/lazygit) setup within nvim using [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) might require [neovim-remote](https://github.com/mhinz/neovim-remote)
 
-Setting up `nvr` might require assigning evironment variable `NVIM_LISTEN_ADDRESS`.
+Setting up `nvr` might require assigning environment variable `NVIM_LISTEN_ADDRESS`.
 Value could be `localhost:6789` as it is the default value that `nvr` tries to connect to.
-
-## Acknowledgements
-
-- Nick Nisi's [dotfiles](https://github.com/nicknisi/dotfiles)
 
 ## License
 
