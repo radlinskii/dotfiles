@@ -1,7 +1,7 @@
-vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
     once = true,
     callback = function()
-        vim.pack.add({ { src = "https://github.com/stevearc/conform.nvim" } })
+        vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
         local conform = require("conform")
 

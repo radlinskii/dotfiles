@@ -1,6 +1,8 @@
-vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
-vim.pack.add({ "https://github.com/s1n7ax/nvim-window-picker" })
-vim.pack.add({ "https://github.com/ibhagwan/fzf-lua" })
+vim.pack.add({
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+    { src = "https://github.com/s1n7ax/nvim-window-picker" },
+    { src = "https://github.com/ibhagwan/fzf-lua" },
+})
 
 vim.keymap.set("n", "<leader>fa", "<cmd>FzfLua<CR>", { desc = "FzfLua" })
 vim.keymap.set("n", "<C-p>", "<cmd>FzfLua buffers<CR>", { desc = "Find buffers" })

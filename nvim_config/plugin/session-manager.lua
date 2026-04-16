@@ -1,4 +1,4 @@
-vim.pack.add({ { src = "https://github.com/rmagatti/auto-session" } })
+vim.pack.add({ "https://github.com/rmagatti/auto-session" })
 
 vim.keymap.set("n", "<leader>SS", "<cmd>Autosession save<CR>", { desc = "Save current session" })
 vim.keymap.set("n", "<leader>SR", "<cmd>Autosession restore<CR>", { desc = "Restore current session" })

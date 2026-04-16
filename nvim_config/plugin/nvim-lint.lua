@@ -1,7 +1,7 @@
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
     once = true,
     callback = function()
-        vim.pack.add({ { src = "https://github.com/mfussenegger/nvim-lint" } })
+        vim.pack.add({ "https://github.com/mfussenegger/nvim-lint" })
 
         local cspell_utils = require("radlinskii.utils.cspell")
         local lint = require("lint")

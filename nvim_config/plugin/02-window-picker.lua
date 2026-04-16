@@ -1,5 +1,5 @@
 vim.pack.add({
-    { src = 'https://github.com/s1n7ax/nvim-window-picker', name = 'window-picker' },
+    { src = "https://github.com/s1n7ax/nvim-window-picker", name = "window-picker" },
 })
 
 require("window-picker").setup({
@@ -9,3 +9,4 @@ require("window-picker").setup({
         include_current_win = true,
     },
 })
+

@@ -1,7 +1,7 @@
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
     once = true,
     callback = function()
-        vim.pack.add({ { src = "https://github.com/mbbill/undotree" } })
+        vim.pack.add({ "https://github.com/mbbill/undotree" })
 
         vim.keymap.set("n", "<leader>u", "<cmd> UndotreeToggle <CR>", { desc = "Toggle UndoTree" })
 

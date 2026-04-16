@@ -1,4 +1,4 @@
-vim.pack.add({ { src = "https://github.com/folke/snacks.nvim" } })
+vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 
 vim.keymap.set({ "n", "v" }, "<leader>gB", function()
     Snacks.gitbrowse()

@@ -1,7 +1,9 @@
-vim.pack.add({ "https://github.com/nvim-lualine/lualine.nvim" })
-vim.pack.add({ "https://github.com/folke/noice.nvim" })
-vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
-vim.pack.add({ "https://github.com/rebelot/kanagawa.nvim" })
+vim.pack.add({
+    { src = "https://github.com/nvim-lualine/lualine.nvim" },
+    { src = "https://github.com/folke/noice.nvim" },
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+    { src = "https://github.com/rebelot/kanagawa.nvim" },
+})
 
 local lualine = require("lualine")
 local custom_lualine_themes = require("radlinskii.utils.lualine_themes")
