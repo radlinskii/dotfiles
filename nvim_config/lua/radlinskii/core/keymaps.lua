@@ -212,6 +212,8 @@ keymap.set(
 keymap.set({ "n" }, "<leader>bn", "<cmd> enew <CR>", { desc = "New buffer", silent = true, noremap = true })
 keymap.set({ "n" }, "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer", silent = true, noremap = true })
 keymap.set({ "n" }, "<leader>bb", "<cmd>b#<CR>", { desc = "Alternate buffer", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader>br", "<cmd>e<CR>", { desc = "Reload current buffer", silent = true, noremap = true })
+keymap.set({ "n" }, "<leader>bR", "<cmd>restart<CR>", { desc = "Restart nvim", silent = true, noremap = true })
 
 -- #
 -- Refactoring mappings
