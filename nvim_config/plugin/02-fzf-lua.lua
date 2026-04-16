@@ -8,20 +8,55 @@ vim.keymap.set("n", "<leader>fa", "<cmd>FzfLua<CR>", { desc = "FzfLua" })
 vim.keymap.set("n", "<C-p>", "<cmd>FzfLua buffers<CR>", { desc = "Find buffers" })
 vim.keymap.set("n", "<C-n>", "<cmd>FzfLua buffers<CR>", { desc = "Find buffers" })
 vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", { desc = "Find buffers" })
-vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>", { desc = "Find files, including hidden files, excluding ignored" })
-vim.keymap.set("n", "<leader>fF", "<cmd>lua require'fzf-lua'.files({ fd_opts = '--hidden --no-ignore', rg_opts = '--hidden --no-ignore' })<CR>", { desc = "Find all files including hidden and ignored" })
-vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles({ cwd_only = true })<CR>", { desc = "Find oldfiles from CWD" })
+vim.keymap.set(
+    "n",
+    "<leader>ff",
+    "<cmd>FzfLua files<CR>",
+    { desc = "Find files, including hidden files, excluding ignored" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>fF",
+    "<cmd>lua require'fzf-lua'.files({ fd_opts = '--hidden --no-ignore', rg_opts = '--hidden --no-ignore' })<CR>",
+    { desc = "Find all files including hidden and ignored" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>fo",
+    "<cmd>lua require('fzf-lua').oldfiles({ cwd_only = true })<CR>",
+    { desc = "Find oldfiles from CWD" }
+)
 vim.keymap.set("n", "<leader>fO", "<cmd>FzfLua oldfiles<CR>", { desc = "Find global nvim oldfiles" })
-vim.keymap.set("n", "<leader>fc", "<cmd>FzfLua grep_cword<CR>", { desc = "Find string under [c]ursor in cwd with args" })
+vim.keymap.set(
+    "n",
+    "<leader>fc",
+    "<cmd>FzfLua grep_cword<CR>",
+    { desc = "Find string under [c]ursor in cwd with args" }
+)
 vim.keymap.set("n", "<leader>fC", "<cmd>FzfLua grep_last<cr>", { desc = "[C]ontinue last grep search" })
 vim.keymap.set("n", "<leader>fw", "<cmd>FzfLua grep<CR>", { desc = "Grep [w]ords" })
 vim.keymap.set("n", "<leader>fs", "<cmd>FzfLua live_grep<CR>", { desc = "Live grep [s]earch" })
-vim.keymap.set("n", "<leader>fS", "<cmd>FzfLua live_grep_resume<CR>", { desc = "Continue last grep [S]earch as live grep" })
+vim.keymap.set(
+    "n",
+    "<leader>fS",
+    "<cmd>FzfLua live_grep_resume<CR>",
+    { desc = "Continue last grep [S]earch as live grep" }
+)
 vim.keymap.set("n", "<leader>fz", "<cmd>FzfLua lgrep_curbuf<CR>", { desc = "Grep in current buffer" })
 vim.keymap.set("n", "<leader>f.", "<cmd>FzfLua resume<CR>", { desc = "Resume last search" })
 vim.keymap.set("n", "<leader>fh", "<cmd>FzfLua help_tags<CR>", { desc = "Find help pages" })
-vim.keymap.set("n", "<leader>fD", "<cmd>FzfLua diagnostics_document<CR>", { desc = "Find diagnostics in whole project" })
-vim.keymap.set("n", "<leader>fd", "<cmd>FzfLua diagnostics_workspace<CR>", { desc = "Find diagnostics in whole project" })
+vim.keymap.set(
+    "n",
+    "<leader>fD",
+    "<cmd>FzfLua diagnostics_document<CR>",
+    { desc = "Find diagnostics in whole project" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>fd",
+    "<cmd>FzfLua diagnostics_workspace<CR>",
+    { desc = "Find diagnostics in whole project" }
+)
 vim.keymap.set("n", "<leader>fj", "<cmd>FzfLua jumps<CR>", { desc = "Find items in jumplist" })
 vim.keymap.set("n", "<leader>fm", "<cmd>FzfLua marks<CR>", { desc = "Find items in bookmarks" })
 vim.keymap.set("n", "<leader>fgc", "<cmd>FzfLua git_bcommits<CR>", { desc = "Git commits history of current buffer" })

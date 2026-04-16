@@ -1,10 +1,15 @@
-vim.pack.add({ "https://github.com/MunifTanjim/nui.nvim", "https://github.com/rcarriga/nvim-notify" , "https://github.com/folke/noice.nvim" })
+vim.pack.add({
+    "https://github.com/MunifTanjim/nui.nvim",
+    "https://github.com/rcarriga/nvim-notify",
+    "https://github.com/folke/noice.nvim",
+})
 
 vim.keymap.set("n", "<leader>nn", function()
     require("noice").cmd("dismiss")
 end, { desc = "Dismiss all notifications" })
 
 require("notify").setup({
+    merge_duplicates = false,
     timeout = 2500,
     max_height = function()
         return math.floor(vim.o.lines * 0.75)
