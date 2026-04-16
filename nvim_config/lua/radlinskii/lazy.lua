@@ -10,18 +10,18 @@ vim.opt.rtp:prepend(lazy_path)
 require("lazy.view.config").keys.close = "<c-c>"
 require("lazy.view.config").keys.abort = "q"
 
-require("lazy").setup({ { import = "radlinskii.plugins" } }, {
-    defaults = {
-        lazy = true,
-    },
-    install = {
-        colorscheme = { "kanagawa" },
-    },
-    checker = {
-        enabled = true,
-        notify = false,
-    },
-    change_detection = {
-        notify = true,
-    },
-})
+-- require("lazy").setup({ { import = "radlinskii.plugins" } }, {
+--     defaults = {
+--         lazy = true,
+--     },
+--     install = {
+--         colorscheme = { "kanagawa" },
+--     },
+--     checker = {
+--         enabled = true,
+--         notify = false,
+--     },
+--     change_detection = {
+--         notify = true,
+--     },
+-- })
