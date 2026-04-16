@@ -1,8 +1,66 @@
 vim.pack.add({
-    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-    { src = "https://github.com/s1n7ax/nvim-window-picker" },
-    { src = "https://github.com/ibhagwan/fzf-lua" },
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/s1n7ax/nvim-window-picker",
+    "https://github.com/ibhagwan/fzf-lua",
 })
+
+local actions = require("fzf-lua.actions")
+local fzf_lua = require("fzf-lua")
+
+local file_edit_with_window_picker = function(selected, opts)
+    local fallback = vim.api.nvim_get_current_win()
+    local window_id = require("window-picker").pick_window() or fallback
+
+    vim.api.nvim_set_current_win(window_id)
+    require("fzf-lua.actions").file_edit(selected, opts)
+end
+
+fzf_lua.setup({
+    winopts = {
+        width = 0.95,
+        height = 0.93,
+        row = 0.50,
+    },
+    actions = {
+        files = {
+            ["enter"] = actions.file_edit,
+            ["ctrl-o"] = file_edit_with_window_picker,
+            ["ctrl-h"] = actions.file_split,
+            ["ctrl-v"] = actions.file_vsplit,
+        },
+    },
+    previewers = {
+        bat = {
+            theme = "ansi",
+        },
+    },
+    grep = {
+        rg_glob = true,
+        glob_separator = "%s%-%-%s",
+        hidden = true,
+    },
+    defaults = {
+        formatter = { "path.filename_first", 2 },
+    },
+    buffers = {
+        previewer = false,
+        actions = {
+            ["ctrl-d"] = { fn = actions.buf_del, reload = true },
+        },
+    },
+})
+
+fzf_lua.register_ui_select(function(_, items)
+    local min_h, max_h = 0.15, 0.70
+    local h = (#items + 4) / vim.o.lines
+    if h < min_h then
+        h = min_h
+    elseif h > max_h then
+        h = max_h
+    end
+
+    return { winopts = { height = h, width = 0.60, row = 0.40 } }
+end)
 
 vim.keymap.set("n", "<leader>fa", "<cmd>FzfLua<CR>", { desc = "FzfLua" })
 vim.keymap.set("n", "<C-p>", "<cmd>FzfLua buffers<CR>", { desc = "Find buffers" })
@@ -68,61 +126,3 @@ vim.keymap.set("n", "<leader>fq", "<cmd>FzfLua quickfix<CR>", { desc = "Find ite
 vim.keymap.set("n", "<leader>fr", "<cmd>FzfLua registers<CR>", { desc = "Search stuff in registers" })
 vim.keymap.set("n", "<leader>fl", "<cmd>FzfLua loclist<CR>", { desc = "Find items in loclist" })
 vim.keymap.set("x", "<leader>fc", "<cmd>FzfLua grep_visual<CR>", { desc = "Find selected string" })
-
-local actions = require("fzf-lua.actions")
-local fzf_lua = require("fzf-lua")
-
-local file_edit_with_window_picker = function(selected, opts)
-    local fallback = vim.api.nvim_get_current_win()
-    local window_id = require("window-picker").pick_window() or fallback
-
-    vim.api.nvim_set_current_win(window_id)
-    require("fzf-lua.actions").file_edit(selected, opts)
-end
-
-fzf_lua.setup({
-    winopts = {
-        width = 0.95,
-        height = 0.93,
-        row = 0.50,
-    },
-    actions = {
-        files = {
-            ["enter"] = actions.file_edit,
-            ["ctrl-o"] = file_edit_with_window_picker,
-            ["ctrl-h"] = actions.file_split,
-            ["ctrl-v"] = actions.file_vsplit,
-        },
-    },
-    previewers = {
-        bat = {
-            theme = "ansi",
-        },
-    },
-    grep = {
-        rg_glob = true,
-        glob_separator = "%s%-%-%s",
-        hidden = true,
-    },
-    defaults = {
-        formatter = { "path.filename_first", 2 },
-    },
-    buffers = {
-        previewer = false,
-        actions = {
-            ["ctrl-d"] = { fn = actions.buf_del, reload = true },
-        },
-    },
-})
-
-fzf_lua.register_ui_select(function(_, items)
-    local min_h, max_h = 0.15, 0.70
-    local h = (#items + 4) / vim.o.lines
-    if h < min_h then
-        h = min_h
-    elseif h > max_h then
-        h = max_h
-    end
-
-    return { winopts = { height = h, width = 0.60, row = 0.40 } }
-end)

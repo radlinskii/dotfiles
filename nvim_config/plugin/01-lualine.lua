@@ -1,8 +1,8 @@
 vim.pack.add({
-    { src = "https://github.com/nvim-lualine/lualine.nvim" },
-    { src = "https://github.com/folke/noice.nvim" },
-    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-    { src = "https://github.com/rebelot/kanagawa.nvim" },
+    "https://github.com/nvim-lualine/lualine.nvim",
+    "https://github.com/folke/noice.nvim",
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/rebelot/kanagawa.nvim",
 })
 
 local lualine = require("lualine")

@@ -5,6 +5,24 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
             { src = "https://github.com/folke/flash.nvim" },
         })
 
+        require("flash").setup({
+            search = {
+                mode = "search",
+                exclude = {
+                    "blink-cmp-menu",
+                    "blink-cmp-documentation",
+                    "blink-cmp-signature",
+                    "notify",
+                    "cmp_menu",
+                    "noice",
+                    "flash_prompt",
+                },
+            },
+            modes = {
+                search = { enabled = false },
+            },
+        })
+
         vim.keymap.set({ "n", "x", "o" }, "s", function()
             require("flash").jump()
         end, { desc = "Flash" })
@@ -24,23 +42,5 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
         vim.keymap.set("c", "<c-s>", function()
             require("flash").toggle()
         end, { desc = "Toggle Flash Search" })
-
-        require("flash").setup({
-            search = {
-                mode = "search",
-                exclude = {
-                    "blink-cmp-menu",
-                    "blink-cmp-documentation",
-                    "blink-cmp-signature",
-                    "notify",
-                    "cmp_menu",
-                    "noice",
-                    "flash_prompt",
-                },
-            },
-            modes = {
-                search = { enabled = false },
-            },
-        })
     end,
 })

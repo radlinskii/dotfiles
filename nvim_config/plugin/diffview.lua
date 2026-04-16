@@ -6,10 +6,6 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
             "https://github.com/sindrets/diffview.nvim",
         })
 
-        vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" })
-        vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<CR>", { desc = "Open Diffview" })
-        vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory %<CR>", { desc = "Open file history Diffview" })
-
         require("diffview").setup({
             hooks = {
                 diff_view_opened = function()
@@ -21,5 +17,9 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
                 end,
             },
         })
+
+        vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" })
+        vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<CR>", { desc = "Open Diffview" })
+        vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory %<CR>", { desc = "Open file history Diffview" })
     end,
 })

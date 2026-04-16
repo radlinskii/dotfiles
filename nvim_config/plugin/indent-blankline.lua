@@ -1,9 +1,11 @@
-vim.pack.add({ "https://github.com/hiphish/rainbow-delimiters.nvim" ,
-"https://github.com/lukas-reineke/indent-blankline.nvim" })
-
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
     once = true,
     callback = function()
+        vim.pack.add({
+            "https://github.com/hiphish/rainbow-delimiters.nvim",
+            "https://github.com/lukas-reineke/indent-blankline.nvim",
+        })
+
         local highlight = {
             "RainbowViolet",
             "RainbowRed",

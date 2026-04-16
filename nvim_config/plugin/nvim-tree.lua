@@ -32,20 +32,10 @@ local function nvim_tree_on_attach(bufnr)
     vim.keymap.del("n", "u", { buffer = bufnr })
 end
 
-vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file explorer" })
-vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
-vim.keymap.set("n", "<leader>ex", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
-vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
-
 local nvimtree = require("nvim-tree")
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
-vim.cmd([[ highlight NvimTreeFolderArrowClosed guifg=#3FC5FF ]])
-vim.cmd([[ highlight NvimTreeFolderArrowOpen guifg=#3FC5FF ]])
-vim.cmd([[ highlight NvimTreeWindowPicker guifg=#009944 guibg=#990079 ]])
 
 nvimtree.setup({
     filters = {
@@ -113,3 +103,13 @@ nvimtree.setup({
     },
     on_attach = nvim_tree_on_attach,
 })
+
+vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file explorer" })
+vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
+vim.keymap.set("n", "<leader>ex", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
+vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
+
+vim.cmd([[ highlight NvimTreeFolderArrowClosed guifg=#3FC5FF ]])
+vim.cmd([[ highlight NvimTreeFolderArrowOpen guifg=#3FC5FF ]])
+vim.cmd([[ highlight NvimTreeWindowPicker guifg=#009944 guibg=#990079 ]])

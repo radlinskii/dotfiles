@@ -1,29 +1,5 @@
 vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 
-vim.keymap.set({ "n", "v" }, "<leader>gB", function()
-    Snacks.gitbrowse()
-end, { desc = "Git Browse" })
-
-vim.keymap.set({ "n", "v" }, "<leader>gb", function()
-    Snacks.git.blame_line()
-end, { desc = "Git blame line" })
-
-vim.keymap.set("n", "<leader>rF", function()
-    Snacks.rename.rename_file()
-end, { desc = "Rename File" })
-
-vim.keymap.set({ "n", "t" }, "]]", function()
-    Snacks.words.jump(vim.v.count1)
-end, { desc = "Next Reference" })
-
-vim.keymap.set({ "n", "t" }, "[[", function()
-    Snacks.words.jump(-vim.v.count1)
-end, { desc = "Prev Reference" })
-
-vim.keymap.set("n", "<leader>fn", function()
-    Snacks.notifier.show_history()
-end, { desc = "Notification History" })
-
 require("snacks").setup({
     animate = {
         enabled = true,
@@ -65,3 +41,27 @@ vim.api.nvim_create_autocmd("User", {
         end)
     end,
 })
+
+vim.keymap.set({ "n", "v" }, "<leader>gB", function()
+    Snacks.gitbrowse()
+end, { desc = "Git Browse" })
+
+vim.keymap.set({ "n", "v" }, "<leader>gb", function()
+    Snacks.git.blame_line()
+end, { desc = "Git blame line" })
+
+vim.keymap.set("n", "<leader>rF", function()
+    Snacks.rename.rename_file()
+end, { desc = "Rename File" })
+
+vim.keymap.set({ "n", "t" }, "]]", function()
+    Snacks.words.jump(vim.v.count1)
+end, { desc = "Next Reference" })
+
+vim.keymap.set({ "n", "t" }, "[[", function()
+    Snacks.words.jump(-vim.v.count1)
+end, { desc = "Prev Reference" })
+
+vim.keymap.set("n", "<leader>fn", function()
+    Snacks.notifier.show_history()
+end, { desc = "Notification History" })

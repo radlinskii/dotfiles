@@ -4,10 +4,6 @@ vim.pack.add({
     "https://github.com/folke/noice.nvim",
 })
 
-vim.keymap.set("n", "<leader>nn", function()
-    require("noice").cmd("dismiss")
-end, { desc = "Dismiss all notifications" })
-
 require("notify").setup({
     merge_duplicates = false,
     timeout = 2500,
@@ -60,3 +56,7 @@ require("noice").setup({
         lsp_doc_border = true,
     },
 })
+
+vim.keymap.set("n", "<leader>nn", function()
+    require("noice").cmd("dismiss")
+end, { desc = "Dismiss all notifications" })

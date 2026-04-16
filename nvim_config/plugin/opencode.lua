@@ -1,7 +1,11 @@
 vim.pack.add({
-    { src = "https://github.com/ibhagwan/fzf-lua" },
+    "https://github.com/ibhagwan/fzf-lua",
     { src = "https://github.com/nickjvandyke/opencode.nvim", version = "stable" },
 })
+
+vim.g.opencode_opts = {}
+
+vim.o.autoread = true
 
 vim.keymap.set({ "n", "x" }, "<leader>oa", function()
     require("opencode").ask("@this: ", { submit = true })
@@ -30,7 +34,3 @@ end, { desc = "Scroll opencode up" })
 vim.keymap.set("n", "<leader>od", function()
     require("opencode").command("session.half.page.down")
 end, { desc = "Scroll opencode down" })
-
-vim.g.opencode_opts = {}
-
-vim.o.autoread = true

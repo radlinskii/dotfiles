@@ -1,6 +1,6 @@
 vim.pack.add({
-    { src = "https://github.com/folke/which-key.nvim" },
-    { src = "https://github.com/lewis6991/gitsigns.nvim" },
+    "https://github.com/folke/which-key.nvim",
+    "https://github.com/lewis6991/gitsigns.nvim",
 })
 
 local function on_attach(bufnr)

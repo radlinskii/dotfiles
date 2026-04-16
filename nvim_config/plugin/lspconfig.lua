@@ -1,8 +1,8 @@
 vim.pack.add({
-    { src = "https://github.com/folke/which-key.nvim" },
+    "https://github.com/folke/which-key.nvim",
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
-    { src = "https://github.com/ibhagwan/fzf-lua" },
-    { src = "https://github.com/neovim/nvim-lspconfig" },
+    "https://github.com/ibhagwan/fzf-lua",
+    "https://github.com/neovim/nvim-lspconfig",
 })
 
 vim.lsp.config["*"] = {

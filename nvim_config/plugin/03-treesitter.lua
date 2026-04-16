@@ -1,7 +1,7 @@
 vim.pack.add({
-    { src = "https://github.com/windwp/nvim-ts-autotag" },
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    "https://github.com/windwp/nvim-ts-autotag",
+    "https://github.com/nvim-treesitter/nvim-treesitter-context",
+    "https://github.com/nvim-treesitter/nvim-treesitter",
 })
 
 local ensure_installed = {
@@ -47,6 +47,13 @@ require("nvim-ts-autotag").setup({
     },
 })
 
+require("nvim-treesitter").setup({
+    highlight = { enable = true },
+    indent = { enable = true },
+    autotag = { enable = true },
+    matchup = { enable = true },
+})
+
 vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
         pcall(vim.treesitter.start, args.buf)
@@ -81,12 +88,5 @@ vim.keymap.set({ "x", "o" }, "in", function()
         vim.lsp.buf.selection_range(-vim.v.count1)
     end
 end, { desc = "Select child treesitter node or inner incremental lsp selections" })
-
-require("nvim-treesitter").setup({
-    highlight = { enable = true },
-    indent = { enable = true },
-    autotag = { enable = true },
-    matchup = { enable = true },
-})
 
 vim.cmd("TSUpdate")

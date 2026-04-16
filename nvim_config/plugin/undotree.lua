@@ -3,8 +3,6 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
     callback = function()
         vim.pack.add({ "https://github.com/mbbill/undotree" })
 
-        vim.keymap.set("n", "<leader>u", "<cmd> UndotreeToggle <CR>", { desc = "Toggle UndoTree" })
-
         local is_windows = require("radlinskii.utils.system").is_windows()
 
         if is_windows then
@@ -23,5 +21,7 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
             vim.keymap.set("n", "<down>", "<plug>UndotreePreviousState", opts)
             vim.keymap.set("n", "u", "<plug>UndotreeUndo", opts)
         end
+
+        vim.keymap.set("n", "<leader>u", "<cmd> UndotreeToggle <CR>", { desc = "Toggle UndoTree" })
     end,
 })
