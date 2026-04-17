@@ -18,4 +18,5 @@ require("auto-session").setup({
 })
 
 vim.keymap.set("n", "<leader>SS", "<cmd>Autosession save<CR>", { desc = "Save current session" })
+vim.keymap.set("n", "<leader>SD", "<cmd>Autosession deletePicker<CR>", { desc = "Delete sessions" })
 vim.keymap.set("n", "<leader>SR", "<cmd>Autosession restore<CR>", { desc = "Restore current session" })
