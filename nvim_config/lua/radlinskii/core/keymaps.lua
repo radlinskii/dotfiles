@@ -244,3 +244,15 @@ keymap.set(
     "<cmd>lua vim.diagnostic.goto_next({ severity=vim.diagnostic.severity.ERROR, float = { border = 'rounded' }, wrap = true })<CR>",
     { desc = "Go to next error diagnostic", silent = true, noremap = true }
 )
+keymap.set(
+    "n",
+    "[d",
+    "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }, wrap = true })<CR>",
+    { desc = "Go to prev diagnostic", silent = true, noremap = true }
+)
+keymap.set(
+    "n",
+    "]d",
+    "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' }, wrap = true })<CR>",
+    { desc = "Go to next diagnostic", silent = true, noremap = true }
+)

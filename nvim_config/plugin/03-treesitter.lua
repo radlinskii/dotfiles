@@ -1,6 +1,7 @@
 vim.pack.add({
     "https://github.com/windwp/nvim-ts-autotag",
     "https://github.com/nvim-treesitter/nvim-treesitter-context",
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
     "https://github.com/nvim-treesitter/nvim-treesitter",
 })
 
@@ -47,46 +48,137 @@ require("nvim-ts-autotag").setup({
     },
 })
 
-require("nvim-treesitter").setup({
-    highlight = { enable = true },
-    indent = { enable = true },
-    autotag = { enable = true },
-    matchup = { enable = true },
+require("nvim-treesitter-textobjects").setup({
+    select = {
+        enable = true,
+        -- Automatically jump forward to textobj, similar to targets.vim
+        lookahead = true,
+
+        selection_modes = {
+            ["@parameter.outer"] = "v", -- charwise
+            ["@function.outer"] = "v",
+            ["@class.outer"] = "V", -- linewise
+        },
+        include_surrounding_whitespace = true,
+    },
+    move = {
+        set_jumps = true,
+    },
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function(args)
-        pcall(vim.treesitter.start, args.buf)
-        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    end,
-})
+-- =,f,m,c,i,l
+
+-- select
+vim.keymap.set({ "x", "o" }, "l=", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@assignment.lhs", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "r=", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@assignment.rhs", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "af", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@call.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "if", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@call.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "am", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "im", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ac", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ic", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ai", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@conditional.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ii", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@conditional.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "al", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@loop.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "il", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@loop.inner", "textobjects")
+end)
+
+-- move
+vim.keymap.set({ "n", "x", "o" }, "]=", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@assignment.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]f", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@call.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]m", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]c", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]i", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@conditional.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]l", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@loop.outer", "textobjects")
+end)
+
+vim.keymap.set({ "n", "x", "o" }, "]F", function()
+    require("nvim-treesitter-textobjects.move").goto_next_end("@call.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]M", function()
+    require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]C", function()
+    require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]I", function()
+    require("nvim-treesitter-textobjects.move").goto_next_end("@conditional.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]L", function()
+    require("nvim-treesitter-textobjects.move").goto_next_end("@loop.outer", "textobjects")
+end)
+
+vim.keymap.set({ "n", "x", "o" }, "[=", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@assignment.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[f", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@call.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[m", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[c", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[i", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@conditional.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[l", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@loop.outer", "textobjects")
+end)
+
+vim.keymap.set({ "n", "x", "o" }, "[F", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_end("@call.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[M", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[C", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[I", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_end("@conditional.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[L", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_end("@loop.outer", "textobjects")
+end)
 
 vim.keymap.set("n", "gC", function()
     require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true, noremap = true, desc = "Go to beginning of the treesitter context" })
-
-vim.keymap.set({ "x" }, "[n", function()
-    require("vim.treesitter._select").select_prev(vim.v.count1)
-end, { desc = "Select previous treesitter node" })
-
-vim.keymap.set({ "x" }, "]n", function()
-    require("vim.treesitter._select").select_next(vim.v.count1)
-end, { desc = "Select next treesitter node" })
-
-vim.keymap.set({ "x", "o" }, "an", function()
-    if vim.treesitter.get_parser(nil, nil, { error = false }) then
-        require("vim.treesitter._select").select_parent(vim.v.count1)
-    else
-        vim.lsp.buf.selection_range(vim.v.count1)
-    end
-end, { desc = "Select parent treesitter node or outer incremental lsp selections" })
-
-vim.keymap.set({ "x", "o" }, "in", function()
-    if vim.treesitter.get_parser(nil, nil, { error = false }) then
-        require("vim.treesitter._select").select_child(vim.v.count1)
-    else
-        vim.lsp.buf.selection_range(-vim.v.count1)
-    end
-end, { desc = "Select child treesitter node or inner incremental lsp selections" })
 
 vim.cmd("TSUpdate")

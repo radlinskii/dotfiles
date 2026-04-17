@@ -14,13 +14,6 @@ animate.setup({
     },
 })
 
-require("mini.ai").setup({
-    mappings = {
-        around_next = "",
-        inside_next = "",
-    },
-})
-
 require("mini.move").setup({
     mappings = {
         line_left = "",
@@ -29,8 +22,6 @@ require("mini.move").setup({
         line_up = "",
     },
 })
-
-require("mini.bracketed").setup()
 
 require("mini.icons").setup()
 MiniIcons.mock_nvim_web_devicons()
