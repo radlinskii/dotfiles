@@ -12,7 +12,7 @@ local function nvim_tree_on_attach(bufnr)
         return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
 
-    api.config.mappings.default_on_attach(bufnr)
+    api.map.on_attach.default(bufnr)
 
     vim.keymap.set("n", "gr", api.fs.rename_full, opts("Rename: Full Path"))
     vim.keymap.set("n", "R", api.fs.rename_basename, opts("Rename: Basename"))
@@ -50,7 +50,9 @@ nvimtree.setup({
     sync_root_with_cwd = true,
     update_focused_file = {
         enable = true,
-        update_root = false,
+        update_root = {
+            enable = false,
+        },
     },
     view = {
         float = {

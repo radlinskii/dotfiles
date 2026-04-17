@@ -1,6 +1,6 @@
 vim.pack.add({
     "https://github.com/ibhagwan/fzf-lua",
-    { src = "https://github.com/nickjvandyke/opencode.nvim", version = "stable" },
+    "https://github.com/nickjvandyke/opencode.nvim",
 })
 
 vim.g.opencode_opts = {}

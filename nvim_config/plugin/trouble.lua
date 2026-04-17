@@ -8,6 +8,8 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
 
         require("trouble").setup({
             focus = true,
+            warn_no_results = false,
+            open_no_results = true,
         })
 
         vim.keymap.set("n", "<leader>xx", function()

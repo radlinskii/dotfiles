@@ -29,11 +29,6 @@ fzf_lua.setup({
             ["ctrl-v"] = actions.file_vsplit,
         },
     },
-    previewers = {
-        bat = {
-            theme = "ansi",
-        },
-    },
     grep = {
         rg_glob = true,
         glob_separator = "%s%-%-%s",
