@@ -20,8 +20,8 @@ wk.setup({
 
 wk.add({ "<leader>b", group = "Buffer" })
 wk.add({ "<leader>g", group = "Toggle LazyGit", icon = { cat = "filetype", name = "git" } })
-wk.add({ "<leader>o", group = "OpenCode" })
-wk.add({ "<leader>m", group = "MarkdownPreview" })
+wk.add({ "<leader>o", group = "OpenCode", icon = { icon = "󱡄", hl = "MiniIconsCyan" } })
+wk.add({ "<leader>m", group = "MarkdownPreview", icon = { icon = "", hl = "MiniIconsGreen" } })
 wk.add({ "<leader>S", group = "Sessions", icon = { icon = " ", hl = "MiniIconsGreen" } })
 wk.add({ "<leader>f", group = "FzfLua", icon = { icon = " ", hl = "MiniIconsBlue" } })
 wk.add({ "<leader>fg", group = "FzfLua Git", icon = { cat = "filetype", name = "git" } })
@@ -29,7 +29,6 @@ wk.add({ "<leader>e", group = "NvimTree", icon = { cat = "extension", name = "do
 wk.add({ "<leader>r", group = "Refactoring", icon = { icon = "󱌢" } })
 wk.add({ "<leader>n", group = "Misc", icon = { icon = "", hl = "MiniIconsRed" } })
 wk.add({ "<leader>d", group = "Diffview", icon = { icon = "󰦓" } })
-wk.add({ "<leader>D", group = "Debugger" })
 wk.add({ "<leader>x", group = "Trouble", icon = { icon = "󰙅", hl = "MiniIconsRed" } })
 
 vim.keymap.set({ "n" }, "<leader>b?", function()
