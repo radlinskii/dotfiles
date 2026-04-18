@@ -9,7 +9,7 @@ This repo holds configuration files for tooling I use regularly while working on
 ### 1. be sure you have git installed
 
 ```sh
-xcode-select --install
+git --version
 ```
 
 ### 2. clone the repo
@@ -44,7 +44,7 @@ git config --global pull.rebase true
 git config --global push.autoSetupRemote true
 ```
 
-To add nvim as `difftool` and `mergetool` add:
+Add the following to `~/.gitconfig`:
 
 ```ini
 [diff]
@@ -61,9 +61,9 @@ To add nvim as `difftool` and `mergetool` add:
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
 ```
 
-to the `.gitconfig` file
-
 ### 5. put local-machine-specific shell configuration and secret env vars in `~/.local_zshrc.sh`
+
+This file is sourced by `.zshrc` and should contain secrets (API keys, tokens) and machine-specific configuration that should not be shared publicly.
 
 ```sh
 nvim ~/.local_zshrc.sh
@@ -71,13 +71,17 @@ nvim ~/.local_zshrc.sh
 
 ### 6. Even more tooling
 
-Other tools to install, also can be found in `Brewfile`:
+Other tools to install via the Brewfile using `brew bundle`:
 
-`zsh`, `omz`, `zoxide`, `fzf`, `ripgrep`, `bat`, `tmux`, `lazygit`, `btop`, `superfile`, `unzip`, `fd`, `tldr`, `tree`
+```sh
+brew bundle install --file ~/.dotfiles/Brewfile
+```
 
-and more:
+and some need to be installed via `npm`:
 
-`shfmt`, `luarocks`, `eslint_d`
+```sh
+npm install -g eslint_d
+```
 
 Other environments to setup:
 

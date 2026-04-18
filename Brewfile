@@ -3,6 +3,7 @@
 tap "homebrew/cask-fonts"
 # tap "koekeishiya/formulae"
 tap "homebrew/bundle"
+tap "anomalyco/tap"
 # tap "homebrew/core"
 
 # brew "noti" # utility to display notifications from scripts
@@ -63,3 +64,5 @@ brew "luarocks" # used by neovim
 brew "neovim-remote" # neovim remote server
 brew "superfile" # file manager
 brew "tlrc" # more human friendly man pages
+brew "tree-sitter-cli" # used by neovim for treesitter
+brew "opencode" # AI coding agent
