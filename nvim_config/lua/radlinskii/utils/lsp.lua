@@ -3,14 +3,14 @@ local M = {}
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(args)
     local wk = require("which-key")
-    opts.buffer = bufnr
+    opts.buffer = args.buf
 
     local ft = vim.bo.filetype
 
     -- set keybinds
-    wk.add({ "<leader>l", group = "LSP", icon = { cat = "filetype", name = ft }, buffer = bufnr })
+    wk.add({ "<leader>l", group = "LSP", icon = { cat = "filetype", name = ft }, buffer = args.buf })
 
     -- LSP mappings for Normal mode
     opts.desc = "LSP hover"
@@ -75,7 +75,7 @@ M.on_attach = function(_, bufnr)
         require("fzf-lua").lsp_references({ jump1 = false })
     end, opts)
 
-    wk.add({ "<leader>lw", group = "LSP Workspace", icon = { cat = "filetype", name = ft }, buffer = bufnr })
+    wk.add({ "<leader>lw", group = "LSP Workspace", icon = { cat = "filetype", name = ft }, buffer = args.buf })
 
     opts.desc = "LSP Add workspace folder"
     keymap.set("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
@@ -89,66 +89,5 @@ M.on_attach = function(_, bufnr)
     opts.desc = "LSP List workspace folders"
     keymap.set("n", "<leader>lwl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 end
-
-M.capabilities = {
-    textDocument = {
-        foldingRange = {
-            dynamicRegistration = true,
-            lineFoldingOnly = true,
-        },
-        completion = {
-            completionItem = {
-                documentationFormat = { "markdown", "plaintext" },
-                snippetSupport = true,
-                preselectSupport = true,
-                insertReplaceSupport = true,
-                labelDetailsSupport = true,
-                deprecatedSupport = true,
-                commitCharactersSupport = true,
-                tagSupport = { valueSet = { 1 } },
-                resolveSupport = {
-                    properties = {
-                        "documentation",
-                        "detail",
-                        "additionalTextEdits",
-                    },
-                },
-            },
-        },
-        selectionRange = {
-            dynamicRegistration = true,
-        },
-        inlineCompletion = {
-            dynamicRegistration = true,
-        },
-        linkedEditingRange = {
-            dynamicRegistration = true,
-        },
-        documentLink = {
-            dynamicRegistration = true,
-        },
-        documentColor = {
-            dynamicRegistration = true,
-        },
-        colorPresentation = {
-            dynamicRegistration = true,
-        },
-        diagnostic = {
-            dynamicRegistration = true,
-        },
-        codeLens = {
-            dynamicRegistration = true,
-        },
-        semanticTokens = {
-            dynamicRegistration = true,
-            range = false,
-        },
-    },
-    workspace = {
-        diagnostics = {
-            refreshSupported = true,
-        },
-    },
-}
 
 return M

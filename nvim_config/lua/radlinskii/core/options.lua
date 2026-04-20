@@ -58,9 +58,6 @@ opt.fillchars:append({
     foldsep = " ",
     foldclose = "▶", -- "⏵","▷","►", "▶"
 })
-opt.foldmethod = "expr"
--- Default to treesitter folding but created Autocmd for switching to lsp in autocmds.lua
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 opt.ignorecase = true
 opt.smartcase = true
