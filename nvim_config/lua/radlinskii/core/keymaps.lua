@@ -256,3 +256,41 @@ keymap.set(
     "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' }, wrap = true })<CR>",
     { desc = "Go to next diagnostic", silent = true, noremap = true }
 )
+
+-- #
+-- Copy context range mappings
+-- #
+
+keymap.set("n", "<leader>oc", function()
+    local filepath = vim.fn.expand("%:p")
+    local line = vim.fn.line(".")
+    local col = vim.fn.col(".")
+
+    local ref = filepath .. ":L" .. line .. ":C" .. col
+
+    vim.fn.setreg("+", ref)
+    vim.fn.setreg("", ref)
+
+    local short_ref = #ref > 75 and "..." .. ref:sub(-72) or ref
+
+    vim.notify(short_ref, vim.log.levels.INFO, { title = "Copied reference" })
+end, { desc = "Copy file:line:column reference for AI Agents", silent = false, noremap = true })
+
+keymap.set("v", "<leader>oc", function()
+    local filepath = vim.fn.expand("%:p")
+    local line_start = vim.fn.line("v")
+    local line_end = vim.fn.line(".")
+
+    if line_start > line_end then
+        line_start, line_end = line_end, line_start
+    end
+
+    local ref = filepath .. ":L" .. line_start .. "-L" .. line_end
+
+    vim.fn.setreg("+", ref)
+    vim.fn.setreg("", ref)
+
+    local short_ref = #ref > 75 and "..." .. ref:sub(-72) or ref
+
+    vim.notify(short_ref, vim.log.levels.INFO, { title = "Copied reference" })
+end, { desc = "Copy file:line-line range reference for AI Agents", silent = false, noremap = true })
