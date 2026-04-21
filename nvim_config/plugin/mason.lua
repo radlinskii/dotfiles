@@ -27,6 +27,7 @@ mason_lspconfig.setup({
 mason_tool_installer.setup({
     ensure_installed = {
         "prettier",
+        "eslint_d",
         "stylua",
         "cspell",
         "markdownlint",

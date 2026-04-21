@@ -29,7 +29,6 @@ To only run parts of `install.sh` responsible for specific configurations pass f
 - for linking config files run it with flag `-l` or `--link`.
 - to only configure `MacOS` specific settings run it with flag `-m` or `--mac`.
 - to only install `Homebrew` packages run it with flag `-b` or `--brew`.
-- to install `oh-my-zsh` use `-o` or `--omz` flag.
 
 Example usage: `./scripts/install.sh -l -b`
 
@@ -71,17 +70,7 @@ nvim ~/.local_zshrc.sh
 
 ### 6. Even more tooling
 
-Other tools to install via the Brewfile using `brew bundle`:
-
-```sh
-brew bundle install --file ~/.dotfiles/Brewfile
-```
-
-and some need to be installed via `npm`:
-
-```sh
-npm install -g eslint_d
-```
+To install necessary tooling run `./scripts/install.sh -b` to install all of the tools listed in the Brewfile.
 
 Other environments to setup:
 

@@ -1,10 +1,6 @@
 # taps
-# tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-# tap "koekeishiya/formulae"
 tap "homebrew/bundle"
 tap "anomalyco/tap"
-# tap "homebrew/core"
 
 # brew "noti" # utility to display notifications from scripts
 brew "trash" # rm, but put in the trash rather than completely delete

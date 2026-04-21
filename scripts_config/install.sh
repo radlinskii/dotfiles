@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+script_dir="${0:A:h}"
+
+failed_operations=()
+
 Black='\033[0;30m'
 Red='\033[0;31m'
 Green='\033[0;32m'
@@ -21,26 +25,33 @@ NoColor='\033[0m'
 create_symlinks() {
     setopt nullglob
 
-    local source="$1"
+    local source="${1:A}"
     local destination_directory="$2"
+
     if [[ ! -d "$source" && ! -f "$source" ]]; then
         echo "${Red}Source does not exist: $source${NoColor}"
+        failed_operations+=("Source does not exist: $source")
         return
     fi
 
     if [[ ! -d "$destination_directory" ]]; then
-        echo "${Red}Destination directory does not exist: $destination_directory${NoColor}"
+        echo "${Orange}Destination directory does not exist: $destination_directory${NoColor}"
         echo "${Blue}Creating destination directory $destination_directory${NoColor}"
-        mkdir -p $destination_directory
+        mkdir -p "$destination_directory"
+        if [[ $? -ne 0 ]]; then
+            failed_operations+=("Failed to create directory: $destination_directory")
+        fi
     fi
 
     if [[ -f "$source" ]]; then
-        local file_name="$(basename "$file")"
-        local source="$(pwd)/$file"
+        local file_name="$(basename "$source")"
         local destination="$destination_directory/$file_name"
 
         echo "Creating symlink for file $source to $destination"
         ln -sf "$source" "$destination"
+        if [[ $? -ne 0 ]]; then
+            failed_operations+=("Failed to create symlink: $source -> $destination")
+        fi
 
     fi
 
@@ -58,7 +69,7 @@ create_symlinks() {
 }
 
 function has_param() {
-    local terms=(${(s: :)1})  # Split terms into an array
+    local terms=(${(s: :)1}) # Split terms into an array
     shift
 
     for term in "${terms[@]}"; do
@@ -75,40 +86,69 @@ function has_param() {
 os=$(uname -s)
 
 if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
-    echo "${Blue}Creating symlinks${NoColor}"
+    echo "${Blue}\nCreating symlinks\n${NoColor}"
 
-    create_symlinks "wezterm_config" "$HOME/.config/wezterm"
-    create_symlinks "zsh_config" "$HOME"
-    create_symlinks "git_config" "$HOME"
-    create_symlinks "tmux_config" "$HOME"
-    create_symlinks "nvim_config" "$HOME/.config/nvim"
-
+echo "${Blue}Removing existing ~/.config/wezterm${NoColor}"
+    rm -rf "$HOME/.config/wezterm"
+    echo "${Blue}Creating symlink for wezterm${NoColor}"
+    create_symlinks "$script_dir/../wezterm_config" "$HOME/.config/wezterm"
+    echo "${Blue}Creating symlink for zsh${NoColor}"
+    create_symlinks "$script_dir/../zsh_config" "$HOME"
+    echo "${Blue}Creating symlink for git${NoColor}"
+    create_symlinks "$script_dir/../git_config" "$HOME"
+    echo "${Blue}Creating symlink for tmux${NoColor}"
+    create_symlinks "$script_dir/../tmux_config" "$HOME"
+    echo "${Blue}Removing existing ~/.config/nvim${NoColor}"
+    rm -rf "$HOME/.config/nvim"
+    echo "${Blue}Creating symlink for nvim${NoColor}"
+    create_symlinks "$script_dir/../nvim_config" "$HOME/.config/nvim"
 
     # macOS
     if [[ "$os" == "Darwin" ]]; then
-        create_symlinks "superfile_config" "$HOME/Library/Application Support/superfile"
-        create_symlinks "lazygit_config" "$HOME/Library/Application Support/lazygit"
+        echo "${Blue}Creating symlink for superfile${NoColor}"
+        create_symlinks "$script_dir/../superfile_config" "$HOME/Library/Application Support/superfile"
+        echo "${Blue}Creating symlink for lazygit${NoColor}"
+        create_symlinks "$script_dir/../lazygit_config" "$HOME/Library/Application Support/lazygit"
     fi
 
     # Linux
     if [[ "$os" == "Linux" ]]; then
-        create_symlinks "superfile_config" "$HOME/.config/superfile"
-        create_symlinks "lazygit_config" "$HOME/.config/lazygit"
+        echo "${Blue}Creating symlink for superfile${NoColor}"
+        create_symlinks "$script_dir/../superfile_config" "$HOME/.config/superfile"
+        echo "${Blue}Creating symlink for lazygit${NoColor}"
+        create_symlinks "$script_dir/../lazygit_config" "$HOME/.config/lazygit"
+    fi
+
+    # Linux
+    if [[ "$os" == "Linux" ]]; then
+        echo "Creating symlink for superfile"
+        create_symlinks "$script_dir/../superfile_config" "$HOME/.config/superfile"
+
+        echo "Creating symlink for lazygit"
+        create_symlinks "$script_dir/../lazygit_config" "$HOME/.config/lazygit"
     fi
 fi
 
 # macOS
 if [[ "$os" == "Darwin" ]]; then
     if has_param "-m --mac" "$@" || [[ $# -eq 0 ]]; then
-        echo "${Blue}Configuring macOS${NoColor}"
+        echo "${Blue}\nConfiguring macOS\n${NoColor}"
 
-        ./scripts_config/macos.sh
+        "$script_dir/macos.sh"
     fi
 
     if has_param "-b --brew" "$@" || [[ $# -eq 0 ]]; then
-        echo "${Blue}Setting up Homebrew${NoColor}"
+        echo "${Blue}\nSetting up Homebrew\n${NoColor}"
 
-        ./scripts_config/brew.sh
+        "$script_dir/brew.sh"
     fi
 fi
 
+if [[ ${#failed_operations[@]} -gt 0 ]]; then
+    echo "${Red}\nFailed operations:\n${NoColor}"
+    for item in "${failed_operations[@]}"; do
+        echo "  - $item"
+    done
+else
+    echo "${Green}All operations completed successfully${NoColor}"
+fi
