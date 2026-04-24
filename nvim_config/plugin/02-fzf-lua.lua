@@ -24,9 +24,9 @@ fzf_lua.setup({
     actions = {
         files = {
             ["enter"] = actions.file_edit,
-            ["ctrl-o"] = file_edit_with_window_picker,
-            ["ctrl-h"] = actions.file_split,
-            ["ctrl-v"] = actions.file_vsplit,
+            ["alt-o"] = file_edit_with_window_picker,
+            ["alt-h"] = actions.file_split,
+            ["alt-v"] = actions.file_vsplit,
         },
     },
     grep = {
