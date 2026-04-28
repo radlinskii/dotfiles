@@ -29,12 +29,11 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
             ["*"] = { "cspell" },
         }
 
-        lint.linters.markdownlint.args = {
+        vim.list_extend(lint.linters.markdownlint.args, {
             "--disable",
             "MD013",
-            "MD030",
-            "--",
-        }
+            -- "MD018", to ignore obsidian #tags
+        })
 
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

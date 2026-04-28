@@ -25,6 +25,17 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
                 go = { "gofumpt", "goimports", "gomodifytags", "golines" },
                 astro = { "prettier" },
             },
+
+            formatters = {
+                markdownlint = {
+                    prepend_args = {
+                        "--disable",
+                        "MD013",
+                        "MD018", -- to ignore obsidian #tags
+                    },
+                },
+            },
+
             format_on_save = {
                 lsp_format = "fallback",
                 timeout_ms = 1500,
