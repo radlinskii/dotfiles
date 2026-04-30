@@ -294,3 +294,16 @@ keymap.set("v", "<leader>oc", function()
 
     vim.notify(short_ref, vim.log.levels.INFO, { title = "Copied reference" })
 end, { desc = "Copy file:line-line range reference for AI Agents", silent = false, noremap = true })
+
+-- #
+-- Open current directory in OS file explorer
+-- #
+keymap.set("n", "<leader>O", function()
+    if vim.fn.has("mac") == 1 then
+        vim.cmd("silent !open .")
+    elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+        vim.cmd("silent !explorer .")
+    else
+        vim.cmd("silent !xdg-open .")
+    end
+end, { desc = "Open current directory in OS file explorer", silent = true, noremap = true })
