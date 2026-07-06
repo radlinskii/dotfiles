@@ -1,4 +1,4 @@
-vim.pack.add({ "https://github.com/rebelot/kanagawa.nvim", })
+vim.pack.add({ "https://github.com/rebelot/kanagawa.nvim" })
 
 -- Setup after plugin loads
 require("kanagawa").setup({

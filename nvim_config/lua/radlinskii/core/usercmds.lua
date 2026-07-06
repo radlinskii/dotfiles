@@ -1,4 +1,8 @@
 local usercmd = vim.api.nvim_create_user_command
+local theme = require("radlinskii.utils.theme")
+
+usercmd("DarkMode", theme.set_dark_mode, { desc = "Switch to dark theme (kanagawa-wave)" })
+usercmd("LightMode", theme.set_light_mode, { desc = "Switch to light theme (kanagawa-lotus)" })
 
 usercmd("ClearShada", function()
     -- tested only on Windows

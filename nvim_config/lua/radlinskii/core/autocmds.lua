@@ -13,3 +13,9 @@ autocmd({ "BufLeave", "FocusLost" }, {
 })
 
 autocmd("LspAttach", { callback = require("radlinskii.utils.lsp").on_attach })
+
+-- autocmd("UIEnter", {
+--     callback = function()
+--         require("radlinskii.utils.theme").set_auto_mode()
+--     end,
+-- })
