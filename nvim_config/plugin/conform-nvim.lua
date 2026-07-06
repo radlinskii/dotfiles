@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
                 json5 = { "prettier" },
                 yaml = { "prettier" },
                 markdown = { "markdownlint" },
+                mdx = { "prettier" },
                 graphql = { "prettier" },
                 lua = { "stylua" },
                 go = { "gofumpt", "goimports", "gomodifytags", "golines" },
