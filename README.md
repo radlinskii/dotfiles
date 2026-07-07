@@ -81,6 +81,20 @@ Other environments to setup:
 Setting up `nvr` might require assigning environment variable `NVIM_LISTEN_ADDRESS`.
 Value could be `localhost:6789` as it is the default value that `nvr` tries to connect to.
 
+## Proxmox LXC setup
+
+The `proxmox-lxc-setup.sh` script bootstraps a new LXC container with the full setup (zsh, ohmyzsh, neovim, fzf, lazygit, tmux, node/nvm, tree-sitter).
+
+From the **Proxmox host**, push the script into a running container and execute it:
+
+```sh
+CT_ID=123
+pct push $CT_ID ./proxmox-lxc-setup.sh /root/setup.sh
+pct exec $CT_ID -- bash /root/setup.sh
+```
+
+> `pct push` copies files from the Proxmox host directly into the container's filesystem through the Proxmox API. `pct exec` runs commands inside the container.
+
 ## License
 
 MIT - see [LICENSE](LICENSE) file
