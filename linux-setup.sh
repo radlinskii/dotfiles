@@ -15,7 +15,34 @@ fi
 cd "$REPO_DIR"
 
 # 3. Install packages, ohmyzsh, fzf
-bash scripts_config/ubuntu-setup.sh
+mkdir -p "$HOME/.local/bin"
+export PATH=$PATH:$HOME/.local/bin
+
+sudo apt install -y zsh git-all zoxide lazygit curl wget fzf build-essential btop unzip tmux fontconfig fd-find bat jq
+
+# sudo apt install -y python3 python3-pip python3-venv # needed by djlint linter for nvim
+
+if command -v zsh &>/dev/null; then
+    sudo chsh -s "$(which zsh)" 2>/dev/null || true
+fi
+if command -v fdfind &>/dev/null; then
+    ln -sf "$(which fdfind)" "$HOME/.local/bin/fd"
+fi
+if command -v batcat &>/dev/null; then
+    ln -sf "$(which batcat)" "$HOME/.local/bin/bat"
+fi
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+[ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] || \
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+[ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] || \
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+[ -d "$ZSH_CUSTOM/themes/Chill" ] || \
+    git clone https://github.com/JKerboeuf/chill.zsh-theme.git "$ZSH_CUSTOM/themes/Chill"
 
 # 4. Create cspell config (needed by nvim-lint)
 if [ ! -f "$HOME/.cspell.json" ]; then

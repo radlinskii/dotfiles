@@ -35,12 +35,8 @@ Example usage: `./scripts/install.sh -l -b`
 ### 4. manually adjust the git config
 
 ```sh
-git config --global user.name "Your Name"
-git config --global user.email "Your Email"
-git config --global core.excludesfile ~/.gitignore_global
-git config --global init.defaultBranch main
-git config --global pull.rebase true
-git config --global push.autoSetupRemote true
+git config --global user.name "Your Name"  # your name on commits
+git config --global user.email "Your Email" # your email on commits
 ```
 
 Add the following to `~/.gitconfig`:
@@ -81,15 +77,15 @@ Other environments to setup:
 Setting up `nvr` might require assigning environment variable `NVIM_LISTEN_ADDRESS`.
 Value could be `localhost:6789` as it is the default value that `nvr` tries to connect to.
 
-## Proxmox LXC setup
+## Linux setup (Debian/Ubuntu)
 
-The `proxmox-lxc-setup.sh` script bootstraps a new LXC container with the full setup (zsh, ohmyzsh, neovim, fzf, lazygit, tmux, node/nvm, tree-sitter).
+The `linux-setup.sh` script bootstraps a new Debian/Ubuntu machine (LXC container, VM, or bare metal) with the full setup (zsh, ohmyzsh, neovim, fzf, lazygit, tmux, node/nvm, tree-sitter).
 
-From the **Proxmox host**, push the script into a running container and execute it:
+From a **Proxmox host**, push the script into a running container and execute it:
 
 ```sh
 CT_ID=123
-pct push $CT_ID ./proxmox-lxc-setup.sh /root/setup.sh
+pct push $CT_ID ./linux-setup.sh /root/setup.sh
 pct exec $CT_ID -- bash /root/setup.sh
 ```
 

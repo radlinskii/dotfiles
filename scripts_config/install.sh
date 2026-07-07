@@ -135,6 +135,17 @@ if [[ "$os" == "Darwin" ]]; then
     fi
 fi
 
+echo "${Blue}\nSetting sane git defaults${NoColor}"
+git config --global core.excludesfile "$HOME/.gitignore_global"
+git config --global init.defaultBranch main
+git config --global pull.rebase true
+git config --global push.autoSetupRemote true
+git config --global fetch.prune true
+git config --global diff.algorithm histogram
+git config --global rebase.autosquash true
+git config --global rebase.autostash true
+git config --global rerere.enabled true
+
 if [[ ${#failed_operations[@]} -gt 0 ]]; then
     echo "${Red}\nFailed operations:\n${NoColor}"
     for item in "${failed_operations[@]}"; do
