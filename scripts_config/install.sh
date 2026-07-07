@@ -118,15 +118,6 @@ echo "${Blue}Removing existing ~/.config/wezterm${NoColor}"
         echo "${Blue}Creating symlink for lazygit${NoColor}"
         create_symlinks "$script_dir/../lazygit_config" "$HOME/.config/lazygit"
     fi
-
-    # Linux
-    if [[ "$os" == "Linux" ]]; then
-        echo "Creating symlink for superfile"
-        create_symlinks "$script_dir/../superfile_config" "$HOME/.config/superfile"
-
-        echo "Creating symlink for lazygit"
-        create_symlinks "$script_dir/../lazygit_config" "$HOME/.config/lazygit"
-    fi
 fi
 
 # macOS

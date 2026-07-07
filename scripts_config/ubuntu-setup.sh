@@ -1,17 +1,16 @@
 mkdir -p ~/.local/bin
-# add local bin to PATH
 export PATH=$PATH:$HOME/.local/bin
 
-# install zsh, switch to it
 sudo apt install zsh -y
-zsh
-chsh -s $(which zsh)
+if command -v zsh &>/dev/null; then
+    sudo chsh -s "$(which zsh)" 2>/dev/null || true
+fi
 
-# install more deps
 sudo apt install git-all -y
 sudo apt install zoxide -y
 sudo apt install lazygit -y
-sudo apt install build-essential  -y
+sudo apt install curl wget fzf -y
+sudo apt install build-essential -y
 sudo apt install btop -y
 sudo apt install unzip -y
 sudo apt install tmux -y
@@ -20,29 +19,29 @@ sudo apt install fontconfig -y
 # sudo apt install python3 -y
 # sudo apt install python3-pip -y
 # needed by djlint linter for nvim
-sudo apt install python3-venv -y
+# sudo apt install python3-venv -y
 
-sudo apt install fd-find
-ln -s $(which fdfind) ~/.local/bin/fd
+sudo apt install fd-find -y
+if command -v fdfind &>/dev/null; then
+    ln -sf "$(which fdfind)" ~/.local/bin/fd
+fi
 
 sudo apt install bat -y
-ln -s $(which batcat) ~/.local/bin/bat
+sudo apt install jq -y
+if command -v batcat &>/dev/null; then
+    ln -sf "$(which batcat)" ~/.local/bin/bat
+fi
 
-# ohmyzsh
-# sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+# oh-my-zsh (only if not already installed)
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
-# fzf
-# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-# ~/.fzf/install
-
-# nerd font
-# wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/IosevkaTerm.zip \
-# && cd ~/.local/share/fonts \
-# && unzip IosevkaTerm.zip \
-# && rm IosevkaTerm.zip \
-# && fc-cache -fv
-
-# fix freezing
-# sudo nvim /etc/default/grub
-# GRUB_CMDLINE_LINUX_DEFAULT="nomodeset consoleblank=90"
-
+# zsh plugins/themes (only if not already cloned)
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+[ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] || \
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+[ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] || \
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+[ -d "$ZSH_CUSTOM/themes/Chill" ] || \
+    git clone https://github.com/JKerboeuf/chill.zsh-theme.git "$ZSH_CUSTOM/themes/Chill"

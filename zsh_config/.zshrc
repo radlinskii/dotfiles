@@ -158,9 +158,11 @@ spf() {
 # Open in tmux popup if on tmux, otherwise use --height mode
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
-source ~/.custom_aliases.sh
-source ~/.custom_bindings.sh
-source ~/.local_zshrc.sh
+source <(fzf --zsh) 2>/dev/null || true
+
+[ -f ~/.custom_aliases.sh ] && source ~/.custom_aliases.sh
+[ -f ~/.custom_bindings.sh ] && source ~/.custom_bindings.sh
+[ -f ~/.local_zshrc.sh ] && source ~/.local_zshrc.sh
 
 export HISTCONTROL=ignoredups
 export HISTSIZE=100000
@@ -169,6 +171,7 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTFILE=~/.zsh_history
 
 # Use Neovim as "preferred editor"
+export PATH="$PATH:/opt/nvim/bin"
 export VISUAL=nvim
 export EDITOR="nvim"
 export VIMCONFIG=~/.config/nvim
@@ -179,3 +182,7 @@ CDPATH=CDPATH:$HOME:$HOME/Projects:..
 # if command -v tmux &> /dev/null && [[ -z "$TMUX" ]]; then
 #   tmux new-session -A -s main
 # fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
