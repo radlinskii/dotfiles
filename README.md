@@ -84,9 +84,9 @@ The `linux-setup.sh` script bootstraps a new Debian/Ubuntu machine (LXC containe
 From a **Proxmox host**, push the script into a running container and execute it:
 
 ```sh
-CT_ID=123
+CT_ID=999
 pct push $CT_ID ./linux-setup.sh /root/setup.sh
-pct exec $CT_ID -- bash /root/setup.sh
+pct exec $CT_ID -- sh -c "CT_ID=$CT_ID PROXMOX_HOST=$(hostname) bash /root/setup.sh"
 ```
 
 > `pct push` copies files from the Proxmox host directly into the container's filesystem through the Proxmox API. `pct exec` runs commands inside the container.

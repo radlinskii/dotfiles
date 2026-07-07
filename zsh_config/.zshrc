@@ -186,3 +186,9 @@ CDPATH=CDPATH:$HOME:$HOME/Projects:..
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Proxmox container info in right prompt (set by linux-setup.sh)
+[ -f /etc/profile.d/proxmox-prompt.sh ] && source /etc/profile.d/proxmox-prompt.sh
+if [ -n "${PROXMOX_CT_ID:-}" ]; then
+    RPROMPT="%F{green}[CT ${PROXMOX_CT_ID} @ ${PROXMOX_HOST}]%f"
+fi

@@ -73,3 +73,16 @@ fi
 
 # 8. Install tree-sitter CLI (if not already installed)
 npm ls -g tree-sitter-cli &>/dev/null || npm install -g tree-sitter-cli
+
+# 9. Ensure XDG_RUNTIME_DIR exists for nvim (fzf-lua needs it for serverstart)
+# LXC containers running as root don't create /run/user/0 by default
+mkdir -p /run/user/0
+
+# 10. Save Proxmox container info for shell prompt (if provided via env vars)
+if [ -n "${CT_ID:-}" ] && [ -n "${PROXMOX_HOST:-}" ]; then
+    mkdir -p /etc/profile.d
+    cat > /etc/profile.d/proxmox-prompt.sh <<- PROMPT_EOF
+export PROXMOX_CT_ID=$CT_ID
+export PROXMOX_HOST=$PROXMOX_HOST
+PROMPT_EOF
+fi
