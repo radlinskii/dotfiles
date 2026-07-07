@@ -153,7 +153,8 @@ spf() {
 }
 
 # cargo
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
+
 
 # Open in tmux popup if on tmux, otherwise use --height mode
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
@@ -190,5 +191,12 @@ export NVM_DIR="$HOME/.nvm"
 # Proxmox container info in right prompt (set by linux-setup.sh)
 [ -f /etc/profile.d/proxmox-prompt.sh ] && source /etc/profile.d/proxmox-prompt.sh
 if [ -n "${PROXMOX_CT_ID:-}" ]; then
-    RPROMPT="%F{green}[CT ${PROXMOX_CT_ID} @ ${PROXMOX_HOST}]%f"
+    RPROMPT="%F{green}[%n@%m] / [CT${PROXMOX_CT_ID}@${PROXMOX_HOST}]%f"
 fi
+
+[[ -d /run/user/0 ]] || mkdir -m 700 -p /run/user/0
+
+export TERM=xterm-256color
+
+export PATH="$PATH:$HOME/.local/bin"
+

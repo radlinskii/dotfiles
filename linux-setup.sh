@@ -18,7 +18,7 @@ cd "$REPO_DIR"
 mkdir -p "$HOME/.local/bin"
 export PATH=$PATH:$HOME/.local/bin
 
-sudo apt install -y zsh git-all zoxide lazygit curl wget fzf build-essential btop unzip tmux fontconfig fd-find bat jq
+sudo apt install -y zsh git zoxide lazygit tree curl wget fzf build-essential btop unzip tmux fontconfig fd-find bat jq
 
 # sudo apt install -y python3 python3-pip python3-venv # needed by djlint linter for nvim
 

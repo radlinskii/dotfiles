@@ -1,18 +1,18 @@
 vim.pack.add({ { src = "https://github.com/nvim-mini/mini.nvim", version = "stable" } })
 
-local animate = require("mini.animate")
-
-animate.setup({
-    cursor = {
-        timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
-    },
-    resize = {
-        enable = false,
-    },
-    scroll = {
-        enable = false,
-    },
-})
+-- local animate = require("mini.animate")
+--
+-- animate.setup({
+--     cursor = {
+--         timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
+--     },
+--     resize = {
+--         enable = false,
+--     },
+--     scroll = {
+--         enable = false,
+--     },
+-- })
 
 require("mini.move").setup({
     mappings = {
