@@ -16,7 +16,6 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
             javascriptreact = { "eslint_d", "cspell" },
             typescriptreact = { "eslint_d", "cspell" },
             markdown = { "markdownlint", "cspell" },
-            mdx = { "markdownlint", "cspell" },
             json = { "cspell" },
             json5 = { "cspell" },
             css = { "cspell", "stylelint" },

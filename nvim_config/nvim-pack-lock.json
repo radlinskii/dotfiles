@@ -85,10 +85,6 @@
       "rev": "cb8445f8ce85d957416c106b780efd51c6298f89",
       "src": "https://github.com/mason-org/mason.nvim"
     },
-    "mdx.nvim": {
-      "rev": "6c3dc7c4a4b58b5d86404c21a9b4655282ca08c5",
-      "src": "https://github.com/davidmh/mdx.nvim"
-    },
     "mini.nvim": {
       "rev": "a995fe9cd4193fb492b5df69175a351a74b3d36b",
       "src": "https://github.com/nvim-mini/mini.nvim",
