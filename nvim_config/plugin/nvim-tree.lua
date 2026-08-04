@@ -7,12 +7,26 @@ local WIDTH_RATIO = 0.4
 
 local function nvim_tree_on_attach(bufnr)
     local api = require("nvim-tree.api")
+    local system = require("radlinskii.utils.system")
 
     local function opts(desc)
         return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
 
     api.map.on_attach.default(bufnr)
+
+    vim.keymap.set("n", "<leader>OO", function()
+        local node = api.tree.get_node_under_cursor()
+        if not node then
+            return
+        end
+        local stat = vim.uv.fs_stat(node.absolute_path)
+        if stat and stat.type == "directory" then
+            system.open_in_explorer(node.absolute_path)
+        else
+            system.open_in_explorer(vim.fn.fnamemodify(node.absolute_path, ":h"))
+        end
+    end, opts("Open node directory in OS file explorer"))
 
     vim.keymap.set("n", "gr", api.fs.rename_full, opts("Rename: Full Path"))
     vim.keymap.set("n", "R", api.fs.rename_basename, opts("Rename: Basename"))
