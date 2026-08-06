@@ -60,3 +60,7 @@ require("noice").setup({
 vim.keymap.set("n", "<leader>nn", function()
     require("noice").cmd("dismiss")
 end, { desc = "Dismiss all notifications" })
+
+vim.keymap.set("n", "<leader>na", function()
+    require("noice").cmd("all")
+end, { desc = "Show all notifications" })
