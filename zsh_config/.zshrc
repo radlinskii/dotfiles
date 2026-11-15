@@ -192,3 +192,4 @@ export NVM_DIR="$HOME/.nvm"
 if [ -n "${PROXMOX_CT_ID:-}" ]; then
     RPROMPT="%F{green}[CT ${PROXMOX_CT_ID} @ ${PROXMOX_HOST}]%f"
 fi
+export PATH="$HOME/.local/bin:$PATH"
