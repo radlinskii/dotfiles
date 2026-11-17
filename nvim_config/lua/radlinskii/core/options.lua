@@ -126,20 +126,7 @@ opt.wrap = false
 -- opt.iskeyword:append("-") -- include - in words
 opt.path:append("**") -- include subdirs in search
 
--- this will get later anyway overridden by auto-dark-mode.nvim
--- but with this, there is less blinking on the initial load,
--- before the auto-dark-mode plugin is called
-local function set_initial_background()
-    local hour = tonumber(os.date("%H"))
-
-    if hour >= 8 and hour < 17 then
-        opt.background = "light"
-    else
-        opt.background = "dark"
-    end
-end
-
-set_initial_background()
+opt.background = "dark"
 
 -- recommended for AutoSession
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
