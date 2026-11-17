@@ -29,14 +29,14 @@ create_symlinks() {
     local destination_directory="$2"
 
     if [[ ! -d "$source" && ! -f "$source" ]]; then
-        echo "${Red}Source does not exist: $source${NoColor}"
+        say "${Red}Source does not exist: $source${NoColor}"
         failed_operations+=("Source does not exist: $source")
         return
     fi
 
     if [[ ! -d "$destination_directory" ]]; then
-        echo "${Orange}Destination directory does not exist: $destination_directory${NoColor}"
-        echo "${Blue}Creating destination directory $destination_directory${NoColor}"
+        say "${Orange}Destination directory does not exist: $destination_directory${NoColor}"
+        say "${Blue}Creating destination directory $destination_directory${NoColor}"
         mkdir -p "$destination_directory"
         if [[ $? -ne 0 ]]; then
             failed_operations+=("Failed to create directory: $destination_directory")
@@ -47,7 +47,7 @@ create_symlinks() {
         local file_name="$(basename "$source")"
         local destination="$destination_directory/$file_name"
 
-        echo "Creating symlink for file $source to $destination"
+        say "Creating symlink for file $source to $destination"
         ln -sf "$source" "$destination"
         if [[ $? -ne 0 ]]; then
             failed_operations+=("Failed to create symlink: $source -> $destination")
@@ -83,39 +83,53 @@ function has_param() {
     return 1
 }
 
+# -q / --quiet: only print the final result (success, or the list of failed operations).
+# It's removed from the arguments, so `install.sh -q` still means "do everything".
+quiet=false
+args=()
+for arg in "$@"; do
+    case "$arg" in
+        -q|--quiet) quiet=true ;;
+        *) args+=("$arg") ;;
+    esac
+done
+set -- "${args[@]}"
+
+say() { $quiet || echo "$@"; }
+
 os=$(uname -s)
 
 if has_param "-l --link" "$@" || [[ $# -eq 0 ]]; then
-    echo "${Blue}\nCreating symlinks\n${NoColor}"
+    say "${Blue}\nCreating symlinks\n${NoColor}"
 
-echo "${Blue}Removing existing ~/.config/wezterm${NoColor}"
+say "${Blue}Removing existing ~/.config/wezterm${NoColor}"
     rm -rf "$HOME/.config/wezterm"
-    echo "${Blue}Creating symlink for wezterm${NoColor}"
+    say "${Blue}Creating symlink for wezterm${NoColor}"
     create_symlinks "$script_dir/../wezterm_config" "$HOME/.config/wezterm"
-    echo "${Blue}Creating symlink for zsh${NoColor}"
+    say "${Blue}Creating symlink for zsh${NoColor}"
     create_symlinks "$script_dir/../zsh_config" "$HOME"
-    echo "${Blue}Creating symlink for git${NoColor}"
+    say "${Blue}Creating symlink for git${NoColor}"
     create_symlinks "$script_dir/../git_config" "$HOME"
-    echo "${Blue}Creating symlink for tmux${NoColor}"
+    say "${Blue}Creating symlink for tmux${NoColor}"
     create_symlinks "$script_dir/../tmux_config" "$HOME"
-    echo "${Blue}Removing existing ~/.config/nvim${NoColor}"
+    say "${Blue}Removing existing ~/.config/nvim${NoColor}"
     rm -rf "$HOME/.config/nvim"
-    echo "${Blue}Creating symlink for nvim${NoColor}"
+    say "${Blue}Creating symlink for nvim${NoColor}"
     create_symlinks "$script_dir/../nvim_config" "$HOME/.config/nvim"
 
     # macOS
     if [[ "$os" == "Darwin" ]]; then
-        echo "${Blue}Creating symlink for superfile${NoColor}"
+        say "${Blue}Creating symlink for superfile${NoColor}"
         create_symlinks "$script_dir/../superfile_config" "$HOME/Library/Application Support/superfile"
-        echo "${Blue}Creating symlink for lazygit${NoColor}"
+        say "${Blue}Creating symlink for lazygit${NoColor}"
         create_symlinks "$script_dir/../lazygit_config" "$HOME/Library/Application Support/lazygit"
     fi
 
     # Linux
     if [[ "$os" == "Linux" ]]; then
-        echo "${Blue}Creating symlink for superfile${NoColor}"
+        say "${Blue}Creating symlink for superfile${NoColor}"
         create_symlinks "$script_dir/../superfile_config" "$HOME/.config/superfile"
-        echo "${Blue}Creating symlink for lazygit${NoColor}"
+        say "${Blue}Creating symlink for lazygit${NoColor}"
         create_symlinks "$script_dir/../lazygit_config" "$HOME/.config/lazygit"
     fi
 fi
@@ -123,19 +137,19 @@ fi
 # macOS
 if [[ "$os" == "Darwin" ]]; then
     if has_param "-m --mac" "$@" || [[ $# -eq 0 ]]; then
-        echo "${Blue}\nConfiguring macOS\n${NoColor}"
+        say "${Blue}\nConfiguring macOS\n${NoColor}"
 
         "$script_dir/macos.sh"
     fi
 
     if has_param "-b --brew" "$@" || [[ $# -eq 0 ]]; then
-        echo "${Blue}\nSetting up Homebrew\n${NoColor}"
+        say "${Blue}\nSetting up Homebrew\n${NoColor}"
 
         "$script_dir/brew.sh"
     fi
 fi
 
-echo "${Blue}\nSetting sane git defaults${NoColor}"
+say "${Blue}\nSetting sane git defaults${NoColor}"
 git config --global core.excludesfile "$HOME/.gitignore_global"
 git config --global init.defaultBranch main
 git config --global pull.rebase true

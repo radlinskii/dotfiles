@@ -263,7 +263,7 @@ fi
 # ---------------------------------------------------------------- 6. symlink configs
 step "Config symlinks"
 mkdir -p "$HOME/.config"
-zsh scripts_config/install.sh -l
+zsh scripts_config/install.sh -l --quiet
 
 # ---------------------------------------------------------------- 7. nvm + Node LTS + tree-sitter CLI
 step "nvm / Node / tree-sitter CLI"
