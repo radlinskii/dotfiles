@@ -1,6 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# `pct enter` (PVE 9) starts the shell with a minimal PATH; linux-setup.sh installs fzf/lazygit/rg
+# into /usr/local/bin, which must come before /usr/bin so they win over older apt copies.
+[[ ":$PATH:" == *":/usr/local/bin:"* ]] || export PATH="/usr/local/bin:$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -158,7 +162,7 @@ spf() {
 # Open in tmux popup if on tmux, otherwise use --height mode
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
-source <(fzf --zsh) 2>/dev/null || true
+(( $+commands[fzf] )) && source <(fzf --zsh)
 
 [ -f ~/.custom_aliases.sh ] && source ~/.custom_aliases.sh
 [ -f ~/.custom_bindings.sh ] && source ~/.custom_bindings.sh
@@ -187,9 +191,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Proxmox container info in right prompt (set by linux-setup.sh)
-[ -f /etc/profile.d/proxmox-prompt.sh ] && source /etc/profile.d/proxmox-prompt.sh
-if [ -n "${PROXMOX_CT_ID:-}" ]; then
-    RPROMPT="%F{green}[CT ${PROXMOX_CT_ID} @ ${PROXMOX_HOST}]%f"
-fi
 export PATH="$HOME/.local/bin:$PATH"
